@@ -25,11 +25,18 @@
     "preact": "^8.4.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.3",
     "@storybook/addon-actions": "^5.0.8",
+    "@storybook/addon-knobs": "^5.0.8",
     "@storybook/addon-links": "^5.0.8",
+    "@storybook/addon-notes": "^5.0.8",
     "@storybook/addons": "^5.0.8",
     "@storybook/preact": "^5.0.8",
-    "@babel/core": "^7.4.3",
-    "babel-loader": "^8.0.5"
+    "babel-loader": "^8.0.5",
+    "classnames": "^2.2.6",
+    "node-sass": "^4.11.0",
+    "postcss-px2rem": "^0.3.0",
+    "precss": "^4.0.0",
+    "sass-loader": "^7.1.0"
   }
 }
