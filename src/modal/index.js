@@ -1,0 +1,156 @@
+/** @jsx h */
+
+import { h, render, Component } from 'preact';
+import { isBrowser } from 'util/isomorphic';
+import style from './style.scss';
+
+let modalComp;
+let containerNode = isBrowser && document.body;
+const viewWrap = containerNode;
+const defaultOptions = {
+  title: '', // 标题
+  message:'', // 消息内容，如有children 优先children
+  align: 'center', // 文本对齐方式
+  showCancel: false, // 是否显示取消按钮
+  confirmContent: '确定',
+  cancelContent: '取消',
+  mask: true,
+  visable: true,
+}
+
+/**
+ * 默认模态框
+ */
+const alert = options => {
+  modal(options);
+}
+/**
+ * 带取消按钮的模态框
+ */
+const confirm = options => {
+  modal({
+    showCancel: true,
+    ...options
+  });
+} 
+
+export class Modal extends Component {
+  static alert = alert;
+  static confirm = confirm;
+  state = {
+    visable: this.props.visable || false,
+  }
+  componentWillReceiveProps(nextProps) {
+    const { visable } = nextProps;
+    if (visable !== this.state.visable) {
+      this.setState({
+        visable
+      })
+    }
+  }
+  componentDidUpdate() {
+    viewWrap && (viewWrap.style.overflow = this.state.visable ? 'hidden' : '');
+  }
+  componentWillMount() {
+    viewWrap && (viewWrap.style.overflow = '');
+  }
+  handleClick(action) {
+    if (modalComp && containerNode) {
+      render('', containerNode, modalComp);
+      modalComp = null;
+    } else {
+      this.setState({
+        visable: false
+      })
+    }
+    if (action === 'confirm') {
+      this.props.onConfirm && this.props.onConfirm();
+    } else {
+      this.props.onCancel && this.props.onCancel();
+    }
+  }
+  render({
+    title = '', // 标题
+    message = '', // 消息内容，如有children 优先children
+    align = 'center', // 文本对齐方式
+    children, // 自定义内容
+    showCancel = false, // 是否显示取消按钮
+    confirmContent = '确定',
+    cancelContent = '取消',
+    mask = true,
+  }, { visable }) {
+    if (visable) {
+      const Title = title && (
+        <div class={style.header}>{ title }</div>
+      );
+      const contentStyle = style[`msg__${align}`] || style.msg_center;
+      const Content = (!!(children && children.length) || message) && (
+        <div class={style.content}>
+          {
+            !!(children && children.length) ? children : <div dangerouslySetInnerHTML={{ __html: message }} class={ contentStyle }></div>
+          }
+        </div>
+      );
+      const Buttons = (
+        <div class={style.btngroup}>
+          {
+            showCancel && (
+              <button class={style.btngroup__cancel} onClick={ this.handleClick.bind(this, 'cancel') }>
+                { cancelContent }
+              </button>
+            )
+          }
+          <button class={style.btngroup__confirm} onClick={ this.handleClick.bind(this, 'confirm') }>
+            { confirmContent }
+          </button>
+        </div>
+      )
+      return <div class={style.modal}>
+        {
+          mask && <div class={ style.modal_bg }/>
+        }
+        <div class={style.modal_content}>
+          { Title }
+          { Content }
+          { Buttons }
+        </div>
+      </div>
+    } else {
+      return null;
+    }
+  }
+}
+// /**
+//  * 创建弹窗容器
+//  * @returns {HTMLElement} 弹窗容器
+//  */
+// const createContainerNode = () => {
+//   let notifyContainerClass = 'QModal';
+//   let notifyContainerNode = document.querySelector(
+//     `.${notifyContainerClass}`
+//   );
+
+//   if (!notifyContainerNode) {
+//     const bodyNode = document.body;
+//     const div = document.createElement('div');
+//     div.className = notifyContainerClass;
+//     notifyContainerNode = bodyNode.appendChild(div);
+//   }
+
+//   return notifyContainerNode;
+// };
+
+/**
+ * 渲染模态框到容器中
+ */
+const modal = options => {
+  if (!isBrowser) return null;
+  if (containerNode && modalComp) {
+    render('', containerNode, modalComp);
+    modalComp = null;
+  }
+  const props = Object.assign({}, defaultOptions, options);
+  modalComp = render(<Modal {...props} />, containerNode);
+}
+
+export default Modal;

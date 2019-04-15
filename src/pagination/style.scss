@@ -1,0 +1,21 @@
+@import 'style/config.scss';
+.pagination {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0 0;
+  &_btn {
+    height: 32px;
+    width: 86px;
+    border-radius: 4px;
+    color: $color_theme_blue;
+    &__disabled {
+      color: #969fa9;
+      background-color: #f8f8f8;
+    }
+  }
+  &_indicator {
+    padding: 0 20px;
+  }
+}
