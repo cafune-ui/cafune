@@ -1,0 +1,28 @@
+.tabbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 52px;
+  background-color: #fff;
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  border-top: 1px solid #eee;/* no */
+  &_item {
+    flex: 1;
+    &_icon {
+      display: inline-block;
+      height: 24px;
+      width: 24px;
+      background-size: contain;
+      background-position: center;
+    }
+    &[data-status='2'] {
+      color: #aaa;
+    }
+  }
+  &__fixed {
+    composes: fixed from 'style/composes.scss';
+    bottom: 0;
+  }
+}

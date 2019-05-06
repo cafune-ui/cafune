@@ -1,6 +1,6 @@
-import { h, Component } from 'preact';
+import { Component } from 'preact';
 import Tab from './tab';
-import style from './style';
+import style from './style.scss';
 import classNams from 'classnames';
 import { isBrowser } from 'util/isomorphic';
 
@@ -12,18 +12,13 @@ function setTransform(obj, offsetLeft) {
 }
 
 const defaultMax = 5;
-
 export default class Nav extends Component {
   onTabSelected = id => {
     const { onChange } = this.props;
     onChange(id);
   };
   resizing = () => {
-    var res;
-    if (res) {
-      clearTimeout(res);
-    }
-    res = setTimeout(() => this.positionInkBar(), 0);
+    this.positionInkBar();
   };
   componentDidMount() {
     const { type = 'slider' } = this.props;
@@ -41,6 +36,7 @@ export default class Nav extends Component {
   componentWillUnmount() {
     window.removeEventListener('resize', this.resizing);
   }
+  // 定位底部指示线
   positionInkBar() {
     const { inkBar, activeTab } = this;
     if (activeTab) {
@@ -67,7 +63,7 @@ export default class Nav extends Component {
       tabs.push(
         <Tab
           {...item}
-          id={item.key}
+          id={item.id}
           onSelected={this.onTabSelected}
           ref={ref}
           tabStyle={tabStyle}
@@ -84,7 +80,8 @@ export default class Nav extends Component {
       style.tabNav,
       {
         [style.tabNav__slider]: type === 'slider',
-        [style.tabNav__round]: type === 'round'
+        [style.tabNav__round]: type === 'round',
+        [style.tabNav__card]: type === 'card'
       },
       navClass
     );

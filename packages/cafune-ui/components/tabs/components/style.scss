@@ -67,4 +67,37 @@ $color_tab: #3f77f6;
       }
     }
   }
+  &__card {
+    width: auto;
+    border-radius: 4px;
+    overflow: hidden;
+    min-width: 0;
+    border: 1px solid #fff;/* no */
+    background: $color_tab;
+    .tabNav_content {
+      height: 30px;
+    }
+    .tabItem {
+      width: auto;
+      &_inner {
+        width: 70%;
+        height: 24px;
+        line-height: 24px;
+        margin: auto;
+        color: #fff;
+        font-size: 14px;
+      }
+      &__actived {
+        background-color: #fff;
+        .tabItem {
+          &_inner {
+            color: $color_tab;
+          }
+        }
+      }
+      & + .tabItem {
+        border-left: 1px solid #fff;/* no */
+      }
+    }
+  }
 }

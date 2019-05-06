@@ -1,0 +1,20 @@
+{
+  "LazyLoad": {
+    "js": "components/lazyLoad"
+  },
+  "Modal": {
+    "js": "components/modal"
+  },
+  "Swiper": {
+    "js": "components/swiper"
+  },
+  "Pagination": {
+    "js": "components/pagination"
+  },
+  "TabBar": {
+    "js": "components/tabBar"
+  },
+  "Tabs": {
+    "js": "components/tabs"
+  }
+}

@@ -1,22 +1,4 @@
 @import 'style/config.scss';
-// :global {
-//   .QModal {
-//     &:not(:empty) {
-//       position: fixed;
-//       z-index: 99;
-//       top: 0;
-//       left: 0;
-//       right: 0;
-//       margin: auto;
-//       max-width: 480px; /* no */
-//       min-width: 320px; /* no */
-//       width: 100%;
-//       height: 100%;
-//       background-color: rgba(0, 0, 0, .6);
-//       text-align: center;
-//     }
-//   }
-// }
 .btn {
   flex: 1;
   height: 52px;

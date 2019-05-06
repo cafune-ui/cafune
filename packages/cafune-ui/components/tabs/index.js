@@ -1,9 +1,8 @@
-import { h, Component } from 'preact';
+import { Component } from 'preact';
 import Panel from './components/panel';
 import Nav from './components/nav';
 import classNames from 'classnames';
-import style from './style';
-import Tab from './components/tab';
+import style from './style.scss';
 
 function checkIfPanel(el) {
   return el.nodeName.displayName === 'TabPanel';
@@ -11,6 +10,7 @@ function checkIfPanel(el) {
 
 export class Tabs extends Component {
   static Panel = Panel;
+  static Nav = Nav;
   onTabChange = key => {
     const { onChange } = this.props;
     if (onChange) {
@@ -51,15 +51,14 @@ export class Tabs extends Component {
     children.forEach(item => {
       if (checkIfPanel(item)) {
         const props = item.attributes;
-        const { id, label = '', tabClass, className } = props;
+        const { id, label, className } = props;
         const { children } = item;
         data.push({
           label,
-          key: id,
+          id,
           actived: activeId && id ? activeId === id : false,
           content: children,
-          className,
-          tabClass
+          className
         });
       }
     });
@@ -78,16 +77,9 @@ export class Tabs extends Component {
       </div>
     );
   }
-
-  renderWithoutPanel() {
-    // const {}
-  }
-  render({ tabs }) {
-    if (tabs) {
-      return this.renderWithoutPanel();
-    }
+  render() {
     return this.renderWithPanel();
   }
 }
 
-export default Tab;
+export default Tabs;

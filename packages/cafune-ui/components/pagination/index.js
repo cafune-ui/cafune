@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import style from './style';
+import style from './style.scss';
 import classNames from 'classnames';
 
 function changeFn(direction, pn, pages, onChange) {
+  pn = Number(pn);
   if ((pn < pages && direction === 1) || (pn > 1 && direction === -1)) {
     return () => {
       onChange(pn + direction);
@@ -10,13 +10,14 @@ function changeFn(direction, pn, pages, onChange) {
   }
   return () => {};
 }
-export const Pagination = ({ pn, pages, onChange = pn => {} }) => {
+export const Pagination = ({ pn, pages, onChange = () => {} }) => {
   const prevCx = classNames(style.pagination_btn, {
     [style.pagination_btn__disabled]: pn <= 1
   });
   const nextCx = classNames(style.pagination_btn, {
     [style.pagination_btn__disabled]: pn >= pages
   });
+
   return (
     <div class={style.pagination}>
       <button onClick={changeFn(-1, pn, pages, onChange)} class={prevCx}>

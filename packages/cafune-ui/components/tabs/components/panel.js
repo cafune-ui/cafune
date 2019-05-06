@@ -1,5 +1,5 @@
-import { h, Component } from 'preact';
-import style from './style';
+import { Component } from 'preact';
+import style from './style.scss';
 import classNames from 'classnames';
 
 export default class Panel extends Component {
