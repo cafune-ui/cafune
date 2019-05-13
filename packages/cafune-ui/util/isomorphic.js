@@ -72,3 +72,11 @@ export const QUrl = {
     return '';
   }
 };
+
+export const setPadding = (size, wrapElement = '#qiujiang') => {
+  if (isBrowser) {
+    if (document.querySelector(wrapElement)) {
+      document.querySelector(wrapElement).style.paddingBottom = size;
+    }
+  }
+};
