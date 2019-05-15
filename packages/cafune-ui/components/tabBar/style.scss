@@ -22,7 +22,7 @@
     }
   }
   &__fixed {
-    composes: fixed from 'style/composes.scss';
+    // composes: fixed from 'style/composes.scss';
     bottom: 0;
   }
 }

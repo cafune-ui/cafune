@@ -77,7 +77,21 @@ export class Tabs extends Component {
       </div>
     );
   }
-  render() {
+  renderWithoutPanel() {
+    const { children, activeId, className, navClass, tabs } = this.props;
+    tabs.forEach(item => item.actived = item.id === activeId )
+    const cx = classNames(style.tabs, className);
+    return (
+      <div class={cx}>
+        {this.renderNav(tabsData, navClass)}
+        { children }
+      </div>
+    );
+  }
+  render({ tabs }) {
+    if (tabs) {
+      return this.renderWithoutPanel();
+    }
     return this.renderWithPanel();
   }
 }

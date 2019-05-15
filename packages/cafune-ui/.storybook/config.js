@@ -7,7 +7,7 @@ function loadStories() {
 
 addParameters({
   options: {
-    name: '球匠 组件文档',
+    name: 'Cafune 组件文档',
   }
 })
 configure(loadStories, module);

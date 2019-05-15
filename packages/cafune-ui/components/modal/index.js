@@ -1,5 +1,3 @@
-/** @jsx h */
-
 import { render, Component } from 'preact';
 import { isBrowser } from 'util/isomorphic';
 import style from './style.scss';

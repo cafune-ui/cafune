@@ -7,14 +7,14 @@ module.exports = async ({ config }) => {
       use: [{
         loader: 'sass-loader',
         options: {
-          cwd: path.resolve(__dirname, '../src/components'),
+          cwd: path.resolve(process.cwd(), 'components'),
           sourceMap: true,
-          includePaths: [ path.resolve(__dirname , '../node_modules') ]
+          includePaths: [ path.resolve(process.cwd() , 'node_modules') ]
         }
       }]
     },
     { test: /\.(css|less|s[ac]ss|styl)$/,
-      include: [ path.resolve(__dirname, '../src/components'), path.resolve(__dirname, '../src/routes') ],
+      include: [ path.resolve(process.cwd(), 'components') ],
       use: [
         'style-loader',
         {
@@ -31,7 +31,7 @@ module.exports = async ({ config }) => {
       ]
     },
     { test: /\.(css|less|s[ac]ss|styl)$/,
-      exclude: [ path.resolve(__dirname, '../src/components'), path.resolve(__dirname, '../src/routes'), path.resolve(__dirname, '../stories') ],
+      exclude: [ path.resolve(process.cwd(), 'components'), path.resolve(process.cwd(), 'stories') ],
       use: [
         'style-loader',
         {
@@ -50,11 +50,9 @@ module.exports = async ({ config }) => {
   ]);
   config.resolve.extensions = config.resolve.extensions.concat(['.scss', '.css']);
   config.resolve.alias = Object.assign({}, config.resolve.alias, {
-    util: path.resolve(__dirname, '../src/util'),
-    components: path.resolve(__dirname, '../src/components'),
-    style: path.resolve(__dirname, '../src/style')
+    util: path.resolve(process.cwd(), 'util'),
+    components: path.resolve(process.cwd(), 'components'),
+    style: path.resolve(process.cwd(), 'style')
   });
-
-  // console.log(config);
   return config;
 }

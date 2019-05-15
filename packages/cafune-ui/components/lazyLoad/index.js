@@ -1,4 +1,6 @@
-import { Component, createRef } from 'preact';
+/** @jsx h */
+
+import { Component, createRef, render } from 'preact';
 import { inViewPort } from 'util/browser';
 
 export class LazyLoad extends Component {

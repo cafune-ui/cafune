@@ -1,18 +1,18 @@
 import { storiesOf } from '@storybook/preact';
-import { Lazyload } from 'components';
+import { LazyLoad } from 'components';
 import './style.css';
-import notes from './markdown/lazyload.md';
+import notes from './markdown/lazyLoad.md';
 
-storiesOf('Component|Lazyload 懒加载', module).add(
-  'Lazyload',
+storiesOf('Component|LazyLoad 懒加载', module).add(
+  'LazyLoad',
   () => (
-    <Lazyload imgClass="lazy">
+    <LazyLoad imgClass="lazy">
       <img
         src="https://via.placeholder.com/200x150.png?text=playholder"
         data-original="https://via.placeholder.com/200x150.png?text=original"
         class="lazy"
       />
-    </Lazyload>
+    </LazyLoad>
   ),
   {
     notes

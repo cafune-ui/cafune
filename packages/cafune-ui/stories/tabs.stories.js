@@ -5,7 +5,7 @@ import { Tabs } from 'components';
 const TabPanel = Tabs.Panel;
 const TabNav = Tabs.Nav;
 
-import notes from './markdown/tab.md';
+import notes from './markdown/tabs.md';
 
 const containerStyle = {
   background: '#f5f5f5',
