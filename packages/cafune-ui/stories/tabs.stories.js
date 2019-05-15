@@ -3,7 +3,6 @@ import { Component } from 'preact';
 import { storiesOf } from '@storybook/preact';
 import { Tabs } from 'components';
 const TabPanel = Tabs.Panel;
-const TabNav = Tabs.Nav;
 
 import notes from './markdown/tabs.md';
 
@@ -15,17 +14,14 @@ const containerStyle = {
 const tabsData = [
   {
     id: 'Sporttrey320',
-    actived: true,
     label: '足球'
   },
   {
     id: 'Sporttrey307',
-    actived: false,
     label: '篮球'
   },
   {
     id: 'Sporttrey327',
-    actived: false,
     label: 'aa球'
   }
 ];
@@ -99,7 +95,7 @@ storiesOf('Component|Tab 标签卡', module)
         style="width: 400px;padding: 10px 20px;margin: 20px auto;
       background: #3f77f6;"
       >
-        <TabNav tabsData={tabsData} type="card" />
+        <Tabs tabs={tabsData} activeId="Sporttrey307" type="card" />
       </div>
     ),
     {

@@ -83,7 +83,7 @@ export class Tabs extends Component {
     const cx = classNames(style.tabs, className);
     return (
       <div class={cx}>
-        {this.renderNav(tabsData, navClass)}
+        {this.renderNav(tabs, navClass)}
         { children }
       </div>
     );

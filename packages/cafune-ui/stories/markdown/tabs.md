@@ -2,7 +2,6 @@
 ```javascript
 import { Tabs } from 'components';
 const TabPanel = Tabs.Panel;
-const TabNav = Tabs.Nav;
 ```
 
 ## 使用
@@ -68,7 +67,7 @@ const tabsData = [
   }
 ];
 // ...
-<TabNav tabsData={tabsData} type="card" />
+<Tabs tabs={tabsData} type="card" />
 // ...
 ```
 
@@ -80,6 +79,7 @@ const tabsData = [
 | onTabChange | tab 切换回调 | (id: string / number) => any | - | - | 否 |
 | navClass | 自定义标签栏类名 | string | - | - | 否 |
 | maxCount | 最大可容纳标签数 | number | 5 | - | 否 |
+| tabs | 标签属性列表 | array | - | - | 否 |
 
 ## TabPanel
 | 参数 | 说明 | 类型 | 默认值 | 备选值 | 是否必须 |
