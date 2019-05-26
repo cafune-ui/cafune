@@ -7,7 +7,10 @@ module.exports = {
   entry:'./components/index.js',
   output:{
     path: path.join(__dirname ,'./dist/'),
-    filename: 'preact-cafuneui.js'
+    filename: 'preact-cafuneui.js',
+    library: 'cafuneui',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   externals:{
     'preact': 'preact',
