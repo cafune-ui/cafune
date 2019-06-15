@@ -77,7 +77,8 @@ function addFiles(name) {
     const mappingJsonFile = fs.readFileSync(mappingJsonPath, 'utf-8');
     const mappingJson = JSON.parse(mappingJsonFile);
     mappingJson[compName] = {
-      js: `components/${name}`
+      js: `components/${name}`,
+      css: [name]
     };
     fs.writeFileSync(mappingJsonPath, JSON.stringify(mappingJson, null, 2));
   } else {
@@ -98,7 +99,7 @@ function addFiles(name) {
   }
   const entryCss = fs.readFileSync(entryCssPath, 'utf-8');
   const styleImports = entryCss.trim().split('\n') || [];
-  !escapePush && styleImports.push(`@import './${name}'`);
+  !escapePush && styleImports.push(`@import './${name}';`);
   fs.writeFileSync(entryCssPath, `${styleImports.join('\n')}\n`);
 
   const testCompDir = `${testRoot}/${name}`;

@@ -1,6 +1,5 @@
 import { Component } from 'preact';
 import Tab from './tab';
-import style from './style.scss';
 import classNams from 'classnames';
 import { isBrowser } from 'util/isomorphic';
 

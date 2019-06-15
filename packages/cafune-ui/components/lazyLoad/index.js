@@ -1,11 +1,12 @@
-/** @jsx h */
-
-import { Component, createRef, render } from 'preact';
+import { Component, createRef } from 'preact';
 import { inViewPort } from 'util/browser';
-
-export class LazyLoad extends Component {
+/**
+ * 懒加载包裹组件
+ */
+export class Lazyload extends Component {
   lazyLoadIns;
   imgs = [];
+  imgsInfo = {};
   static defaultProps = {
     imgClass: 'lazyImg'
   };
@@ -21,21 +22,26 @@ export class LazyLoad extends Component {
   }
   updateImgs() {
     this.imgs = this.container.querySelectorAll(`.${this.props.imgClass}`);
+    const imgsInfo = [];
+    this.imgs.forEach(ele => {
+      imgsInfo.push({
+        dom: ele,
+        isLoaded: false,
+        src: ele.dataset.src
+      });
+    });
+    this.imgsInfo = imgsInfo;
     this.updateLazy();
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll);
   }
   updateLazy() {
-    this.imgs.forEach(ele => {
-      if (
-        inViewPort(ele) &&
-        !ele.isLoaded &&
-        ele.tagName.toLowerCase() === 'img'
-      ) {
+    const { imgsInfo } = this;
+    imgsInfo.forEach(ele => {
+      if (!ele.isLoaded && inViewPort(ele.dom)) {
         ele.isLoaded = true;
-        ele.src = ele.dataset.original;
-        delete ele.dataset.original;
+        ele.dom.src = ele.src;
       }
     });
   }
@@ -52,4 +58,4 @@ export class LazyLoad extends Component {
   }
 }
 
-export default LazyLoad;
+export default Lazyload;

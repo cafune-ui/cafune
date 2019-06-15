@@ -1,7 +1,6 @@
 import { render, Component } from 'preact';
 import { isBrowser } from 'util/isomorphic';
-import style from './style.scss';
-
+import classNames from 'classnames';
 let modalComp;
 let containerNode = isBrowser && document.body;
 const viewWrap = containerNode;
@@ -74,9 +73,14 @@ export class Modal extends Component {
   }) {
     if (visable) {
       const Title = title && <div class={style.header}>{title}</div>;
-      const contentStyle = style[`msg__${align}`] || style.msg_center;
+      const contentStyle = style[`msg__${align}`] || style.msg__center;
       const Content = (!!(children && children.length) || message) && (
-        <div class={style.content}>
+        <div
+          class={classNames(
+            style.content,
+            style[`content__${align}`] || style.content__center
+          )}
+        >
           {children && children.length > 0 ? (
             children
           ) : (
@@ -90,19 +94,19 @@ export class Modal extends Component {
       const Buttons = (
         <div class={style.btngroup}>
           {showCancel && (
-            <button
+            <div
               class={style.btngroup__cancel}
               onClick={this.handleClick.bind(this, 'cancel')}
             >
               {cancelContent}
-            </button>
+            </div>
           )}
-          <button
+          <div
             class={style.btngroup__confirm}
             onClick={this.handleClick.bind(this, 'confirm')}
           >
             {confirmContent}
-          </button>
+          </div>
         </div>
       );
       return (

@@ -1,20 +1,50 @@
 {
-  "LazyLoad": {
-    "js": "components/lazyLoad"
+  "Modal": {
+    "js": "components/modal",
+    "css": [
+      "modal"
+    ]
   },
-  "Swiper": {
-    "js": "components/swiper"
+  "Lazyload": {
+    "js": "components/lazyload",
+    "css": [
+      "lazyload"
+    ]
   },
   "Pagination": {
-    "js": "components/pagination"
+    "js": "components/pagination",
+    "css": [
+      "pagination"
+    ]
+  },
+  "Swiper": {
+    "js": "components/swiper",
+    "css": [
+      "swiper"
+    ]
   },
   "TabBar": {
-    "js": "components/tabBar"
+    "js": "components/tabBar",
+    "css": [
+      "tabBar"
+    ]
   },
   "Tabs": {
-    "js": "components/tabs"
+    "js": "components/tabs",
+    "css": [
+      "tabs"
+    ]
   },
-  "Modal": {
-    "js": "components/modal"
+  "Skeleton": {
+    "js": "components/skeleton",
+    "css": [
+      "skeleton"
+    ]
+  },
+  "Toast": {
+    "js": "components/toast",
+    "css": [
+      "toast"
+    ]
   }
 }

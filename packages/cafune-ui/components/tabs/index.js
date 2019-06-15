@@ -2,7 +2,6 @@ import { Component } from 'preact';
 import Panel from './components/panel';
 import Nav from './components/nav';
 import classNames from 'classnames';
-import style from './style.scss';
 
 function checkIfPanel(el) {
   return el.nodeName.displayName === 'TabPanel';

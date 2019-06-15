@@ -1,6 +1,5 @@
 import { Component } from 'preact';
 import classNames from 'classnames';
-import style from './style.scss';
 import Item from './components/item';
 import { setPadding } from 'util/isomorphic';
 

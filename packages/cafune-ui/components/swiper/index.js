@@ -1,7 +1,6 @@
 import { Component, createRef } from 'preact';
 import Item from './components/item';
 import { touchEventMap, getTouch } from '../util/event';
-import style from './style.scss';
 
 // function checkIfIndicaotr(el) {
 //   return el.nodeName.displayName === 'SwiperIndicator';

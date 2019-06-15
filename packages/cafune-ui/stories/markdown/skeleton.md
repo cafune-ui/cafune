@@ -1,6 +1,6 @@
 
 ## 引入
-import { Lazyload } from 'components';
+import { Skeleton } from 'components';
 ## 使用
 
 ## 配置项
