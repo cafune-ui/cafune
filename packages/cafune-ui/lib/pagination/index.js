@@ -7,8 +7,6 @@ exports["default"] = exports.Pagination = void 0;
 
 var _preact = require("preact");
 
-var _style = _interopRequireDefault(require("./style.scss"));
-
 var _classnames = _interopRequireDefault(require("classnames"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -32,15 +30,15 @@ var Pagination = function Pagination(_ref) {
       pages = _ref.pages,
       _ref$onChange = _ref.onChange,
       onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange;
-  var prevCx = (0, _classnames["default"])(_style["default"].pagination_btn, _defineProperty({}, _style["default"].pagination_btn__disabled, pn <= 1));
-  var nextCx = (0, _classnames["default"])(_style["default"].pagination_btn, _defineProperty({}, _style["default"].pagination_btn__disabled, pn >= pages));
+  var prevCx = (0, _classnames["default"])(style.pagination_btn, _defineProperty({}, style.pagination_btn__disabled, pn <= 1));
+  var nextCx = (0, _classnames["default"])(style.pagination_btn, _defineProperty({}, style.pagination_btn__disabled, pn >= pages));
   return (0, _preact.h)("div", {
-    "class": _style["default"].pagination
+    "class": style.pagination
   }, (0, _preact.h)("button", {
     onClick: changeFn(-1, pn, pages, onChange),
     "class": prevCx
   }, "\u4E0A\u4E00\u9875"), (0, _preact.h)("span", {
-    "class": _style["default"].pagination_indicator
+    "class": style.pagination_indicator
   }, pn, " / ", pages), (0, _preact.h)("button", {
     onClick: changeFn(1, pn, pages, onChange),
     "class": nextCx

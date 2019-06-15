@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const styleRoot = path.resolve(process.cwd(), './style');
 const compRoot = path.resolve(process.cwd(), './components');
 const storiesRoot = path.resolve(process.cwd(), './stories');
 const testRoot = path.resolve(process.cwd(), './__test__/components');
@@ -86,9 +87,20 @@ function addFiles(name) {
   // create js & css to component folder
   fs.writeFileSync(
     `${compDir}/index.js`,
-    `import { Component } from 'preact';\nimport style from './style.scss';\n\nexport class ${compName} extends Component {\n  render() {\n    return <div />;\n  }\n}\nexport default ${compName};\n`
+    `import { Component } from 'preact';\n\nexport class ${compName} extends Component {\n  render() {\n    return <div />;\n  }\n}\nexport default ${compName};\n`
   );
-  fs.writeFileSync(`${compDir}/style.scss`, '');
+  fs.writeFileSync(`${styleRoot}/${name}.scss`, '')
+  const entryCssPath = `${styleRoot}/index.scss`;
+  escapePush = false;
+  if (!fs.existsSync(entryCssPath)) {
+    fs.writeFileSync(entryCssPath, `@import './${name}';`);
+    escapePush = true;
+  }
+  const entryCss = fs.readFileSync(entryCssPath, 'utf-8');
+  const styleImports = entryCss.trim().split('\n') || [];
+  !escapePush && styleImports.push(`@import './${name}'`);
+  fs.writeFileSync(entryCssPath, `${styleImports.join('\n')}\n`);
+
   const testCompDir = `${testRoot}/${name}`;
   if (!fs.existsSync(testCompDir)) {
     fs.mkdirSync(testCompDir);

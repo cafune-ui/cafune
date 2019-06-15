@@ -1,4 +1,3 @@
-import style from './style.scss';
 import classNames from 'classnames';
 
 function changeFn(direction, pn, pages, onChange) {

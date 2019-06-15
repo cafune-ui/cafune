@@ -1,5 +1,5 @@
-@import 'style/config.scss';
-.btn {
+@import './variables/_color.scss';
+@mixin btn {
   flex: 1;
   height: 52px;
   line-height: 50px;
@@ -9,10 +9,10 @@
 .btngroup {
   display: flex;
   &__cancel {
-    composes: btn;
+    @include btn;
   }
   &__confirm {
-    composes: btn;
+    @include btn;
     color: $color_theme_blue;
   }
 }

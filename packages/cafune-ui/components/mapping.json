@@ -2,9 +2,6 @@
   "LazyLoad": {
     "js": "components/lazyLoad"
   },
-  "Modal": {
-    "js": "components/modal"
-  },
   "Swiper": {
     "js": "components/swiper"
   },
@@ -16,5 +13,8 @@
   },
   "Tabs": {
     "js": "components/tabs"
+  },
+  "Modal": {
+    "js": "components/modal"
   }
 }
