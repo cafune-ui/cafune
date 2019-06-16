@@ -2,10 +2,12 @@
   "name": "cafune",
   "version": "1.0.0",
   "description": "A UI library deleveloped by preact",
+  "main": "./lib/index.js",
+  "module": "./components/index.js",
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }  
+    }
   },
   "files": [
     "dist",
@@ -37,6 +39,8 @@
     "@babel/plugin-transform-object-assign": "^7.2.0",
     "@babel/plugin-transform-react-constant-elements": "^7.2.0",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@commitlint/config-angular": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
     "@storybook/addon-actions": "^5.0.8",
     "@storybook/addon-knobs": "^5.0.8",
     "@storybook/addon-links": "^5.0.8",
@@ -48,6 +52,7 @@
     "babel-plugin-jsx-pragmatic": "^1.0.2",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "classnames": "^2.2.6",
+    "husky": "^2.4.1",
     "node-sass": "^4.11.0",
     "node-sass-magic-importer": "^5.3.2",
     "postcss-cli": "^6.1.2",
