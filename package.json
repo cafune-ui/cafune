@@ -1,0 +1,60 @@
+{
+  "name": "cafune",
+  "version": "1.0.0",
+  "description": "A UI library deleveloped by preact",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }  
+  },
+  "files": [
+    "dist",
+    "lib",
+    "es"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evont/preact-cafune.git"
+  },
+  "keywords": [
+    "preact"
+  ],
+  "author": "EvontNg <evontgoh@foxmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evont/preact-cafune/issues"
+  },
+  "homepage": "https://github.com/evont/preact-cafune#readme",
+  "dependencies": {
+    "preact": "^8.4.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/plugin-transform-object-assign": "^7.2.0",
+    "@babel/plugin-transform-react-constant-elements": "^7.2.0",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@storybook/addon-actions": "^5.0.8",
+    "@storybook/addon-knobs": "^5.0.8",
+    "@storybook/addon-links": "^5.0.8",
+    "@storybook/addon-notes": "^5.0.8",
+    "@storybook/addons": "^5.0.8",
+    "@storybook/preact": "^5.0.8",
+    "autoprefixer": "^9.6.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-jsx-pragmatic": "^1.0.2",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "classnames": "^2.2.6",
+    "node-sass": "^4.11.0",
+    "node-sass-magic-importer": "^5.3.2",
+    "postcss-cli": "^6.1.2",
+    "postcss-px2rem": "^0.3.0",
+    "precss": "^4.0.0",
+    "sass-loader": "^7.1.0",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
+  }
+}
