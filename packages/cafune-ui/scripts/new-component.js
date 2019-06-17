@@ -124,6 +124,7 @@ import { shallow, deep } from 'preact-render-spy';
 import { storiesOf } from '@storybook/preact';
 import { ${compName} } from 'components';
 import './style.css';
+import 'style/${name}.css';
 import notes from './markdown/${name}.md';
 
 storiesOf('Component|${compName}', module).add(

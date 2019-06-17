@@ -1,18 +1,16 @@
 @import './variables/color.scss';
-:global {
-  .QNotify {
-    z-index: 100;
-    &:not(:empty) {
-      position: fixed;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      top: 50%;
-      left: 50%;
-      max-width: 480px;/* no */
-      min-width: 320px;/* no */
-      transform: translate(-50%, -50%);
-    }
+.caf-notify {
+  z-index: 100;
+  &:not(:empty) {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    max-width: 480px;/* no */
+    min-width: 320px;/* no */
+    transform: translate(-50%, -50%);
   }
 }
 @keyframes fadeIn {
@@ -28,7 +26,7 @@
     opacity: 0;
   }
 }
-.toast {
+.caf-toast {
   position: relative;
   display: inline-block;
   max-width: 80%;

@@ -76,18 +76,18 @@ export default class Nav extends Component {
   }
   render({ navClass, type = 'slider' }) {
     const cx = classNams(
-      style.tabNav,
+      'caf-tabs-nav',
       {
-        [style.tabNav__slider]: type === 'slider',
-        [style.tabNav__round]: type === 'round',
-        [style.tabNav__card]: type === 'card'
+        'caf-tabs-nav__slider': type === 'slider',
+        'caf-tabs-nav__round': type === 'round',
+        'caf-tabs-nav__card': type === 'card'
       },
       navClass
     );
     return (
       <div class={cx}>
-        <div class={style.tabNav_content}>{this.renderTabs()}</div>
-        <span class={style.tabNav_ink} ref={c => (this.inkBar = c)} />
+        <div class='caf-tabs-nav-content'>{this.renderTabs()}</div>
+        <span class='caf-tabs-nav-ink' ref={c => (this.inkBar = c)} />
       </div>
     );
   }

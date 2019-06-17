@@ -20,8 +20,6 @@ module.exports = async ({ config }) => {
         {
           loader: 'css-loader',
           options: {
-            modules: true,
-            localIdentName: '[local]__[hash:base64:5]',
             importLoaders: 1,
             sourceMap: false
           }
@@ -37,8 +35,6 @@ module.exports = async ({ config }) => {
         {
           loader: 'css-loader',
           options: {
-            modules: true,
-            localIdentName: '[local]__[hash:base64:5]',
             importLoaders: 1,
             sourceMap: false
           }

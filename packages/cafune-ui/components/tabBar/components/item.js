@@ -1,5 +1,4 @@
 import { Component } from 'preact';
-import style from '../style.scss';
 
 export default class TabBarItem extends Component {
   handleChange = () => {
@@ -14,14 +13,14 @@ export default class TabBarItem extends Component {
     const tabStyle = isActived ? { color: activedColor } : {};
     return (
       <div
-        class={style.tabbar_item}
+        class="tabbar-item"
         onClick={this.handleChange}
         style={tabStyle}
         data-status={isActived ? 1 : disabled ? 2 : 0}
       >
         {!!icons && (
           <div
-            class={style.tabbar_item_icon}
+            class="tabbar-item-icon"
             style={`background-image: url(${icons[iconType] || icons.normal})`}
           />
         )}

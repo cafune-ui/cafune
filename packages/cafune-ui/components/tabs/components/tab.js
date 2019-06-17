@@ -9,12 +9,12 @@ export default class Tab extends Component {
     }
   };
   render({ actived, children, tabStyle }) {
-    const cx = classNames(style.tabItem, {
-      [style.tabItem__actived]: !!actived
+    const cx = classNames('caf-tabs-item', {
+      'caf-tabs-item__actived': !!actived
     });
     return (
       <div class={cx} onClick={this.onItemClick} {...tabStyle}>
-        <div class={style.tabItem_inner}>{children}</div>
+        <div class='caf-tabs-item-inner'>{children}</div>
       </div>
     );
   }

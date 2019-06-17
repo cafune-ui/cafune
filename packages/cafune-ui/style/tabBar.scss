@@ -1,4 +1,4 @@
-.tabbar {
+.caf-tabbar {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,9 +8,9 @@
   font-size: 12px;
   color: #999;
   border-top: 1px solid #eee;/* no */
-  &_item {
+  &-item {
     flex: 1;
-    &_icon {
+    &-icon {
       display: inline-block;
       height: 24px;
       width: 24px;

@@ -66,7 +66,7 @@ export class Tabs extends Component {
   renderWithPanel() {
     const { children, activeId, className, navClass } = this.props;
     const tabsData = this.getTabsData(children, activeId);
-    const cx = classNames(style.tabs, className);
+    const cx = classNames('caf-tabs', className);
     return (
       <div class={cx}>
         {this.renderNav(tabsData, navClass)}
@@ -79,7 +79,7 @@ export class Tabs extends Component {
   renderWithoutPanel() {
     const { children, activeId, className, navClass, tabs } = this.props;
     tabs.forEach(item => item.actived = item.id === activeId )
-    const cx = classNames(style.tabs, className);
+    const cx = classNames('caf-tabs', className);
     return (
       <div class={cx}>
         {this.renderNav(tabs, navClass)}

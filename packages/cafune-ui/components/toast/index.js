@@ -3,7 +3,7 @@ import { isBrowser } from 'util/isomorphic';
 let seed = 0;
 function getUuid(type) {
   const now = Date.now();
-  return `qToast_${type}_${now}_${seed++}`;
+  return `cToast_${type}_${now}_${seed++}`;
 }
 let notifyContainerNode;
 const durationDefault = 2000;
@@ -21,21 +21,21 @@ class ToastComp extends Component {
   closeTimer;
   cleanTimer;
   close = () => {
-    const { onClose, uid } = this.props;
-    if (ToastList[uid]) {
-      this.clearCloseTimer();
-      this.setState({
-        shouldClose: true
-      });
-      onClose && onClose();
-      const node = ToastList[uid].node;
-      delete ToastList[uid];
-      this.cleanTimer = setTimeout(() => {
-        notifyContainerNode && render('', notifyContainerNode, node);
-        clearTimeout(this.cleanTimer);
-        this.cleanTimer = null;
-      }, 600);
-    }
+    // const { onClose, uid } = this.props;
+    // if (ToastList[uid]) {
+    //   this.clearCloseTimer();
+    //   this.setState({
+    //     shouldClose: true
+    //   });
+    //   onClose && onClose();
+    //   const node = ToastList[uid].node;
+    //   delete ToastList[uid];
+    //   this.cleanTimer = setTimeout(() => {
+    //     notifyContainerNode && render('', notifyContainerNode, node);
+    //     clearTimeout(this.cleanTimer);
+    //     this.cleanTimer = null;
+    //   }, 600);
+    // }
   };
   clearCloseTimer() {
     if (this.closeTimer) {
@@ -57,7 +57,7 @@ class ToastComp extends Component {
   render({ content, type }, { shouldClose }) {
     return (
       <div
-        class={style.toast}
+        class="caf-toast"
         data-type={type}
         data-status={shouldClose ? 0 : 1}
       >
@@ -70,7 +70,7 @@ class ToastComp extends Component {
  * 创建toast 容器
  */
 const createNotifyContainerNode = () => {
-  let notifyContainerClass = 'QNotify';
+  let notifyContainerClass = 'caf-notify';
   let notifyContainerNode = document.querySelector(`.${notifyContainerClass}`);
 
   if (!notifyContainerNode) {

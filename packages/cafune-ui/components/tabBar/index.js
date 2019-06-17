@@ -31,7 +31,7 @@ export class TabBar extends Component {
     };
   }
   render({ fixed, children }) {
-    const cx = classNames(style.tabbar, { [style.tabbar__fixed]: fixed });
+    const cx = classNames('caf-tabbar', { 'caf-tabbar__fixed': fixed });
     return <div class={cx}>{children}</div>;
   }
 }
