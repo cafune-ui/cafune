@@ -18,6 +18,7 @@ export class Lazyload extends Component {
     window.addEventListener('scroll', this.onScroll);
   }
   componentDidUpdate() {
+    /* istanbul ignore next  */
     this.updateImgs();
   }
   updateImgs() {
@@ -39,6 +40,7 @@ export class Lazyload extends Component {
   updateLazy() {
     const { imgsInfo } = this;
     imgsInfo.forEach(ele => {
+      /* istanbul ignore else */
       if (!ele.isLoaded && inViewPort(ele.dom)) {
         ele.isLoaded = true;
         ele.dom.src = ele.src;
@@ -46,6 +48,7 @@ export class Lazyload extends Component {
     });
   }
   onScroll = () => {
+    /* istanbul ignore next  */
     this.updateLazy();
   };
   lazyContainer = createRef();

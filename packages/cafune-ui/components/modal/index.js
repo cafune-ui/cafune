@@ -19,6 +19,7 @@ const defaultOptions = {
  * 渲染模态框到容器中
  */
 const modal = options => {
+  /* istanbul ignore next */
   if (!isBrowser) return null;
   if (containerNode && modalComp) {
     render('', containerNode, modalComp);
@@ -47,6 +48,7 @@ export class Modal extends Component {
   static alert = alert;
   static confirm = confirm;
   componentDidUpdate() {
+    /* istanbul ignore next  */
     viewWrap && (viewWrap.style.overflow = this.props.visable ? 'hidden' : '');
   }
   handleClick(action) {
@@ -72,12 +74,16 @@ export class Modal extends Component {
     visable = false
   }) {
     if (visable) {
+      /* istanbul ignore if */
       const Title = title && <div class={style.header}>{title}</div>;
+      /* istanbul ignore next */
       const contentStyle = style[`msg__${align}`] || style.msg__center;
+      /* istanbul ignore else */
       const Content = (!!(children && children.length) || message) && (
         <div
           class={classNames(
             style.content,
+            /* istanbul ignore next */
             style[`content__${align}`] || style.content__center
           )}
         >
@@ -124,4 +130,24 @@ export class Modal extends Component {
     }
   }
 }
+// /**
+//  * 创建弹窗容器
+//  * @returns {HTMLElement} 弹窗容器
+//  */
+// const createContainerNode = () => {
+//   let notifyContainerClass = 'QModal';
+//   let notifyContainerNode = document.querySelector(
+//     `.${notifyContainerClass}`
+//   );
+
+//   if (!notifyContainerNode) {
+//     const bodyNode = document.body;
+//     const div = document.createElement('div');
+//     div.className = notifyContainerClass;
+//     notifyContainerNode = bodyNode.appendChild(div);
+//   }
+
+//   return notifyContainerNode;
+// };
+
 export default Modal;
