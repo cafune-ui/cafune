@@ -12,6 +12,14 @@ module.exports = {
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
+  browserlist: [
+    'defaults',
+    'not ie < 11',
+    'last 2 versions',
+    '> 1%',
+    'iOS 7',
+    'last 3 iOS versions'
+  ],
   externals:{
     'preact': 'preact',
     'noop':'noop',

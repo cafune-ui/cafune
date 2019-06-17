@@ -1,11 +1,11 @@
 
-.ellipse {
+@mixin ellipse {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.fixed {
+@mixin fixed {
   position: fixed;
   left: 0;
   right: 0;
@@ -15,19 +15,19 @@
   max-width: 480px;/* no */
 }
 
-.tabFixed {
+@mixin tabFixed {
   display: table;
   width: 100%;
   table-layout: fixed;
   box-sizing: border-box;
 }
 
-.tcMiddle {
+@mixin tcMiddle {
   display: table-cell;
   vertical-align: middle;
 }
 
-.vhCenter {
+@mixin vhCenter {
   position: absolute;
   top: 0;
   bottom: 0;

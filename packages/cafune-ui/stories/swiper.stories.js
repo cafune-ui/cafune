@@ -3,6 +3,7 @@ import { Swiper } from 'components';
 const { SwiperItem } = Swiper;
 import { withKnobs, number, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import 'style/swiper.scss';
 import './style.css';
 import notes from './markdown/swiper.md';
 import { Component } from 'preact';

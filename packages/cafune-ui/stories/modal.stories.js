@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/preact';
 import { Modal } from 'components';
+import 'style/modal.scss';
 import notes from './markdown/modal.md';
 
 storiesOf('Component|Modal 模态框', module).add(

@@ -10,19 +10,19 @@ function changeFn(direction, pn, pages, onChange) {
   return () => {};
 }
 export const Pagination = ({ pn, pages, onChange = () => {} }) => {
-  const prevCx = classNames(style.pagination_btn, {
-    [style.pagination_btn__disabled]: pn <= 1
+  const prevCx = classNames('caf-page-btn', {
+    'caf-page-btn__disabled': pn <= 1
   });
-  const nextCx = classNames(style.pagination_btn, {
-    [style.pagination_btn__disabled]: pn >= pages
+  const nextCx = classNames('caf-page-btn', {
+    'caf-page-btn__disabled': pn >= pages
   });
 
   return (
-    <div class={style.pagination}>
+    <div class='caf-page'>
       <button onClick={changeFn(-1, pn, pages, onChange)} class={prevCx}>
         上一页
       </button>
-      <span class={style.pagination_indicator}>
+      <span class='caf-page-indicator'>
         {pn} / {pages}
       </span>
       <button onClick={changeFn(1, pn, pages, onChange)} class={nextCx}>

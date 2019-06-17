@@ -1,3 +1,4 @@
+@import './mixins/_display.scss';
 .caf-tabbar {
   display: flex;
   justify-content: center;
@@ -22,6 +23,7 @@
     }
   }
   &__fixed {
+    @include fixed;
     // composes: fixed from 'style/composes.scss';
     bottom: 0;
   }

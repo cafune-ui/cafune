@@ -1,21 +1,27 @@
 @import './variables/color.scss';
-.pagination {
+.caf-page {
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
   margin: 15px 0 0;
-  &_btn {
+  &-btn {
     height: 32px;
     width: 86px;
     border-radius: 4px;
     color: $color_theme_blue;
+    &:focus {
+      background-color: #fff;
+    }
     &__disabled {
       color: #969fa9;
       background-color: #f8f8f8;
+      &:focus {
+        background-color: #f8f8f8;
+      }
     }
   }
-  &_indicator {
+  &-indicator {
     padding: 0 20px;
   }
 }

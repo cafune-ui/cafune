@@ -75,40 +75,34 @@ export class Modal extends Component {
   }) {
     if (visable) {
       /* istanbul ignore if */
-      const Title = title && <div class={style.header}>{title}</div>;
-      /* istanbul ignore next */
-      const contentStyle = style[`msg__${align}`] || style.msg__center;
+      const Title = title && <div class="caf-modal-content-header">{title}</div>;
       /* istanbul ignore else */
       const Content = (!!(children && children.length) || message) && (
         <div
-          class={classNames(
-            style.content,
-            /* istanbul ignore next */
-            style[`content__${align}`] || style.content__center
-          )}
+          class={`caf-modal-content caf-modal-content__${align}`}
         >
           {children && children.length > 0 ? (
             children
           ) : (
             <div
               dangerouslySetInnerHTML={{ __html: message }}
-              class={contentStyle}
+              class={`caf-modal-content-content caf-modal-content-content__${align}`}
             />
           )}
         </div>
       );
       const Buttons = (
-        <div class={style.btngroup}>
+        <div class="caf-modal-btngroup">
           {showCancel && (
             <div
-              class={style.btngroup__cancel}
+              class="caf-modal-btngroup__cancel"
               onClick={this.handleClick.bind(this, 'cancel')}
             >
               {cancelContent}
             </div>
           )}
           <div
-            class={style.btngroup__confirm}
+            class="caf-modal-btngroup__confirm"
             onClick={this.handleClick.bind(this, 'confirm')}
           >
             {confirmContent}
@@ -116,9 +110,9 @@ export class Modal extends Component {
         </div>
       );
       return (
-        <div class={style.modal}>
-          {mask && <div class={style.modal_bg} />}
-          <div class={style.modal_content}>
+        <div class="caf-modal">
+          {mask && <div class="caf-modal-bg" />}
+          <div class="caf-modal-content">
             {Title}
             {Content}
             {Buttons}

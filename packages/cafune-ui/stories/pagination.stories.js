@@ -3,6 +3,7 @@ import { Component } from 'preact';
 import { storiesOf } from '@storybook/preact';
 import { Pagination } from 'components';
 import './style.css';
+import 'style/pagination.scss';
 import notes from './markdown/pagination.md';
 
 class Page extends Component {
