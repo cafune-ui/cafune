@@ -9,7 +9,8 @@
     "storybook": "start-storybook -p 6006",
     "build": "./scripts/build.sh",
     "build-storybook": "build-storybook",
-    "new-comp": "node ./scripts/new-component.js"
+    "new-comp": "node ./scripts/new-component.js",
+    "del-comp": "node ./scripts/delete-component.js"
   },
   "husky": {
     "hooks": {
