@@ -46,5 +46,53 @@
     "css": [
       "toast"
     ]
+  },
+  "NavBar": {
+    "js": "components/nav-bar",
+    "css": [
+      "nav-bar"
+    ]
+  },
+  "PullRefresh": {
+    "js": "components/pull-refresh",
+    "css": [
+      "pull-refresh"
+    ]
+  },
+  "ActionSheet": {
+    "js": "components/action-sheet",
+    "css": [
+      "action-sheet"
+    ]
+  },
+  "NoticeBar": {
+    "js": "components/notice-bar",
+    "css": [
+      "notice-bar"
+    ]
+  },
+  "Drawer": {
+    "js": "components/drawer",
+    "css": [
+      "drawer"
+    ]
+  },
+  "Calendar": {
+    "js": "components/calendar",
+    "css": [
+      "calendar"
+    ]
+  },
+  "Switch": {
+    "js": "components/switch",
+    "css": [
+      "switch"
+    ]
+  },
+  "ActionBar": {
+    "js": "components/action-bar",
+    "css": [
+      "action-bar"
+    ]
   }
 }
