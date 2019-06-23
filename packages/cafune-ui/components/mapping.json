@@ -94,5 +94,11 @@
     "css": [
       "action-bar"
     ]
+  },
+  "Collapse": {
+    "js": "components/collapse",
+    "css": [
+      "collapse"
+    ]
   }
 }

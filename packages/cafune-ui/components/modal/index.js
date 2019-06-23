@@ -1,5 +1,5 @@
 import { render, Component } from 'preact';
-import { isBrowser } from 'util/isomorphic';
+import { isBrowser } from '../../util/isomorphic';
 import classNames from 'classnames';
 let modalComp;
 let containerNode = isBrowser && document.body;

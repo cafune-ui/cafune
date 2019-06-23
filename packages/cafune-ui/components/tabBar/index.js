@@ -1,7 +1,7 @@
 import { Component } from 'preact';
 import classNames from 'classnames';
 import Item from './components/item';
-import { setPadding } from 'util/isomorphic';
+import { setPadding } from '../../util/isomorphic';
 
 export class TabBar extends Component {
   static TabBarItem = Item;

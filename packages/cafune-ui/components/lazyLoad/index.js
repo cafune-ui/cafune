@@ -1,5 +1,5 @@
 import { Component, createRef } from 'preact';
-import { inViewPort } from 'util/browser';
+import { inViewPort } from '../../util/browser';
 /**
  * 懒加载包裹组件
  */

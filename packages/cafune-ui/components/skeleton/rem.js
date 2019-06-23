@@ -1,4 +1,4 @@
-// import { isBrowser } from 'util/isomorphic';
+// import { isBrowser } from '../../util/isomorphic';
 // let doc;
 // if (isBrowser) {
 //   doc = window.document.documentElement;
