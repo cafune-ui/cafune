@@ -5,12 +5,17 @@ export class Index extends Component {
   state = {
     activeCol: ['a']
   };
+  onChange = activeCol => {
+    this.setState({
+      activeCol
+    });
+  };
   render({}, { activeCol }) {
     return (
       <div>
         <h1>Cafune</h1>
         <p>Cafune 是一套基于Preact的轻量、优雅的UI组件库</p>
-        <Collapse actives={activeCol}>
+        <Collapse actives={activeCol} onChange={this.onChange}>
           <CollapseItem title="标题1" id="a">
             内容1
           </CollapseItem>

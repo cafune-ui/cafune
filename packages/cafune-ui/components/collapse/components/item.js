@@ -1,19 +1,36 @@
-import { Component } from "preact";
+import { Component, createRef } from "preact";
 import cx from "classnames";
 
 export class Item extends Component {
   static displayName = 'CollapseItem';
   static defaultProps = {
     prefix: "caf-collapse",
-    disabled: false
+    disabled: false,
   };
+  contentRef = createRef();
+  contentWrapRef = createRef();
   onToggle = () => {
     const { id, disabled, onToggle } = this.props;
     if (!disabled) {
       onToggle(id);
     }
   };
-  render({ prefix, children, title, actived, disabled }) {
+  updateStyle() {
+    let style = '';
+    const { actived } = this.props;
+    /* istanbul ignore if  */
+    if (this.contentWrapRef.current && this.contentRef.current) {
+      style = `max-height: ${actived ? this.contentWrapRef.current.offsetHeight : 0}px`;
+      this.contentRef.current.style = style;
+    }
+  }
+  componentDidUpdate() {
+    this.updateStyle();
+  }
+  componentDidMount() {
+    this.updateStyle();
+  }
+  render({ prefix, children, title, actived, disabled }, {style}) {
     return (
       <div
         class={cx(`${prefix}-item`, { [`${prefix}-item__disabled`]: disabled })}
@@ -23,7 +40,11 @@ export class Item extends Component {
         <div class={`${prefix}-header`} onClick={this.onToggle}>
           <span>{title}</span>
         </div>
-        <div class={`${prefix}-content`}>{children}</div>
+        <div class={`${prefix}-content`} ref={this.contentRef}>
+          <div class={`${prefix}-content-wrapper`} ref={this.contentWrapRef} >
+            {children}
+          </div>
+        </div>
       </div>
     );
   }

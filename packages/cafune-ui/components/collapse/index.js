@@ -14,6 +14,13 @@ export class Collapse extends Component {
     accordion: false,
     prefix: "caf-collapse"
   };
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState(
+  //     {
+  //       actives: nextPropsactives
+  //     }
+  //   );
+  // }
   onToggle = id => {
     const actives = this.state.actives;
     const idInd = actives.indexOf(id);

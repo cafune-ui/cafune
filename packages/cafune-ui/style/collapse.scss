@@ -7,7 +7,10 @@
   &-content {
     max-height: 0;
     overflow: hidden;
-    transition: all .3s;
+    transition: max-height .3s;
+    &-wrapper {
+      padding: 10px;
+    }
   }
   &-item {
     &__disabled {
@@ -26,7 +29,7 @@
           // color: #999;
         }
         &-content {
-          max-height: 100%;
+          // max-height: 100000px;
         }
       }
     }
