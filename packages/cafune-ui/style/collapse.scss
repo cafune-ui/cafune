@@ -1,0 +1,34 @@
+.caf-collapse {
+  &-header {
+    position: relative;
+    background-color: #fff;
+    color: #000;
+  }
+  &-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all .3s;
+  }
+  &-item {
+    &__disabled {
+      .caf-collapse {
+        &-header {
+          color: #999;
+        }
+        &-content {
+          
+        }
+      }
+    }
+    &[data-status='1'] {
+      .caf-collapse {
+        &-header {
+          // color: #999;
+        }
+        &-content {
+          max-height: 100%;
+        }
+      }
+    }
+  }
+}

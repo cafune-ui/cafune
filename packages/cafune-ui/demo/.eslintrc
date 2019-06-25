@@ -1,0 +1,39 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "plugins": ["react", "class-property"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 7
+  },
+  "rules": {
+    "linebreak-style": ["error", "unix"],
+    "no-empty-pattern": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": [0],
+    "no-unused-vars": ["error", { "varsIgnorePattern": "h$" }],
+    "react/no-unknown-property": [
+      2,
+      { "ignore": ["class", "colspan", "rowspan", "stop-color", "clip-path"] }
+    ],
+    "css-modules/no-undef-class": [0],
+    "css-modules/no-unused-class": [0],
+    "no-console": "off"
+  },
+  "settings": {
+    "react": {
+      "pragma": "jsx",
+      "version": "detect"
+    }
+  }
+}

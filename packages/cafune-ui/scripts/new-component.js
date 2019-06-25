@@ -145,10 +145,10 @@ function writeComp(compName, name, isHasStyle) {
     const entryCssPath = `${styleRoot}/index.scss`;
     if (!fs.existsSync(entryCssPath)) {
       fs.writeFileSync(entryCssPath, '');
-      const entryCss = fs.readFileSync(entryCssPath, 'utf-8');
-      const styleImports = entryCss.trim().split('\n') || [];
-      styleImports.push(`@import './${name}';`);
-      fs.writeFileSync(entryCssPath, `${styleImports.join('\n')}\n`);
     }
+    const entryCss = fs.readFileSync(entryCssPath, 'utf-8');
+    const styleImports = entryCss.trim().split('\n') || [];
+    styleImports.push(`@import './${name}';`);
+    fs.writeFileSync(entryCssPath, `${styleImports.join('\n')}\n`);
   }
 }
