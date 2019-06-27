@@ -36,7 +36,8 @@
   },
   "homepage": "https://github.com/evont/preact-cafune#readme",
   "dependencies": {
-    "preact": "^8.4.2"
+    "preact": "^8.4.2",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
