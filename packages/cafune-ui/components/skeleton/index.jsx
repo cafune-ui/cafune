@@ -1,6 +1,7 @@
 import { Component } from 'preact';
-import Circle from './components/circle';
-import Rect from './components/rect';
+import PropTypes from 'prop-types';
+import Circle from './circle';
+import Rect from './rect';
 import getRem from './rem';
 
 const pxReg = /\d+px/;
@@ -8,7 +9,18 @@ const uid = () =>
   Math.random()
     .toString(36)
     .substring(2);
-export class Skeleton extends Component {
+/**
+ * 骨架屏
+ * @example
+ * ```jsx
+ * <Skeleton>
+ *   <Circle radius={32} x={32} y={32} />
+ *   <Rect radius={4} width={120} height={20} x={80} y={10} />
+ *   <Rect radius={4} width={120} height={20} x={80} y={35} />
+ * </Skeleton>
+ * ```
+ */
+class Skeleton extends Component {
   static Circle = Circle;
   static Rect = Rect;
   static defaultProps = {

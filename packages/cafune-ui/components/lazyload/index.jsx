@@ -1,12 +1,27 @@
 import { Component, createRef } from 'preact';
 import { inViewPort } from '../../util/browser';
+import PropTypes from 'prop-types';
 /**
  * 懒加载包裹组件
+ * @example
+ * ```jsx
+ * <Lazyload imgClass="lazy">
+ * // ...
+ * <img src="/placeholder" data-src={originalpic} class="lazy" />
+ * // ...
+ * </Lazyload>
+ * ```
  */
-export class Lazyload extends Component {
+class Lazyload extends Component {
   lazyLoadIns;
   imgs = [];
   imgsInfo = {};
+  static propTypes = {
+    /**
+     * 懒加载图片类名
+     */
+    imgClass: PropTypes.string
+  };
   static defaultProps = {
     imgClass: 'lazyImg'
   };

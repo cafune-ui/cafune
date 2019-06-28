@@ -1,5 +1,6 @@
 import { Component, createRef } from 'preact';
-import Item from './components/item';
+import PropTypes from 'prop-types';
+import Item from './item';
 import { touchEventMap, getTouch } from '../util/event';
 
 // function checkIfIndicaotr(el) {
@@ -9,8 +10,70 @@ function checkIfItem(el) {
   return el.nodeName.displayName === 'swiperItem';
 }
 
-export class Swiper extends Component {
+/**
+ * 骨架屏
+ * @example
+ * ```jsx
+ * <Swiper
+ *  initialIndex={0}
+ *  showIndicators={true}
+ *  autoplay={true}
+ *  intervel={3000}
+ *  onChange={action('handleChange')}
+ * >
+ *  {Array(...Array(sliderNum)).map((_, ind) => (
+ *    <SwiperItem key={ind}>{ind + 1}</SwiperItem>
+ *  ))}
+ * </Swiper>
+ * ```
+ * 自定义指示器
+ *
+ * ```jsx
+ * // ...
+ * renderCustom() {
+ *   const { current } = this.state;
+ *   return (
+ *    <div style="padding: 4px 10px;position: absolute;right: 10px;bottom:10px;background: rgba(0,0,0, .6);color: #fff;font-size:12px;">
+ *      {current + 1}/4
+ *    </div>
+ *   );
+ * }
+ * // ...
+ * <Swiper onChange={this.change} customIndicator={this.renderCustom()}>
+ *   {Array(...Array(4)).map((_, ind) => (
+ *     <SwiperItem key={ind}>{ind + 1}</SwiperItem>
+ *   ))}
+ * </Swiper>
+ * ```
+ */
+class Swiper extends Component {
   static SwiperItem = Item;
+  static propTypes = {
+    /**
+     * 是否自动切换
+     */
+    autoplay: PropTypes.bool,
+    /**
+     * 切换间隔事件（毫秒）
+     */
+    intervel: PropTypes.number,
+    /**
+     * 初始index
+     */
+    initialIndex: PropTypes.number,
+    /**
+     * 是否显示指示器
+     */
+    showIndicators: PropTypes.bool,
+    /**
+     * 切换时触发事件
+     */
+    onChange: PropTypes.func,
+    /**
+     * 自定义指示器
+     */
+    customIndicator: PropTypes.node
+  };
   static defaultProps = {
     autoplay: true,
     intervel: 3000,

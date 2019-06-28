@@ -2,10 +2,16 @@ import { Component } from 'preact';
 import { setPadding } from 'util/isomorphic';
 import PropTypes from 'prop-types';
 
-import style from './style.scss';
-
 /**
  * 动作栏
+ * @example
+ * ```jsx
+ * <ActionBar
+ *   descContent="描述文字"
+ *   btnContent="按钮文字"
+ *   handleClick={ () => console.log('click') }
+ * />
+ * ```
  */
 class ActionBar extends Component {
   static propTypes = {

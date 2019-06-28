@@ -1,6 +1,6 @@
 import { render, Component } from 'preact';
 import { isBrowser } from '../../util/isomorphic';
-import classNames from 'classnames';
+import PropTypes from 'prop-types';
 let modalComp;
 let containerNode = isBrowser && document.body;
 const viewWrap = containerNode;
@@ -43,8 +43,73 @@ const confirm = options => {
     ...options
   });
 };
-
-export class Modal extends Component {
+/**
+ * 渲染模态框到容器中
+ * @example
+ * - 普通弹框
+ *
+ *  ```javascript
+ *  Modal.alert({
+ *    title: 'this is a title',
+ *    message: 'this is msg content'
+ *  })
+ *  ```
+ * - 带取消按钮的弹框
+ *
+ *  ```javascript
+ *  Modal.confirm({
+ *    title: 'this is a title',
+ *   message: 'this is msg content'
+ *  })
+ * ```
+ */
+class Modal extends Component {
+  static propTypes = {
+    /**
+     * 标题
+     */
+    title: PropTypes.string,
+    /**
+     * 消息内容，如有children 优先children
+     */
+    message: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /**
+     * 文本对齐方式
+     */
+    align: PropTypes.oneOf(['center', 'left', 'right']),
+    /**
+     * 是否显示取消按钮
+     */
+    showCancel: PropTypes.bool,
+    /**
+     * 是否显示蒙层
+     */
+    mask: PropTypes.bool,
+    /**
+     * 确认按钮内容
+     */
+    confirmContent: PropTypes.string,
+    /**
+     * 取消按钮内容
+     */
+    cancelContent: PropTypes.string,
+    /**
+     * 确认事件回调
+     */
+    onConfirm: PropTypes.func,
+    /**
+     * 取消事件回调
+     */
+    onCancel: PropTypes.func
+  };
+  static defaultProps = {
+    align: 'center',
+    showCancel: false,
+    confirmContent: '确定',
+    cancelContent: '取消',
+    mask: true,
+    visable: true
+  };
   static alert = alert;
   static confirm = confirm;
   componentDidUpdate() {

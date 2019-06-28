@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 function changeFn(direction, pn, pages, onChange) {
   pn = Number(pn);
@@ -9,7 +10,14 @@ function changeFn(direction, pn, pages, onChange) {
   }
   return () => {};
 }
-export const Pagination = ({ pn, pages, onChange = () => {} }) => {
+/**
+ * 分页
+ * @example
+ * ```jsx
+ * <Pagination pn={pn} pages={pages} onChange={this.onPageChange} />
+ * ```
+ */
+const Pagination = ({ pn, pages, onChange = () => {} }) => {
   const prevCx = classNames('caf-page-btn', {
     'caf-page-btn__disabled': pn <= 1
   });
@@ -30,6 +38,20 @@ export const Pagination = ({ pn, pages, onChange = () => {} }) => {
       </button>
     </div>
   );
+};
+Pagination.propTypes = {
+  /**
+   * 当前页码
+   */
+  pn: PropTypes.number.isRequired,
+  /**
+   * 总页数
+   */
+  pages: PropTypes.number.isRequired,
+  /**
+   * 点击切换时回调
+   */
+  onChange: PropTypes.func
 };
 
 export default Pagination;
