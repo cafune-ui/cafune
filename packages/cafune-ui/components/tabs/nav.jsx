@@ -1,7 +1,8 @@
 import { Component } from 'preact';
-import Tab from './tab';
+import PropTypes from 'prop-types';
+import Tab from './components/tab';
 import classNams from 'classnames';
-import { isBrowser } from '../../../util/isomorphic';
+import { isBrowser } from '../../util/isomorphic';
 
 function setTransform(obj, offsetLeft) {
   obj.style.transform = `translate3d(${offsetLeft}px, 0, 0)`;
@@ -12,6 +13,38 @@ function setTransform(obj, offsetLeft) {
 
 const defaultMax = 5;
 export default class Nav extends Component {
+  static propTypes = {
+    /**
+     * 当前激活id
+     */
+    tabsData: PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      label: PropTypes.string.isRequired,
+      actived: PropTypes.bool.isRequired,
+      className: PropTypes.string,
+      visable: PropTypes.bool
+    }).isRequired,
+    /**
+     * 组件类型
+     */
+    type: PropTypes.oneOf(['slider', 'round', 'card']),
+    /**
+     * 切换tab时回调
+     */
+    onChange: PropTypes.func,
+    /**
+     * 自定义标签栏类名
+     */
+    navClass: PropTypes.string,
+    /**
+     * 最大可容纳标签数
+     */
+    maxCount: PropTypes.number
+  };
+  static defaultProps = {
+    type: 'slider',
+    maxCount: 5
+  };
   onTabSelected = id => {
     const { onChange } = this.props;
     onChange(id);

@@ -9,7 +9,69 @@ let notifyContainerNode;
 const durationDefault = 2000;
 const ToastList = {};
 // const browserPrefixs = ['-webkit-', '-moz-', '-o-', ''];
-class ToastComp extends Component {
+/**
+ * 消息提示
+ * @example
+ * - 不同类型提示
+ *
+ *  ```js
+ *  Toast.show({ content: 'show' });
+ *  Toast.success({ content: 'success' });
+ *  Toast.error({ content: 'error' });
+ *  Toast.loading({ content: 'loading' });
+ *  ```
+ * - 自定义时长提示
+ *
+ *  ```javascript
+ *  Toast.show({ content: '3秒之后消失', duration: 3000 })
+ *  ```
+ * - 带回调函数提示
+ *
+ *  ```javascript
+ *  Toast.show({ content: '弹出消失alert', onClose() { alert('消失！') } })
+ *  ```
+ * - 自定义取消Toast
+ * 当 duration 为0时，toast 需要调用`hide` 方法才能让toast 消失，loading 方法默认duration 为0
+ *
+ *  ```javascript
+ * const toast = Toast.loading({ content: '弹出消失alert', onClose() { alert('消失！') } });
+ * Toast.hide(toast);
+ * ```
+ */
+
+class Toast extends Component {
+  static show = show;
+  static success = success;
+  static error = error;
+  static loading = loading;
+  static hide = hide;
+  static propTypes = {
+    /**
+     * 提示内容
+     */
+    content: PropTypes.string.isRequired,
+    /**
+     * 提示时长(ms)，默认为2000ms
+     */
+    duration: PropTypes.number,
+    /**
+     * toast 类型
+     */
+    type: PropTypes.oneOf(['normal', 'success', 'error', 'loading']),
+    /**
+     * 消失时回调函数
+     */
+    onClose: PropTypes.func,
+    /**
+     * 是否只显示一个toast，默认为false(`suceess` & `error` & `'loading'` 下默认为true)，将依次显示toast
+     */
+    isOnly: PropTypes.bool
+  };
+  static defaultProps = {
+    duration: 2000,
+    type: 'normal',
+    isOnly: false
+  };
   constructor(props) {
     super(props);
     const { uid } = this.props;
@@ -84,12 +146,7 @@ const createNotifyContainerNode = () => {
 };
 
 /**
- * 基础Toast（不包含图标）
- * @param {object} options.content 提示内容
- * @param {object} options.duration 提示时长(ms)，默认为2000ms
- * @param {object} options.type toast 类型，可选有'normal', 'success', 'error', 'loading'
- * @param {object} options.onClose 消失时回调函数
- * @param {object} options.isOnly 是否只显示一个toast，默认为false，将依次显示toast
+ * 基础Toast（不包含图标
  */
 function show({
   content,
@@ -118,18 +175,12 @@ function show({
 }
 /**
  * 成功Toast
- * @param {object} options.content 提示内容
- * @param {object} options.duration 提示时长(ms)，默认为2000ms
- * @param {object} options.onClose 消失时回调函数
  */
 function success({ content, duration, onClose } = {}) {
   return show({ content, duration, type: 'success', onClose });
 }
 /**
  * 失败Toast
- * @param {object} options.content 提示内容
- * @param {object} options.duration 提示时长(ms)，默认为2000ms
- * @param {object} options.onClose 消失时回调函数
  */
 function error({ content, duration, onClose } = {}) {
   return show({ content, duration, type: 'error', onClose });
@@ -137,9 +188,6 @@ function error({ content, duration, onClose } = {}) {
 
 /**
  * 加载中Toast
- * @param {object} options.content 提示内容
- * @param {object} options.duration 提示时长(ms)，默认为0ms
- * @param {object} options.onClose 消失时回调函数
  */
 function loading({ content = '加载中', duration = 0, onClose } = {}) {
   return show({ content, duration, type: 'loading', onClose });
@@ -156,12 +204,12 @@ function hide(toastid) {
   }
 }
 
-export const Toast = {
-  show,
-  success,
-  error,
-  loading,
-  hide
-};
+// export const Toast = {
+//   show,
+//   success,
+//   error,
+//   loading,
+//   hide
+// };
 
 export default Toast;

@@ -1,6 +1,31 @@
 import { Component } from 'preact';
+import PropTypes from 'prop-types';
 
 export default class TabBarItem extends Component {
+  static propTypes = {
+    /**
+     * 展示文字
+     */
+    text: PropTypes.string.isRequired,
+    /**
+     * tab唯一标示
+     */
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    /**
+     * 图标集
+     */
+    icons: PropTypes.shape({
+      actived: PropTypes.string,
+      normal: PropTypes.string
+    }),
+    /**
+     * 是否禁用
+     */
+    disabled: PropTypes.bool
+  };
+  static defaultProps = {
+    disabled: false
+  };
   handleChange = () => {
     const { id, disabled } = this.props;
     const { onChange } = this.context;
