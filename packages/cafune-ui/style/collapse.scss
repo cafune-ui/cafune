@@ -4,6 +4,11 @@
     padding: 15px;
     background-color: #fff;
     color: #000;
+    .caf-icon {
+      position: absolute;
+      right: 15px;
+      transition: transform .3s;
+    }
   }
   &-content {
     max-height: 0;
@@ -28,6 +33,9 @@
       .caf-collapse {
         &-header {
           // color: #999;
+          .caf-icon {
+            transform: rotate(90deg);
+          }
         }
         &-content {
           // max-height: 100000px;

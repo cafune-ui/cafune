@@ -100,5 +100,11 @@
     "css": [
       "collapse"
     ]
+  },
+  "Icon": {
+    "js": "components/icon",
+    "css": [
+      "icon"
+    ]
   }
 }

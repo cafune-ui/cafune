@@ -1,5 +1,6 @@
 import { Component, createRef } from "preact";
 import cx from "classnames";
+import Icon from '../../icon';
 
 export class Item extends Component {
   static displayName = 'CollapseItem';
@@ -39,6 +40,7 @@ export class Item extends Component {
       >
         <div class={`${prefix}-header`} onClick={this.onToggle}>
           <span>{title}</span>
+          <Icon icon="arrow-right" />
         </div>
         <div class={`${prefix}-content`} ref={this.contentRef}>
           <div class={`${prefix}-content-wrapper`} ref={this.contentWrapRef} >

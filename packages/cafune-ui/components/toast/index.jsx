@@ -1,4 +1,5 @@
 import { render, Component } from 'preact';
+import PropTypes from 'prop-types';
 import { isBrowser } from '../../util/isomorphic';
 let seed = 0;
 function getUuid(type) {

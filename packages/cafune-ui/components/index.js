@@ -3,6 +3,7 @@ export * from './action-sheet';
 export * from './calendar';
 export * from './collapse';
 export * from './drawer';
+export * from './icon';
 export * from './lazyload';
 export * from './modal';
 export * from './nav-bar';

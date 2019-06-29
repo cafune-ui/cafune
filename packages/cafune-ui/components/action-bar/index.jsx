@@ -1,5 +1,5 @@
 import { Component } from 'preact';
-import { setPadding } from 'util/isomorphic';
+import { setPadding } from '../../util/isomorphic';
 import PropTypes from 'prop-types';
 
 /**

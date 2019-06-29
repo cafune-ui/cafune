@@ -1,5 +1,5 @@
-import { Component } from "preact";
-import Item from "./components/item";
+import { Component } from 'preact';
+import Item from './components/item';
 
 function checkIfItem(el) {
   return el.nodeName.displayName === 'CollapseItem';
@@ -12,7 +12,7 @@ export class Collapse extends Component {
   }
   static defaultProps = {
     accordion: false,
-    prefix: "caf-collapse"
+    prefix: 'caf-collapse'
   };
   // componentWillReceiveProps(nextProps) {
   //   this.setState(

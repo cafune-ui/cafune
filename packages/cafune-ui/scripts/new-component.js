@@ -118,7 +118,7 @@ function writeMapping(compName, name) {
 }
 
 function writeEntry(compName, name) {
-  const entryPath = path.resolve(compRoot, 'index.js');
+  const entryPath = path.resolve(compRoot, 'index.jsx');
   if (!fs.existsSync(entryPath)) {
     fs.writeFileSync(entryPath, '');
   }
