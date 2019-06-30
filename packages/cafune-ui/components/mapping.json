@@ -106,5 +106,17 @@
     "css": [
       "icon"
     ]
+  },
+  "Cell": {
+    "js": "components/cell",
+    "css": [
+      "cell"
+    ]
+  },
+  "CellGroup": {
+    "js": "components/cell-group",
+    "css": [
+      "cell-group"
+    ]
   }
 }

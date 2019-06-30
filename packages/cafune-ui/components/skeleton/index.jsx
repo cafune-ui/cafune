@@ -23,6 +23,28 @@ const uid = () =>
 class Skeleton extends Component {
   static Circle = Circle;
   static Rect = Rect;
+  static propTypes = {
+    /**
+     * 动画速度
+     */
+    speed: PropTypes.nummber,
+    /**
+     * 骨架屏宽度
+     */
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    /**
+     * 骨架屏高度
+     */
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    /**
+     * 背景颜色
+     */
+    primaryColor: PropTypes.string,
+    /**
+     * 渐变动画颜色
+     */
+    secondaryColor: PropTypes.string
+  };
   static defaultProps = {
     speed: 2,
     width: '100%',

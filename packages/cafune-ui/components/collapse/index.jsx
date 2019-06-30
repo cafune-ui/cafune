@@ -54,7 +54,7 @@ class Collapse extends Component {
         actives.splice(idInd, 1);
       }
     } else {
-      actives = id;
+      actives = actives === id ? '' : id;
     }
     this.setState({
       actives
@@ -85,7 +85,7 @@ class Collapse extends Component {
     children.forEach(item => {
       if (checkIfItem(item)) {
         const props = item.attributes;
-        const { id, title, disabled } = props;
+        const { id } = props;
         const { children } = item;
         let actived = false;
         if (actives && id)
@@ -94,11 +94,9 @@ class Collapse extends Component {
               ? actives == id
               : actives.indexOf(id) !== -1;
         data.push({
-          title,
-          id,
           actived,
           content: children,
-          disabled
+          ...props
         });
       }
     });

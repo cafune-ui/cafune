@@ -118,7 +118,7 @@ function writeMapping(compName, name) {
 }
 
 function writeEntry(compName, name) {
-  const entryPath = path.resolve(compRoot, 'index.jsx');
+  const entryPath = path.resolve(compRoot, 'index.js');
   if (!fs.existsSync(entryPath)) {
     fs.writeFileSync(entryPath, '');
   }
@@ -137,8 +137,8 @@ function writeComp(compName, name, isHasStyle) {
   const compDir = `${compRoot}/${name}`;
   // create js & css to component folder
   fs.writeFileSync(
-    `${compDir}/index.js`,
-    `import { Component } from 'preact';\n\nexport class ${compName} extends Component {\n  render() {\n    return <div />;\n  }\n}\nexport default ${compName};\n`
+    `${compDir}/index.jsx`,
+    `import { Component } from 'preact';import PropType from 'prop-types';\n\nclass ${compName} extends Component {\n  static defaultProps = {\n    prefix: "caf-"\n  };\n  render() {\n    return <div />;\n  }\n}\nexport default ${compName};\n`
   );
   if (isHasStyle) {
     fs.writeFileSync(`${styleRoot}/${name}.scss`, '')

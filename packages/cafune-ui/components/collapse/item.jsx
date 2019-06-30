@@ -1,5 +1,6 @@
-import { Component, createRef } from "preact";
-import cx from "classnames";
+import { Component, createRef } from 'preact';
+import PropType from 'prop-types';
+import cx from 'classnames';
 import Icon from '../icon';
 
 /**
@@ -8,8 +9,31 @@ import Icon from '../icon';
 class Item extends Component {
   static displayName = 'CollapseItem';
   static defaultProps = {
-    prefix: "caf-collapse",
-    disabled: false,
+    prefix: 'caf-collapse',
+    icon: 'arrow_right',
+    disabled: false
+  };
+  static propType = {
+    /**
+     * 标题
+     */
+    title: PropType.oneOfType([PropType.string, PropType.node]).isRequired,
+    /**
+     * 自定义前缀
+     */
+    prefix: PropType.string,
+    /**
+     * 是否处于激活状态
+     */
+    actived: PropType.bool,
+    /**
+     * 是否禁用此单元
+     */
+    disabled: PropType.bool,
+     /**
+     * 右侧按钮
+     */
+    icon: PropType.string
   };
   contentRef = createRef();
   contentWrapRef = createRef();
@@ -24,7 +48,9 @@ class Item extends Component {
     const { actived } = this.props;
     /* istanbul ignore if  */
     if (this.contentWrapRef.current && this.contentRef.current) {
-      style = `max-height: ${actived ? this.contentWrapRef.current.offsetHeight : 0}px`;
+      style = `max-height: ${
+        actived ? this.contentWrapRef.current.offsetHeight : 0
+      }px`;
       this.contentRef.current.style = style;
     }
   }
@@ -34,19 +60,19 @@ class Item extends Component {
   componentDidMount() {
     this.updateStyle();
   }
-  render({ prefix, children, title, actived, disabled }, {style}) {
+  render({ prefix, children, title, actived, disabled, icon = 'arrow_right' }) {
     return (
       <div
         class={cx(`${prefix}-item`, { [`${prefix}-item__disabled`]: disabled })}
         data-status={actived ? 1 : 0}
         onClick={this.onChange}
       >
-        <div class={`${prefix}-header`} onClick={this.onToggle}>
+        <div class={cx(`${prefix}-header`, {[`${prefix}-header__default`]: icon === Item.defaultProps.icon })} onClick={this.onToggle}>
           <span>{title}</span>
-          <Icon icon="arrow_right" />
+          <Icon icon={ icon } />
         </div>
-        <div class={`${prefix}-content`} ref={this.contentRef}>
-          <div class={`${prefix}-content-wrapper`} ref={this.contentWrapRef} >
+        <div class={`${prefix}-wrapper`} ref={this.contentRef}>
+          <div class={`${prefix}-wrapper-content`} ref={this.contentWrapRef}>
             {children}
           </div>
         </div>

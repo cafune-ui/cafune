@@ -42,7 +42,7 @@ function deleteMapping(compName) {
 }
 // 删除入口文件
 function deleteEnty(name) {
-  const entryPath = path.resolve(compRoot, 'index.jsx');
+  const entryPath = path.resolve(compRoot, 'index.js');
   if (fs.existsSync(entryPath)) {
     const entryFile = fs.readFileSync(entryPath, 'utf-8');
     const modExports = entryFile.trim().split('\n') || [];

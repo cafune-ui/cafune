@@ -7,39 +7,51 @@
     .caf-icon {
       position: absolute;
       right: 15px;
-      transition: transform .3s;
+      transition: transform 0.3s;
     }
   }
-  &-content {
+  &-wrapper {
     max-height: 0;
     overflow: hidden;
-    transition: max-height .3s;
-    &-wrapper {
-      padding: 10px;
+    transition: max-height 0.3s;
+    &-content {
+      padding: 15px;
+      background-color: #fff;
     }
   }
   &-item {
+    position: relative;
     &__disabled {
       .caf-collapse {
         &-header {
           color: #999;
         }
-        &-content {
-          
-        }
       }
     }
-    &[data-status='1'] {
+    &[data-status="1"] {
       .caf-collapse {
-        &-header {
+        &-header__default {
           // color: #999;
           .caf-icon {
             transform: rotate(90deg);
           }
         }
-        &-content {
-          // max-height: 100000px;
-        }
+      }
+    }
+    &:not(:last-child) {
+      &::after,
+      .caf-collapse-header::after {
+        content: "";
+        position: absolute;
+        box-sizing: border-box;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-bottom: 1px solid #eee;
+        transform: scaleY(0.5);
+      }
+      .caf-collapse-header::after {
+        left: 15px;
       }
     }
   }
