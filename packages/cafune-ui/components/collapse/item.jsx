@@ -1,7 +1,8 @@
 import { Component, createRef } from 'preact';
 import PropType from 'prop-types';
 import cx from 'classnames';
-import Icon from '../icon';
+import Cell from '../cell';
+// import Icon from '../icon';
 
 /**
  * 折叠面板子项
@@ -65,11 +66,9 @@ class Item extends Component {
       <div
         class={cx(`${prefix}-item`, { [`${prefix}-item__disabled`]: disabled })}
         data-status={actived ? 1 : 0}
-        onClick={this.onChange}
       >
         <div class={cx(`${prefix}-header`, {[`${prefix}-header__default`]: icon === Item.defaultProps.icon })} onClick={this.onToggle}>
-          <span>{title}</span>
-          <Icon icon={ icon } />
+          <Cell title={title} rightIcon={icon} />
         </div>
         <div class={`${prefix}-wrapper`} ref={this.contentRef}>
           <div class={`${prefix}-wrapper-content`} ref={this.contentWrapRef}>

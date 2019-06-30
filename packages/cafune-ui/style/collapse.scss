@@ -1,9 +1,5 @@
 .caf-collapse {
   &-header {
-    position: relative;
-    padding: 15px;
-    background-color: #fff;
-    color: #000;
     .caf-icon {
       position: absolute;
       right: 15px;
@@ -15,7 +11,6 @@
     overflow: hidden;
     transition: max-height 0.3s;
     &-content {
-      padding: 15px;
       background-color: #fff;
     }
   }
@@ -36,22 +31,6 @@
             transform: rotate(90deg);
           }
         }
-      }
-    }
-    &:not(:last-child) {
-      &::after,
-      .caf-collapse-header::after {
-        content: "";
-        position: absolute;
-        box-sizing: border-box;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-bottom: 1px solid #eee;
-        transform: scaleY(0.5);
-      }
-      .caf-collapse-header::after {
-        left: 15px;
       }
     }
   }
