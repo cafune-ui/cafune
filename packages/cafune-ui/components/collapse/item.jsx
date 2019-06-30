@@ -1,8 +1,11 @@
 import { Component, createRef } from "preact";
 import cx from "classnames";
-import Icon from '../../icon';
+import Icon from '../icon';
 
-export class Item extends Component {
+/**
+ * 折叠面板子项
+ */
+class Item extends Component {
   static displayName = 'CollapseItem';
   static defaultProps = {
     prefix: "caf-collapse",
@@ -40,7 +43,7 @@ export class Item extends Component {
       >
         <div class={`${prefix}-header`} onClick={this.onToggle}>
           <span>{title}</span>
-          <Icon icon="arrow-right" />
+          <Icon icon="arrow_right" />
         </div>
         <div class={`${prefix}-content`} ref={this.contentRef}>
           <div class={`${prefix}-content-wrapper`} ref={this.contentWrapRef} >

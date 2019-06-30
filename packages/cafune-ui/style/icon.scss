@@ -7,120 +7,51 @@
   url('../font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
 
-// .iconfont {
-//   font-family: "iconfont" !important;
-//   font-size: 16px;
-//   font-style: normal;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-// }
-
-// .icon-icon-:before {
-//   content: "\e6f9";
-// }
-
-// .icon-icon-1:before {
-//   content: "\e6fa";
-// }
-
-// .icon-icon-2:before {
-//   content: "\e6fb";
-// }
-
-// .icon-icon-3:before {
-//   content: "\e6fc";
-// }
-
-// .icon-icon-4:before {
-//   content: "\e6fd";
-// }
-
-// .icon-icon-5:before {
-//   content: "\e6fe";
-// }
-
-// .icon-icon-6:before {
-//   content: "\e6ff";
-// }
-
-// .icon-icon-7:before {
-//   content: "\e702";
-// }
-
-// .icon-icon-8:before {
-//   content: "\e706";
-// }
-
-// .icon-icon-9:before {
-//   content: "\e707";
-// }
-
-// .icon-icon-10:before {
-//   content: "\e70c";
-// }
-
-// .icon-icon-11:before {
-//   content: "\e70d";
-// }
-
-// .icon-icon-12:before {
-//   content: "\e710";
-// }
-
-// .icon-icon-13:before {
-//   content: "\e711";
-// }
-
-// .icon-icon-14:before {
-//   content: "\e712";
-// }
-
-// .icon-icon-15:before {
-//   content: "\e713";
-// }
-
-// .icon-icon-16:before {
-//   content: "\e715";
-// }
-
-// .icon-icon-17:before {
-//   content: "\e716";
-// }
-
-// .icon-icon-18:before {
-//   content: "\e71a";
-// }
-
-// .icon-icon-19:before {
-//   content: "\e71f";
-// }
-
-// .icon-icon-20:before {
-//   content: "\e720";
-// }
-
-// .icon-icon-21:before {
-//   content: "\e722";
-// }
-
-// .icon-icon-22:before {
-//   content: "\e725";
-// }
-
-// .icon-icon-23:before {
-//   content: "\e734";
-// }
-
-
 .caf-icon {
+  position: relative;
+  display: inline-block;
   font-family: "iconfont" !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  &-arrow {
-    &-right:before {
+  &-img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+  &_arrow {
+    &_right:before {
       content: "\e713";
     }
+    &_left:before {
+      content: "\e712";
+    }
+  }
+  &_check::before {
+    content: "\e711";
+  }
+  &_wrong::before {
+    content: "\e710";
+  }
+  &_more {
+    &::before {
+      content: "\e70d";
+    }
+    &_o::before {
+      content: "\e70c";
+    }
+  }
+  &_search::before {
+    content: "\e707";
+  }
+  &_back::before {
+    content: "\e715";
+  }
+  &_next::before {
+    content: "\e716";
+  }
+  &_img::before {
+    content: "\e6f9";
   }
 }

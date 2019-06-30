@@ -3,7 +3,7 @@ import { Collapse } from 'cafune';
 const CollapseItem = Collapse.Item;
 export class Index extends Component {
   state = {
-    activeCol: ['a']
+    activeCol: 'a'
   };
   onChange = activeCol => {
     this.setState({
@@ -15,7 +15,7 @@ export class Index extends Component {
       <div>
         <h1>Cafune</h1>
         <p>Cafune 是一套基于Preact的轻量、优雅的UI组件库</p>
-        <Collapse actives={activeCol} onChange={this.onChange}>
+        <Collapse actives={activeCol} onChange={this.onChange} accordion>
           <CollapseItem title="标题1" id="a">
             内容1
           </CollapseItem>
