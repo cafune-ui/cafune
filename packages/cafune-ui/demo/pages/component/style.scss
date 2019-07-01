@@ -1,0 +1,16 @@
+.comp {
+  padding: 20px;
+  &_hd {
+    padding: 10px 20px;
+    &_name {
+      font-size: 20px;
+    }
+    &_cn {
+      font-size: 12px;
+      color: #888;
+    }
+  }
+  &_main {
+    
+  }
+}

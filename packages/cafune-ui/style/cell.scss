@@ -22,7 +22,12 @@
   }
   .caf-icon {
     min-width: 1em;
-    padding: 0 5px;
+    &:first-child {
+      padding: 0 8px 0 5px;
+    }
+    &:last-child {
+      padding: 0 5px 0 8px;
+    }
   }
   &__border {
     &::after {
@@ -34,6 +39,11 @@
       bottom: 0;
       border-bottom: 1px solid #eee;
       transform: scaleY(0.5);
+    }
+  }
+  &__middle {
+    .caf-cell-main {
+      align-items: center;
     }
   }
 }

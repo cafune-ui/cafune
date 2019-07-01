@@ -61,7 +61,7 @@ class Item extends Component {
   componentDidMount() {
     this.updateStyle();
   }
-  render({ prefix, children, title, actived, disabled, icon = 'arrow_right' }) {
+  render({ prefix, children, title, actived, disabled, icon }) {
     return (
       <div
         class={cx(`${prefix}-item`, { [`${prefix}-item__disabled`]: disabled })}

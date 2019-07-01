@@ -5,7 +5,8 @@ import Icon from "../icon";
 
 class Cell extends Component {
   static defaultProps = {
-    prefix: "caf-cell"
+    prefix: "caf-cell",
+    border: true
   };
   static propTypes = {
     /**
@@ -37,6 +38,10 @@ class Cell extends Component {
      */
     rightIcon: PropTypes.string,
     /**
+     * 是否垂直居中
+     */
+    middle: PropTypes.bool,
+    /**
      * @TODO
      * 是否开启右滑模式
      * swipeList: PropTypes.array
@@ -51,11 +56,22 @@ class Cell extends Component {
       value: PropTypes.bool
     })
   };
-  render({ prefix, icon, title, label, value, url, rightIcon, border = true }) {
+  render({
+    prefix,
+    icon,
+    title,
+    label,
+    value,
+    url,
+    rightIcon,
+    border,
+    middle
+  }) {
     const showRightIcon = !!url || !!rightIcon;
     const cls = cx(prefix, {
       [`${prefix}__clickable`]: showRightIcon,
-      [`${prefix}__border`]: border
+      [`${prefix}__border`]: border,
+      [`${prefix}__middle`]: middle
     });
     icon = icon ? <Icon icon={icon} /> : null;
     title = (

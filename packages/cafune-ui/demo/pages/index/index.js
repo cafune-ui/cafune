@@ -17,8 +17,8 @@ export class Index extends Component {
         <p>Cafune 是一套基于Preact的轻量、优雅的UI组件库</p>
         <Collapse actives={activeCol} onChange={this.onChange}>
           <CollapseItem title="基础组件" id="basic">
-            <Cell title="Icon 图标" url="/icon" />
-            <Cell title="Cell 单元格" url="/cell" />
+            <Cell title="Icon 图标" url="/comp/icon" />
+            <Cell title="Cell 单元格" url="/comp/cell" />
           </CollapseItem>
           <CollapseItem title="展示组件" id="display">
             <Cell title="Collapse 折叠面板" url="/collapse" />
