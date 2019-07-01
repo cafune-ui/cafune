@@ -1,4 +1,5 @@
 import { Cell } from 'cafune';
+const { CellGroup } = Cell;
 
 const CellPage = () => {
   return (
@@ -29,6 +30,15 @@ const CellPage = () => {
         rightIcon="more"
         middle
       />
+
+      <CellGroup title="单元格分组">
+        <Cell title="单元格" />
+        <Cell title="单元格2" />
+      </CellGroup>
+      <CellGroup title="单元格分组(不带边框)" border={false}>
+        <Cell title="单元格" />
+        <Cell title="单元格2" />
+      </CellGroup>
     </div>
   );
 };

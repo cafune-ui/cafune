@@ -1,7 +1,6 @@
 export * from './action-bar';
 export * from './action-sheet';
 export * from './calendar';
-export * from './cell-group';
 export * from './cell';
 export * from './collapse';
 export * from './drawer';

@@ -2,8 +2,10 @@ import { Component } from "preact";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import Icon from "../icon";
+import CellGroup from './group';
 
 class Cell extends Component {
+  static CellGroup = CellGroup;
   static defaultProps = {
     prefix: "caf-cell",
     border: true

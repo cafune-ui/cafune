@@ -47,3 +47,34 @@
     }
   }
 }
+
+.caf-cellgroup {
+  &-title {
+    padding: 15px 15px 10px;
+    color: #999;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  &-wrapper {
+    &__border {
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        bottom: -50%;
+        left: -50%;
+        border: 0 solid #eee;
+        box-sizing: border-box;
+        transform: scale(0.5);
+      }
+      &::before {
+        border-width: 1px 0;
+      }
+      &::after {
+        border-width: 1px 0;
+      }
+    }
+  }
+}
