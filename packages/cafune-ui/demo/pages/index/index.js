@@ -21,7 +21,7 @@ export class Index extends Component {
             <Cell title="Cell 单元格" url="/comp/cell" />
           </CollapseItem>
           <CollapseItem title="展示组件" id="display">
-            <Cell title="Collapse 折叠面板" url="/collapse" />
+            <Cell title="Collapse 折叠面板" url="/comp/collapse" />
             <Cell title="Skeleton 骨架屏" url="/skeleton" />
           </CollapseItem>
           <CollapseItem title="表单组件" id="form">

@@ -1,9 +1,11 @@
 import { Router } from 'preact-router';
-import Cell from '../cell';
+import Cell from './basic/cell';
+import Collapse from './display/collapse';
 
 import './style';
 const nameMap = {
-  cell: '单元格'
+  cell: '单元格',
+  collapse: '折叠面板'
 };
 
 export const Comp = ({ name }) => {
@@ -18,6 +20,7 @@ export const Comp = ({ name }) => {
       <div class="comp_main">
         <Router url={`/comp/${name}`}>
           <Cell path="/comp/cell" />
+          <Collapse path="/comp/collapse" />
         </Router>
       </div>
     </div>

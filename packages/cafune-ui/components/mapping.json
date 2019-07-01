@@ -112,5 +112,11 @@
     "css": [
       "cell"
     ]
+  },
+  "Layout": {
+    "js": "components/layout",
+    "css": [
+      "layout"
+    ]
   }
 }

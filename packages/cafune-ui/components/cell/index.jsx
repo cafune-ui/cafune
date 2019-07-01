@@ -2,7 +2,7 @@ import { Component } from "preact";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import Icon from "../icon";
-import CellGroup from './group';
+import CellGroup from "./group";
 
 class Cell extends Component {
   static CellGroup = CellGroup;
@@ -19,6 +19,10 @@ class Cell extends Component {
      * 左侧图标
      */
     icon: PropTypes.string,
+    /**
+     * 图标尺寸
+     */
+    iconSize: PropTypes.string,
     /**
      * 单元标题
      */
@@ -42,7 +46,7 @@ class Cell extends Component {
     /**
      * 是否垂直居中
      */
-    middle: PropTypes.bool,
+    middle: PropTypes.bool
     /**
      * @TODO
      * 是否开启右滑模式
@@ -53,14 +57,15 @@ class Cell extends Component {
      *   onClick: PropTypes.func // 点击事件
      * }
      */
-    switchData: PropTypes.shape({
-      onSwitch: PropTypes.func,
-      value: PropTypes.bool
-    })
+    // switchData: PropTypes.shape({
+    //   onSwitch: PropTypes.func,
+    //   value: PropTypes.bool
+    // })
   };
   render({
     prefix,
     icon,
+    iconSize,
     title,
     label,
     value,
@@ -75,7 +80,7 @@ class Cell extends Component {
       [`${prefix}__border`]: border,
       [`${prefix}__middle`]: middle
     });
-    icon = icon ? <Icon icon={icon} /> : null;
+    icon = icon ? <Icon icon={icon} size={iconSize} /> : null;
     title = (
       <div class={`${prefix}-title`}>
         <span>{title}</span>

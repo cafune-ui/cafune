@@ -17,15 +17,13 @@ function isImage(icon) {
 const Icon = ({ prefix = 'caf-icon', icon, color, size, tag = 'i' }) => {
   const isImg = isImage(icon);
   const iconClass = cx(prefix, {[`${prefix}_${icon}`]: !isImg});
-  const prop = {
-    style: '',
-  };
+  const prop = {};
   if (isImg) {
     size = size || '16px';
-    prop.style += `width: ${size};height: ${size};`;
+    prop.style = `width: ${size};height: ${size};`;
   } else {
-    if (color) prop.style += `color: ${color};`;
-    if (size) prop.style += `font-size: ${size};`;
+    if (color) prop.style = (prop.style || '') + `color: ${color};`;
+    if (size) prop.style = (prop.style || '') + `font-size: ${size};`;
   }
   const Tag = tag;
   return isImg ? <Tag class={iconClass} {...prop}>

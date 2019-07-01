@@ -5,6 +5,7 @@ export * from './cell';
 export * from './collapse';
 export * from './drawer';
 export * from './icon';
+export * from './layout';
 export * from './lazyload';
 export * from './modal';
 export * from './nav-bar';
