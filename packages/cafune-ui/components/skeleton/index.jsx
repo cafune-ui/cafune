@@ -27,7 +27,7 @@ class Skeleton extends Component {
     /**
      * 动画速度
      */
-    speed: PropTypes.nummber,
+    speed: PropTypes.number,
     /**
      * 骨架屏宽度
      */

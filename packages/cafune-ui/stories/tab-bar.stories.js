@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/preact';
 import { TabBar } from 'components';
 const { TabBarItem } = TabBar;
 import './style.css';
-import 'style/tabBar.scss';
-import notes from './markdown/tabBar.md';
+import 'style/tab-bar.scss';
+import notes from './markdown/tab-bar.md';
 
 class TestComp extends Component {
   state = {

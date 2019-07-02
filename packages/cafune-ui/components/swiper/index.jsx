@@ -11,7 +11,7 @@ function checkIfItem(el) {
 }
 
 /**
- * 骨架屏
+ * 轮播
  * @example
  * ```jsx
  * <Swiper

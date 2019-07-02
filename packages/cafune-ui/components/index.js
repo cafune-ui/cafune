@@ -15,6 +15,6 @@ export * from './pull-refresh';
 export * from './skeleton';
 export * from './swiper';
 export * from './switch';
-export * from './tabBar';
+export * from './tab-bar';
 export * from './tabs';
 export * from './toast';

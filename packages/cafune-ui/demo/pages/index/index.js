@@ -22,13 +22,16 @@ export class Index extends Component {
           </CollapseItem>
           <CollapseItem title="展示组件" id="display">
             <Cell title="Collapse 折叠面板" url="/comp/collapse" />
-            <Cell title="Skeleton 骨架屏" url="/skeleton" />
+            <Cell title="Skeleton 骨架屏" url="/comp/skeleton" />
+            <Cell title="Swiper 轮播" url="/comp/swiper" />
           </CollapseItem>
           <CollapseItem title="表单组件" id="form">
             表单组件
           </CollapseItem>
           <CollapseItem title="导航组件" id="nav">
-            表单组件
+            <Cell title="Pagination 分页" url="/comp/pagination" />
+            <Cell title="Tabs 标签卡" url="/comp/tabs" />
+            <Cell title="TabBar 标签栏" url="/comp/tabbar" />
           </CollapseItem>
         </Collapse>
       </div>

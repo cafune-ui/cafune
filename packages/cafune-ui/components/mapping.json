@@ -24,9 +24,9 @@
     ]
   },
   "TabBar": {
-    "js": "components/tabBar",
+    "js": "components/tab-bar",
     "css": [
-      "tabBar"
+      "tab-bar"
     ]
   },
   "Tabs": {
