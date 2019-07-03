@@ -1,4 +1,4 @@
-# Swiper - 骨架屏
+# Swiper - 轮播
 
 ## 引入
 ```jsx

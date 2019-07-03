@@ -1,4 +1,4 @@
-import { Cell } from 'cafune';
+import { Cell, Switch } from 'cafune';
 const { CellGroup } = Cell;
 
 const CellPage = () => {
@@ -33,6 +33,13 @@ const CellPage = () => {
         label="此处为描述信息"
         value="右侧内容"
         rightIcon="more"
+        middle
+      />
+      <Cell
+        title="右侧使用组件"
+        icon="search"
+        label="此处为描述信息"
+        value={<Switch isActived={true} />}
         middle
       />
 

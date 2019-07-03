@@ -55,7 +55,6 @@ class Switch extends Component {
     if (size) switchStyle.fontSize = size;
     if (activedColor || inActivedColor)
       switchStyle.backgroundColor = isActived ? activedColor : inActivedColor;
-    console.log(isActived);
     return (
       <div
         class={cx(prefix, {
