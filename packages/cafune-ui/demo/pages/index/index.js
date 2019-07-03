@@ -26,7 +26,7 @@ export class Index extends Component {
             <Cell title="Swiper 轮播" url="/comp/swiper" />
           </CollapseItem>
           <CollapseItem title="表单组件" id="form">
-            表单组件
+            <Cell title="Switch 开关" url="/comp/switch" />
           </CollapseItem>
           <CollapseItem title="导航组件" id="nav">
             <Cell title="Pagination 分页" url="/comp/pagination" />

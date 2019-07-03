@@ -8,6 +8,8 @@ import Pagination from './nav/pagination';
 import Tabs from './nav/tabs';
 import TabBar from './nav/tabbar';
 
+import Switch from './form/switch';
+
 import './style';
 const nameMap = {
   cell: '单元格',
@@ -16,7 +18,8 @@ const nameMap = {
   swiper: '轮播',
   pagination: '分页',
   tabs: '标签卡',
-  tabbar: '标签栏'
+  tabbar: '标签栏',
+  switch: '开关'
 };
 
 export const Comp = ({ name }) => {
@@ -38,6 +41,8 @@ export const Comp = ({ name }) => {
           <Pagination path="/comp/pagination" />
           <Tabs path="/comp/tabs" />
           <TabBar path="/comp/tabbar" />
+
+          <Switch path="/comp/switch" />
         </Router>
       </div>
     </div>
