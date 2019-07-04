@@ -61,9 +61,9 @@ class Cell extends Component {
     )
   };
   isSwiping = false;
+  movedSize = 0;
   readyMoving = e => {
     this.startTimeStamp = Date.now();
-    this.clearAutoPlay();
     this.isSwiping = true;
     const touch = getTouch(e);
     this.startX = touch.clientX;
@@ -76,48 +76,48 @@ class Cell extends Component {
     this.direction = this.deltaX >= 0 ? -1 : 1;
     e.preventDefault();
     e.stopPropagation();
-    this.moveTo(`${this.deltaX}px`);
+    if (this.direction > 0) {
+      if (this.offsetX > 0 && this.offsetX <= this.swiperSize) {
+        this.moveTo(this.deltaX);
+      }
+    } else {
+      this.moveTo(0);
+    }
   };
   endMoving = () => {
     if (!this.isSwiping) return;
     this.isSwiping = false;
-    if (this.offsetX < this.size / 4) {
-      this.moveTo({ ind: this.state.current });
-    } else if (inBound) {
-      this.moveTo({ ind: this.state.current + this.direction });
+    if (this.offsetX > 0 && this.offsetX <= this.swiperSize) {
+      if (this.offsetX < this.swiperSize / 2) {
+        this.moveTo(0);
+      } else {
+        this.moveTo(this.swiperSize * -1);
+      }
     }
     setTimeout(() => (this.offsetX = 0), 500);
   };
-  moveTo({ ind, offset }) {
-    this.clearAutoPlay();
-    if (this.swiperList && this.swiperList.current) {
-      const $swiper = this.swiperList.current;
-      if (ind !== undefined) {
-        $swiper.style.transitionDuration = '500ms';
-        $swiper.style.transform = `translate3d(${ind *
-          (1 / this.total) *
-          -100}%, 0, 0 )`;
-        this.setState(
-          {
-            current: ind
-          },
-          () => {
-            this.autoPlay();
-            this.props.onChange && this.props.onChange(ind);
-          }
-        );
-      } else if (offset) {
-        // 在拖动时不要过渡时间，否则卡顿
-        $swiper.style.transitionDuration = '0ms';
-        $swiper.style.transform = `translate3d(${offset}, 0, 0 )`;
-      }
+  moveTo(offset) {
+    if (this.cellWrapper && this.cellWrapper.current) {
+      const $swiper = this.cellWrapper.current;
+      // 在拖动时不要过渡时间，否则卡顿
+      $swiper.style.transitionDuration = '0ms';
+      $swiper.style.transform = `translate3d(${offset}px, 0, 0 )`;
+      this.movedSize = offset;
     }
   }
   swipable = false;
+  promiseFunc = func => {
+    setTimeout(func.bind(this), 0);
+  }
   registeSwiperEvent() {
-    this.swipable = true;
-    const rect = this.cellMain.current;
-    if (rect) {
+    if (this.cellSwiper && this.cellSwiper.current) {
+      this.swipable = true;
+      const swipe = this.cellSwiper.current;
+      const size = swipe.getBoundingClientRect();
+      this.swiperSize = size.width;
+    }
+    if (this.cellMain && this.cellMain.current) {
+      const rect = this.cellMain.current;
       rect.addEventListener(touchEventMap.down, this.readyMoving);
       rect.addEventListener(touchEventMap.move, this.startMoving);
       rect.addEventListener(touchEventMap.up, this.endMoving);
@@ -125,8 +125,8 @@ class Cell extends Component {
     }
   }
   unRegisteSwiperEvent() {
-    const rect = this.cellMain.current;
-    if (rect && this.swipable) {
+    if (this.cellMain && this.cellMain.current && this.swipable) {
+      const rect = this.cellMain.current;
       this.swipable = false;
       rect.removeEventListener(touchEventMap.down, this.readyMoving);
       rect.removeEventListener(touchEventMap.move, this.startMoving);
@@ -138,7 +138,9 @@ class Cell extends Component {
     this.unRegisteSwiperEvent();
   }
   swiperSize = 0;
+  cellWrapper = createRef();
   cellMain = createRef();
+  cellSwiper = createRef();
   render({
     prefix,
     icon,
@@ -178,7 +180,7 @@ class Cell extends Component {
     let Options = null;
     if (swipeList && swipeList.length) {
       Options = (
-        <div class={`${prefix}-swiper`}>
+        <div class={`${prefix}-swiper`} ref={this.cellSwiper}>
           {swipeList.map(item => (
             <span class={`${prefix}-swiper-item`} onClick={item.clickHandler} style={ item.style }>
               {item.name}
@@ -186,13 +188,14 @@ class Cell extends Component {
           ))}
         </div>
       );
-      this.swipable = true;
-      this.bindSwiperEvent;
+      this.promiseFunc(this.registeSwiperEvent);
+    } else {
+      this.promiseFunc(this.unRegisteSwiperEvent);
     }
     return (
       <div class={cls}>
-        <div class={`${prefix}-wrapper`} ref={this.cellMain}>
-          <Tag {...restProps} class={`${prefix}-main`}>
+        <div class={`${prefix}-wrapper`} ref={this.cellWrapper}>
+          <Tag {...restProps} class={`${prefix}-main`} ref={this.cellMain}>
             {icon}
             {title}
             {val}
