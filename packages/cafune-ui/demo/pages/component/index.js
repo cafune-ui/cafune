@@ -10,6 +10,8 @@ import TabBar from './nav/tabbar';
 
 import Switch from './form/switch';
 
+import ActionSheet from './feedback/actionsheet';
+
 import './style';
 const nameMap = {
   cell: '单元格',
@@ -19,7 +21,8 @@ const nameMap = {
   pagination: '分页',
   tabs: '标签卡',
   tabbar: '标签栏',
-  switch: '开关'
+  switch: '开关',
+  actionsheet: '动作面板'
 };
 
 export const Comp = ({ name }) => {
@@ -43,6 +46,8 @@ export const Comp = ({ name }) => {
           <TabBar path="/comp/tabbar" />
 
           <Switch path="/comp/switch" />
+
+          <ActionSheet path="/comp/actionsheet" />
         </Router>
       </div>
     </div>

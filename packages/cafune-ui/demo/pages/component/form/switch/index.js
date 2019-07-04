@@ -41,7 +41,6 @@ export default class SwitchComp extends Component {
         <p>自定义颜色</p>
         <Switch
           isActived={isActived1}
-          size="20px"
           activedColor="#2e4e7e"
           inActivedColor="#bbcdc5"
           onChange={this.onChange('isActived1')}

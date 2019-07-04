@@ -7,6 +7,30 @@ const CellPage = () => {
       <Cell title="基础用法" />
       <Cell title="不带边框" border={false} />
       <Cell title="带icon" icon="check" />
+
+      <Cell
+        title="带右滑"
+        swipeList={[
+          {
+            name: '标为未读',
+            clickHandler() {
+              console.log('标为未读');
+            },
+            style: {
+              backgroundColor: '#e9e7ef'
+            }
+          },
+          {
+            name: '删除',
+            clickHandler() {
+              console.log('删除');
+            },
+            style: {
+              backgroundColor: '#c93756'
+            }
+          }
+        ]}
+      />
       <Cell
         title="自定义"
         icon="https://image.uisdc.com/wp-content/uploads/2018/07/uiii-ps-icon.png"

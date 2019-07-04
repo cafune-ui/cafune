@@ -20,13 +20,16 @@ export class Index extends Component {
             <Cell title="Icon 图标" url="/comp/icon" />
             <Cell title="Cell 单元格" url="/comp/cell" />
           </CollapseItem>
+          <CollapseItem title="表单组件" id="form">
+            <Cell title="Switch 开关" url="/comp/switch" />
+          </CollapseItem>
+          <CollapseItem title="反馈组件" id="feedback">
+            <Cell title="ActionSheet 上拉菜单" url="/comp/actionsheet" />
+          </CollapseItem>
           <CollapseItem title="展示组件" id="display">
             <Cell title="Collapse 折叠面板" url="/comp/collapse" />
             <Cell title="Skeleton 骨架屏" url="/comp/skeleton" />
             <Cell title="Swiper 轮播" url="/comp/swiper" />
-          </CollapseItem>
-          <CollapseItem title="表单组件" id="form">
-            <Cell title="Switch 开关" url="/comp/switch" />
           </CollapseItem>
           <CollapseItem title="导航组件" id="nav">
             <Cell title="Pagination 分页" url="/comp/pagination" />

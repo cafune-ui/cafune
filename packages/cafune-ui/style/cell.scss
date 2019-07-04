@@ -2,14 +2,37 @@
   position: relative;
   overflow: hidden;
   text-decoration: none;
+  width: 100%;
+  &-wrapper {
+    transition: transform .3s;
+  }
   &-main {
     display: flex;
+    width: 100%;
     position: relative;
     padding: 10px 15px;
     line-height: 24px;
     font-size: 14px;
     background-color: #fff;
     box-sizing: border-box;
+  }
+  &-swiper {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    display: table;
+    table-layout: fixed;
+    height: 44px;
+    &-item {
+      display:table-cell; 
+      vertical-align:middle;
+      min-width: 50px;
+      padding: 0 10px;
+      text-align: center;
+      color: #fff;
+      line-height: 1;
+      background-color: #969799;
+    }
   }
   &-title {
     flex: 1;
