@@ -118,9 +118,9 @@ export default class Nav extends Component {
       navClass
     );
     return (
-      <div class={cx}>
-        <div class='caf-tabs-nav-content'>{this.renderTabs()}</div>
-        <span class='caf-tabs-nav-ink' ref={c => (this.inkBar = c)} />
+      <div className={cx}>
+        <div className='caf-tabs-nav-content'>{this.renderTabs()}</div>
+        <span className='caf-tabs-nav-ink' ref={c => (this.inkBar = c)} />
       </div>
     );
   }

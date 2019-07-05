@@ -28,7 +28,7 @@ export default class Panel extends Component {
   render({ children, className, actived }) {
     const cx = classNames('caf-tabs-panel', className);
     return (
-      <div class={cx} data-actived={actived ? 1 : 0}>
+      <div className={cx} data-actived={actived ? 1 : 0}>
         {children}
       </div>
     );

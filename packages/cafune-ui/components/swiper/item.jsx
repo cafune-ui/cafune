@@ -11,7 +11,7 @@ class SwiperItem extends Component {
   };
   render({ children, width }) {
     return (
-      <div class="caf-swiper-container-item" style={{ width }}>
+      <div className="caf-swiper-container-item" style={{ width }}>
         {children}
       </div>
     );

@@ -26,9 +26,9 @@ const Icon = ({ prefix = 'caf-icon', icon, color, size, tag = 'i' }) => {
     if (size) prop.style = (prop.style || '') + `font-size: ${size};`;
   }
   const Tag = tag;
-  return isImg ? <Tag class={iconClass} {...prop}>
-    {isImg && <img src={icon} class={`${prefix}-img`} />}
-  </Tag> : <Tag class={iconClass} {...prop} />;
+  return isImg ? <Tag className={iconClass} {...prop}>
+    {isImg && <img src={icon} className={`${prefix}-img`} />}
+  </Tag> : <Tag className={iconClass} {...prop} />;
 }
 Icon.defalutProps = {
   prefix: 'caf-icon',

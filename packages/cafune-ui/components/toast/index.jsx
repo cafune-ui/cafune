@@ -120,7 +120,7 @@ class Toast extends Component {
   render({ content, type }, { shouldClose }) {
     return (
       <div
-        class="caf-toast"
+        className="caf-toast"
         data-type={type}
         data-status={shouldClose ? 0 : 1}
       >

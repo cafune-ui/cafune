@@ -57,14 +57,14 @@ class Switch extends Component {
       switchStyle.backgroundColor = isActived ? activedColor : inActivedColor;
     return (
       <div
-        class={cx(prefix, {
+        className={cx(prefix, {
           [`${prefix}__on`]: isActived,
           [`${prefix}__disabled`]: isDisabled
         })}
         style={switchStyle}
         onClick={this.clickHandler}
       >
-        <div class={`${prefix}-circle`} />
+        <div className={`${prefix}-circle`} />
       </div>
     );
   }

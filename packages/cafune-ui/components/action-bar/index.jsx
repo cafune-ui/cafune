@@ -57,12 +57,12 @@ class ActionBar extends Component {
     disabled = false
   }) {
     return (
-      <div class={prefix} ref={c => (this.actionbar = c)}>
-        {!!additionMsg && <div class={`${prefix}-tip`}>{additionMsg}</div>}
-        <div class={`${prefix}-main`}>
-          <div class={`${prefix}-main-tip`}>{descContent}</div>
+      <div className={prefix} ref={c => (this.actionbar = c)}>
+        {!!additionMsg && <div className={`${prefix}-tip`}>{additionMsg}</div>}
+        <div className={`${prefix}-main`}>
+          <div className={`${prefix}-main-tip`}>{descContent}</div>
           <div
-            class={`${prefix}-main-btn`}
+            className={`${prefix}-main-btn`}
             onClick={handleClick}
             data-disabled={disabled ? 1 : 0}
           >

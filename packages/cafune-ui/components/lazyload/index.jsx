@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
  * ```jsx
  * <Lazyload imgClass="lazy">
  * // ...
- * <img src="/placeholder" data-src={originalpic} class="lazy" />
+ * <img src="/placeholder" data-src={originalpic} className="lazy" />
  * // ...
  * </Lazyload>
  * ```
@@ -69,7 +69,7 @@ class Lazyload extends Component {
   lazyContainer = createRef();
   render({ children }) {
     return (
-      <div ref={this.lazyContainer} class="lazyContainer">
+      <div ref={this.lazyContainer} className="lazyContainer">
         {children}
       </div>
     );

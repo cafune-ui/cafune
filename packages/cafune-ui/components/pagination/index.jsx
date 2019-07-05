@@ -26,14 +26,14 @@ const Pagination = ({ pn, pages, onChange = () => {} }) => {
   });
 
   return (
-    <div class='caf-page'>
-      <button onClick={changeFn(-1, pn, pages, onChange)} class={prevCx}>
+    <div className='caf-page'>
+      <button onClick={changeFn(-1, pn, pages, onChange)} className={prevCx}>
         上一页
       </button>
-      <span class='caf-page-indicator'>
+      <span className='caf-page-indicator'>
         {pn} / {pages}
       </span>
-      <button onClick={changeFn(1, pn, pages, onChange)} class={nextCx}>
+      <button onClick={changeFn(1, pn, pages, onChange)} className={nextCx}>
         下一页
       </button>
     </div>

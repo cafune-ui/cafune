@@ -68,7 +68,7 @@ class TabBar extends Component {
   }
   render({ fixed, children }) {
     const cx = classNames('caf-tabbar', { 'caf-tabbar__fixed': fixed });
-    return <div class={cx}>{children}</div>;
+    return <div className={cx}>{children}</div>;
   }
 }
 export default TabBar;

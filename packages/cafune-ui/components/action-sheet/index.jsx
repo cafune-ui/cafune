@@ -30,8 +30,8 @@ class ActionSheet extends Component {
     closeOnClickMask: PropTypes.bool
   }
   render({ prefix, isShow, showMask }) {
-    return isShow ? <div class={prefix}>
-      { showMask && <div class={`${prefix}-mask`} /> } 
+    return isShow ? <div className={prefix}>
+      { showMask && <div className={`${prefix}-mask`} /> } 
     </div> : null;
   }
 }

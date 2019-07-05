@@ -106,7 +106,7 @@ class Collapse extends Component {
     const { prefix, children, accordion } = this.props;
     const { actives } = this.state;
     const listData = this.getListData(children, actives, accordion);
-    return <div class={prefix}>{this.renderContent(listData)}</div>;
+    return <div className={prefix}>{this.renderContent(listData)}</div>;
   }
   render() {
     return this.renderList();

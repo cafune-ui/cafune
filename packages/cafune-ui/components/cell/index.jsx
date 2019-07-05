@@ -78,7 +78,7 @@ class Cell extends Component {
     e.stopPropagation();
     if (this.direction > 0) {
       if (this.offsetX > 0 && this.offsetX <= this.swiperSize) {
-        this.moveTo(this.deltaX);
+        this.moveTo(this.deltaX, true);
       }
     } else {
       this.moveTo(0);
@@ -96,11 +96,11 @@ class Cell extends Component {
     }
     setTimeout(() => (this.offsetX = 0), 500);
   };
-  moveTo(offset) {
+  moveTo(offset, noDuration = false) {
     if (this.cellWrapper && this.cellWrapper.current) {
       const $swiper = this.cellWrapper.current;
       // 在拖动时不要过渡时间，否则卡顿
-      $swiper.style.transitionDuration = '0ms';
+      $swiper.style.transitionDuration = noDuration ? '0ms' : '500ms';
       $swiper.style.transform = `translate3d(${offset}px, 0, 0 )`;
       this.movedSize = offset;
     }
@@ -162,13 +162,13 @@ class Cell extends Component {
     });
     icon = icon ? <Icon icon={icon} size={iconSize} /> : null;
     title = (
-      <div class={`${prefix}-title`}>
+      <div className={`${prefix}-title`}>
         <span>{title}</span>
-        {!!label && <div class={`${prefix}-label`}>{label}</div>}
+        {!!label && <div className={`${prefix}-label`}>{label}</div>}
       </div>
     );
     const val = !!value ? (
-      <div class={`${prefix}-value`}>
+      <div className={`${prefix}-value`}>
         <span>{value}</span>
       </div>
     ) : null;
@@ -180,9 +180,9 @@ class Cell extends Component {
     let Options = null;
     if (swipeList && swipeList.length) {
       Options = (
-        <div class={`${prefix}-swiper`} ref={this.cellSwiper}>
+        <div className={`${prefix}-swiper`} ref={this.cellSwiper}>
           {swipeList.map(item => (
-            <span class={`${prefix}-swiper-item`} onClick={item.clickHandler} style={ item.style }>
+            <span className={`${prefix}-swiper-item`} onClick={item.clickHandler} style={ item.style }>
               {item.name}
             </span>
           ))}
@@ -193,9 +193,9 @@ class Cell extends Component {
       this.promiseFunc(this.unRegisteSwiperEvent);
     }
     return (
-      <div class={cls}>
-        <div class={`${prefix}-wrapper`} ref={this.cellWrapper}>
-          <Tag {...restProps} class={`${prefix}-main`} ref={this.cellMain}>
+      <div className={cls}>
+        <div className={`${prefix}-wrapper`} ref={this.cellWrapper}>
+          <Tag {...restProps} className={`${prefix}-main`} ref={this.cellMain}>
             {icon}
             {title}
             {val}

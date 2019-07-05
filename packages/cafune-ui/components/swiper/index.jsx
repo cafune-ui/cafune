@@ -232,7 +232,7 @@ class Swiper extends Component {
       ? Array(...Array(data.length)).map((_, ind) => (
           <span
             key={ind}
-            class="caf-swiper-indicator-item"
+            className="caf-swiper-indicator-item"
             data-status={ind === this.state.current ? 1 : 0}
             onClick={() => this.moveTo({ ind })}
           />
@@ -265,14 +265,14 @@ class Swiper extends Component {
       this.swiperData = swiperData;
       this.total = swiperData.length;
       return (
-        <div class="caf-swiper" ref={this.swiperContainer}>
-          <div class="caf-swiper-container" ref={this.swiperList}>
+        <div className="caf-swiper" ref={this.swiperContainer}>
+          <div className="caf-swiper-container" ref={this.swiperList}>
             {this.renderItems(swiperData)}
           </div>
           {customIndicator
             ? customIndicator
             : showIndicators && (
-                <div class="caf-swiper-indicator">
+                <div className="caf-swiper-indicator">
                   {this.renderIndicators(swiperData)}
                 </div>
               )}

@@ -38,14 +38,14 @@ export default class TabBarItem extends Component {
     const tabStyle = isActived ? { color: activedColor } : {};
     return (
       <div
-        class="caf-tabbar-item"
+        className="caf-tabbar-item"
         onClick={this.handleChange}
         style={tabStyle}
         data-status={isActived ? 1 : disabled ? 2 : 0}
       >
         {!!icons && (
           <div
-            class="caf-tabbar-item-icon"
+            className="caf-tabbar-item-icon"
             style={`background-image: url(${icons[iconType] || icons.normal})`}
           />
         )}

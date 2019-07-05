@@ -140,34 +140,34 @@ class Modal extends Component {
   }) {
     if (visable) {
       /* istanbul ignore if */
-      const Title = title && <div class="caf-modal-content-header">{title}</div>;
+      const Title = title && <div className="caf-modal-content-header">{title}</div>;
       /* istanbul ignore else */
       const Content = (!!(children && children.length) || message) && (
         <div
-          class={`caf-modal-content caf-modal-content__${align}`}
+          className={`caf-modal-content caf-modal-content__${align}`}
         >
           {children && children.length > 0 ? (
             children
           ) : (
             <div
               dangerouslySetInnerHTML={{ __html: message }}
-              class={`caf-modal-content-content caf-modal-content-content__${align}`}
+              className={`caf-modal-content-content caf-modal-content-content__${align}`}
             />
           )}
         </div>
       );
       const Buttons = (
-        <div class="caf-modal-btngroup">
+        <div className="caf-modal-btngroup">
           {showCancel && (
             <div
-              class="caf-modal-btngroup__cancel"
+              className="caf-modal-btngroup__cancel"
               onClick={this.handleClick.bind(this, 'cancel')}
             >
               {cancelContent}
             </div>
           )}
           <div
-            class="caf-modal-btngroup__confirm"
+            className="caf-modal-btngroup__confirm"
             onClick={this.handleClick.bind(this, 'confirm')}
           >
             {confirmContent}
@@ -175,9 +175,9 @@ class Modal extends Component {
         </div>
       );
       return (
-        <div class="caf-modal">
-          {mask && <div class="caf-modal-bg" />}
-          <div class="caf-modal-content">
+        <div className="caf-modal">
+          {mask && <div className="caf-modal-bg" />}
+          <div className="caf-modal-content">
             {Title}
             {Content}
             {Buttons}

@@ -153,7 +153,7 @@ class Tabs extends Component {
     const tabsData = this.getTabsData(children, activeId);
     const cx = classNames('caf-tabs', className);
     return (
-      <div class={cx}>
+      <div className={cx}>
         {this.renderNav(tabsData, navClass)}
         <div ref={c => (this.tabPanel = c)}>
           {this.renderTabPanel(tabsData)}
@@ -166,7 +166,7 @@ class Tabs extends Component {
     tabs.forEach(item => item.actived = item.id === activeId )
     const cx = classNames('caf-tabs', className);
     return (
-      <div class={cx}>
+      <div className={cx}>
         {this.renderNav(tabs, navClass)}
         { children }
       </div>

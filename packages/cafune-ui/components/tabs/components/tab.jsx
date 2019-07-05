@@ -13,8 +13,8 @@ export default class Tab extends Component {
       'caf-tabs-item__actived': !!actived
     });
     return (
-      <div class={cx} onClick={this.onItemClick} {...tabStyle}>
-        <div class='caf-tabs-item-inner'>{children}</div>
+      <div className={cx} onClick={this.onItemClick} {...tabStyle}>
+        <div className='caf-tabs-item-inner'>{children}</div>
       </div>
     );
   }

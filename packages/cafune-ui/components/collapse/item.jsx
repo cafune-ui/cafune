@@ -64,14 +64,14 @@ class Item extends Component {
   render({ prefix, children, title, actived, disabled, icon }) {
     return (
       <div
-        class={cx(`${prefix}-item`, { [`${prefix}-item__disabled`]: disabled })}
+        className={cx(`${prefix}-item`, { [`${prefix}-item__disabled`]: disabled })}
         data-status={actived ? 1 : 0}
       >
-        <div class={cx(`${prefix}-header`, {[`${prefix}-header__default`]: icon === Item.defaultProps.icon })} onClick={this.onToggle}>
+        <div className={cx(`${prefix}-header`, {[`${prefix}-header__default`]: icon === Item.defaultProps.icon })} onClick={this.onToggle}>
           <Cell title={title} rightIcon={icon} />
         </div>
-        <div class={`${prefix}-wrapper`} ref={this.contentRef}>
-          <div class={`${prefix}-wrapper-content`} ref={this.contentWrapRef}>
+        <div className={`${prefix}-wrapper`} ref={this.contentRef}>
+          <div className={`${prefix}-wrapper-content`} ref={this.contentWrapRef}>
             {children}
           </div>
         </div>
