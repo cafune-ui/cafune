@@ -9,7 +9,7 @@ class ActionSheet extends Component {
   static defaultProps = {
     prefix: 'caf-actsheet',
     isShow: false,
-    showMask: false,
+    showMask: true,
   }
   static propTypes = {
     /**

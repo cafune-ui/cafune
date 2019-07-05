@@ -1,6 +1,6 @@
-import { Component } from "preact";
-import PropTypes from "prop-types";
-import cx from "classnames";
+import { Component } from 'preact';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 /**
  * 开关
  * @example
@@ -9,10 +9,10 @@ import cx from "classnames";
  */
 class Switch extends Component {
   static defaultProps = {
-    prefix: "caf-switch",
+    prefix: 'caf-switch',
     isDisabled: false,
     isLoading: false,
-    isActived: false,
+    isActived: false
   };
   static propTypes = {
     /**
@@ -50,7 +50,15 @@ class Switch extends Component {
       onChange && onChange(!isActived);
     }
   };
-  render({ prefix, isActived, isLoading, isDisabled, size, activedColor, inActivedColor }) {
+  render({
+    prefix,
+    isActived,
+    isLoading,
+    isDisabled,
+    size,
+    activedColor,
+    inActivedColor
+  }) {
     const switchStyle = {};
     if (size) switchStyle.fontSize = size;
     if (activedColor || inActivedColor)
