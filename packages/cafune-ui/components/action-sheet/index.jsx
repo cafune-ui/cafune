@@ -72,7 +72,7 @@ function renderList(list = [], horizon, wrap = false) {
           } else if (!horizon) {
             item.align = !!item.icon ? 'left' : 'center';
           }
-          item.action =
+          const action =
             typeof item.action === 'string'
               ? () => {
                   location.href = item.action;
@@ -87,7 +87,7 @@ function renderList(list = [], horizon, wrap = false) {
                 [`${prefix}-item__loading`]: item.isLoading,
                 [`${prefix}-item__disabled`]: item.isDisabled
               })}
-              onClick={item.action}
+              onClick={action}
             >
               {horizon ? (
                 <div className={`${prefix}-item-icon`}>
@@ -115,7 +115,8 @@ function renderList(list = [], horizon, wrap = false) {
 }
 class ActionSheet extends Component {
   state = {
-    isShow: this.props.isShow
+    isShow: this.props.isShow,
+    isFadding: true
   };
   static defaultProps = {
     prefix,
@@ -166,6 +167,19 @@ class ActionSheet extends Component {
      */
     onClose: PropTypes.func
   };
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isShow !== this.props.isShow) {
+      this.setState({
+        isShow: nextProps.isShow,
+      }, () => {
+        setTimeout(() => {
+          this.setState({
+            isFadding: false
+          })
+        }, 100)
+      });
+    }
+  }
   renderData = (data, horizon, wrap) => {
     let result;
     const illegalMsg = '列表数据应为全数组或全对象';
@@ -208,14 +222,23 @@ class ActionSheet extends Component {
     }
   };
   closeAct = () => {
-    this.setState({
-      isShow: false
-    });
-    this.props.onClose && this.props.onClose();
+    this.setState(
+      {
+        isFadding: true
+      },
+      () => {
+        setTimeout(() => {
+          this.setState({
+            isShow: false
+          });
+          this.props.onClose && this.props.onClose();
+        }, 500);
+      }
+    );
   };
   render(
     { prefix, showMask, children, cancelText, closeOnClickMask, title },
-    { isShow }
+    { isShow, isFadding }
   ) {
     const content = this.renderContent();
     let maskProp = {};
@@ -226,7 +249,7 @@ class ActionSheet extends Component {
       <div>
         {showMask && <div className={`${prefix}-mask`} />}
         <div className={`${prefix}-wrapper`} {...maskProp}>
-          <div className={prefix}>
+          <div className={prefix} data-status={isFadding ? 0 : 1}>
             {!!title && <div className={`${prefix}-title`}>{title}</div>}
             <div className={`${prefix}-main`}>
               {children}

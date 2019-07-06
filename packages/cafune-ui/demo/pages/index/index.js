@@ -12,9 +12,9 @@ export class Index extends Component {
   };
   render({}, { activeCol }) {
     return (
-      <div>
-        <h1>Cafune</h1>
-        <p>Cafune 是一套基于Preact的轻量、优雅的UI组件库</p>
+      <div class="home">
+        <h1 class="home-name">Cafune</h1>
+        <p class="home-desc">Cafune 是一套基于Preact的轻量、优雅的UI组件库</p>
         <Collapse actives={activeCol} onChange={this.onChange}>
           <CollapseItem title="基础组件" id="basic">
             <Cell title="Icon 图标" url="/comp/icon" />

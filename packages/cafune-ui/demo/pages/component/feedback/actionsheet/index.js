@@ -3,7 +3,7 @@ import { Component } from 'preact';
 
 export default class ActionSheetComp extends Component {
   state = {
-    isActionShow1: true
+    isActionShow1: false
   };
   showAction = name => () =>
     this.setState({
@@ -37,7 +37,8 @@ export default class ActionSheetComp extends Component {
                 name: 'hi2',
                 subName: 'hi2 sub',
                 icon: 'search',
-                badge: '2'
+                badge: '2',
+                action: '/'
               },
               {
                 name: 'hi2',

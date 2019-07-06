@@ -84,21 +84,25 @@ class Toast extends Component {
   closeTimer;
   cleanTimer;
   close = () => {
-    // const { onClose, uid } = this.props;
-    // if (ToastList[uid]) {
-    //   this.clearCloseTimer();
-    //   this.setState({
-    //     shouldClose: true
-    //   });
-    //   onClose && onClose();
-    //   const node = ToastList[uid].node;
-    //   delete ToastList[uid];
-    //   this.cleanTimer = setTimeout(() => {
-    //     notifyContainerNode && render('', notifyContainerNode, node);
-    //     clearTimeout(this.cleanTimer);
-    //     this.cleanTimer = null;
-    //   }, 600);
-    // }
+    const { onClose, uid } = this.props;
+    if (ToastList[uid]) {
+      this.clearCloseTimer();
+      this.setState({
+        shouldClose: true
+      });
+      onClose && onClose();
+      const node = ToastList[uid].node;
+      delete ToastList[uid];
+      /* istanbul ignore next */
+      this.cleanTimer = setTimeout(() => {
+        /* istanbul ignore else */
+        if (notifyContainerNode) {
+          render('', notifyContainerNode, node);
+        }
+        clearTimeout(this.cleanTimer);
+        this.cleanTimer = null;
+      }, 600);
+    }
   };
   clearCloseTimer() {
     if (this.closeTimer) {

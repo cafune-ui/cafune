@@ -7,3 +7,13 @@ html, body {
 h1 {
 	text-align: center;
 }
+
+.home {
+	
+}
+.home-name {
+	padding: 30px;
+}
+.home-desc {
+	padding: 10px 15px;
+}
