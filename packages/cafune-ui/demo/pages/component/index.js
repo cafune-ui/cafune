@@ -4,6 +4,7 @@ import Collapse from './display/collapse';
 import Skeleton from './display/skeleton';
 import Swiper from './display/swiper';
 
+import NavBar from './nav/navbar';
 import Pagination from './nav/pagination';
 import Tabs from './nav/tabs';
 import TabBar from './nav/tabbar';
@@ -24,7 +25,8 @@ const nameMap = {
   tabbar: '标签栏',
   switch: '开关',
   actionsheet: '动作面板',
-  loading: '加载'
+  loading: '加载',
+  navbar: '导航栏'
 };
 
 export const Comp = ({ name }) => {
@@ -43,6 +45,7 @@ export const Comp = ({ name }) => {
           <Skeleton path="/comp/skeleton" />
           <Swiper path="/comp/swiper" />
 
+          <NavBar path="/comp/navbar" />
           <Pagination path="/comp/pagination" />
           <Tabs path="/comp/tabs" />
           <TabBar path="/comp/tabbar" />

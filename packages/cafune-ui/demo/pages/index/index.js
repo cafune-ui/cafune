@@ -33,6 +33,7 @@ export class Index extends Component {
             <Cell title="Swiper 轮播" url="/comp/swiper" />
           </CollapseItem>
           <CollapseItem title="导航组件" id="nav">
+            <Cell title="NavBar 导航栏" url="/comp/navbar" />
             <Cell title="Pagination 分页" url="/comp/pagination" />
             <Cell title="Tabs 标签卡" url="/comp/tabs" />
             <Cell title="TabBar 标签栏" url="/comp/tabbar" />

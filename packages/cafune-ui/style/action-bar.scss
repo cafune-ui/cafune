@@ -1,4 +1,4 @@
-@import 'style/config.scss';
+@import './variables/color.scss';
 .caf-actionbar {
   composes: fixed from 'style/composes.scss';
   bottom: 0;
