@@ -20,6 +20,9 @@
     width: 100%;
     object-fit: contain;
   }
+  &_notice::before {
+    content: "\e6ff";
+  }
   &_arrow {
     &_right:before {
       content: "\e713";

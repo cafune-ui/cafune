@@ -31,6 +31,7 @@ export class Index extends Component {
             <Cell title="Collapse 折叠面板" url="/comp/collapse" />
             <Cell title="Skeleton 骨架屏" url="/comp/skeleton" />
             <Cell title="Swiper 轮播" url="/comp/swiper" />
+            <Cell title="NoticeBar 通知栏" url="/comp/noticebar" />
           </CollapseItem>
           <CollapseItem title="导航组件" id="nav">
             <Cell title="NavBar 导航栏" url="/comp/navbar" />

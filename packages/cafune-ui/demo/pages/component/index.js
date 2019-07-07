@@ -3,6 +3,8 @@ import Cell from './basic/cell';
 import Collapse from './display/collapse';
 import Skeleton from './display/skeleton';
 import Swiper from './display/swiper';
+import NoticeBar from './display/noticebar';
+
 
 import NavBar from './nav/navbar';
 import Pagination from './nav/pagination';
@@ -13,7 +15,6 @@ import Switch from './form/switch';
 
 import ActionSheet from './feedback/actionsheet';
 import Loading from './feedback/loading';
-
 import './style';
 const nameMap = {
   cell: '单元格',
@@ -26,7 +27,8 @@ const nameMap = {
   switch: '开关',
   actionsheet: '动作面板',
   loading: '加载',
-  navbar: '导航栏'
+  navbar: '导航栏',
+  noticebar: '通告栏'
 };
 
 export const Comp = ({ name }) => {
@@ -54,6 +56,7 @@ export const Comp = ({ name }) => {
 
           <ActionSheet path="/comp/actionsheet" />
           <Loading path="/comp/loading" />
+          <NoticeBar path="/comp/noticebar" />
         </Router>
       </div>
     </div>
