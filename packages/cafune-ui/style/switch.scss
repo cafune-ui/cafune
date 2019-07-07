@@ -23,6 +23,9 @@ $name: '.caf-switch';
     background-color: #fff;
     transition: .3s;
   }
+  .caf-loading {
+    padding: 8px 0;
+  }
   &__on {
     background-color: $color_theme_blue;
     #{$name}-circle {

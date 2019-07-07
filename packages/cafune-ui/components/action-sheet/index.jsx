@@ -2,6 +2,7 @@ import { Component } from 'preact';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from '../icon';
+import Loading from '../loading';
 
 /**
  * 动作面板
@@ -106,6 +107,7 @@ function renderList(list = [], horizon, wrap = false) {
                 )}
                 {!horizon && hasBadge && Badge}
               </div>
+              { item.isLoading && <Loading size="24px" />}
             </div>
           );
         })}
@@ -168,17 +170,20 @@ class ActionSheet extends Component {
     onClose: PropTypes.func
   };
   componentWillReceiveProps(nextProps) {
-    if (nextProps.isShow !== this.props.isShow) {
-      this.setState({
-        isShow: nextProps.isShow,
-      }, () => {
+    if (nextProps.isShow !== this.state.isShow) {
+      if (nextProps.isShow === true) {
         setTimeout(() => {
           this.setState({
             isFadding: false
           })
-        }, 100)
-      });
+        })
+      } else {
+        this.closeAct()
+      }
     }
+  }
+  componentWillUnmount() {
+    console.log('unmounting')
   }
   renderData = (data, horizon, wrap) => {
     let result;
@@ -221,6 +226,15 @@ class ActionSheet extends Component {
       this.closeAct();
     }
   };
+  openAct = () => {
+    setTimeout(() => {
+      this.setState({
+        isFadding: false
+      }, () => {
+        this.props.onOpen && this.props.onOpen();
+      })
+    }, 100)
+  }
   closeAct = () => {
     this.setState(
       {
@@ -228,17 +242,14 @@ class ActionSheet extends Component {
       },
       () => {
         setTimeout(() => {
-          this.setState({
-            isShow: false
-          });
           this.props.onClose && this.props.onClose();
         }, 500);
       }
     );
   };
   render(
-    { prefix, showMask, children, cancelText, closeOnClickMask, title },
-    { isShow, isFadding }
+    { prefix, showMask, children, cancelText, closeOnClickMask, title, isShow },
+    { isFadding }
   ) {
     const content = this.renderContent();
     let maskProp = {};
@@ -255,7 +266,7 @@ class ActionSheet extends Component {
               {children}
               {content}
             </div>
-            <div className={`${prefix}-cancel`}>{cancelText}</div>
+            <div className={`${prefix}-cancel`} onClick={this.closeAct}>{cancelText}</div>
           </div>
         </div>
       </div>

@@ -38,6 +38,12 @@ export default class SwitchComp extends Component {
           size="20px"
           onChange={this.onChange('isActived1')}
         />
+        <p>加载状态</p>
+        <Switch
+          isActived={isActived1}
+          isLoading={true}
+          onChange={this.onChange('isActived1')}
+        />
         <p>自定义颜色</p>
         <Switch
           isActived={isActived1}

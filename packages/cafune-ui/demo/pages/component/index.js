@@ -11,6 +11,7 @@ import TabBar from './nav/tabbar';
 import Switch from './form/switch';
 
 import ActionSheet from './feedback/actionsheet';
+import Loading from './feedback/loading';
 
 import './style';
 const nameMap = {
@@ -22,7 +23,8 @@ const nameMap = {
   tabs: '标签卡',
   tabbar: '标签栏',
   switch: '开关',
-  actionsheet: '动作面板'
+  actionsheet: '动作面板',
+  loading: '加载'
 };
 
 export const Comp = ({ name }) => {
@@ -48,6 +50,7 @@ export const Comp = ({ name }) => {
           <Switch path="/comp/switch" />
 
           <ActionSheet path="/comp/actionsheet" />
+          <Loading path="/comp/loading" />
         </Router>
       </div>
     </div>

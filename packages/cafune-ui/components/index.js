@@ -7,6 +7,7 @@ export * from './drawer';
 export * from './icon';
 export * from './layout';
 export * from './lazyload';
+export * from './loading';
 export * from './modal';
 export * from './nav-bar';
 export * from './notice-bar';

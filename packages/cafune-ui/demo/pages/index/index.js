@@ -25,6 +25,7 @@ export class Index extends Component {
           </CollapseItem>
           <CollapseItem title="反馈组件" id="feedback">
             <Cell title="ActionSheet 上拉菜单" url="/comp/actionsheet" />
+            <Cell title="Loading 加载" url="/comp/loading" />
           </CollapseItem>
           <CollapseItem title="展示组件" id="display">
             <Cell title="Collapse 折叠面板" url="/comp/collapse" />

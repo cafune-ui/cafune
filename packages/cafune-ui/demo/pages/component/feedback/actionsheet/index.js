@@ -22,16 +22,19 @@ export default class ActionSheetComp extends Component {
         <div onClick={this.showAction('isActionShow1')}>展示面板</div>
         <ActionSheet
           isShow={isActionShow1}
+          title="test title"
           horizon={{
             wrap: false,
-            title: '测试标题',
             list: [
               {
                 name: 'hi',
                 subName: 'hi sub',
                 icon:
                   'https://image.uisdc.com/wp-content/uploads/2018/07/uiii-ps-icon.png',
-                badge: true
+                badge: true,
+                action() {
+                  console.log('ps hi');
+                }
               },
               {
                 name: 'hi2',
@@ -84,6 +87,11 @@ export default class ActionSheetComp extends Component {
               isLoading: true
             }
           ]}
+          onClose={() => {
+            this.setState({
+              isActionShow1: false
+            });
+          }}
         />
       </div>
     );

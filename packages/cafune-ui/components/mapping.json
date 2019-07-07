@@ -118,5 +118,11 @@
     "css": [
       "layout"
     ]
+  },
+  "Loading": {
+    "js": "components/loading",
+    "css": [
+      "loading"
+    ]
   }
 }

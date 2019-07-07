@@ -1,6 +1,7 @@
 import { Component } from 'preact';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import Loading from '../loading';
 /**
  * 开关
  * @example
@@ -61,8 +62,12 @@ class Switch extends Component {
   }) {
     const switchStyle = {};
     if (size) switchStyle.fontSize = size;
-    if (activedColor || inActivedColor)
-      switchStyle.backgroundColor = isActived ? activedColor : inActivedColor;
+    let activeColor = isActived ? '#3f77f6' : '#ccc';
+    if (activedColor || inActivedColor) {
+      activeColor = isActived ? activedColor : inActivedColor;
+      switchStyle.backgroundColor = activeColor;
+    }
+      
     return (
       <div
         className={cx(prefix, {
@@ -72,7 +77,9 @@ class Switch extends Component {
         style={switchStyle}
         onClick={this.clickHandler}
       >
-        <div className={`${prefix}-circle`} />
+        <div className={`${prefix}-circle`}>
+          { isLoading && <Loading size="16px" color={activeColor} /> }
+        </div>
       </div>
     );
   }
