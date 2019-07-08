@@ -9,7 +9,7 @@ function checkIfItem(el) {
 /**
  * 折叠面板
  * @example
- * ```jsx
+ * ```javascript
  * const CollapseItem = Collapse.Item;
  * // ...
  * <Collapse actives={activeCol} onChange={this.onChange}>

@@ -7,7 +7,7 @@ import { setPadding } from '../../util/isomorphic';
 /**
  * 标签栏
  * @example
- * ```jsx
+ * ```javascript
  * const { TabBarItem } = TabBar;
  * export default class TestComp extends Component {
  * state = {

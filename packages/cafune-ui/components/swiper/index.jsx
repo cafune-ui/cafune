@@ -13,7 +13,7 @@ function checkIfItem(el) {
 /**
  * 轮播
  * @example
- * ```jsx
+ * ```javascript
  * <Swiper
  *  initialIndex={0}
  *  showIndicators={true}
@@ -28,7 +28,7 @@ function checkIfItem(el) {
  * ```
  * 自定义指示器
  *
- * ```jsx
+ * ```javascript
  * // ...
  * renderCustom() {
  *   const { current } = this.state;

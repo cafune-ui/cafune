@@ -12,7 +12,7 @@ const uid = () =>
 /**
  * 骨架屏
  * @example
- * ```jsx
+ * ```javascript
  * <Skeleton>
  *   <Circle radius={32} x={32} y={32} />
  *   <Rect radius={4} width={120} height={20} x={80} y={10} />

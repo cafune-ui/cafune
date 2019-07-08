@@ -6,9 +6,7 @@
   "module": "./components/index.js",
   "scripts": {
     "test": "jest --config ./jest.config.js -u",
-    "storybook": "start-storybook -p 6006",
     "build": "./scripts/build.sh",
-    "build-storybook": "build-storybook",
     "new-comp": "node ./scripts/new-component.js",
     "del-comp": "node ./scripts/delete-component.js",
     "doc": "node ./scripts/doc.js"
@@ -49,12 +47,6 @@
     "@babel/plugin-transform-object-assign": "^7.2.0",
     "@babel/plugin-transform-react-constant-elements": "^7.2.0",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
-    "@storybook/addon-actions": "^5.0.8",
-    "@storybook/addon-knobs": "^5.0.8",
-    "@storybook/addon-links": "^5.0.8",
-    "@storybook/addon-notes": "^5.0.8",
-    "@storybook/addons": "^5.0.8",
-    "@storybook/preact": "^5.0.8",
     "autoprefixer": "^9.6.0",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.5",

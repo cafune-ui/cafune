@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 /**
  * 动作栏
  * @example
- * ```jsx
+ * ```javascript
  * <ActionBar
  *   descContent="描述文字"
  *   btnContent="按钮文字"

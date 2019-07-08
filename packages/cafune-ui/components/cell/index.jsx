@@ -4,7 +4,9 @@ import cx from 'classnames';
 import Icon from '../icon';
 import CellGroup from './group';
 import { touchEventMap, getTouch } from '../util/event';
-
+/**
+ * 单元格
+ */
 class Cell extends Component {
   static CellGroup = CellGroup;
   static defaultProps = {

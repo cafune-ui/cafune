@@ -4,7 +4,7 @@ const path = require('path');
 const glob = require('glob');
 const docgen = require('react-docgen');
 
-const mdRoot = path.resolve(process.cwd(), './stories/markdown');
+const mdRoot = path.resolve(process.cwd(), './doc/markdown');
 if (fs.existsSync(mdRoot)) {
   del.sync(mdRoot);
 }
@@ -62,7 +62,7 @@ function generateCompMd(compPath, name, isAppend = false) {
     compTasks[name] = compTasks[name] || {};
     if (!isAppend) {
       if (!fs.existsSync(mainMdPath)) {
-        md += `# ${displayName} - ${desc}\n\n## 引入\n\`\`\`jsx\nimport { ${displayName} } from 'components';\n\`\`\`\n`;
+        md += `# ${displayName} - ${desc}\n\n## 引入\n\`\`\`javascript\nimport { ${displayName} } from 'components';\n\`\`\`\n`;
         if (example) {
           md += `## 使用\n${example}\n`;
         }
@@ -97,13 +97,18 @@ function generateCompMd(compPath, name, isAppend = false) {
 }
 
 const compRoot = path.resolve(process.cwd(), './components/');
+const compList = [];
 glob(`${compRoot}/*/*.jsx`, (err, files) => {
-  files.forEach(async item => {
+  files.forEach(item => {
     const dirName = path.dirname(item);
     generateCompMd(
       item,
       dirName.replace(compRoot, '').replace('/', ''),
       !/index\.jsx?/.test(item)
     );
+    if (/index\.jsx?/.test(item)) {
+      compList.push(dirName.replace(compRoot, '').replace('/', ''));
+    }
   });
+  fs.writeFileSync(path.resolve(process.cwd(), './doc/complist.js'), `export default ${JSON.stringify(compList, null, 2)}`);
 });

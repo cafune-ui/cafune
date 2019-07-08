@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 /**
  * 懒加载包裹组件
  * @example
- * ```jsx
+ * ```javascript
  * <Lazyload imgClass="lazy">
  * // ...
  * <img src="/placeholder" data-src={originalpic} className="lazy" />

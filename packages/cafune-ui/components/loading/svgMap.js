@@ -83,7 +83,7 @@ export default {
       );
     }
   },
-  wave: {
+  ripple: {
     cColor: '#ccc',
     cSize: '60px',
     func(color, size) {

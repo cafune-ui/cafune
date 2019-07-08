@@ -7,7 +7,7 @@ function isImage(icon) {
 /**
  * 图标
  * @example
- * ```jsx
+ * ```javascript
  * // 使用内置图标
  * <Icon icon="back" />
  * // 使用图片地址

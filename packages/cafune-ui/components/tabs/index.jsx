@@ -11,7 +11,7 @@ function checkIfPanel(el) {
 /**
  * 标签卡
  * @example
- * ```jsx
+ * ```javascript
  * class NormalTab extends Component {
  *   state = {
  *     activeId: 'a'
@@ -41,7 +41,7 @@ function checkIfPanel(el) {
  *
  * 单独使用Nav
  *
- * ```jsx
+ * ```javascript
  * const tabsData = [
  *   {
  *     id: 'Sporttrey320',

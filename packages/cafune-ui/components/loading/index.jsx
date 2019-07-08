@@ -7,7 +7,7 @@ const typeMap = Object.keys(svgMap);
 /**
  * 加载
  * @example
- * ```jsx
+ * ```javascript
  * <Loading />
  * <Loading type="spinner" />
  * // ...
@@ -23,7 +23,7 @@ class Loading extends Component {
     /**
      * 加载图标类型
       */
-    type: PropTypes.oneOf(typeMap),
+    type: PropTypes.oneOf(['step', 'spin', 'ripple']),
     /**
      * 加载提示文字
       */
@@ -35,8 +35,7 @@ class Loading extends Component {
     /**
      * 自定义加载图标尺寸
       */
-    size: PropTypes.string,
-    
+    size: PropTypes.string
   };
   getSvg(type) {
     const { color, size } = this.props;

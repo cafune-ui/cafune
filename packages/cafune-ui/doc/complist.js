@@ -1,0 +1,20 @@
+export default [
+  "action-bar",
+  "action-sheet",
+  "cell",
+  "collapse",
+  "icon",
+  "layout",
+  "lazyload",
+  "loading",
+  "modal",
+  "nav-bar",
+  "notice-bar",
+  "pagination",
+  "skeleton",
+  "swiper",
+  "switch",
+  "tab-bar",
+  "tabs",
+  "toast"
+]

@@ -5,7 +5,7 @@ import Loading from '../loading';
 /**
  * 开关
  * @example
- * ```jsx
+ * ```javascript
  * <Switch />
  */
 class Switch extends Component {

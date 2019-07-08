@@ -13,7 +13,7 @@ function changeFn(direction, pn, pages, onChange) {
 /**
  * 分页
  * @example
- * ```jsx
+ * ```javascript
  * <Pagination pn={pn} pages={pages} onChange={this.onPageChange} />
  * ```
  */
