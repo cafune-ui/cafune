@@ -13,6 +13,9 @@ export default (config, env, helpers) => {
       ])
     );
   }
+  config.resolveLoader.alias['caf-md-loader'] = require.resolve(
+    './util/md-loader'
+  );
   config.module.loaders.push({
     test: /\.md$/,
     use: [
@@ -20,16 +23,7 @@ export default (config, env, helpers) => {
         loader: 'html-loader'
       },
       {
-        loader: 'markdown-loader',
-        options: {
-          highlight: function(code, lang, callback) {
-            require('pygmentize-bundled')(
-              { lang: lang, format: 'html' },
-              code,
-              callback
-            );
-          }
-        }
+        loader: 'caf-md-loader'
       }
     ]
   });
