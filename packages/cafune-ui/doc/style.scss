@@ -4,7 +4,7 @@ html, body {
 	background: #f4f4f4;
 }
 
-$sidewidth: 130px;
+$sidewidth: 240px;
 $headheight: 60px;
 .caf {
 	&-markdown {
@@ -35,9 +35,10 @@ $headheight: 60px;
 			white-space: pre-wrap;
 			color: #455a64;
 			font-family: Source Code Pro, Monaco, Inconsolata, monospace;
-			&.language-javascript {
-				background: #eee;
-				padding: 10px;
+			&.language-javascript, &.language-jsx {
+				background: #f3f3f3;
+				padding: 10px 15px;
+				border-radius: 8px;
 			}
 		}
 		pre {
@@ -103,19 +104,20 @@ $headheight: 60px;
 			border-radius: 6px;
 			border-collapse: collapse;
 			color: #34495e;
+			word-wrap: break-word;
 			td {
 				padding: 8px;
 				text-align: center;
 				&:nth-child(1) {
-					width: 70px;
+					width: 6%;
 					text-align: left;
 				}
 				&:nth-child(2) {
-					width: 150px;
+					width: 20%;
 					text-align: left;
 				}
 				&:nth-child(3) {
-					width: 50px;
+					width: 10%;
 				}
 			}
 			code {
@@ -163,12 +165,52 @@ $headheight: 60px;
 			position: absolute;
 			width: $sidewidth;
 			height: calc(100vh - #{$headheight});
-			background: #fff;
 			left: 0;
 			top: 0;
-			transition: transform .3s;
 			z-index: 20;
-			-webkit-overflow-scrolling:touch;
+			&-wrapper {
+				position: relative;
+				width: $sidewidth;
+				transition: transform .3s;
+				height: 100%;
+				overflow: auto;
+				-webkit-overflow-scrolling:touch;
+				z-index: 2;
+				background: #fff;
+			}
+			&-mask {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+				background-color: rgba(0, 0, 0, .4);
+				transition: opacity .3s;
+			}
+			.nav {
+				&-head, &-item, &-name {
+					display: block;
+					padding: 10px 0 10px 20px;
+					color: #333;
+					font-size: 14px;
+				}
+				&-head {
+					font-size: 18px;
+					line-height: 30px;
+					border-bottom: 1px solid #f5f5f5;/* no */
+				}
+				&-name {
+					padding-top: 20px;
+					font-size: 12px;
+					color: #888;
+				}
+				&-item {
+					&:active {
+						color: #1989fa;
+					}
+				}
+			}
 		}
 		&-content {
 			margin-left: calc(#{$sidewidth} + 20px);
@@ -197,6 +239,7 @@ $headheight: 60px;
 		}
 	}
 }
+$sideName: '.caf-doc-side';
 @media (max-width: 960px) {
 	.caf {
 		&-doc {
@@ -210,9 +253,23 @@ $headheight: 60px;
 				}
 			}
 			&-side {
-				transform: translate3d(-100%, 0, 0);
+				width: 0;
+				&-wrapper {
+					transform: translate3d(-100%, 0, 0);
+					transition-delay: .3s;
+				}
+				&-mask {
+					opacity: 0;
+				}
 				&[data-status="1"] {
-					transform: translate3d(0, 0, 0);
+					width: 100%;
+					transform: width .01s .6s;
+					#{$sideName}-wrapper {
+						transform: translate3d(0, 0, 0);
+					}
+					#{$sideName}-mask {
+						opacity: 1;
+					}
 				}
 			}
 			&-content {

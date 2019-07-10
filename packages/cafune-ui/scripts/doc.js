@@ -9,86 +9,121 @@ if (fs.existsSync(mdRoot)) {
   del.sync(mdRoot);
 }
 fs.mkdirSync(mdRoot);
-function generatePropTab(props, showTitle = true) {
-  let md = '';
+
+/**
+ * 格式化属性列表
+ * @param {obj} props 属性对象
+ */
+function getProps(props) {
+  const propsList = [];
   if (props && Object.keys(props).length) {
-    md += `${
-      showTitle ? '\n## 配置项\n' : ''
-    }| 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |\n| --- | --- | --- | --- | --- | --- |\n`;
-    for (const i in props) {
-      const item = props[i];
-      const desc = item.description;
-      const defaultVal = item.defaultValue
-        ? `\`${item.defaultValue.value}\``
-        : '-';
-      const requireTxt = item.required ? '✅ ' : '❌';
-      if (item.type) {
-        let typeName = item.type.name;
+    for (const name in props) {
+      const item = props[name];
+      let { description, defaultValue, required } = item;
+      defaultValue = defaultValue ? defaultValue.value || '-' : '-';
+
+      const type = item.type || item.tsType;
+      if (type) {
+        let typeName = type.name;
         let backupOption = '-';
-        if (typeName === 'enum') {
-          backupOption = item.type.value
-            .map(ele => `\`${ele.value}\``)
-            .join(',');
-        } else if (typeName === 'shape') {
-          const shape = item.type.value;
-          let val = '';
-          for (const i in shape) {
-            const item = shape[i];
-            val += `${i} - ${item.name}(${item.required ? '✅ ' : '❌'})<br>`;
-          }
-          typeName = val;
+        const shape = type.value;
+        let val;
+        switch (typeName) {
+          case 'enum':
+            if (item.type.value.every(ele => /'.+?'/.test(ele.value))) typeName = 'string';
+            backupOption = item.type.value.map(ele => ele.value);
+            break;
+          case 'union':
+            typeName = type.value.map(item => item.name);
+            // typeName = type.raw.split('|');
+            // if (typeName.every(ele => /'.+?'/.test(ele))) typeName = 'string';
+            // if (type.elements) {
+            //   const options = type.elements
+            //     .map(ele => ele.value)
+            //     .filter(ele => !!ele);
+            //   backupOption = options && options.length ? options : '-';
+            // }
+            break;
+          case 'shape':
+            val = [];
+            for (const i in shape) {
+              const item = shape[i];
+              val.push({
+                key: i,
+                name: item.name,
+                required
+              });
+            }
+            typeName = val;
+            break;
+          case 'signature':
+            typeName = type.raw;
+            try {
+              // formate to json string first;
+              let typeJson = typeName
+                .replace(/(\\n|\s)/g, '')
+                .replace(/:(.+?)(?=[,}])/g, `:"$1"`)
+                .replace(/['"]?([\w-]+)['"]?(?=:)/g, `"$1"`);
+              typeJson = JSON.parse(typeJson);
+              typeName = typeJson;
+            } catch (e) {
+              // do nothing when the type is unvalid
+            }
+            break;
         }
-        md += `| ${i} | ${desc} | ${typeName} | ${defaultVal} | ${backupOption} | ${requireTxt} |\n`;
+        propsList.push({
+          name,
+          description,
+          typeName,
+          defaultValue,
+          backupOption,
+          required
+        });
       }
     }
   }
-  return md;
+  return propsList;
 }
-const compTasks = {};
-function generateCompMd(compPath, name, isAppend = false) {
+/**
+ * 格式化docgen 生成的数据
+ * @param {object} doc docgen生成的数据
+ */
+function getInfo(doc) {
+  const { displayName, description, props } = doc;
+  const descs = description.split('@example');
+  let example;
+  let desc = description;
+  if (descs[1]) {
+    example = descs[1];
+    desc = descs[0].replace(/\n/g, '');
+  }
+  const result = {
+    displayName,
+    desc,
+    props: getProps(props)
+  };
+  if (example) result.example = example;
+  return result;
+}
+
+const compInfo = {};
+/**
+ * 生成并格式化组件信息
+ * @param {string} compPath 组件路径
+ * @param {string} name 组件名
+ * @param {boolean} isAppend 是否需要附加到主组件
+ */
+function formateCompDoc(compPath, name, isAppend = false) {
   const content = fs.readFileSync(compPath, 'utf-8');
   try {
-    const doc = docgen.parse(content);
-    let md = '';
-    const { displayName, description, props } = doc;
-    const descs = description.split('@example');
-    let example;
-    let desc = description;
-    if (descs[1]) {
-      example = descs[1];
-      desc = descs[0].replace(/\n/g, '');
-    }
-    const mainMdPath = `${mdRoot}/${name}.md`;
-    compTasks[name] = compTasks[name] || {};
+    const doc = docgen.parse(content, null, null, { filename: compPath });
+    const docInfo = getInfo(doc);
+    compInfo[name] = compInfo[name] || {};
     if (!isAppend) {
-      if (!fs.existsSync(mainMdPath)) {
-        md += `# ${displayName} - ${desc}\n\n## 引入\n\`\`\`javascript\nimport { ${displayName} } from 'components';\n\`\`\`\n`;
-        if (example) {
-          md += `## 使用\n${example}\n`;
-        }
-        md += generatePropTab(props);
-      } else {
-        md = fs.readFileSync(mainMdPath, 'utf-8');
-      }
-      for (const i in compTasks[name].comp) {
-        const item = compTasks[name].comp[i];
-        if (!item.isWritten) {
-          md += item.text;
-          item.isWritten = true;
-        }
-      }
-      fs.writeFileSync(mainMdPath, md);
+      compInfo[name].info = docInfo;
+      compInfo[name].desc = docInfo.desc;
     } else {
-      compTasks[name].comp = compTasks[name].comp || {};
-      if (!compTasks[name].comp[displayName]) {
-        compTasks[name].comp[displayName] = {
-          text: `\n\n---\n\n### ${displayName} 配置项\n\n${generatePropTab(
-            props,
-            false
-          )}`
-        };
-      }
-      generateCompMd(compPath.replace(/\/(\w|-)+\.jsx/, '/index.jsx'), name);
+      compInfo[name].chidlren = (compInfo[name].chidlren || []).concat(docInfo);
     }
   } catch (e) {
     console.log(name);
@@ -96,19 +131,75 @@ function generateCompMd(compPath, name, isAppend = false) {
   }
 }
 
+function generatePropTab(props, showTitle = true) {
+  let md = '';
+  if (props && props.length) {
+    md += `${
+      showTitle ? '\n## 配置项\n' : ''
+    }| 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |\n| --- | --- | --- | --- | --- | --- |\n`;
+    props.forEach(item => {
+      let { name, description, typeName, defaultValue, backupOption } = item;
+      const requireTxt = item.required ? '✅ ' : '❌';
+      if (Array.isArray(backupOption)) {
+        backupOption = backupOption.map(item => `\`${item}\``).join(',');
+      }
+      if (defaultValue !== '-' && typeof defaultValue === 'string') {
+        defaultValue = `\`${defaultValue}\``;
+      }
+      if (typeof typeName !== 'string') {
+        if (Array.isArray(typeName)) {
+          typeName = typeName.map(item => `\`${item}\``).join('/');
+        } else {
+          typeName = `\`${JSON.stringify(typeName)}\``;
+        }
+      }
+      md += `| ${name} | ${description} | ${typeName} | ${defaultValue} | ${backupOption} | ${requireTxt} |\n`;
+    });
+  }
+  return md;
+}
+function generateCompMd(compInfo) {
+  if (compInfo && Object.keys(compInfo).length) {
+    for (const name in compInfo) {
+      let md = '';
+      const comp = compInfo[name];
+      const { info, chidlren = [] } = comp;
+      const { displayName, desc, props, example } = info;
+      md += `# ${displayName} - ${desc}\n\n## 引入\n\`\`\`jsx\nimport { ${displayName} } from 'components';\n\`\`\`\n`;
+      if (example) {
+        md += `## 使用\n${example}\n`;
+      }
+      md += generatePropTab(props);
+      if (chidlren.length) {
+        chidlren.forEach(item => {
+          md += `\n### ${item.displayName} 配置项\n`;
+          md += generatePropTab(item.props, false);
+        });
+      }
+      const mainMdPath = `${mdRoot}/${name}.md`;
+      fs.writeFileSync(mainMdPath, md);
+    }
+  }
+}
+
 const compRoot = path.resolve(process.cwd(), './components/');
-const compList = [];
 glob(`${compRoot}/*/*.jsx`, (err, files) => {
   files.forEach(item => {
     const dirName = path.dirname(item);
-    generateCompMd(
+    formateCompDoc(
       item,
       dirName.replace(compRoot, '').replace('/', ''),
-      !/index\.jsx?/.test(item)
+      !/index\.(t|j)sx?/.test(item)
     );
-    if (/index\.jsx?/.test(item)) {
-      compList.push(dirName.replace(compRoot, '').replace('/', ''));
-    }
   });
-  fs.writeFileSync(path.resolve(process.cwd(), './doc/complist.js'), `export default ${JSON.stringify(compList, null, 2)}`);
+  generateCompMd(compInfo);
+  const newCompInfo = {};
+  for (const i in compInfo) {
+    const item = compInfo[i];
+    newCompInfo[i] = {
+      desc: item.desc,
+      displayName: item.info.displayName
+    }
+  }
+  fs.writeFileSync('./doc/compinfo.json', JSON.stringify(newCompInfo, null, 2));
 });

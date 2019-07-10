@@ -20,8 +20,8 @@ import './style';
 
 export const App = () => (
   <Router>
-    <Home path="/:name?" />
-
+    <Home path="/components/:name?" type="component" />
+    <Home path="/doc/:name?" type="doc" />
     <Comp path="/comp/:name" />
   </Router>
 );

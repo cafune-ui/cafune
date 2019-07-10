@@ -1,9 +1,10 @@
-# ActionSheet - 
+# ActionSheet - 动作面板
 
 ## 引入
-```javascript
+```jsx
 import { ActionSheet } from 'components';
 ```
+
 
 ## 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
@@ -14,6 +15,6 @@ import { ActionSheet } from 'components';
 | closeOnClickMask | 是否在点击遮罩后关闭 | bool | `true` | - | ❌ |
 | horizon | 横向展示的数据 | arrayOf | - | - | ❌ |
 | vertialList | 纵向展示的数据 | arrayOf | - | - | ❌ |
-| title | 标题栏 | union | - | - | ❌ |
+| title | 标题栏 | `element`/`node`/`string` | - | - | ❌ |
 | cancelText | 取消按钮文字 | string | `'取消'` | - | ❌ |
 | onClose | 关闭时触发事件 | func | - | - | ❌ |

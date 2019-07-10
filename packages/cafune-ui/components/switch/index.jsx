@@ -5,8 +5,9 @@ import Loading from '../loading';
 /**
  * 开关
  * @example
- * ```javascript
+ * ```jsx
  * <Switch />
+ * ```
  */
 class Switch extends Component {
   static defaultProps = {

@@ -1,7 +1,7 @@
 # TabBar - 标签栏
 
 ## 引入
-```javascript
+```jsx
 import { TabBar } from 'components';
 ```
 ## 使用
@@ -38,18 +38,12 @@ render({}, {page}) {
 }
 ```
 
-## 配置项
-| 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
-| --- | --- | --- | --- | --- | --- |
 
-
----
 
 ### TabBarItem 配置项
-
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
 | text | 展示文字 | string | - | - | ✅  |
-| id | tab唯一标示 | union | - | - | ✅  |
-| icons | 图标集 | actived - string(❌)<br>normal - string(❌)<br> | - | - | ❌ |
+| id | tab唯一标示 | `number`/`string` | - | - | ✅  |
+| icons | 图标集 | `[object Object]`/`[object Object]` | - | - | ❌ |
 | disabled | 是否禁用 | bool | `false` | - | ❌ |

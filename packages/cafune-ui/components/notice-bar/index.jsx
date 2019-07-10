@@ -2,7 +2,9 @@ import { Component } from 'preact';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from '../icon';
-
+/**
+ * 通知栏
+ */
 const NoticeBar = ({ prefix, text, icon }) => {
   return <div className={prefix}><Icon icon={icon}/>{text}</div>;
 };

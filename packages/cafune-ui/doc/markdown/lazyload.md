@@ -1,7 +1,7 @@
 # Lazyload - 懒加载包裹组件
 
 ## 引入
-```javascript
+```jsx
 import { Lazyload } from 'components';
 ```
 ## 使用
@@ -13,6 +13,8 @@ import { Lazyload } from 'components';
 // ...
 </Lazyload>
 ```
+
+
 
 ## 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |

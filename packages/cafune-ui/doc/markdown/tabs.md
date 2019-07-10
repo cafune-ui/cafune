@@ -1,7 +1,7 @@
 # Tabs - 标签卡
 
 ## 引入
-```javascript
+```jsx
 import { Tabs } from 'components';
 ```
 ## 使用
@@ -61,36 +61,32 @@ const tabsData = [
 
 当需要隐藏掉某个tab但里面涉及的功能需要保留时，使用visable将该tab标签隐藏掉，需要配合activeId 更改
 
+
+
 ## 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
-| activeId | 当前激活id | union | - | - | ✅  |
-| type | 组件类型 | enum | `'slider'` | `'slider'`,`'round'`,`'card'` | ❌ |
+| activeId | 当前激活id | `string`/`number` | - | - | ✅  |
+| type | 组件类型 | string | `'slider'` | `'slider'`,`'round'`,`'card'` | ❌ |
 | onTabChange | 切换tab时回调 | func | - | - | ❌ |
 | navClass | 自定义标签栏类名 | string | - | - | ❌ |
 | maxCount | 最大可容纳标签数 | number | `5` | - | ❌ |
 
 
----
-
 ### Nav 配置项
-
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
-| tabsData | 当前激活id | id - union(✅ )<br>label - string(✅ )<br>actived - bool(✅ )<br>className - string(❌)<br>visable - bool(❌)<br> | - | - | ✅  |
-| type | 组件类型 | enum | `'slider'` | `'slider'`,`'round'`,`'card'` | ❌ |
+| tabsData | 当前激活id | `[object Object]`/`[object Object]`/`[object Object]`/`[object Object]`/`[object Object]` | - | - | ✅  |
+| type | 组件类型 | string | `'slider'` | `'slider'`,`'round'`,`'card'` | ❌ |
 | onChange | 切换tab时回调 | func | - | - | ❌ |
 | navClass | 自定义标签栏类名 | string | - | - | ❌ |
 | maxCount | 最大可容纳标签数 | number | `5` | - | ❌ |
 
 
----
-
 ### TabPanel 配置项
-
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
-| id | 面板的id | union | - | - | ✅  |
+| id | 面板的id | `string`/`number` | - | - | ✅  |
 | label | 标签名字 | string | - | - | ❌ |
 | className | 自定义类名 | string | - | - | ❌ |
 | visable | 是否显示 | bool | `true` | - | ❌ |

@@ -1,26 +1,11 @@
 import { Component } from 'preact';
 import AsyncRoute from 'preact-async-route';
-import CompList from '../../complist';
+import CompInfo from '../../compinfo';
 
 import './style';
-// const nameMap = {
-//   cell: '单元格',
-//   collapse: '折叠面板',
-//   skeleton: '骨架屏',
-//   swiper: '轮播',
-//   pagination: '分页',
-//   tabs: '标签卡',
-//   tabbar: '标签栏',
-//   switch: '开关',
-//   actionsheet: '动作面板',
-//   loading: '加载',
-//   navbar: '导航栏',
-//   noticebar: '通告栏'
-// };
-
 export class Comp extends Component {
   getComp(name) {
-    if (name && CompList.includes(name)) {
+    if (name && CompInfo[name]) {
       return (
         <AsyncRoute
           path={`/${name}`}
@@ -34,7 +19,7 @@ export class Comp extends Component {
     }
   }
   render({ name }) {
-    return this.getComp(name);
+    return <div class="comp">{this.getComp(name)}</div>;
   }
 }
 

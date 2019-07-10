@@ -44,7 +44,7 @@ const confirm = options => {
   });
 };
 /**
- * 渲染模态框到容器中
+ * 模态框
  * @example
  * - 普通弹框
  *

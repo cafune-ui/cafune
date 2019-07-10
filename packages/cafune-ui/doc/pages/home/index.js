@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
-import CompList from '../../complist';
+import CompInfo from '../../compinfo';
+import { compMap } from 'util/get-comp-type';
 import { Icon } from 'cafune';
 
 export class Home extends Component {
@@ -9,7 +10,7 @@ export class Home extends Component {
     shownav: false
   };
   getMd(name) {
-    if (name && CompList.includes(name)) {
+    if (name && CompInfo[name]) {
       import(`../../markdown/${name}.md`).then(data => {
         let mdHtml = data.match(/module.exports = "((.|\n)+)";$/);
         if (mdHtml) {
@@ -25,6 +26,11 @@ export class Home extends Component {
       });
     }
   }
+  componentWillReceiveProps(nextProps) {
+    if (this.props.name !== nextProps.name) {
+      this.getMd(nextProps.name);
+    }
+  }
   componentWillMount() {
     this.getMd(this.props.name);
   }
@@ -33,6 +39,37 @@ export class Home extends Component {
       [name]: !this.state[name]
     });
   };
+  renderSide() {
+    const mainNav = [];
+    for (const i in compMap) {
+      const item = compMap[i];
+      const { prefix, list } = item;
+      const isComps = prefix === 'components';
+      const navItem = (
+        <div class="nav">
+          <h3 class="nav-head">{i}</h3>
+          {list.map((ele, key) => (
+            <div class="nav-block" key={key}>
+              {ele.name && <p class="nav-name">{ele.name}</p>}
+              {ele.list.map(comp => (
+                <a
+                  class="nav-item"
+                  href={`/${prefix}/${comp.url}`}
+                  key={comp.url}
+                >
+                  {isComps
+                    ? `${CompInfo[comp.url].displayName} - ${CompInfo[comp.url].desc}`
+                    : comp.name}
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      );
+      mainNav.push(navItem);
+    }
+    return <div class="caf-doc-side-wrapper">{mainNav}</div>;
+  }
   render({ name }, { markdown, showcode, shownav }) {
     return (
       <div class="caf-doc">
@@ -55,7 +92,11 @@ export class Home extends Component {
         </h1>
         <div class="caf-doc-main">
           <div class="caf-doc-side" data-status={shownav ? 1 : 0}>
-            sidehere
+            <div
+              class="caf-doc-side-mask"
+              onClick={this.toggleStatus('shownav')}
+            />
+            {this.renderSide()}
           </div>
           <div class="caf-doc-content">
             <div

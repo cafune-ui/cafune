@@ -1,9 +1,10 @@
 # Cell - 单元格
 
 ## 引入
-```javascript
+```jsx
 import { Cell } from 'components';
 ```
+
 
 ## 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
@@ -20,10 +21,7 @@ import { Cell } from 'components';
 | swipeList | 右滑菜单 | arrayOf | `[]` | - | ❌ |
 
 
----
-
 ### CellGroup 配置项
-
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
 | prefix | 自定义类名 | string | `"caf-cellgroup"` | - | ❌ |

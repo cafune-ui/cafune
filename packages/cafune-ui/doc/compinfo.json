@@ -1,0 +1,74 @@
+{
+  "action-bar": {
+    "desc": "动作栏",
+    "displayName": "ActionBar"
+  },
+  "action-sheet": {
+    "desc": "动作面板",
+    "displayName": "ActionSheet"
+  },
+  "cell": {
+    "desc": "单元格",
+    "displayName": "Cell"
+  },
+  "collapse": {
+    "desc": "折叠面板",
+    "displayName": "Collapse"
+  },
+  "icon": {
+    "desc": "图标",
+    "displayName": "Icon"
+  },
+  "layout": {
+    "desc": "",
+    "displayName": "Layout"
+  },
+  "lazyload": {
+    "desc": "懒加载包裹组件",
+    "displayName": "Lazyload"
+  },
+  "loading": {
+    "desc": "加载",
+    "displayName": "Loading"
+  },
+  "modal": {
+    "desc": "模态框",
+    "displayName": "Modal"
+  },
+  "nav-bar": {
+    "desc": "导航栏",
+    "displayName": "NavBar"
+  },
+  "notice-bar": {
+    "desc": "通知栏",
+    "displayName": "NoticeBar"
+  },
+  "pagination": {
+    "desc": "分页",
+    "displayName": "Pagination"
+  },
+  "skeleton": {
+    "desc": "骨架屏",
+    "displayName": "Skeleton"
+  },
+  "swiper": {
+    "desc": "轮播",
+    "displayName": "Swiper"
+  },
+  "switch": {
+    "desc": "开关",
+    "displayName": "Switch"
+  },
+  "tab-bar": {
+    "desc": "标签栏",
+    "displayName": "TabBar"
+  },
+  "tabs": {
+    "desc": "标签卡",
+    "displayName": "Tabs"
+  },
+  "toast": {
+    "desc": "消息提示",
+    "displayName": "Toast"
+  }
+}

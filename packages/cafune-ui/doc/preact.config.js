@@ -1,4 +1,5 @@
 import path from 'path';
+import { utils } from 'react-docgen';
 export default (config, env, helpers) => {
   const babelLoader = helpers.getLoadersByName(config, 'babel-loader');
   if (babelLoader) {
@@ -29,6 +30,7 @@ export default (config, env, helpers) => {
   });
   config.resolve.alias = Object.assign({}, config.resolve.alias, {
     cafune: path.resolve(__dirname, '../'),
-    docmd: path.resolve(__dirname, './markdown')
+    docmd: path.resolve(__dirname, './markdown'),
+    util: path.resolve(__dirname, './util')
   });
 };

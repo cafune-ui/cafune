@@ -4,9 +4,6 @@ import cx from 'classnames';
 import Icon from '../icon';
 import Loading from '../loading';
 
-/**
- * 动作面板
- */
 const availableAlign = ['left', 'center', 'right'];
 const dataStruct = (horizon = true) =>
   PropTypes.shape({
@@ -115,6 +112,10 @@ function renderList(list = [], horizon, wrap = false) {
     </div>
   );
 }
+
+/**
+ * 动作面板
+ */
 class ActionSheet extends Component {
   state = {
     isShow: this.props.isShow,
