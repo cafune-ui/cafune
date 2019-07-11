@@ -104,7 +104,7 @@ function renderList(list = [], horizon, wrap = false) {
                 )}
                 {!horizon && hasBadge && Badge}
               </div>
-              { item.isLoading && <Loading size="24px" />}
+              {item.isLoading && <Loading size="24px" />}
             </div>
           );
         })}
@@ -126,7 +126,8 @@ class ActionSheet extends Component {
     isShow: false,
     showMask: true,
     closeOnClickMask: true,
-    cancelText: '取消'
+    cancelText: '取消',
+    showCancel: true
   };
   static propTypes = {
     /**
@@ -168,7 +169,11 @@ class ActionSheet extends Component {
     /**
      * 关闭时触发事件
      */
-    onClose: PropTypes.func
+    onClose: PropTypes.func,
+    /**
+     * 是否显示取消按钮
+     */
+    showCancel: PropTypes.bool
   };
   componentWillReceiveProps(nextProps) {
     if (nextProps.isShow !== this.state.isShow) {
@@ -176,15 +181,15 @@ class ActionSheet extends Component {
         setTimeout(() => {
           this.setState({
             isFadding: false
-          })
-        })
+          });
+        });
       } else {
-        this.closeAct()
+        this.closeAct();
       }
     }
   }
   componentWillUnmount() {
-    console.log('unmounting')
+    console.log('unmounting');
   }
   renderData = (data, horizon, wrap) => {
     let result;
@@ -229,13 +234,16 @@ class ActionSheet extends Component {
   };
   openAct = () => {
     setTimeout(() => {
-      this.setState({
-        isFadding: false
-      }, () => {
-        this.props.onOpen && this.props.onOpen();
-      })
-    }, 100)
-  }
+      this.setState(
+        {
+          isFadding: false
+        },
+        () => {
+          this.props.onOpen && this.props.onOpen();
+        }
+      );
+    }, 100);
+  };
   closeAct = () => {
     this.setState(
       {
@@ -249,7 +257,16 @@ class ActionSheet extends Component {
     );
   };
   render(
-    { prefix, showMask, children, cancelText, closeOnClickMask, title, isShow },
+    {
+      prefix,
+      showMask,
+      children,
+      cancelText,
+      closeOnClickMask,
+      title,
+      isShow,
+      showCancel
+    },
     { isFadding }
   ) {
     const content = this.renderContent();
@@ -267,7 +284,11 @@ class ActionSheet extends Component {
               {children}
               {content}
             </div>
-            <div className={`${prefix}-cancel`} onClick={this.closeAct}>{cancelText}</div>
+            {showCancel && (
+              <div className={`${prefix}-cancel`} onClick={this.closeAct}>
+                {cancelText}
+              </div>
+            )}
           </div>
         </div>
       </div>

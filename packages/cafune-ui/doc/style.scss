@@ -113,11 +113,8 @@ $headheight: 60px;
 					text-align: left;
 				}
 				&:nth-child(2) {
-					width: 20%;
+					width: 28%;
 					text-align: left;
-				}
-				&:nth-child(3) {
-					width: 10%;
 				}
 			}
 			code {
@@ -231,6 +228,7 @@ $headheight: 60px;
 			overflow: hidden;
 			box-sizing: border-box;
 			transition: transform .3s;
+			box-shadow: 0 4px 8px #ccc;
 			iframe {
 				width: 100%;
 				height: 100%;

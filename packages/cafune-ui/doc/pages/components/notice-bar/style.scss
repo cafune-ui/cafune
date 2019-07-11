@@ -1,0 +1,10 @@
+.caf-demo {
+  &__noticebar {
+    & > p {
+      padding: 10px 0;
+    }
+    .caf-noticebar {
+      margin-top: 10px;
+    }
+  }
+}

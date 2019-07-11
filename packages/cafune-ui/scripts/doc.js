@@ -34,7 +34,12 @@ function getProps(props) {
             backupOption = item.type.value.map(ele => ele.value);
             break;
           case 'union':
-            typeName = type.value.map(item => item.name);
+            typeName = type.value.map(item => {
+              if (item.name === 'enum') {
+                return `[${item.value.map(ele => ele.value).join(',')}]`
+              }
+              return item.name;
+            });
             // typeName = type.raw.split('|');
             // if (typeName.every(ele => /'.+?'/.test(ele))) typeName = 'string';
             // if (type.elements) {

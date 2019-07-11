@@ -5,25 +5,26 @@ $name: '.caf-actsheet';
   bottom: 0;
   width: 96%;
   background-color: #fff;
-  border-radius: 12px 12px 0 0;
+  border-radius: 12px;
   overflow: auto;
-  padding-top: 20px;
+  padding-top: 25px;
   transition: transform .3s;
+  margin-bottom: calc(env(safe-area-inset-bottom) + 15px);
   &[data-status='1'] {
     transform: translateY(0);
   }
   &[data-status='0'] {
-    transform: translateY(100%);
+    transform: translateY(110%);
   }
   &::before {
     content: '';
     position: absolute;
-    top: 6px;
+    top: 10px;
     left: 0;
     right: 0;
     margin: auto;
     height: 4px;
-    width: 80px;
+    width: 50px;
     border-radius: 4px;
     background-color: rgba(0, 0, 0, 0.4);
   }
@@ -168,7 +169,7 @@ $name: '.caf-actsheet';
   }
   &-cancel {
     background-color: #f0f0f0;
-    padding: 15px 0 calc(env(safe-area-inset-bottom) + 15px) 0;
+    padding: 15px 0;
     text-align: center;
     font-size: 16px;
   }

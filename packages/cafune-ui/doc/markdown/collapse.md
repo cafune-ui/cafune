@@ -22,6 +22,4 @@ const CollapseItem = Collapse.Item;
 </Collapse>
 ```
 
-
-
 ### CollapseItem 配置项

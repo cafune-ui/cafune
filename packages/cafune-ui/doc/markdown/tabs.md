@@ -61,8 +61,6 @@ const tabsData = [
 
 当需要隐藏掉某个tab但里面涉及的功能需要保留时，使用visable将该tab标签隐藏掉，需要配合activeId 更改
 
-
-
 ## 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
@@ -72,7 +70,6 @@ const tabsData = [
 | navClass | 自定义标签栏类名 | string | - | - | ❌ |
 | maxCount | 最大可容纳标签数 | number | `5` | - | ❌ |
 
-
 ### Nav 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
@@ -81,7 +78,6 @@ const tabsData = [
 | onChange | 切换tab时回调 | func | - | - | ❌ |
 | navClass | 自定义标签栏类名 | string | - | - | ❌ |
 | maxCount | 最大可容纳标签数 | number | `5` | - | ❌ |
-
 
 ### TabPanel 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |

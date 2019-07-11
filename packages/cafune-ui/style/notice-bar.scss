@@ -1,0 +1,67 @@
+$name: '.caf-noticebar';
+@keyframes caf-noticebar-display {
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+@keyframes caf-noticebar-display-infinite {
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+#{$name} {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 40px;
+  line-height: 24px;
+  padding: 0 15px;
+  color: #ed6a0c;
+  background-color: #fffbe8;
+  .caf-icon {
+    min-width: 22px;
+    text-align: left;
+  }
+  &-wrapper {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    height: 24px;
+  }
+  &-content {
+    position: absolute;
+    &__scroll {
+      white-space: nowrap;
+      animation: caf-noticebar-display linear both;
+      &__infinite {
+        animation: caf-noticebar-display-infinite linear infinite both;
+      }
+    }
+    &__ellipsis {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 100%;
+    }
+  }
+  &-action {
+    padding-left: 5px;
+    text-align: right;
+    .caf-icon {
+      text-align: right;
+    }
+  }
+  &__wrapable {
+    height: auto;
+    padding: 8px 15px;
+    #{$name} {
+      &-content {
+        position: relative;
+        white-space: normal;
+      }
+      &-wrapper {
+        height: auto;
+      }
+    }
+  }
+}

@@ -5,7 +5,6 @@
 import { Cell } from 'components';
 ```
 
-
 ## 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
@@ -19,7 +18,6 @@ import { Cell } from 'components';
 | rightIcon | 右侧图标 | string | - | - | ❌ |
 | middle | 是否垂直居中 | bool | - | - | ❌ |
 | swipeList | 右滑菜单 | arrayOf | `[]` | - | ❌ |
-
 
 ### CellGroup 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |

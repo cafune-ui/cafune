@@ -29,6 +29,10 @@ export class Home extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.name !== nextProps.name) {
       this.getMd(nextProps.name);
+      this.setState({
+        showcode: false,
+        shownav: false
+      });
     }
   }
   componentWillMount() {

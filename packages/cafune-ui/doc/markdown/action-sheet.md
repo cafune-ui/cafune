@@ -5,7 +5,6 @@
 import { ActionSheet } from 'components';
 ```
 
-
 ## 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
@@ -18,3 +17,4 @@ import { ActionSheet } from 'components';
 | title | 标题栏 | `element`/`node`/`string` | - | - | ❌ |
 | cancelText | 取消按钮文字 | string | `'取消'` | - | ❌ |
 | onClose | 关闭时触发事件 | func | - | - | ❌ |
+| showCancel | 是否显示取消按钮 | bool | `true` | - | ❌ |
