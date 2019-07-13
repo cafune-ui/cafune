@@ -4,8 +4,8 @@ const path = require('path');
 const { getComponentName, sortByModulePath } = require('./util/comp');
 const styleRoot = path.resolve(process.cwd(), './style');
 const compRoot = path.resolve(process.cwd(), './components');
-const storiesRoot = path.resolve(process.cwd(), './stories');
 const testRoot = path.resolve(process.cwd(), './__test__/components');
+const docRoot = path.resolve(process.cwd(), './doc');
 console.clear();
 const inquirer = require('inquirer');
 const questions = [
@@ -30,23 +30,18 @@ const questions = [
     message: 'Would this component have a style.scss? ',
     default: true
   },
-  {
-    type: 'confirm',
-    name: 'isHasStories',
-    message: 'Would this component have a stories.js? ',
-    default: true
-  }
 ];
 
 inquirer.prompt(questions).then(answers => {
   const { name, isHasStyle, isHasStories } = answers;
   const compName = getComponentName(name);
-  writeMapping(compName, name);
-  writeEntry(compName, name);
+  // writeMapping(compName, name);
+  // writeEntry(compName, name);
   writeComp(compName, name, isHasStyle);
-  if (isHasStories) {
-    writeStories(compName, name);
-  }
+  // if (isHasStories) {
+  //   writeStories(compName, name);
+  // }
+  writeDoc(compName, name);
   writeTestSuit(compName, name);
 });
 
@@ -68,73 +63,35 @@ function writeTestSuit(compName, name) {
   );
 }
 
-function writeStories(compName, name) {
+function writeDoc(compName, name) {
+  const docCompDir = `${docRoot}/pages/components/${name}`;
+  if (!fs.existsSync(docCompDir)) {
+    fs.mkdirSync(docCompDir);
+  } else {
+    console.log(`${compName} already exists, please choose another name.`);
+    process.exit(2);
+  }
   fs.writeFileSync(
-    `${storiesRoot}/${name}.stories.js`,
+    `${docCompDir}/index.js`,
     `
-  import { storiesOf } from '@storybook/preact';
-  import { ${compName} } from 'components';
-  import './style.css';
-  import 'style/${name}.css';
-  import notes from './markdown/${name}.md';
-
-  storiesOf('Component|${compName}', module).add(
-    '${compName}',
-    () => (),
-    {
-      notes
+  import { ${compName} } from 'cafune';
+  import { Component } from 'preact';
+  export default class ${compName}Comp extends Component {
+    render() {
+      return <div />
     }
-  );
-    `
-  );
-  fs.writeFileSync(
-    `${storiesRoot}/markdown/${name}.md`,
-    `
-  ## 引入
-  import { ${compName} } from 'components';
-  ## 使用
-
-  ## 配置项
-  | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
-  | --- | --- | --- | --- | --- | --- |
-    `
-  );
-}
-
-function writeMapping(compName, name) {
-  // add to mapping, for code splitting;
-  console.log(`Adding new components: ${compName} to mapping.json`);
-  const mappingJsonPath = path.resolve(compRoot, 'mapping.json');
-  if (!fs.existsSync(mappingJsonPath)) {
-    fs.writeFileSync(mappingJsonPath, '{}');
   }
-  const mappingJsonFile = fs.readFileSync(mappingJsonPath, 'utf-8');
-  const mappingJson = JSON.parse(mappingJsonFile);
-  mappingJson[compName] = {
-    js: `components/${name}`,
-    css: [name]
-  };
-  fs.writeFileSync(mappingJsonPath, JSON.stringify(mappingJson, null, 2));
+    `
+  );
 }
-
-function writeEntry(compName, name) {
-  const entryPath = path.resolve(compRoot, 'index.js');
-  if (!fs.existsSync(entryPath)) {
-    fs.writeFileSync(entryPath, '');
-  }
-  const entryFile = fs.readFileSync(entryPath, 'utf-8');
-  const modExports = entryFile.trim().split('\n') || [];
-  const compDir = `${compRoot}/${name}`;
-  fs.mkdirSync(compDir);
-  // add to entry, in order to use component by tying 'import { comp } from 'components';
-  console.log(`Adding new components: ${compName} to index.js`);
-  modExports.push(`export * from './${name}';`);
-  sortByModulePath(modExports);
-  fs.writeFileSync(entryPath, `${modExports.join('\n')}\n`);
-}
-
 function writeComp(compName, name, isHasStyle) {
   const compDir = `${compRoot}/${name}`;
+  if (!fs.existsSync(compDir)) {
+    fs.mkdirSync(compDir);
+  } else {
+    console.log(`${compName} already exists, please choose another name.`);
+    process.exit(2);
+  }
   // create js & css to component folder
   fs.writeFileSync(
     `${compDir}/index.jsx`,

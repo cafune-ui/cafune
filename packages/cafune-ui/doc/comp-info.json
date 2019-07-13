@@ -7,6 +7,10 @@
     "desc": "动作面板",
     "displayName": "ActionSheet"
   },
+  "calendar": {
+    "desc": "日历",
+    "displayName": "Calendar"
+  },
   "cell": {
     "desc": "单元格",
     "displayName": "Cell"
@@ -20,7 +24,7 @@
     "displayName": "Icon"
   },
   "layout": {
-    "desc": "",
+    "desc": "布局",
     "displayName": "Layout"
   },
   "lazyload": {

@@ -206,5 +206,5 @@ glob(`${compRoot}/*/*.jsx`, (err, files) => {
       displayName: item.info.displayName
     }
   }
-  fs.writeFileSync('./doc/compinfo.json', JSON.stringify(newCompInfo, null, 2));
+  fs.writeFileSync('./doc/comp-info.json', JSON.stringify(newCompInfo, null, 2));
 });

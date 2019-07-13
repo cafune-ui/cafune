@@ -1,6 +1,6 @@
 import { Component } from 'preact';
 import AsyncRoute from 'preact-async-route';
-import CompInfo from '../../compinfo';
+import CompInfo from '../../comp-info';
 
 import './style';
 export class Comp extends Component {

@@ -1,8 +1,7 @@
 import { h, Component } from 'preact';
-import CompInfo from '../../compinfo';
-import { compMap } from 'util/get-comp-type';
+import compInfo from '../../comp-info';
+import compMap from '../../comp-type';
 import { Icon } from 'cafune';
-
 export class Home extends Component {
   state = {
     markdown: null,
@@ -10,7 +9,7 @@ export class Home extends Component {
     shownav: false
   };
   getMd(name) {
-    if (name && CompInfo[name]) {
+    if (name && compInfo[name]) {
       import(`../../markdown/${name}.md`).then(data => {
         let mdHtml = data.match(/module.exports = "((.|\n)+)";$/);
         if (mdHtml) {
@@ -51,21 +50,26 @@ export class Home extends Component {
       const isComps = prefix === 'components';
       const navItem = (
         <div class="nav">
-          <h3 class="nav-head">{i}</h3>
+          <h3 class="nav-head">{item.name}</h3>
           {list.map((ele, key) => (
             <div class="nav-block" key={key}>
               {ele.name && <p class="nav-name">{ele.name}</p>}
-              {ele.list.map(comp => (
-                <a
-                  class="nav-item"
-                  href={`/${prefix}/${comp.url}`}
-                  key={comp.url}
-                >
-                  {isComps
-                    ? `${CompInfo[comp.url].displayName} - ${CompInfo[comp.url].desc}`
-                    : comp.name}
-                </a>
-              ))}
+              {ele.list.map(comp => {
+                if ((isComps && compInfo[comp.url]) || !isComps) {
+                  return (
+                    <a
+                      class="nav-item"
+                      href={`/${prefix}/${comp.url}`}
+                      key={comp.url}
+                    >
+                      {isComps
+                        ? `${compInfo[comp.url].displayName} - ${compInfo[comp.url].desc}`
+                        : comp.name}
+                    </a>
+                  );
+                }
+                return null;
+              })}
             </div>
           ))}
         </div>
