@@ -153,7 +153,16 @@ function generatePropTab(props, showTitle = true) {
       }
       if (typeof typeName !== 'string') {
         if (Array.isArray(typeName)) {
-          typeName = typeName.map(item => `\`${item}\``).join('/');
+          const isStrList = typeName.every(item => typeof item === 'string');
+          typeName = typeName.map(item => {
+            if (typeof item !== 'string') return `\`${item.key}: ${item.name} ${item.required ? '✅ ' : '❌'}\``
+            return `\`${item}\``;
+          });
+          if (isStrList) {
+            typeName = typeName.join('/');
+          } else {
+            typeName = typeName.join(',');
+          }
         } else {
           typeName = `\`${JSON.stringify(typeName)}\``;
         }

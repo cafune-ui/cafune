@@ -73,7 +73,7 @@ const tabsData = [
 ### Nav 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
-| tabsData | 当前激活id | `[object Object]`/`[object Object]`/`[object Object]`/`[object Object]`/`[object Object]` | - | - | ✅  |
+| tabsData | 当前激活id | `id: union ✅ `,`label: string ✅ `,`actived: bool ✅ `,`className: string ✅ `,`visable: bool ✅ ` | - | - | ✅  |
 | type | 组件类型 | string | `'slider'` | `'slider'`,`'round'`,`'card'` | ❌ |
 | onChange | 切换tab时回调 | func | - | - | ❌ |
 | navClass | 自定义标签栏类名 | string | - | - | ❌ |

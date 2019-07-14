@@ -20,8 +20,8 @@ $headheight: 60px;
 			font-size: 20px;
 			margin: 45px 0 20px;
 		}
-		pre {
-
+		h3 {
+			margin-top: 20px;
 		}
 		code {
 			position: relative;
@@ -105,9 +105,15 @@ $headheight: 60px;
 			border-collapse: collapse;
 			color: #34495e;
 			word-wrap: break-word;
+			th {
+				padding: 14px 0;
+				background-color: #f5f5f5;
+				border: 1px solid #eee;/* no */
+			}
 			td {
-				padding: 8px;
+				padding: 10px;
 				text-align: center;
+				border: 1px solid #eee;/* no */
 				&:nth-child(1) {
 					width: 6%;
 					text-align: left;

@@ -43,5 +43,5 @@ render({}, {page}) {
 | --- | --- | --- | --- | --- | --- |
 | text | 展示文字 | string | - | - | ✅  |
 | id | tab唯一标示 | `number`/`string` | - | - | ✅  |
-| icons | 图标集 | `[object Object]`/`[object Object]` | - | - | ❌ |
+| icons | 图标集 | `actived: string ❌`,`normal: string ❌` | - | - | ❌ |
 | disabled | 是否禁用 | bool | `false` | - | ❌ |
