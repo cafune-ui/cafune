@@ -19,6 +19,10 @@
     "desc": "折叠面板",
     "displayName": "Collapse"
   },
+  "grid": {
+    "desc": "宫格",
+    "displayName": "Grid"
+  },
   "icon": {
     "desc": "图标",
     "displayName": "Icon"

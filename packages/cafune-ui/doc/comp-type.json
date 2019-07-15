@@ -60,6 +60,9 @@
         "name": "展示组件",
         "list": [
           {
+            "url": "grid"
+          },
+          {
             "url": "swiper"
           },
           {

@@ -14,7 +14,7 @@ $name: '.caf-layout';
     &_row-reverse {
       flex-direction: row-reverse;
     }
-    &-column {
+    &_column {
       flex-direction: column;
     }
     &_coloum-reverse {
@@ -45,7 +45,7 @@ $name: '.caf-layout';
     &_between {
       justify-content: space-between;
     }
-    &__around {
+    &_around {
       justify-content: space-around;
     }
   }
@@ -62,7 +62,7 @@ $name: '.caf-layout';
     &_baseline {
       align-items: baseline;
     }
-    &__stretch {
+    &_stretch {
       align-items: stretch;
     }
   }
@@ -82,7 +82,7 @@ $name: '.caf-layout';
     &_around {
       align-content: space-around;
     }
-    &__stretch {
+    &_stretch {
       align-content: stretch;
     }
   }
