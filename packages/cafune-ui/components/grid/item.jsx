@@ -1,10 +1,12 @@
 import { Component } from 'preact';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 /**
  * 宫格单元
  */
 class GridItem extends Component {
+  static displayName = 'GridItem';
   static defaultProps = {
     prefix: 'caf-grid-item'
   };
@@ -22,8 +24,32 @@ class GridItem extends Component {
      */
     text: PropTypes.string
   };
-  render({ prefix, icon, text, children }, {}, { square, center }) {
-    return <div />;
+  render({ prefix, ind, icon, text, children }, {}, { gutter, column, square }) {
+    const percent = `${100 / column}%`;
+    const sty = {
+      flexBasis: percent
+    };
+    let innerStyle = {};
+    if (square) {
+      sty.paddingTop = percent;
+      if (gutter) {
+        innerStyle = {
+          right: gutter,
+          bottom: gutter,
+          height: 'auto'
+        }
+      }
+    } else if (gutter) {
+      sty.paddingRight = gutter;
+      if (ind > column) {
+        sty.marginTop = gutter;
+      }
+    }
+    return (
+      <div class={prefix} style={sty}>
+        <div class={`${prefix}-inner`} style={innerStyle}>{children}</div>
+      </div>
+    );
   }
 }
-export default Grid;
+export default GridItem;

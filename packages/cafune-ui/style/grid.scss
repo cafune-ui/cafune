@@ -1,0 +1,61 @@
+$name: '.caf-grid';
+#{$name} {
+  display: flex;
+  flex-wrap: wrap;
+  &-item {
+    position: relative;
+    box-sizing: border-box;
+    &-inner {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      height: 100%;
+      padding: 15px 10px;
+      background-color: #fff;
+    }
+  }
+  &__square {
+    #{$name}-item {
+      height: 0;
+      &-inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+      }
+    }
+  }
+  &__border {
+    #{$name}-item-inner {
+      &::after {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+        top: -50%;
+        right: -50%;
+        left: -50%;
+        bottom: -50%;
+        border: 0 solid #eee;
+        transform: scale(0.5);
+        z-index: 1;
+        border-width: 0 1px 1px;/* no */
+      }
+    }
+  }
+  &__surround {
+    #{$name}-item-inner {
+      &::after {
+        border-width: 1px;/* no */
+      }
+    }
+  }
+  &__center {
+    #{$name}-item {
+      &-inner {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+  }
+}

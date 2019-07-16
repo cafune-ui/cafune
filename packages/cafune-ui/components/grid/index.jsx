@@ -1,5 +1,6 @@
 import { Component } from 'preact';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import Item from './item';
 /**
  * 宫格
@@ -11,7 +12,8 @@ class Grid extends Component {
     column: 4,
     square: true,
     border: true,
-    gutter: 0,
+    center: true,
+    gutter: 0
   };
   static propTypes = {
     /**
@@ -39,8 +41,39 @@ class Grid extends Component {
      */
     gutter: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   };
-  render() {
-    return <div />;
+  getChildContext() {
+    const { gutter, border, square, center, column } = this.props;
+    return {
+      gutter,
+      square,
+      border,
+      center,
+      column,
+    };
+  }
+  renderChildren() {
+    const { children } = this.props;
+    if (children && children.length) {
+      const result = [];
+      let ind = 0;
+      children.forEach(item => {
+        if (item.nodeName.displayName === 'GridItem') {
+          ind += 1;
+          item.attributes.ind = ind;
+          result.push(item)
+        }
+      });
+      return result;
+    }
+    return null;
+  }
+  render({ prefix, square, border, center, gutter }) {
+    return <div class={cx(prefix, {
+      [`${prefix}__square`]: square,
+      [`${prefix}__border`]: border,
+      [`${prefix}__center`]: center,
+      [`${prefix}__surround`]: border && gutter,
+    })}>{ this.renderChildren() }</div>;
   }
 }
 export default Grid;

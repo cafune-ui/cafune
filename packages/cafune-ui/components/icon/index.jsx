@@ -7,10 +7,13 @@ function isImage(icon) {
 /**
  * 图标
  * @example
- * ```javascript
+ * ```jsx
  * // 使用内置图标
+ * 
  * <Icon icon="back" />
+ * 
  * // 使用图片地址
+ * 
  * <Icon icon="http://someicon.com/someicon.png" />
  * ```
  */
@@ -35,10 +38,25 @@ Icon.defalutProps = {
   tag: 'i',
 }
 Icon.propTypes = {
+  /**
+   * 图标
+    */
   icon: PropType.string.isRequired,
+   /**
+   * 自定义前缀
+    */
   prefix: PropType.string,
+   /**
+   * 图标颜色
+    */
   color: PropType.string,
+   /**
+   * 图标尺寸
+    */
   size: PropType.string,
+   /**
+   * 图标标签名
+    */
   tag: PropType.string
 }
 export default Icon;
