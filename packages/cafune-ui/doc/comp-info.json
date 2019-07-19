@@ -55,6 +55,10 @@
     "desc": "分页",
     "displayName": "Pagination"
   },
+  "pull-refresh": {
+    "desc": "下拉刷新",
+    "displayName": "PullRefresh"
+  },
   "skeleton": {
     "desc": "骨架屏",
     "displayName": "Skeleton"

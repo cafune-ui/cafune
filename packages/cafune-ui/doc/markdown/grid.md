@@ -12,7 +12,7 @@ import { Grid } from 'components';
 | column | 列数 | string | `4` | - | ❌ |
 | square | 是否固定为正方形 | bool | `true` | - | ❌ |
 | border | 是否显示边框 | bool | `true` | - | ❌ |
-| center | 是否居中显示 | bool | - | - | ❌ |
+| center | 是否居中显示 | bool | `true` | - | ❌ |
 | gutter | 单元格间距 | `string`/`number` | `0` | - | ❌ |
 
 ### GridItem 配置项

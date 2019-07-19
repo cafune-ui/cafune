@@ -2,11 +2,13 @@ $name: '.caf-grid';
 #{$name} {
   display: flex;
   flex-wrap: wrap;
+  word-break: break-all;
   &-item {
     position: relative;
     box-sizing: border-box;
     &-inner {
       display: flex;
+      position: relative;
       flex-direction: column;
       box-sizing: border-box;
       height: 100%;

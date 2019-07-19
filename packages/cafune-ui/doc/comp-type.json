@@ -53,6 +53,9 @@
           },
           {
             "url": "toast"
+          },
+          {
+            "url": "pull-refresh"
           }
         ]
       },

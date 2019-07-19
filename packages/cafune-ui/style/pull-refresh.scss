@@ -1,0 +1,68 @@
+@import './variables/color.scss';
+$name: '.caf-pullref';
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#{$name} {
+  // &-content {
+  //   &-wrapper {
+  //     overflow: hidden;
+  //   }
+  //   transform-origin: left top 0px;
+  // }
+
+  // &-transition {
+  //   transition: transform 0.3s;
+  // }
+
+  // &-indicator {
+  //   color: grey;
+  //   text-align: center;
+  //   height: 25px;
+  //   line-height: 25px;
+  // }
+
+  // &-down.#{$name}-indicator {
+  //   margin-top: -25px;
+  // }
+
+  // &-up #{$name}-indicator {
+  //   margin-bottom: -25px;
+  // }
+  position: relative;
+  &-loading {
+    position: fixed;
+    z-index: 99;
+    top: -40px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 3px 4px #ddd;
+    transition: transform .2s;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      height: 15px;
+      width: 15px;
+      border: 2px solid  $color_theme_blue;/* no */
+      border-top: 2px solid transparent;/* no */
+      border-radius: 50%;
+      animation: rotate .8s ease-in-out infinite;
+    }
+  }
+}
