@@ -43,7 +43,7 @@ class Item extends Component {
     }
     return (
       <Tag
-        class={cx(prefix, {
+        className={cx(prefix, {
           [`${prefix}__${col}`]: !!col,
           [`${prefix}__offset_${offset}`]: !!offset
         })}

@@ -46,8 +46,8 @@ class GridItem extends Component {
       }
     }
     return (
-      <div class={prefix} style={sty}>
-        <div class={`${prefix}-inner`} style={innerStyle}>{children}</div>
+      <div className={prefix} style={sty}>
+        <div className={`${prefix}-inner`} style={innerStyle}>{children}</div>
       </div>
     );
   }

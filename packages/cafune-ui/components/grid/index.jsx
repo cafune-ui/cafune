@@ -68,7 +68,7 @@ class Grid extends Component {
     return null;
   }
   render({ prefix, square, border, center, gutter }) {
-    return <div class={cx(prefix, {
+    return <div className={cx(prefix, {
       [`${prefix}__square`]: square,
       [`${prefix}__border`]: border,
       [`${prefix}__center`]: center,

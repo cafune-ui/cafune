@@ -196,8 +196,8 @@ class PullRefresh extends Component {
     }
   }
   render({ prefix, children }) {
-    return <div class={prefix} ref={ this.pullrefresh } >
-      <span class={`${prefix}-loading`} ref={ this.pullrefresh_loading }></span>
+    return <div className={prefix} ref={ this.pullrefresh } >
+      <span className={`${prefix}-loading`} ref={ this.pullrefresh_loading }></span>
       { children }
     </div>
   }

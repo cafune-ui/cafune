@@ -76,7 +76,7 @@ class Layout extends Component {
     const Tag = tag;
     return (
       <Tag
-        class={cx(prefix, {
+        className={cx(prefix, {
           [`${prefix}__direction_${direction}`]: !!direction,
           [`${prefix}__wrap_${wrap}`]: !!wrap,
           [`${prefix}__justify_${justify}`]: !!justify,

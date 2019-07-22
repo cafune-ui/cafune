@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
  * 懒加载包裹组件
  * @example
  * ```javascript
- * <Lazyload imgClass="lazy">
+ * <Lazyload imgclassName="lazy">
  * // ...
  * <img src="/placeholder" data-src={originalpic} className="lazy" />
  * // ...
@@ -14,7 +14,6 @@ import PropTypes from 'prop-types';
  */
 class Lazyload extends Component {
   lazyLoadIns;
-  imgs = [];
   imgsInfo = {};
   static propTypes = {
     /**
@@ -37,17 +36,22 @@ class Lazyload extends Component {
     this.updateImgs();
   }
   updateImgs() {
-    this.imgs = this.container.querySelectorAll(`.${this.props.imgClass}`);
-    const imgsInfo = [];
-    this.imgs.forEach(ele => {
-      imgsInfo.push({
-        dom: ele,
-        isLoaded: false,
-        src: ele.dataset.src
-      });
-    });
-    this.imgsInfo = imgsInfo;
-    this.updateLazy();
+    if (this.container) {
+      const imgsInfo = [];
+      // eslint-disable-next-line prettier/prettier
+      const imgs = this.container.querySelectorAll(`.${this.props.imgClass}`) || [];
+      for (let i = 0, len = imgs.length; i < len; i += 1) {
+        const ele = imgs[i];
+        if (ele.dataset.src !== ele.src) {
+          imgsInfo.push({
+            dom: ele,
+            src: ele.dataset.src
+          });
+        }
+      }
+      this.imgsInfo = imgsInfo;
+      this.updateLazy();
+    }
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll);
@@ -56,8 +60,7 @@ class Lazyload extends Component {
     const { imgsInfo } = this;
     imgsInfo.forEach(ele => {
       /* istanbul ignore else */
-      if (!ele.isLoaded && inViewPort(ele.dom)) {
-        ele.isLoaded = true;
+      if (ele.dom.src !== ele.src && inViewPort(ele.dom)) {
         ele.dom.src = ele.src;
       }
     });
@@ -69,7 +72,7 @@ class Lazyload extends Component {
   lazyContainer = createRef();
   render({ children }) {
     return (
-      <div ref={this.lazyContainer} className="lazyContainer">
+      <div ref={this.lazyContainer} className="caf-lazyload">
         {children}
       </div>
     );

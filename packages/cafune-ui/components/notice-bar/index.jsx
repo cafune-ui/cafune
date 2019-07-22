@@ -133,12 +133,12 @@ class NoticeBar extends Component {
     if (!!action) {
       if (action === 'closable' || action === 'link') {
         rightIcon = (
-          <span class={`${prefix}-action`} onClick={this.onRightClick}>
+          <span className={`${prefix}-action`} onClick={this.onRightClick}>
             <Icon icon={action === 'closable' ? 'wrong' : 'arrow_right'} />
           </span>
         );
       } else {
-        rightIcon = typeof(action) === 'string' ? <span class={`${prefix}-action`}>{action}</span> : action;
+        rightIcon = typeof(action) === 'string' ? <span className={`${prefix}-action`}>{action}</span> : action;
       }
     }
 
@@ -151,9 +151,9 @@ class NoticeBar extends Component {
           style={barStyle}
         >
           {!!icon && <Icon icon={typeof icon === 'string' ? icon : 'notice'} />}
-          <div class={`${prefix}-wrapper`} ref={this.wrap}>
+          <div className={`${prefix}-wrapper`} ref={this.wrap}>
             <p
-              class={cx(`${prefix}-content`, {
+              className={cx(`${prefix}-content`, {
                 [`${prefix}-content__scroll`]: scrollable && !wrapable,
                 [`${prefix}-content__scroll__infinite`]: !isFirst && !wrapable,
                 [`${prefix}-content__ellipsis`]: !scrollable && !wrapable

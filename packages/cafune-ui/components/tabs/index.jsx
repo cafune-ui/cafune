@@ -110,7 +110,7 @@ class Tabs extends Component {
           tabsData={data}
           type={type}
           align={align}
-          navClass={navClass}
+          navclassName={navClass}
           maxCount={maxCount}
           ref={c => (this.tabNav = c)}
         />
