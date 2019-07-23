@@ -39,6 +39,9 @@
           },
           {
             "url": "calendar"
+          },
+          {
+            "url": "stepper"
           }
         ]
       },

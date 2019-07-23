@@ -1,0 +1,71 @@
+$name: '.caf-stepper';
+$normalColor: #eee;
+$disabledColor: #f2f2f2;
+#{$name} {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 32px;
+  &-input {
+    flex: 1;
+    height: 100%;
+    max-width: 40px;
+    border-top: 1px solid $normalColor;
+    border-bottom: 1px solid $normalColor;
+    box-sizing: border-box;
+    input {
+      border: none;
+      appearance: none;
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      outline: none;
+    }
+
+    &__disabled {
+      input {
+        color: #aaa;
+      }
+    }
+  }
+  
+  &-btn {
+    position: relative;
+    display: inline-block;
+    width: 32px;
+    height: 100%;
+    background-color: $normalColor;
+    &__disabled {
+      color: #aaa;
+      background-color: $disabledColor;
+    }
+    &__minus {
+      border-radius: 32px 0 0 32px;
+    }
+    &__plus {
+      border-radius: 0 32px 32px 0;
+    }
+    &__minus::before, &__plus::before, &__plus::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      background-color: currentColor;
+    }
+    &__minus::before {
+      width: 12px;
+      height: 1px;
+    }
+    &__plus::before, &__plus::after {
+      width: 12px;
+      height: 1px;
+    }
+    &__plus::after {
+      transform: rotate(90deg);
+    }
+  }
+}

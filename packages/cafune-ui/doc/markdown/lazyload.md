@@ -7,7 +7,7 @@ import { Lazyload } from 'components';
 ## 使用
 
 ```javascript
-<Lazyload imgClass="lazy">
+<Lazyload imgclassName="lazy">
 // ...
 <img src="/placeholder" data-src={originalpic} className="lazy" />
 // ...

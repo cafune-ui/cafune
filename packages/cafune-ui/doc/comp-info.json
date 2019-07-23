@@ -59,9 +59,17 @@
     "desc": "下拉刷新",
     "displayName": "PullRefresh"
   },
+  "scroller": {
+    "desc": "",
+    "displayName": "Scroller"
+  },
   "skeleton": {
     "desc": "骨架屏",
     "displayName": "Skeleton"
+  },
+  "stepper": {
+    "desc": "步进器",
+    "displayName": "Stepper"
   },
   "swiper": {
     "desc": "轮播",
