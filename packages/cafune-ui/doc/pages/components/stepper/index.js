@@ -69,6 +69,17 @@ export default class StepperComp extends Component {
           }
           middle
         />
+        <Cell
+          title="只读"
+          value={
+            <Stepper
+              value={val4}
+              readOnly
+              onChange={this.changeHandler('val4')}
+            />
+          }
+          middle
+        />
       </div>
     );
   }

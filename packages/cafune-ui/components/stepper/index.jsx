@@ -45,10 +45,10 @@ class Stepper extends Component {
      * 是否限定为整数
      */
     integerOnly: PropTypes.bool,
-    // /**
-    //  * 数值是否只读
-    //  */
-    // readOnly: PropTypes.bool,
+    /**
+     * 数值是否只读
+     */
+    readOnly: PropTypes.bool,
     /**
      * 数值改变时回调
      */
@@ -81,6 +81,7 @@ class Stepper extends Component {
       if (integerOnly && +tarVal % 1 !== 0) final = Math.round(tarVal);
     }
     if (final && final !== tarVal) {
+      console.log(final);
       $target.value = final;
     }
     onChange($target.value, 0);
@@ -101,14 +102,18 @@ class Stepper extends Component {
             [`${prefix}-input__disabled`]: disabled
           })}
         >
-          <input
-            aria-valuemin={min}
-            aria-valuemax={max}
-            disabled={disabled}
-            aria-valuenow={value}
-            value={value}
-            onKeyUp={this.onInputChange}
-          />
+          {readOnly ? (
+            <p className={`${prefix}-input-content`}>{value}</p>
+          ) : (
+            <input
+              aria-valuemin={min}
+              aria-valuemax={max}
+              disabled={disabled}
+              aria-valuenow={value}
+              value={value}
+              onKeyUp={this.onInputChange}
+            />
+          )}
         </div>
         <span
           className={cx(`${prefix}-btn`, `${prefix}-btn__plus`, {
