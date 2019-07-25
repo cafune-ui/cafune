@@ -42,6 +42,9 @@
           },
           {
             "url": "stepper"
+          },
+          {
+            "url": "search-bar"
           }
         ]
       },
@@ -79,6 +82,9 @@
           },
           {
             "url": "lazyload"
+          },
+          {
+            "url": "steps"
           }
         ]
       },

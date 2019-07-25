@@ -63,6 +63,10 @@
     "desc": "",
     "displayName": "Scroller"
   },
+  "search-bar": {
+    "desc": "搜索栏",
+    "displayName": "SearchBar"
+  },
   "skeleton": {
     "desc": "骨架屏",
     "displayName": "Skeleton"
@@ -70,6 +74,10 @@
   "stepper": {
     "desc": "步进器",
     "displayName": "Stepper"
+  },
+  "steps": {
+    "desc": "",
+    "displayName": "Steps"
   },
   "swiper": {
     "desc": "轮播",
