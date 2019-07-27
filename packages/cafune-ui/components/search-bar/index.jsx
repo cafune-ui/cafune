@@ -37,7 +37,7 @@ function clearNextFrameAction(nextFrameId) {
 class SearchBar extends Component {
   static defaultProps = {
     prefix: 'caf-search',
-    align: 'left',
+    align: 'center',
     leftIcon: 'search'
   };
   static propTypes = {
@@ -68,10 +68,6 @@ class SearchBar extends Component {
      * 内容变更时回调
      */
     onChange: PropTypes.func,
-    /**
-     * 输入款对齐方式
-     */
-    align: PropTypes.oneOf(['left', 'right']),
     /**
      * 左侧按钮图标（参考 `Icon` 组件）
      */
@@ -120,19 +116,29 @@ class SearchBar extends Component {
     };
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.value && nextProps.value !== this.state.value) {
+    if ('value' in nextProps && nextProps.value !== this.state.value) {
       this.setState({
         value: nextProps.value
       });
     }
   }
-  actionSize = 0
+  actionSize = 0;
   componentDidMount() {
+    this.componentDidUpdate();
+  }
+  componentDidUpdate() {
     if (this.actionRef && this.actionRef.current) {
-      const $actionBtn = this.actionRef.current;
-      const actionSize = $actionBtn.getBoundingClientRect().width;
-      $actionBtn.style = `margin-right: ${-1 * actionSize}px`;
-      this.actionSize = actionSize;
+      let { action } = this.props;
+      action = Object.assign({}, actionDefault[action.type], action);
+      const { focus } = this.state;
+      if (!action.keepShow && !focus) {
+        const $actionBtn = this.actionRef.current;
+        const actionStyle = window.getComputedStyle($actionBtn);
+        const actionSize =
+          $actionBtn.offsetWidth + parseInt(actionStyle.marginLeft, 10);
+        $actionBtn.style = `margin-right: ${-1 * actionSize}px`;
+        this.actionSize = actionSize;
+      }
     }
   }
   onBlurTimeout;
@@ -142,12 +148,39 @@ class SearchBar extends Component {
       this.onBlurTimeout = null;
     }
   }
+  clear = () => {
+    if (!('value' in this.props)) {
+      this.setState({ value: '' });
+    }
+    if (this.props.onChange) {
+      this.props.onChange('');
+    }
+  };
   onChange = e => {
-    this.props.onChange && this.props.onChange();
+    const value = e.target.value;
+    if (!('value' in this.props)) {
+      this.setState({ value });
+    }
+    if (this.props.onChange) {
+      this.props.onChange(value);
+    }
   };
   onConfirm = e => {
-    e.preventDefault();
-    this.props.onConfirm && this.props.onConfirm();
+    e && e.preventDefault();
+    let val = '';
+     if (this.inputRef && this.inputRef.current) {
+      val = this.inputRef.current.value;
+    } else {
+      val = this.state.value;
+    }
+    this.props.onConfirm && this.props.onConfirm(val);
+  };
+  onCancel = () => {
+    if (this.props.onCancel) {
+      this.props.onCancel(this.state.value || '');
+    } else {
+      this.clear();
+    }
   };
   onFocus = () => {
     this.setState({
@@ -173,6 +206,7 @@ class SearchBar extends Component {
   };
   inputRef = createRef();
   actionRef = createRef();
+  formRef = createRef();
   render(
     { prefix, placeholder, maxLength, action, leftIcon },
     { value, focus }
@@ -183,12 +217,12 @@ class SearchBar extends Component {
       isBtnHide = !action.keepShow && !focus;
     }
     return (
-      <form className={prefix} onSubmit={this.onConfirm}>
+      <form
+        className={prefix}
+        onSubmit={this.onConfirm}
+      >
         <div className={`${prefix}-input`}>
-          <div className={`${prefix}-input-ph`}>
-            <Icon icon={leftIcon} />
-            <div className={``}>{placeholder}</div>
-          </div>
+          <Icon icon={leftIcon} />
           <input
             type="search"
             placeholder={placeholder}
@@ -205,6 +239,14 @@ class SearchBar extends Component {
             className={cx(`${prefix}-action`, {
               [`${prefix}-action__hide`]: isBtnHide
             })}
+            onClick={() => {
+              if (action.type === 'cancel') {
+                this.onCancel()
+              } else if (action.type === 'confirm') {
+                this.onConfirm();
+              }
+              action.onClick();
+            }}
             style={{ marginRight: isBtnHide ? `${this.actionSize * -1}px` : 0 }}
             ref={this.actionRef}
           >
