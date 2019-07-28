@@ -76,7 +76,7 @@
     "displayName": "Stepper"
   },
   "steps": {
-    "desc": "",
+    "desc": "步骤条",
     "displayName": "Steps"
   },
   "swiper": {

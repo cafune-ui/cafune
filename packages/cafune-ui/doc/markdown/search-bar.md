@@ -14,7 +14,6 @@ import { SearchBar } from 'components';
 | onConfirm | 确定搜索时回调，支持`enter` 触发 | func | - | - | ❌ |
 | onCancel | 取消操作时回调 | func | - | - | ❌ |
 | onChange | 内容变更时回调 | func | - | - | ❌ |
-| align | 输入款对齐方式 | string | `'left'` | `'left'`,`'right'` | ❌ |
-| leftIcon | 左侧按钮图标（参考 `Icon` 组件） | string | - | - | ❌ |
+| leftIcon | 左侧按钮图标（参考 `Icon` 组件） | string | `'search'` | - | ❌ |
 | addition | 搜索框右侧附加功能 | `icon: string ❌`,`onClick: func ❌` | - | - | ❌ |
-| action | 右侧功能按钮 | `type: enum ❌`,`text: string ❌`,`onClick: func ❌` | - | - | ❌ |
+| action | 右侧功能按钮 | `type: enum ❌`,`text: string ❌`,`keepShow: bool ❌`,`onClick: func ❌` | - | - | ❌ |
