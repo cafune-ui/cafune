@@ -1,6 +1,7 @@
 $stepsName: '.caf-steps';
-$stepName: '.caf-steps';
-
+$stepName: '.caf-step';
+$color_success: #2dada8;
+$color_error: #2dada8;
 #{$stepsName} {
   display: flex;
   box-sizing: border-box;
@@ -8,18 +9,179 @@ $stepName: '.caf-steps';
   * {
     box-sizing: border-box;
   }
-  &__vertical {
-    display: block;
-  }
   #{$stepName} {
     position: relative;
-    display: inline-block;
-    flex: 1;
+    &-tail {
+      position: absolute;
+      &::before, &::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: -2px;
+      }
+      &::before {
+        background-color: #e1e1e1;
+      }
+      &::after {
+        background-color: $color_success;
+        transition: all .3s ease-in-out;
+      } 
+    }
     &-icon {
-
+      width: 18px;
+      height: 18px;
+      margin: auto;
+      text-align: center;
+      &-decimal {
+        display: inline-block;
+        height: 18px;
+        line-height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        color: #fff;
+        background-color: #ccc;
+      }
+      &-circle {
+        display: inline-block;
+        height: 6px;
+        width: 6px;
+        margin: auto;
+        border-radius: 50%;
+        background-color: #ccc;
+      }
     }
     &-content {
+      &-desc {
+        font-size: 12px;
+        color: #999;
+      }
+      &-title {
+        font-size: 14px;
+        color: #333;
+        & +  #{$stepName}-content-desc {
+          margin-top: 4px;
+        }
+      }
+    }
+    &__process {
+      #{$stepName} {
+        &-icon {
+          &-decimal, &-circle {
+            background-color: $color_success;
+          }
+        }
+      }
+    }
+    &__pend {
 
+    }
+    &__finish {
+      #{$stepName} {
+        &-icon {
+          &-decimal {
+            background-color: $color_success;
+          }
+        }
+      }
+    }
+    &__error {
+
+    }
+    &:last-child {
+      #{$stepName} {
+        position: relative;
+        &-tail {
+          &::before, &::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  &__vertical {
+    display: block;
+    #{$stepName} {
+      display: block;
+      &-tail {
+        width: 1px;
+        height: 70%;
+        margin-top: 8%;
+        left: 10px;
+        top: 0;
+        &::before {
+          width: 1px;
+          height: 100%;
+        }
+        &::after {
+          width: 1px;
+          height: 0;
+        }
+      }
+      &-icon {
+        float: left;
+      }
+      &-content {
+        margin-left: 30px;
+      }
+      & + #{$stepName} {
+        margin-top: 20px;
+      }
+    }
+  }
+  &__horizontal {
+    text-align: center;
+    #{$stepName} {
+      display: inline-block;
+      flex: 1;
+      &-tail {
+        height: 1px;
+        width: 50%;
+        margin-left: 75%;
+        top: 8px;
+        left: 0;
+        &::before {
+          height: 1px;
+          width: 100%;
+        }
+        &::after {
+          height: 1px;
+          width: 0;
+        }
+      }
+      &-content {
+        margin-top: 8px;
+      }
+      &__finish, &__error {
+        #{$stepName} {
+          &-tail {
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+      &__finish {
+        #{$stepName} {
+          &-icon {
+            color: $color_success;
+            &-circle {
+              background-color: $color_success;
+            }
+          }
+        }
+      }
+      &__error {
+        #{$stepName} {
+          &-icon {
+            color: $color_success;
+            &-circle {
+              background-color: $color_success;
+            }
+          }
+        }
+      }
     }
   }
 }

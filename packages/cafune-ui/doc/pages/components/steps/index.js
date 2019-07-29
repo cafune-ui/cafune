@@ -10,16 +10,16 @@ const stepsArr = [
     icon: { error: 'search', process: 'notice' },
     desc: 'now is the step 3'
   },
-  { title: 'Step 4' }
+  { desc: 'this is the step 4' }
 ];
 export default class StepsComp extends Component {
   state = {
-    current: 0
+    current: 1
   };
   nextStep = () => {
-    const { current } = this.state.current;
+    const { current } = this.state;
     this.setState({
-      current: current < stepsArr.length ? 0 : current + 1
+      current: current === stepsArr.length ? 0 : current + 1
     });
   };
   renderSteps() {
@@ -28,6 +28,7 @@ export default class StepsComp extends Component {
   render({}, { current }) {
     return (
       <div>
+        <div onClick={this.nextStep}>下一步</div>
         <p class="caf-demo-title">默认用法</p>
         <Steps step={current}>{this.renderSteps()}</Steps>
         <p class="caf-demo-title">数字进度</p>

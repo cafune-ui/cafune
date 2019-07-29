@@ -4,7 +4,7 @@ import cx from 'classnames';
 import Icon from '../icon';
 const defaultIconMap = (prefix, status, isDecimal, ind) => {
   if (isDecimal) {
-    return <i className={`${prefix}-decimal`}>{ind}</i>;
+    return <span className={`${prefix}-icon-decimal`}>{ind}</span>;
   } else {
     if (status === 'finish') {
       return (
@@ -20,7 +20,7 @@ const defaultIconMap = (prefix, status, isDecimal, ind) => {
         </span>
       );
     }
-    return <i className={`${prefix}-circle`} />;
+    return <i className={`${prefix}-icon-circle`} />;
   }
 };
 /**
@@ -114,9 +114,10 @@ class Step extends Component {
   render({ prefix, title, desc, status }) {
     return (
       <div className={cx(prefix, `${prefix}__${status}`)}>
+        <div className={`${prefix}-tail`}></div>
         <div className={`${prefix}-icon`}>{this.renderIcon()}</div>
         <div className={`${prefix}-content`}>
-          <div className={`${prefix}-content-title`}>{title}</div>
+          {!!title && <div className={`${prefix}-content-title`}>{title}</div>}
           {!!desc && <div className={`${prefix}-content-desc`}>{desc}</div>}
         </div>
       </div>
