@@ -129,6 +129,7 @@ $color_error: #d41616;
 
   &__vertical {
     display: block;
+    padding: 0 20px;
     #{$stepName} {
       display: block;
       height: 35px;
@@ -167,6 +168,7 @@ $color_error: #d41616;
     }
   }
   &__horizontal {
+    padding: 15px 0;
     text-align: center;
     #{$stepName} {
       display: inline-block;

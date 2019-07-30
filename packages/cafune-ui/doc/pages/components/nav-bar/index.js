@@ -1,10 +1,11 @@
 import { Component } from 'preact';
 import { NavBar } from 'cafune';
+import './style';
 
 export default class Page extends Component {
   render() {
     return (
-      <div>
+      <div class="caf-demo-page">
         <NavBar
           isFixed
           left={{

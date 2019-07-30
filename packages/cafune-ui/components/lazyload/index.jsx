@@ -14,7 +14,7 @@ import PropTypes from 'prop-types';
  */
 class Lazyload extends Component {
   lazyLoadIns;
-  imgsInfo = {};
+  imgsInfo = [];
   static propTypes = {
     /**
      * 懒加载图片类名
