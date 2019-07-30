@@ -1,7 +1,7 @@
 $stepsName: '.caf-steps';
 $stepName: '.caf-step';
-$color_success: #2dada8;
-$color_error: #2dada8;
+$color_success: #5b97e6;
+$color_error: #d41616;
 #{$stepsName} {
   display: flex;
   box-sizing: border-box;
@@ -13,7 +13,8 @@ $color_error: #2dada8;
     position: relative;
     &-tail {
       position: absolute;
-      &::before, &::after {
+      &::before,
+      &::after {
         content: '';
         display: inline-block;
         position: absolute;
@@ -25,14 +26,15 @@ $color_error: #2dada8;
       }
       &::after {
         background-color: $color_success;
-        transition: all .3s ease-in-out;
-      } 
+        transition: all 0.3s ease-in-out;
+      }
     }
     &-icon {
       width: 18px;
       height: 18px;
       margin: auto;
       text-align: center;
+      transition: all 0.3s ease-in-out;
       &-decimal {
         display: inline-block;
         height: 18px;
@@ -41,6 +43,7 @@ $color_error: #2dada8;
         border-radius: 50%;
         color: #fff;
         background-color: #ccc;
+        font-size: 12px;
       }
       &-circle {
         display: inline-block;
@@ -53,13 +56,15 @@ $color_error: #2dada8;
     }
     &-content {
       &-desc {
+        margin-top: 4px;
         font-size: 12px;
         color: #999;
       }
       &-title {
+        line-height: 20px;
         font-size: 14px;
         color: #333;
-        & +  #{$stepName}-content-desc {
+        & + #{$stepName}-content-desc {
           margin-top: 4px;
         }
       }
@@ -67,32 +72,54 @@ $color_error: #2dada8;
     &__process {
       #{$stepName} {
         &-icon {
-          &-decimal, &-circle {
+          &-decimal,
+          &-circle {
             background-color: $color_success;
           }
         }
       }
     }
-    &__pend {
-
-    }
     &__finish {
       #{$stepName} {
+        color: $color_success;
         &-icon {
+          color: $color_success;
+          &-circle {
+            background-color: $color_success;
+          }
           &-decimal {
             background-color: $color_success;
           }
         }
       }
     }
-    &__error {
 
+    &__error {
+      #{$stepName} {
+        &-tail::after {
+          background-color: $color_error;
+        }
+        &-icon {
+          color: $color_error;
+          &-circle {
+            background-color: $color_error;
+          }
+          &-decimal {
+            background-color: $color_error;
+          }
+        }
+        &-content-title {
+          color: $color_error;
+        }
+      }
     }
-    &:last-child {
+
+    &:first-child {
       #{$stepName} {
         position: relative;
         &-tail {
-          &::before, &::after {
+          &::before,
+          &::after {
             display: none;
           }
         }
@@ -104,12 +131,12 @@ $color_error: #2dada8;
     display: block;
     #{$stepName} {
       display: block;
+      height: 35px;
       &-tail {
         width: 1px;
-        height: 70%;
-        margin-top: 8%;
+        height: 65%;
         left: 10px;
-        top: 0;
+        top: -90%;
         &::before {
           width: 1px;
           height: 100%;
@@ -128,6 +155,15 @@ $color_error: #2dada8;
       & + #{$stepName} {
         margin-top: 20px;
       }
+      &__finish, &__error, &__process {
+        #{$stepName} {
+          &-tail {
+            &::after {
+              height: 100%;
+            }
+          }
+        }
+      }
     }
   }
   &__horizontal {
@@ -138,9 +174,8 @@ $color_error: #2dada8;
       &-tail {
         height: 1px;
         width: 50%;
-        margin-left: 75%;
         top: 8px;
-        left: 0;
+        left: -25%;
         &::before {
           height: 1px;
           width: 100%;
@@ -153,7 +188,7 @@ $color_error: #2dada8;
       &-content {
         margin-top: 8px;
       }
-      &__finish, &__error {
+      &__finish, &__error, &__process {
         #{$stepName} {
           &-tail {
             &::after {
@@ -162,26 +197,7 @@ $color_error: #2dada8;
           }
         }
       }
-      &__finish {
-        #{$stepName} {
-          &-icon {
-            color: $color_success;
-            &-circle {
-              background-color: $color_success;
-            }
-          }
-        }
-      }
-      &__error {
-        #{$stepName} {
-          &-icon {
-            color: $color_success;
-            &-circle {
-              background-color: $color_success;
-            }
-          }
-        }
-      }
+
     }
   }
 }

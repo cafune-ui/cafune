@@ -4,17 +4,22 @@ import { Component } from 'preact';
 
 const stepsArr = [
   { title: 'Step 1', desc: 'this is the step 1' },
-  { title: 'Step 2', icons: { pend: 'search', finish: 'notice' } },
+  {
+    title: 'Step 2',
+    icons: { pend: 'search', finish: 'notice' },
+    status: 'error'
+  },
   {
     title: 'Step 3',
     icon: { error: 'search', process: 'notice' },
     desc: 'now is the step 3'
   },
-  { desc: 'this is the step 4' }
+  { title: 'Step 4', desc: 'this is the step 4' },
+  { title: 'Step 5' }
 ];
 export default class StepsComp extends Component {
   state = {
-    current: 1
+    current: 3
   };
   nextStep = () => {
     const { current } = this.state;
