@@ -1,0 +1,30 @@
+.caf-btn {
+  display: flex;
+  border-radius: 6px;
+  &-icon {
+
+  }
+  &-text {
+
+  }
+  &__t {
+    &_default {
+
+    }
+    &__primary {
+  
+    }
+    &__warning {
+  
+    }
+  }
+  &__ghost {
+
+  }
+  &__round {
+
+  }
+  &__square {
+    border-radius: 0;
+  }
+}

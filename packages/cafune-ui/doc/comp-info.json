@@ -7,6 +7,10 @@
     "desc": "动作面板",
     "displayName": "ActionSheet"
   },
+  "button": {
+    "desc": "按钮",
+    "displayName": "Button"
+  },
   "calendar": {
     "desc": "日历",
     "displayName": "Calendar"
