@@ -3,6 +3,16 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from '../icon';
 import Loading from '../loading';
+
+const typeColor = {
+  normal: '#ccc',
+  primary: '#4f81bf',
+  warning: '#e46060'
+};
+const defaultLoadingInfo = {
+  type: 'spinner',
+  size: '18px'
+};
 /**
  * 按钮
  * @example
@@ -44,15 +54,15 @@ class Button extends Component {
       /**
        * 按钮图标（加载状态时会被加载图标覆盖）
        */
-      icon: PropTypes.oneOfType([
+      type: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.node,
         PropTypes.element
       ]),
       /**
-       * 图标位置
+       * 图标位置，当为`left` 或`right` 时，图标将出现在文字旁边。也可传入`{left: 'xx'. right: 'xx' }`来绝对定位图标
        */
-      position: PropTypes.oneOf(['left', 'right'])
+      position: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     }),
     /**
      * 是否禁用
@@ -63,9 +73,22 @@ class Button extends Component {
      */
     loading: PropTypes.bool,
     /**
-     * 加载类型
+     * 加载图标信息
      */
-    loadingType: PropTypes.oneOf(['step', 'spin', 'ripple']),
+    loadingInfo: PropTypes.shape({
+      /**
+       * 加载图标类型
+       */
+      type: PropTypes.oneOf(['step', 'spin', 'ripple']),
+      /**
+       * 自定义颜色
+       */
+      color: PropTypes.string,
+      /**
+       * 自定义加载图标尺寸
+       */
+      size: PropTypes.string
+    }),
     /**
      * 背景渐变
      */
@@ -101,13 +124,16 @@ class Button extends Component {
     ghost,
     disabled,
     loading,
-    loadingType,
-    gradient
+    loadingInfo,
+    gradient,
+    block,
+    radius
   }) {
     const btnStyle = {};
     if (gradient) {
-      const { angle = 0, from = '', to = '' } = gradient;
+      const { angle = 0, from = '', to = '', color = '#fff' } = gradient;
       btnStyle.backgroundImage = `linear-gradient(${angle}deg, ${from} 0, ${to} 100%)`;
+      btnStyle.color = color;
     }
     let radiusType;
     if (typeof radius === 'string') {
@@ -116,14 +142,35 @@ class Button extends Component {
       radiusType = radius ? 'round' : 'square';
     }
     let btnIcon = null;
+    const iconStyle = {};
     if (loading) {
-      btnIcon = <Loading type={loadingType} />;
+      loadingInfo = Object.assign({}, defaultLoadingInfo, loadingInfo);
+      btnIcon = (
+        <Loading
+          type={loadingInfo.type}
+          size={loadingInfo.size}
+          color={
+            loadingInfo.color ||
+            (ghost ? typeColor[type] : type === 'default' ? '#ccc' : '#fff')
+          }
+        />
+      );
     } else if (icon) {
-      btnIcon = typeof icon === 'string' ? <Icon icon={icon} /> : icon;
+      const { type, position } = icon;
+      btnIcon = typeof type === 'string' ? <Icon icon={type} /> : type;
+      if (position) {
+        if (position === 'left' || position === 'right') {
+        } else if (position.left || position.right) {
+          iconStyle.position = 'absolute';
+          position.left && (iconStyle.left = position.left);
+          position.right && (iconStyle.right = position.right);
+        }
+      }
     }
     return (
       <a
         className={cx(prefix, `${prefix}__t_${type}`, `${prefix}__s_${size}`, {
+          [`${prefix}__block`]: block,
           [`${prefix}__disabled`]: disabled,
           [`${prefix}__loading`]: loading,
           [`${prefix}__ghost`]: ghost,

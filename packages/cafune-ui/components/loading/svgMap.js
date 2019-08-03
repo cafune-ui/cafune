@@ -1,10 +1,10 @@
 export default {
   step: {
-    cSize: '50px',
+    cSize: '60px',
     cColor: '#ccc',
     func(color, size) {
       const { cSize, cColor } = this;
-      const boxHeight = 60;
+      const boxHeight = 40;
       return (
         <svg
           version="1.1"

@@ -23,7 +23,7 @@ class Loading extends Component {
     /**
      * 加载图标类型
       */
-    type: PropTypes.oneOf(['step', 'spin', 'ripple']),
+    type: PropTypes.oneOf(['step', 'spinner', 'ripple']),
     /**
      * 加载提示文字
       */
