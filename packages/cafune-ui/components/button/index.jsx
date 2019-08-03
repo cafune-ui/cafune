@@ -127,9 +127,13 @@ class Button extends Component {
     loadingInfo,
     gradient,
     block,
-    radius
+    radius,
+    style
   }) {
-    const btnStyle = {};
+    let btnStyle = {};
+    if (style) {
+      btnStyle = Object.assign({}, style);
+    }
     if (gradient) {
       const { angle = 0, from = '', to = '', color = '#fff' } = gradient;
       btnStyle.backgroundImage = `linear-gradient(${angle}deg, ${from} 0, ${to} 100%)`;
@@ -143,6 +147,7 @@ class Button extends Component {
     }
     let btnIcon = null;
     const iconStyle = {};
+    let isReverse = false;
     if (loading) {
       loadingInfo = Object.assign({}, defaultLoadingInfo, loadingInfo);
       btnIcon = (
@@ -159,7 +164,8 @@ class Button extends Component {
       const { type, position } = icon;
       btnIcon = typeof type === 'string' ? <Icon icon={type} /> : type;
       if (position) {
-        if (position === 'left' || position === 'right') {
+        if (position === 'right') {
+          isReverse = true;
         } else if (position.left || position.right) {
           iconStyle.position = 'absolute';
           position.left && (iconStyle.left = position.left);
@@ -170,6 +176,7 @@ class Button extends Component {
     return (
       <a
         className={cx(prefix, `${prefix}__t_${type}`, `${prefix}__s_${size}`, {
+          [`${prefix}__reverse`]: isReverse,
           [`${prefix}__block`]: block,
           [`${prefix}__disabled`]: disabled,
           [`${prefix}__loading`]: loading,
@@ -178,7 +185,7 @@ class Button extends Component {
         })}
         style={btnStyle}
       >
-        {!!btnIcon && <span className={`${prefix}-icon`}>{btnIcon}</span>}
+        {!!btnIcon && <span className={`${prefix}-icon`} style={iconStyle}>{btnIcon}</span>}
         <span className={`${prefix}-content`}>{children}</span>
       </a>
     );

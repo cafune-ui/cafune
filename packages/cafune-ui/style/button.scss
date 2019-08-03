@@ -13,9 +13,6 @@ $color_warning: #e46060;
   &-icon {
     padding: 0 5px;
   }
-  &-content {
-
-  }
   &__t {
     &_default {
       background-color: #fff;
@@ -72,6 +69,9 @@ $color_warning: #e46060;
         border-radius: 24px;
       }
     }
+  }
+  &__reverse {
+    flex-direction: row-reverse;
   }
   &__block {
     display: flex;

@@ -36,6 +36,15 @@ export default class ButtonComp extends Component {
           <p class="caf-demo-title">按钮图标</p>
           <div class="caf-demo-buttons">
             <Button icon={{ type: 'search' }}>图标按钮</Button>
+            <Button icon={{ type: 'notice', position: 'right' }}>
+              图标位置
+            </Button>
+            <Button
+              icon={{ type: 'arrow_right', position: { right: '10px' } }}
+              style={{ width: '120px', justifyContent: 'flex-start' }}
+            >
+              图标位置
+            </Button>
           </div>
         </div>
         <div class="caf-demo-block">
