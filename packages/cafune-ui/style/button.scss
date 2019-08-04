@@ -1,4 +1,5 @@
 $name: '.caf-btn';
+$color_default: #dedede;
 $color_primary: #4f81bf;
 $color_warning: #e46060;
 #{$name} {
@@ -6,30 +7,40 @@ $color_warning: #e46060;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   border-radius: 6px;
   text-align: center;
+  border-width: 1px;
   border-style: solid;
-  border-width: 1px;/* no */
   &-icon {
     padding: 0 5px;
   }
   &__t {
     &_default {
       background-color: #fff;
-      border-color: #eee;
+      border-color: $color_default;
+      &::after {
+        border-color:  $color_default;
+      }
     }
     &_primary {
       background-color: $color_primary;
-      border-color: $color_primary;
       color: #fff;
+      border-color: $color_primary;
+      &::after {
+        border-color: $color_primary;
+      }
       &#{$name}__ghost {
         color: $color_primary;
       }
     }
     &_warning {
       background-color: $color_warning;
-      border-color: $color_warning;
       color: #fff;
+      border-color: $color_warning;
+      &::after {
+        border-color: $color_warning;
+      }
       &#{$name}__ghost {
         color: $color_warning;
       }
@@ -39,9 +50,12 @@ $color_warning: #e46060;
     &_large {
       height: 50px;
       padding: 0 20px;
-      font-size: 16px;‘
+      font-size: 16px;
       &#{$name}__round {
         border-radius: 50px;
+        &::after {
+          border-radius: 50px;
+        }
       }
     }
     &_normal {
@@ -50,6 +64,9 @@ $color_warning: #e46060;
       font-size: 14px;
       &#{$name}__round {
         border-radius: 42px;
+        &::after {
+          border-radius: 42px;
+        }
       }
     }
     &_small {
@@ -58,15 +75,21 @@ $color_warning: #e46060;
       font-size: 12px;
       &#{$name}__round {
         border-radius: 36px;
+        &::after {
+          border-radius: 36px;
+        }
       }
     }
     &_tiny {
       height: 24px;
       padding: 0 5px;
       font-size: 12px;
-      transform: scale(0.83333)；
+      transform: scale(0.83333);
       &#{$name}__round {
         border-radius: 24px;
+        &::after {
+          border-radius: 24px;
+        }
       }
     }
   }
@@ -80,12 +103,53 @@ $color_warning: #e46060;
     background-color: transparent;
   }
   &__disabled {
-    opacity: .6;
-  }
-  &__loading {
-
+    opacity: 0.6;
   }
   &__square {
     border-radius: 0;
+    &::after {
+      border-radius: 0!important;
+    }
+  }
+}
+
+/* 2倍屏 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  #{$name} {
+    border: none;
+    &::after {
+      content: '';
+      width: 200%;
+      height: 200%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      box-sizing: border-box;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 12px;
+      transform: scale(0.5);
+      transform-origin: top left;
+    }
+  }
+}
+/* 3倍屏 */
+@media (-webkit-min-device-pixel-ratio: 4), (min-resolution: 4dppx) {
+  #{$name} {
+    border: none;
+    &::after {
+      content: '';
+      width: 300%;
+      height: 300%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      box-sizing: border-box;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 18px;
+      transform: scale(0.33);
+      transform-origin: top left;
+    }
   }
 }

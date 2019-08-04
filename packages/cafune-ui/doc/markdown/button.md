@@ -24,3 +24,4 @@ import { Button } from 'components';
 | gradient | 背景渐变 | `angle: number ❌`,`from: string ❌`,`to: string ❌` | - | - | ❌ |
 | radius | 圆角，若为`true`，则为全圆角矩形按钮，若为`false`，则为直角矩形，若为`String`类型。则为圆角尺寸，不指定时则使用默认圆角 | `bool`/`string` | - | - | ❌ |
 | block | 是否为块级元素 | bool | `false` | - | ❌ |
+| onClick | 点击事件 | func | - | - | ❌ |

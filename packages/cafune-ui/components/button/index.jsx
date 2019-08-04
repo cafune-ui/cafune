@@ -113,10 +113,15 @@ class Button extends Component {
     /**
      * 是否为块级元素
      */
-    block: PropTypes.bool
+    block: PropTypes.bool,
+    /**
+     * 点击事件
+     */
+    onClick: PropTypes.func
   };
   render({
     prefix,
+    className,
     children,
     type,
     size,
@@ -128,7 +133,9 @@ class Button extends Component {
     gradient,
     block,
     radius,
-    style
+    style,
+    onClick,
+    ...restProps
   }) {
     let btnStyle = {};
     if (style) {
@@ -175,17 +182,25 @@ class Button extends Component {
     }
     return (
       <a
+        role="button"
         className={cx(prefix, `${prefix}__t_${type}`, `${prefix}__s_${size}`, {
           [`${prefix}__reverse`]: isReverse,
           [`${prefix}__block`]: block,
           [`${prefix}__disabled`]: disabled,
           [`${prefix}__loading`]: loading,
           [`${prefix}__ghost`]: ghost,
-          [`${prefix}__${radiusType}`]: !!radiusType
+          [`${prefix}__${radiusType}`]: !!radiusType,
+          [className]: !!className
         })}
         style={btnStyle}
+        onClick={disabled ? undefined :onClick}
+        {...restProps}
       >
-        {!!btnIcon && <span className={`${prefix}-icon`} style={iconStyle}>{btnIcon}</span>}
+        {!!btnIcon && (
+          <span className={`${prefix}-icon`} style={iconStyle}>
+            {btnIcon}
+          </span>
+        )}
         <span className={`${prefix}-content`}>{children}</span>
       </a>
     );
