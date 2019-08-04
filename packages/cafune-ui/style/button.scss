@@ -1,3 +1,4 @@
+@import './mixins/_border.scss';
 $name: '.caf-btn';
 $color_default: #dedede;
 $color_primary: #4f81bf;
@@ -10,8 +11,7 @@ $color_warning: #e46060;
   box-sizing: border-box;
   border-radius: 6px;
   text-align: center;
-  border-width: 1px;
-  border-style: solid;
+  @include pixelBorder(6px);
   &-icon {
     padding: 0 5px;
   }
@@ -109,47 +109,6 @@ $color_warning: #e46060;
     border-radius: 0;
     &::after {
       border-radius: 0!important;
-    }
-  }
-}
-
-/* 2倍屏 */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
-  #{$name} {
-    border: none;
-    &::after {
-      content: '';
-      width: 200%;
-      height: 200%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      box-sizing: border-box;
-      border-style: solid;
-      border-width: 1px;
-      border-radius: 12px;
-      transform: scale(0.5);
-      transform-origin: top left;
-    }
-  }
-}
-/* 3倍屏 */
-@media (-webkit-min-device-pixel-ratio: 4), (min-resolution: 4dppx) {
-  #{$name} {
-    border: none;
-    &::after {
-      content: '';
-      width: 300%;
-      height: 300%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      box-sizing: border-box;
-      border-style: solid;
-      border-width: 1px;
-      border-radius: 18px;
-      transform: scale(0.33);
-      transform-origin: top left;
     }
   }
 }
