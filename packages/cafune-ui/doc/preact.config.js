@@ -1,5 +1,4 @@
 import path from 'path';
-import { utils } from 'react-docgen';
 export default (config, env, helpers) => {
   const babelLoader = helpers.getLoadersByName(config, 'babel-loader');
   if (babelLoader) {

@@ -7,35 +7,35 @@ import { setPadding } from '../../util/isomorphic';
 /**
  * 标签栏
  * @example
- * ```javascript
+ * ```jsx
  * const { TabBarItem } = TabBar;
  * export default class TestComp extends Component {
- * state = {
- *   page: 'news',
- *  }
- * onChange = activedId => {
- *  this.setState({
- *      page: activedId,
- *   })
- * };
- * render({}, {page}) {
+ *   state = {
+ *     page: 'news',
+ *   }
+ *   onChange = activedId => {
+ *     this.setState({
+ *       page: activedId,
+ *     })
+ *   };
+ *   render({}, {page}) {
  *     return (
- *      <div>
- *       <TabBar activedId={page} onChange={this.onChange}>
- *          <TabBarItem
- *            text="news"
- *            id="news"
- *            icons={{
- *             actived: '/assets/icons/news_actived.png',
- *             normal: '/assets/icons/news.png'
- *            }}
- *        />
- *          <TabBarItem text="match" id="match" />
- *        <TabBarItem text="leagues" id="leagues" />
- *       </TabBar>
- *      </div>
+ *       <div>
+ *         <TabBar activedId={page} onChange={this.onChange}>
+ *           <TabBarItem
+ *              text="news"
+ *              id="news"
+ *              icons={{
+ *                actived: '/assets/icons/news_actived.png',
+ *                normal: '/assets/icons/news.png'
+ *              }}
+ *           />
+ *           <TabBarItem text="match" id="match" />
+ *           <TabBarItem text="leagues" id="leagues" />
+ *         </TabBar>
+ *       </div>
  *    );
- *  }
+ *   }
  * }
  * ```
  */

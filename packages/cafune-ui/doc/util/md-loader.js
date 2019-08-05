@@ -15,8 +15,11 @@ function highlight(str, lang) {
 //   return content;
 // }
 
-const parser = new MarkdownIt({
+const parser = MarkdownIt({
   html: true,
+  xhtmlOut: true,
+  breaks: true,
+  linkify: true,
   highlight
 });
 

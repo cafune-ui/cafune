@@ -14,30 +14,38 @@ export default class TabBarComp extends Component {
   render({}, { page }) {
     return (
       <div>
+        <div class="caf-demo-block">
+          <p>{page}</p>
+        </div>
         <TabBar activedId={page} onChange={this.onChange}>
           <TabBarItem
             text="news"
             id="news"
             icons={{
-              actived: '/assets/icons/news_actived.png',
-              normal: '/assets/icons/news.png'
+              actived:
+                'https://image.flaticon.com/icons/png/128/2026/2026462.png',
+              normal:
+                'https://image.flaticon.com/icons/png/128/2026/2026450.png'
             }}
           />
           <TabBarItem
             text="match"
             id="match"
-            disabled={true}
             icons={{
-              actived: '/assets/icons/news_actived.png',
-              normal: '/assets/icons/news.png'
+              actived:
+                'https://image.flaticon.com/icons/png/128/2026/2026478.png',
+              normal:
+                'https://image.flaticon.com/icons/png/128/2026/2026469.png'
             }}
           />
           <TabBarItem
             text="leagues"
             id="leagues"
             icons={{
-              actived: '/assets/icons/news_actived.png',
-              normal: '/assets/icons/news.png'
+              actived:
+                'https://image.flaticon.com/icons/png/128/2026/2026518.png',
+              normal:
+                'https://image.flaticon.com/icons/png/128/2026/2026521.png'
             }}
           />
         </TabBar>

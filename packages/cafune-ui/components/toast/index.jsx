@@ -18,7 +18,9 @@ const ToastList = {};
  *  ```js
  *  Toast.show({ content: 'show' });
  *  Toast.success({ content: 'success' });
+ * 
  *  Toast.error({ content: 'error' });
+ * 
  *  Toast.loading({ content: 'loading' });
  *  ```
  * - 自定义时长提示
