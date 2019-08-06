@@ -2,7 +2,7 @@ import { Component } from 'preact';
 import PropTypes from 'prop-types';
 import Panel from './panel';
 import Nav from './nav';
-import classNames from 'classnames';
+import cx from 'classnames';
 
 function checkIfPanel(el) {
   return el.nodeName.displayName === 'TabPanel';
@@ -70,6 +70,10 @@ class Tabs extends Component {
   static Panel = Panel;
   static Nav = Nav;
   static propTypes = {
+    /**
+     * 自定义类名
+      */
+    prefix: PropTypes.string,
     /**
      * 当前激活id
      */
@@ -149,11 +153,11 @@ class Tabs extends Component {
     return data;
   }
   renderWithPanel() {
-    const { children, activeId, className, navClass } = this.props;
+    const { prefix, children, activeId, className, navClass, ...restProps } = this.props;
     const tabsData = this.getTabsData(children, activeId);
-    const cx = classNames('caf-tabs', className);
+    const cls = cx(prefix, className);
     return (
-      <div className={cx}>
+      <div className={cls} {...restProps}>
         {this.renderNav(tabsData, navClass)}
         <div ref={c => (this.tabPanel = c)}>
           {this.renderTabPanel(tabsData)}
@@ -162,11 +166,11 @@ class Tabs extends Component {
     );
   }
   renderWithoutPanel() {
-    const { children, activeId, className, navClass, tabs } = this.props;
+    const { prefix, children, activeId, className, navClass, tabs, ...restProps } = this.props;
     tabs.forEach(item => item.actived = item.id === activeId )
-    const cx = classNames('caf-tabs', className);
+    const cls = cx(prefix, className);
     return (
-      <div className={cx}>
+      <div className={cls} {...restProps}>
         {this.renderNav(tabs, navClass)}
         { children }
       </div>

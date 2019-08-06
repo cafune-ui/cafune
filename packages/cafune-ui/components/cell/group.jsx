@@ -23,9 +23,9 @@ class CellGroup extends Component {
      */
     border: PropTypes.bool
   };
-  render({ prefix, border, title, children }) {
+  render({ prefix, className, border, title, children, ...restProps }) {
     return (
-      <div className={prefix}>
+      <div className={cx(prefix, className)} {...restProps}>
         {!!title && <div className={`${prefix}-title`}>{title}</div>}
         <div
           className={cx(`${prefix}-wrapper`, {

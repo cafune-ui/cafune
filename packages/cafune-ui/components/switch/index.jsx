@@ -54,12 +54,14 @@ class Switch extends Component {
   };
   render({
     prefix,
+    className,
     isActived,
     isLoading,
     isDisabled,
     size,
     activedColor,
-    inActivedColor
+    inActivedColor,
+    ...restProps
   }) {
     const switchStyle = {};
     if (size) switchStyle.fontSize = size;
@@ -71,12 +73,13 @@ class Switch extends Component {
       
     return (
       <div
-        className={cx(prefix, {
+        className={cx(prefix, className, {
           [`${prefix}__on`]: isActived,
           [`${prefix}__disabled`]: isDisabled
         })}
         style={switchStyle}
         onClick={this.clickHandler}
+        {...restProps}
       >
         <div className={`${prefix}-circle`}>
           { isLoading && <Loading size="16px" color={activeColor} /> }

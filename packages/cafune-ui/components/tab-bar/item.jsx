@@ -1,8 +1,13 @@
 import { Component } from 'preact';
+import cx from 'classnames';
 import PropTypes from 'prop-types';
 
 export default class TabBarItem extends Component {
   static propTypes = {
+    /**
+     * 自定义类名
+      */
+    prefix: PropTypes.string,
     /**
      * 展示文字
      */
@@ -24,28 +29,30 @@ export default class TabBarItem extends Component {
     disabled: PropTypes.bool
   };
   static defaultProps = {
-    disabled: false
+    disabled: false,
+    prefix: 'caf-tabbar-item'
   };
   handleChange = () => {
     const { id, disabled } = this.props;
     const { onChange } = this.context;
     !disabled && onChange && onChange(id);
   };
-  render({ text, id, icons, disabled = false }, {}) {
+  render({ prefix, className, text, id, icons, disabled, ...restProps }, {}) {
     const { activedId, activedColor } = this.context;
     const isActived = activedId === id;
     const iconType = isActived ? 'actived' : disabled ? 'disabled' : 'normal';
     const tabStyle = isActived ? { color: activedColor } : {};
     return (
       <div
-        className="caf-tabbar-item"
+        className={cx(prefix, className)}
         onClick={this.handleChange}
         style={tabStyle}
         data-status={isActived ? 1 : disabled ? 2 : 0}
+        {...restProps}
       >
         {!!icons && (
           <div
-            className="caf-tabbar-item-icon"
+            className={`${prefix}-icon`}
             style={`background-image: url(${icons[iconType] || icons.normal})`}
           />
         )}

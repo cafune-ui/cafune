@@ -66,23 +66,26 @@ class Layout extends Component {
   render({
     tag,
     prefix,
+    className,
     direction,
     wrap,
     justify,
     align,
     alignContent,
-    children
+    children,
+    ...restProps
   }) {
     const Tag = tag;
     return (
       <Tag
-        className={cx(prefix, {
+        className={cx(prefix, className, {
           [`${prefix}__direction_${direction}`]: !!direction,
           [`${prefix}__wrap_${wrap}`]: !!wrap,
           [`${prefix}__justify_${justify}`]: !!justify,
           [`${prefix}__align_${align}`]: !!align,
           [`${prefix}__alignContent_${alignContent}`]: !!alignContent
         })}
+        {...restProps}
       >
         {children}
       </Tag>

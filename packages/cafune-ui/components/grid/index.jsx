@@ -48,7 +48,7 @@ class Grid extends Component {
       square,
       border,
       center,
-      column,
+      column
     };
   }
   renderChildren() {
@@ -60,20 +60,27 @@ class Grid extends Component {
         if (item.nodeName.displayName === 'GridItem') {
           ind += 1;
           item.attributes.ind = ind;
-          result.push(item)
+          result.push(item);
         }
       });
       return result;
     }
     return null;
   }
-  render({ prefix, square, border, center, gutter }) {
-    return <div className={cx(prefix, {
-      [`${prefix}__square`]: square,
-      [`${prefix}__border`]: border,
-      [`${prefix}__center`]: center,
-      [`${prefix}__surround`]: border && gutter,
-    })}>{ this.renderChildren() }</div>;
+  render({ prefix, className, square, border, center, gutter, ...restProps }) {
+    return (
+      <div
+        className={cx(prefix, className, {
+          [`${prefix}__square`]: square,
+          [`${prefix}__border`]: border,
+          [`${prefix}__center`]: center,
+          [`${prefix}__surround`]: border && gutter
+        })}
+        {...restProps}
+      >
+        {this.renderChildren()}
+      </div>
+    );
   }
 }
 export default Grid;

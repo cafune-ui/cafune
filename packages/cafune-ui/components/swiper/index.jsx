@@ -1,4 +1,5 @@
 import { Component, createRef } from 'preact';
+import cx from 'classnames';
 import PropTypes from 'prop-types';
 import Item from './item';
 import { touchEventMap, getTouch } from '../util/event';
@@ -49,6 +50,10 @@ function checkIfItem(el) {
 class Swiper extends Component {
   static SwiperItem = Item;
   static propTypes = {
+    /**
+     * 自定义类名
+      */
+    prefix: 'caf-swiper',
     /**
      * 是否自动切换
      */
@@ -259,20 +264,20 @@ class Swiper extends Component {
   swiperList = createRef();
   swiperContainer = createRef();
   renderSwipers() {
-    const { children, showIndicators, customIndicator } = this.props;
+    const { prefix, children, className, showIndicators, customIndicator, ...restProps } = this.props;
     if (children && children.length) {
       const swiperData = this.getSwiperData(children);
       this.swiperData = swiperData;
       this.total = swiperData.length;
       return (
-        <div className="caf-swiper" ref={this.swiperContainer}>
-          <div className="caf-swiper-container" ref={this.swiperList}>
+        <div className={cx(prefix, className)} ref={this.swiperContainer} {...restProps}>
+          <div className={`${prefix}-container`} ref={this.swiperList}>
             {this.renderItems(swiperData)}
           </div>
           {customIndicator
             ? customIndicator
             : showIndicators && (
-                <div className="caf-swiper-indicator">
+                <div className={`${prefix}-indicator`}>
                   {this.renderIndicators(swiperData)}
                 </div>
               )}

@@ -86,11 +86,11 @@ class Stepper extends Component {
     }
     onChange($target.value, 0);
   };
-  render({ prefix, disabled, step, min, max, value, readOnly }) {
+  render({ prefix, className, disabled, step, min, max, value, readOnly, ...restProps }) {
     const isReachMin = value - step < min || value === min;
     const isReachMax = value + step > max || value === max;
     return (
-      <div className={cx(prefix)}>
+      <div className={cx(prefix, className)} {...restProps}>
         <span
           className={cx(`${prefix}-btn`, `${prefix}-btn__minus`, {
             [`${prefix}-btn__disabled`]: disabled || isReachMin

@@ -95,7 +95,7 @@ function writeComp(compName, name, isHasStyle) {
   // create js & css to component folder
   fs.writeFileSync(
     `${compDir}/index.jsx`,
-    `import { Component } from 'preact';\nimport PropTypes from 'prop-types';\n\nclass ${compName} extends Component {\n  static defaultProps = {\n    prefix: 'caf-'\n  };\n  render() {\n    return <div />;\n  }\n}\nexport default ${compName};\n`
+    `import { Component } from 'preact';\nimport PropTypes from 'prop-types';\nimport cx from 'classnames';\n\nclass ${compName} extends Component {\n  static defaultProps = {\n    prefix: 'caf-'\n  };\n  render({ prefix, className, ...restProps }) {\n    return <div className={cx(prefix, className)} {...restProps}>${compName}</div>;\n  }\n}\nexport default ${compName};\n`
   );
   if (isHasStyle) {
     fs.writeFileSync(`${styleRoot}/${name}.scss`, '')

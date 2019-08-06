@@ -110,7 +110,7 @@ class Cell extends Component {
   swipable = false;
   promiseFunc = func => {
     setTimeout(func.bind(this), 0);
-  }
+  };
   registeSwiperEvent() {
     if (this.cellSwiper && this.cellSwiper.current) {
       this.swipable = true;
@@ -145,6 +145,7 @@ class Cell extends Component {
   cellSwiper = createRef();
   render({
     prefix,
+    className,
     icon,
     iconSize,
     title,
@@ -154,10 +155,11 @@ class Cell extends Component {
     rightIcon,
     border,
     middle,
-    swipeList
+    swipeList,
+    ...restProps
   }) {
     const showRightIcon = !!url || !!rightIcon;
-    const cls = cx(prefix, {
+    const cls = cx(prefix, className, {
       [`${prefix}__clickable`]: showRightIcon,
       [`${prefix}__border`]: border,
       [`${prefix}__middle`]: middle
@@ -178,13 +180,17 @@ class Cell extends Component {
       <Icon icon={rightIcon || 'arrow_right'} />
     ) : null;
     const Tag = !!url ? 'a' : 'div';
-    const restProps = !!url ? { href: url } : {};
+    const urlProps = !!url ? { href: url } : {};
     let Options = null;
     if (swipeList && swipeList.length) {
       Options = (
         <div className={`${prefix}-swiper`} ref={this.cellSwiper}>
           {swipeList.map(item => (
-            <span className={`${prefix}-swiper-item`} onClick={item.clickHandler} style={ item.style }>
+            <span
+              className={`${prefix}-swiper-item`}
+              onClick={item.clickHandler}
+              style={item.style}
+            >
               {item.name}
             </span>
           ))}
@@ -195,9 +201,9 @@ class Cell extends Component {
       this.promiseFunc(this.unRegisteSwiperEvent);
     }
     return (
-      <div className={cls}>
+      <div className={cls} {...restProps}>
         <div className={`${prefix}-wrapper`} ref={this.cellWrapper}>
-          <Tag {...restProps} className={`${prefix}-main`} ref={this.cellMain}>
+          <Tag {...urlProps} className={`${prefix}-main`} ref={this.cellMain}>
             {icon}
             {title}
             {val}

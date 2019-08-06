@@ -1,17 +1,25 @@
 import { Component } from 'preact';
+import cx from 'classnames';
 import PropTypes from 'prop-types';
 
 class SwiperItem extends Component {
   static displayName = 'swiperItem';
   static propTypes = {
     /**
+     * 自定义类名
+      */
+    prefix: PropTypes.string,
+    /**
      * 单元宽度
      */
     width: PropTypes.string
   };
-  render({ children, width }) {
+  static defaultProps = {
+    prefix: 'caf-swiper-container'
+  };
+  render({ prefix, className, children, width, ...restProps }) {
     return (
-      <div className="caf-swiper-container-item" style={{ width }}>
+      <div className={cx(`${prefix}-item`, className)} style={{ width }} {...restProps}>
         {children}
       </div>
     );

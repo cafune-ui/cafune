@@ -1,6 +1,7 @@
 @import './variables/color.scss';
+@import './mixins/_display.scss';
 .caf-actionbar {
-  composes: fixed from 'style/composes.scss';
+  @include fixed;
   bottom: 0;
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);

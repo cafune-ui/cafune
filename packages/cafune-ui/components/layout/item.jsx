@@ -28,7 +28,7 @@ class Item extends Component {
      */
     tag: PropTypes.string
   };
-  render({ tag, offset, col, prefix, children }, {}, { gutter }) {
+  render({ className, tag, offset, col, prefix, children, ...restProps }, {}, { gutter }) {
     const Tag = tag;
     let sty = {};
     if (gutter) {
@@ -43,11 +43,12 @@ class Item extends Component {
     }
     return (
       <Tag
-        className={cx(prefix, {
+        className={cx(prefix, className, {
           [`${prefix}__${col}`]: !!col,
           [`${prefix}__offset_${offset}`]: !!offset
         })}
         style={sty}
+        {...restProps}
       >
         {children}
       </Tag>

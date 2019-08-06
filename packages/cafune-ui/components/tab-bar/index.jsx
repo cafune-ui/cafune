@@ -1,6 +1,6 @@
 import { Component } from 'preact';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import cx from 'classnames';
 import Item from './item';
 import { setPadding } from '../../util/isomorphic';
 
@@ -42,8 +42,31 @@ import { setPadding } from '../../util/isomorphic';
 class TabBar extends Component {
   static TabBarItem = Item;
   static defaultProps = {
+    prefix: 'caf-tabbar',
     fixed: true,
     activedColor: '#3f77f6'
+  };
+  static propTypes = {
+    /**
+     * 自定义类名
+     */
+    prefix: PropTypes.string,
+    /**
+     * 是否使用 `fixed` 定位
+     */
+    fixed: PropTypes.bool,
+    /**
+     * 当前激活的id
+     */
+    activedId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    /**
+     * 激活时文字颜色
+     */
+    activedColor: PropTypes.string,
+    /**
+     * 切换时回调
+     */
+    onChange: PropTypes.func
   };
   currentActive = this.props.activedId;
   componentDidMount() {
@@ -66,9 +89,13 @@ class TabBar extends Component {
       onChange: this.onChange
     };
   }
-  render({ fixed, children }) {
-    const cx = classNames('caf-tabbar', { 'caf-tabbar__fixed': fixed });
-    return <div className={cx}>{children}</div>;
+  render({ prefix, className, fixed, children, ...restProps }) {
+    const cls = cx(prefix, className, { [`${prefix}__fixed`]: fixed });
+    return (
+      <div className={cls} {...restProps}>
+        {children}
+      </div>
+    );
   }
 }
 export default TabBar;

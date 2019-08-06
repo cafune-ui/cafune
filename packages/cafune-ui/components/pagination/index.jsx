@@ -1,9 +1,12 @@
-import classNames from 'classnames';
+import cx from 'classnames';
 import PropTypes from 'prop-types';
 
 function changeFn(direction, pn, pages, onChange) {
   pn = Number(pn);
-  if ((pn < pages && direction === 1) || (pn > 1 && direction === -1)) {
+  if (
+    (pn < pages && direction === 1) ||
+    (pn > 1 && direction === -1 && onChange)
+  ) {
     return () => {
       onChange(pn + direction);
     };
@@ -17,20 +20,27 @@ function changeFn(direction, pn, pages, onChange) {
  * <Pagination pn={pn} pages={pages} onChange={this.onPageChange} />
  * ```
  */
-const Pagination = ({ pn, pages, onChange = () => {} }) => {
-  const prevCx = classNames('caf-page-btn', {
+const Pagination = ({
+  prefix,
+  pn,
+  className,
+  pages,
+  onChange,
+  ...restProps
+}) => {
+  const prevCx = cx('caf-page-btn', {
     'caf-page-btn__disabled': pn <= 1
   });
-  const nextCx = classNames('caf-page-btn', {
+  const nextCx = cx('caf-page-btn', {
     'caf-page-btn__disabled': pn >= pages
   });
 
   return (
-    <div className='caf-page'>
+    <div className={cx(prefix, className)} {...restProps}>
       <button onClick={changeFn(-1, pn, pages, onChange)} className={prevCx}>
         上一页
       </button>
-      <span className='caf-page-indicator'>
+      <span className="caf-page-indicator">
         {pn} / {pages}
       </span>
       <button onClick={changeFn(1, pn, pages, onChange)} className={nextCx}>
@@ -40,6 +50,10 @@ const Pagination = ({ pn, pages, onChange = () => {} }) => {
   );
 };
 Pagination.propTypes = {
+  /**
+   * 自定义类名
+   */
+  prefix: PropTypes.string,
   /**
    * 当前页码
    */

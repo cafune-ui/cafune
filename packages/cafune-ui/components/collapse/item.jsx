@@ -61,11 +61,12 @@ class Item extends Component {
   componentDidMount() {
     this.updateStyle();
   }
-  render({ prefix, children, title, actived, disabled, icon }) {
+  render({ prefix, className, children, title, actived, disabled, icon, ...restProps }) {
     return (
       <div
-        className={cx(`${prefix}-item`, { [`${prefix}-item__disabled`]: disabled })}
+        className={cx(`${prefix}-item`, className, { [`${prefix}-item__disabled`]: disabled })}
         data-status={actived ? 1 : 0}
+        {...restProps}
       >
         <div className={cx(`${prefix}-header`, {[`${prefix}-header__default`]: icon === Item.defaultProps.icon })} onClick={this.onToggle}>
           <Cell title={title} rightIcon={icon} />

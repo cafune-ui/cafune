@@ -19,6 +19,10 @@
     "desc": "单元格",
     "displayName": "Cell"
   },
+  "checkbox": {
+    "desc": "复选框",
+    "displayName": "Checkbox"
+  },
   "collapse": {
     "desc": "折叠面板",
     "displayName": "Collapse"

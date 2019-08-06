@@ -1,7 +1,7 @@
 import { Component } from 'preact';
 import PropTypes from 'prop-types';
 import Tab from './components/tab';
-import classNams from 'classnames';
+import cx from 'classnames';
 import { isBrowser } from '../../util/isomorphic';
 
 function setTransform(obj, offsetLeft) {
@@ -14,6 +14,10 @@ function setTransform(obj, offsetLeft) {
 const defaultMax = 5;
 export default class Nav extends Component {
   static propTypes = {
+    /**
+     * 自定义类名
+     */
+    prefix: PropTypes.string,
     /**
      * 当前激活id
      */
@@ -43,6 +47,7 @@ export default class Nav extends Component {
   };
   static defaultProps = {
     type: 'slider',
+    prefix: 'caf-tabs-nav',
     maxCount: 5
   };
   onTabSelected = id => {
@@ -107,20 +112,21 @@ export default class Nav extends Component {
     });
     return tabs;
   }
-  render({ navClass, type = 'slider' }) {
-    const cx = classNams(
-      'caf-tabs-nav',
+  render({ prefix, className, navClass, type, ...restProps }) {
+    const cls = cx(
+      prefix,
+      className,
       {
-        'caf-tabs-nav__slider': type === 'slider',
-        'caf-tabs-nav__round': type === 'round',
-        'caf-tabs-nav__card': type === 'card'
+        [`${prefix}__slider`]: type === 'slider',
+        [`${prefix}__round`]: type === 'round',
+        [`${prefix}__card`]: type === 'card'
       },
       navClass
     );
     return (
-      <div className={cx}>
-        <div className='caf-tabs-nav-content'>{this.renderTabs()}</div>
-        <span className='caf-tabs-nav-ink' ref={c => (this.inkBar = c)} />
+      <div className={cls} {...restProps}>
+        <div className={`${prefix}-content`}>{this.renderTabs()}</div>
+        <span className={`${prefix}-ink`} ref={c => (this.inkBar = c)} />
       </div>
     );
   }

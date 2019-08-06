@@ -13,10 +13,7 @@ export class Home extends Component {
       import(`../../markdown/${name}.md`).then(data => {
         let mdHtml = data.match(/module.exports = "((.|\n)+)";$/);
         if (mdHtml) {
-          mdHtml = mdHtml[1]
-            // .replace(/(\\n){2,}/g, '')
-            .replace(/\\n+/g, '<br />')
-            .replace(/\\/g, '');
+          mdHtml = mdHtml[1].replace(/\\n+/g, '<br />').replace(/\\/g, '');
           this.setState({
             markdown: mdHtml
           });
@@ -66,9 +63,7 @@ export class Home extends Component {
                       key={comp.url}
                     >
                       {isComps
-                        ? `${compInfo[comp.url].displayName} - ${
-                            compInfo[comp.url].desc
-                          }`
+                        ? `${compInfo[comp.url].displayName} - ${compInfo[comp.url].desc}`
                         : comp.name}
                     </a>
                   );
@@ -84,7 +79,6 @@ export class Home extends Component {
     return <div class="caf-doc-side-wrapper">{mainNav}</div>;
   }
   render({ name }, { markdown, showcode, shownav }) {
-    console.log(markdown);
     return (
       <div class="caf-doc">
         <h1 class="caf-doc-head">

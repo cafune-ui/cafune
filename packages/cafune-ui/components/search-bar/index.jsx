@@ -208,7 +208,7 @@ class SearchBar extends Component {
   actionRef = createRef();
   formRef = createRef();
   render(
-    { prefix, placeholder, maxLength, action, leftIcon },
+    { prefix, className, placeholder, maxLength, action, leftIcon, ...restProps },
     { value, focus }
   ) {
     let isBtnHide = false;
@@ -218,8 +218,9 @@ class SearchBar extends Component {
     }
     return (
       <form
-        className={prefix}
+        className={cx(prefix, className)}
         onSubmit={this.onConfirm}
+        {...restProps}
       >
         <div className={`${prefix}-input`}>
           <Icon icon={leftIcon} />

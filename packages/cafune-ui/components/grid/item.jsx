@@ -24,7 +24,7 @@ class GridItem extends Component {
      */
     text: PropTypes.string
   };
-  render({ prefix, ind, icon, text, children }, {}, { gutter, column, square }) {
+  render({ prefix, className, ind, icon, text, children, ...restProps }, {}, { gutter, column, square }) {
     const percent = `${100 / column}%`;
     const sty = {
       flexBasis: percent
@@ -46,7 +46,7 @@ class GridItem extends Component {
       }
     }
     return (
-      <div className={prefix} style={sty}>
+      <div className={cx(prefix, className)} style={sty} {...restProps}>
         <div className={`${prefix}-inner`} style={innerStyle}>{children}</div>
       </div>
     );

@@ -1,10 +1,14 @@
 import { Component } from 'preact';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import cx from 'classnames';
 
 export default class Panel extends Component {
   static displayName = 'TabPanel';
   static propTypes = {
+    /**
+     * 自定义类名
+      */
+    prefix: PropTypes.string,
     /**
      * 面板的id
      */
@@ -23,12 +27,13 @@ export default class Panel extends Component {
     visable: PropTypes.bool
   };
   static defaultProps = {
-    visable: true
+    visable: true,
+    prefox: 'caf-tabs-panel'
   };
-  render({ children, className, actived }) {
-    const cx = classNames('caf-tabs-panel', className);
+  render({ prefix, children, className, actived, ...restProps }) {
+    const cls = cx(prefix, className);
     return (
-      <div className={cx} data-actived={actived ? 1 : 0}>
+      <div className={cls} data-actived={actived ? 1 : 0} {...restProps}>
         {children}
       </div>
     );

@@ -46,12 +46,12 @@ function getBtn(data, side = 'left', isConflict = false) {
 /**
  * 导航栏
  */
-const NavBar = ({ prefix, children, left, rights, isFixed }) => {
+const NavBar = ({ prefix, className, children, left, rights, isFixed, ...restProps }) => {
   const rightIcons = Array.isArray(rights)
     ? rights.map(item => getBtn(item, 'right', true))
     : getBtn(rights, 'right', true);
   return (
-    <div className={cx(prefix, { [`${prefix}__fixed`]: isFixed })}>
+    <div className={cx(prefix, className, { [`${prefix}__fixed`]: isFixed })} {...restProps}>
       {getBtn(Object.assign({}, defaultLeftProp, left))}
       <div className={`${prefix}-title`}>
         {children && children.length > 0 && children}

@@ -1,4 +1,5 @@
 import { Component } from 'preact';
+import cx from 'classnames';
 import { setPadding } from '../../util/isomorphic';
 import PropTypes from 'prop-types';
 
@@ -50,17 +51,19 @@ class ActionBar extends Component {
   }
   render({
     prefix,
+    className,
     descContent,
     btnContent,
     additionMsg,
     handleClick,
-    disabled = false
+    disabled = false,
+    ...restProps
   }) {
     return (
-      <div className={prefix} ref={c => (this.actionbar = c)}>
+      <div className={cx(prefix, className)} ref={c => (this.actionbar = c)} {...restProps}>
         {!!additionMsg && <div className={`${prefix}-tip`}>{additionMsg}</div>}
         <div className={`${prefix}-main`}>
-          <div className={`${prefix}-main-tip`}>{descContent}</div>
+          <div className={`${prefix}-main-desc`}>{descContent}</div>
           <div
             className={`${prefix}-main-btn`}
             onClick={handleClick}

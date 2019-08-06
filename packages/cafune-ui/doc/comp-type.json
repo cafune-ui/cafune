@@ -58,6 +58,9 @@
             "url": "action-sheet"
           },
           {
+            "url": "checkbox"
+          },
+          {
             "url": "action-bar"
           },
           {

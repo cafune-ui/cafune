@@ -1,4 +1,5 @@
 import { Component, createRef } from 'preact';
+import cx from 'classnames';
 import PropTypes from 'prop-types';
 
 const MIN_DISTANCE = 10;
@@ -195,8 +196,8 @@ class PullRefresh extends Component {
       }
     }
   }
-  render({ prefix, children }) {
-    return <div className={prefix} ref={ this.pullrefresh } >
+  render({ prefix, className, children, ...restProps }) {
+    return <div className={cx(prefix, className)} ref={ this.pullrefresh } {...restProps}>
       <span className={`${prefix}-loading`} ref={ this.pullrefresh_loading }></span>
       { children }
     </div>

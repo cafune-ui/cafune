@@ -111,7 +111,7 @@ class NoticeBar extends Component {
     this.props.onClick && this.props.onClick();
   };
   render(
-    { prefix, text, icon, scrollable, wrapable, delay, color, bgColor, action },
+    { prefix, className, text, icon, scrollable, wrapable, delay, color, bgColor, action, ...restProps },
     { isFirst, duration, wrapWidth, isShow }
   ) {
     let barStyle = {};
@@ -145,10 +145,11 @@ class NoticeBar extends Component {
     if (isShow) {
       return (
         <div
-          className={cx(prefix, {
+          className={cx(prefix, className, {
             [`${prefix}__wrapable`]: wrapable
           })}
           style={barStyle}
+          {...restProps}
         >
           {!!icon && <Icon icon={typeof icon === 'string' ? icon : 'notice'} />}
           <div className={`${prefix}-wrapper`} ref={this.wrap}>

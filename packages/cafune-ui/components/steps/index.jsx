@@ -104,9 +104,9 @@ class Steps extends Component {
     });
     return stepsArr;
   }
-  render({ prefix, direction }) {
+  render({ prefix, className, direction, ...restProps }) {
     return (
-      <div className={cx(prefix, `${prefix}__${direction}`)}>
+      <div className={cx(prefix, className, `${prefix}__${direction}`)} {...restProps}>
         {this.renderSteps()}
       </div>
     );

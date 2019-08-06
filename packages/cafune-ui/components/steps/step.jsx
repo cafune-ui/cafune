@@ -111,9 +111,9 @@ class Step extends Component {
     }
     return iconResult;
   }
-  render({ prefix, title, desc, status }) {
+  render({ prefix, className, title, desc, status, ...restProps }) {
     return (
-      <div className={cx(prefix, `${prefix}__${status}`)}>
+      <div className={cx(prefix, className, `${prefix}__${status}`)} {...restProps}>
         <div className={`${prefix}-tail`}></div>
         <div className={`${prefix}-icon`}>{this.renderIcon()}</div>
         <div className={`${prefix}-content`}>

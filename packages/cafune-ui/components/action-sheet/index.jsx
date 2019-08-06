@@ -259,13 +259,15 @@ class ActionSheet extends Component {
   render(
     {
       prefix,
+      className,
       showMask,
       children,
       cancelText,
       closeOnClickMask,
       title,
       isShow,
-      showCancel
+      showCancel,
+      ...restProps
     },
     { isFadding }
   ) {
@@ -275,10 +277,10 @@ class ActionSheet extends Component {
       maskProp.onClick = this.onMaskClick;
     }
     return isShow ? (
-      <div>
+      <div className={cx(prefix, className)} {...restProps}>
         {showMask && <div className={`${prefix}-mask`} />}
         <div className={`${prefix}-wrapper`} {...maskProp}>
-          <div className={prefix} data-status={isFadding ? 0 : 1}>
+          <div className={`${prefix}-container`} data-status={isFadding ? 0 : 1}>
             {!!title && <div className={`${prefix}-title`}>{title}</div>}
             <div className={`${prefix}-main`}>
               {children}
