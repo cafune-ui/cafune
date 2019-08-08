@@ -17,10 +17,10 @@ function isImage(icon) {
  * <Icon icon="http://someicon.com/someicon.png" />
  * ```
  */
-const Icon = ({ prefix = 'caf-icon', icon, color, size, tag = 'i' }) => {
+const Icon = ({ prefix = 'caf-icon', className, icon, color, size, tag = 'i', ...restProps }) => {
   const isImg = isImage(icon);
-  const iconClass = cx(prefix, {[`${prefix}_${icon}`]: !isImg});
-  const prop = {};
+  const iconClass = cx(prefix, className, {[`${prefix}_${icon}`]: !isImg});
+  const prop = {...restProps};
   if (isImg) {
     size = size || '16px';
     prop.style = `width: ${size};height: ${size};`;
