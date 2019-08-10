@@ -23,7 +23,7 @@ const Icon = ({ prefix = 'caf-icon', className, icon, color, size, tag = 'i', ..
   const prop = {...restProps};
   if (isImg) {
     size = size || '16px';
-    prop.style = `width: ${size};height: ${size};`;
+    prop.style = `width: ${size};height: ${size};line-height: ${size};`;
   } else {
     if (color) prop.style = (prop.style || '') + `color: ${color};`;
     if (size) prop.style = (prop.style || '') + `font-size: ${size};`;

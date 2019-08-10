@@ -37,10 +37,10 @@ class CheckboxGroup extends Component {
   };
   seletedData = [];
   canCheck = val => {
-    const { max } = this.props;
+    const { maxSelect } = this.props;
     const { seletedData } = this;
-    if (max > 0) {
-      if (seletedData.indexOf(val) === -1 && seletedData.length === max) {
+    if (maxSelect > 0) {
+      if (seletedData.indexOf(val) === -1 && seletedData.length === maxSelect) {
         return false;
       }
     }

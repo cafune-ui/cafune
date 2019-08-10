@@ -4,6 +4,11 @@ import cx from 'classnames';
 
 import CheckboxGroup from './group';
 import Icon from '../icon';
+
+function isImage(icon) {
+  return icon && icon.indexOf('/') !== -1;
+}
+
 /**
  * 复选框
  */
@@ -12,8 +17,7 @@ class Checkbox extends Component {
   static defaultProps = {
     prefix: 'caf-checkbox',
     checked: false,
-    disabled: false,
-    icon: 'check'
+    disabled: false
   };
   static propTypes = {
     /**
@@ -21,9 +25,26 @@ class Checkbox extends Component {
      */
     prefix: PropTypes.string,
     /**
-     * 复选框唯一id
+     * 自定义图标
      */
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    icons: PropTypes.shape({
+      /**
+       * 激活图标
+       */
+      actived: PropTypes.string,
+      /**
+       * 未激活时图标
+       */
+      inactive: PropTypes.string
+    }),
+    /**
+     * 复选框值
+     */
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    /**
+     * 复选框 id
+      */
+    id: PropTypes.string,
     /**
      * 是否选中
      */
@@ -39,13 +60,13 @@ class Checkbox extends Component {
     /**
      * 值变化时回调事件
      */
-    onChange: PropTypes.func
+    handleChange: PropTypes.func
   };
   constructor(props) {
     super(props);
     const { id, checked = false } = props;
 
-    const { model = [] } = (this.context || {});
+    const { model = [] } = this.context || {};
     const isChecked = checked || model.indexOf(id) !== -1;
 
     this.state = {
@@ -56,21 +77,38 @@ class Checkbox extends Component {
     if ('checked' in nextProps && !this.context.model) {
       this.setState({
         checked: nextProps.checked
-      })
+      });
     }
   }
   onClick = () => {
-    const { id, onChange } = this.props;
-    const { groupChange } = this.context;
-    // 框组优先级高于单个，避免逻辑冲突产生问题
-    if (groupChange) {
-      groupChange(id);
-    } else if (onChange) {
-      onChange(id);
+    const { value, disabled, handleChange } = this.props;
+    const { groupChange, allDisabled, canCheck } = this.context;
+    const isCancheck = canCheck ? canCheck(value) : true;
+    const isDisabled = disabled || allDisabled || !isCancheck;
+    if (!isDisabled) {
+      this.setState({
+        checked: !this.state.checked
+      });
+      // 框组优先级高于单个，避免逻辑冲突产生问题
+      if (groupChange) {
+        groupChange(value);
+      } else if (handleChange) {
+        handleChange(value);
+      }
     }
-  }
+  };
   render(
-    { prefix, id, className, icon, checkedColor, disabled, ...restProps },
+    {
+      prefix,
+      value,
+      id,
+      className,
+      icons,
+      children,
+      checkedColor,
+      disabled,
+      ...restProps
+    },
     { checked },
     { model = [], allDisabled = false } = {}
   ) {
@@ -78,22 +116,48 @@ class Checkbox extends Component {
     if (checkedColor) {
       innerStyle.backgroundColor = checkedColor;
     }
-    const isChecked = checked || model.indexOf(id) !== -1;
+
+    const isChecked = checked || model.indexOf(value) !== -1;
+    const isDisabled = disabled || allDisabled;
+    let icon = <Icon icon="check" />;
+    let isCustomIcon = false;
+    if (icons) {
+      if ('actived' in icons && isChecked) {
+        isCustomIcon = isImage(icons.actived);
+        icon = <Icon icon={icons.actived} size={isCustomIcon ? '14px' : '12px'} />;
+      }
+      if ('inactive' in icons && !isChecked) {
+        isCustomIcon = isImage(icons.inactive);
+        icon = <Icon icon={icons.inactive} size={isCustomIcon ? '14px' : '12px'} />;
+      }
+    }
     return (
       <div
         className={cx(prefix, className, {
           [`${prefix}__checked`]: isChecked,
-          [`${prefix}__disabled`]: disabled || allDisabled
+          [`${prefix}__disabled`]: isDisabled
         })}
         onClick={this.onClick}
         {...restProps}
       >
-        <span className={`${prefix}-input`}>
-          <input type="radio" id={id} />
-          <span className={`${prefix}-input-inner`} style={innerStyle}>
-            <Icon icon={icon} size="100%" />
+        <div className={`${prefix}-input`}>
+          <input
+            type="checkbox"
+            id={id}
+            checked={isChecked}
+            disabled={disabled}
+            value={value}
+          />
+          <span
+            className={cx(`${prefix}-input-inner`, {
+              [`${prefix}-input-inner__custom`]: isCustomIcon
+            })}
+            style={innerStyle}
+          >
+            {icon}
           </span>
-        </span>
+        </div>
+        <div className={`${prefix}-label`}>{children}</div>
       </div>
     );
   }

@@ -4,7 +4,7 @@
   text-decoration: none;
   width: 100%;
   &-wrapper {
-    transition: transform .3s;
+    transition: transform 0.3s;
   }
   &-main {
     display: flex;
@@ -15,6 +15,21 @@
     font-size: 14px;
     background-color: #fff;
     box-sizing: border-box;
+    .caf-checkbox {
+      width: 20px;
+      &-label {
+        display: none;
+      }
+    }
+    & > .caf-icon {
+      min-width: 1em;
+      &:first-child {
+        padding: 0 8px 0 5px;
+      }
+      &:last-child {
+        padding: 0 5px 0 8px;
+      }
+    }
   }
   &-swiper {
     position: absolute;
@@ -24,8 +39,8 @@
     table-layout: fixed;
     height: 44px;
     &-item {
-      display:table-cell; 
-      vertical-align:middle;
+      display: table-cell;
+      vertical-align: middle;
       min-width: 50px;
       padding: 0 10px;
       text-align: center;
@@ -43,18 +58,12 @@
     color: #969799;
     line-height: 18px;
   }
-  .caf-icon {
-    min-width: 1em;
-    &:first-child {
-      padding: 0 8px 0 5px;
-    }
-    &:last-child {
-      padding: 0 5px 0 8px;
-    }
+  &-value {
+    position: relative;
   }
   &__border {
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       box-sizing: border-box;
       left: 15px;
