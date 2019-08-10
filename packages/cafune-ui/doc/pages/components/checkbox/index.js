@@ -67,21 +67,32 @@ export default class CheckboxComp extends Component {
           />
         ))}
 
-        <CheckboxGroup model={checks} onChange={val => console.log(val)}>
-          <CellGroup title="复选框组">
+        <CellGroup title="复选框组">
+          <CheckboxGroup model={checks} handleChange={val => console.log(val)}>
             {checkList.map(item => (
               <Cell
                 title="test"
-                value={
-                  <Checkbox checked={check === item.value} {...item}>
-                    {item.value}
-                  </Checkbox>
-                }
+                value={<Checkbox {...item}>{item.value}</Checkbox>}
                 key={`g-${item.value}`}
               />
             ))}
-          </CellGroup>
-        </CheckboxGroup>
+          </CheckboxGroup>
+        </CellGroup>
+        <CellGroup title="复选框组（最大可选为2）">
+          <CheckboxGroup
+            model={checks}
+            handleChange={val => console.log(val)}
+            maxSelect={2}
+          >
+            {checkList.map(item => (
+              <Cell
+                title="test"
+                value={<Checkbox {...item}>{item.value}</Checkbox>}
+                key={`g-${item.value}`}
+              />
+            ))}
+          </CheckboxGroup>
+        </CellGroup>
       </div>
     );
   }

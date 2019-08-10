@@ -1,5 +1,6 @@
 @mixin borderProps {
   position: absolute;
+  z-index: 0;
   top: 0;
   left: 0;
   box-sizing: border-box;
@@ -10,6 +11,7 @@
 @mixin pixelBorder($radius: 0px, $color: false) {
   border-style: solid;
   border-width: 1px;
+  z-index: 2;
   /* 2倍屏 */
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
     border: none;

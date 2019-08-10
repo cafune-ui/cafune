@@ -46,7 +46,7 @@ class Checkbox extends Component {
       */
     id: PropTypes.string,
     /**
-     * 是否选中
+     * 默认是否选中
      */
     checked: PropTypes.bool,
     /**
@@ -64,14 +64,18 @@ class Checkbox extends Component {
   };
   constructor(props) {
     super(props);
-    const { id, checked = false } = props;
-
+  }
+  state = {
+    checked: false
+  }
+  componentDidMount() {
+    const { value, checked = false } = this.props;
     const { model = [] } = this.context || {};
-    const isChecked = checked || model.indexOf(id) !== -1;
+    const isChecked = checked || model.indexOf(value) !== -1;
 
-    this.state = {
+    this.setState({
       checked: isChecked
-    };
+    })
   }
   componentWillReceiveProps(nextProps) {
     if ('checked' in nextProps && !this.context.model) {
@@ -110,23 +114,21 @@ class Checkbox extends Component {
       ...restProps
     },
     { checked },
-    { model = [], allDisabled = false } = {}
+    { allDisabled = false } = {}
   ) {
     const innerStyle = {};
-    if (checkedColor) {
+    if (checkedColor && checked) {
       innerStyle.backgroundColor = checkedColor;
     }
-
-    const isChecked = checked || model.indexOf(value) !== -1;
     const isDisabled = disabled || allDisabled;
     let icon = <Icon icon="check" />;
     let isCustomIcon = false;
     if (icons) {
-      if ('actived' in icons && isChecked) {
+      if ('actived' in icons && checked) {
         isCustomIcon = isImage(icons.actived);
         icon = <Icon icon={icons.actived} size={isCustomIcon ? '14px' : '12px'} />;
       }
-      if ('inactive' in icons && !isChecked) {
+      if ('inactive' in icons && !checked) {
         isCustomIcon = isImage(icons.inactive);
         icon = <Icon icon={icons.inactive} size={isCustomIcon ? '14px' : '12px'} />;
       }
@@ -134,7 +136,7 @@ class Checkbox extends Component {
     return (
       <div
         className={cx(prefix, className, {
-          [`${prefix}__checked`]: isChecked,
+          [`${prefix}__checked`]: checked,
           [`${prefix}__disabled`]: isDisabled
         })}
         onClick={this.onClick}
@@ -144,7 +146,7 @@ class Checkbox extends Component {
           <input
             type="checkbox"
             id={id}
-            checked={isChecked}
+            checked={checked}
             disabled={disabled}
             value={value}
           />

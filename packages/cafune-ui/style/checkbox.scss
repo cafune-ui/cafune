@@ -6,12 +6,17 @@ $activeColor: $color_theme_blue;
 $size_normal: 30px;
 #{$name} {
   position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   overflow: hidden;
   user-select: none;
   height: $size_normal;
   padding: 0 15px;
+  &-groud {
+    position: relative;
+    z-index: 2;
+  }
   &-input {
     display: flex;
     align-items: center;

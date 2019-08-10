@@ -17,7 +17,7 @@ class CheckboxGroup extends Component {
      */
     prefix: PropTypes.string,
     /**
-     * 选中项目的id
+     * 默认选中项目的id
      */
     model: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.number])
@@ -33,8 +33,12 @@ class CheckboxGroup extends Component {
     /**
      * 复选框组变化回调，参数为所有选中的数据
      */
-    onChange: PropTypes.func
+    handleChange: PropTypes.func
   };
+  constructor(props) {
+    super(props);
+    this.seletedData = props.model;
+  } 
   seletedData = [];
   canCheck = val => {
     const { maxSelect } = this.props;
@@ -55,14 +59,14 @@ class CheckboxGroup extends Component {
       seletedData.splice(valInd, 1);
     }
     this.seletedData = seletedData;
-    this.props.onChange && this.props.onChange(seletedData);
+    this.props.handleChange && this.props.handleChange(seletedData);
   };
   getChildContext() {
-    const { model, disabled, onChange } = this.props;
+    const { model, disabled } = this.props;
     return {
       model,
       allDisabled: disabled,
-      groupChange: onChange,
+      groupChange: this.onChange,
       canCheck: this.canCheck
     };
   }
