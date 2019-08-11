@@ -90,10 +90,11 @@
     line-height: 16px;
   }
   &-wrapper {
+    position: relative;
     &__border {
       position: relative;
       @include pixelBorder(0, #eee);
     }
-    @include pixelBorder(6px);
+    @include pixelBorder(6px, transparent);
   }
 }

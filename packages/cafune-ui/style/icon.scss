@@ -54,6 +54,21 @@
   &_next::before {
     content: "\e716";
   }
+  &_visible::before {
+    content: "\e71f";
+  }
+  &_invisible::before {
+    content: "\e720";
+  }
+  &_refresh::before {
+    content: "\e71a";
+  }
+  &_home::before {
+    content: "\e6fc";
+  }
+  &_news::before {
+    content: "\e6fb";
+  }
   &_img::before {
     content: "\e6f9";
   }

@@ -1,12 +1,20 @@
-import { h, Component } from 'preact';
+import { h, Component, createRef } from 'preact';
+import cx from 'classnames';
 import compInfo from '../../comp-info';
 import compMap from '../../comp-type';
 import { Icon } from 'cafune';
+// import hljs from 'highlight.js/lib/highlight';
+// import javascript from 'highlight.js/lib/languages/javascript';
+// import 'highlight.js/styles/github.css';
+// hljs.registerLanguage('javascript', javascript);
+
 export class Home extends Component {
   state = {
     markdown: null,
+    code: null,
     showcode: false,
-    shownav: false
+    shownav: false,
+    isCodeOpen: false
   };
   getMd(name) {
     if (name && compInfo[name]) {
@@ -25,9 +33,40 @@ export class Home extends Component {
       });
     }
   }
+  getCode(name) {
+    if (name && compInfo[name]) {
+      import(`!!raw-loader!../components/${name}/index.js`).then(code => {
+        if (code) {
+          // code = code.replace(/\\n+/g, '<br />').replace(/\\/g, '');
+          this.setState({
+            code
+          });
+        }
+      });
+    } else {
+      this.setState({
+        code: `<div>unavailable code</div>`
+      });
+    }
+  }
+  codeMaxheight = 0;
+  codeTransTime = 0.3;
+  componentDidUpdate() {
+    this.setCodeProps();
+  }
+  setCodeProps() {
+    if (this.codeBlock && this.codeBlock.current) {
+      // hljs.highlightBlock(this.codeBlock.current.querySelector('code'));
+      const $codeContainer = this.codeBlock.current;
+      const codeMaxheight = $codeContainer.offsetHeight + 100;
+      this.codeMaxheight = codeMaxheight;
+      this.codeTransTime = 0.3 * (codeMaxheight / 1000);
+    }
+  }
   componentWillReceiveProps(nextProps) {
     if (this.props.name !== nextProps.name) {
       this.getMd(nextProps.name);
+      this.getCode(nextProps.name);
       this.setState({
         showcode: false,
         shownav: false
@@ -36,6 +75,10 @@ export class Home extends Component {
   }
   componentWillMount() {
     this.getMd(this.props.name);
+    this.getCode(this.props.name);
+  }
+  componentDidMount() {
+    this.setCodeProps();
   }
   toggleStatus = name => () => {
     this.setState({
@@ -58,12 +101,17 @@ export class Home extends Component {
                 if ((isComps && compInfo[comp.url]) || !isComps) {
                   return (
                     <a
-                      class="nav-item"
+                      class={cx('nav-item', {
+                        'nav-item__actived': comp.url === this.props.name
+                      })}
                       href={`/${prefix}/${comp.url}`}
                       key={comp.url}
                     >
                       {isComps
-                        ? `${compInfo[comp.url].displayName} - ${compInfo[comp.url].desc}`
+                        ? // eslint-disable-next-line prettier/prettier
+                          `${compInfo[comp.url].displayName} - ${
+                            compInfo[comp.url].desc
+                          }`
                         : comp.name}
                     </a>
                   );
@@ -78,7 +126,9 @@ export class Home extends Component {
     }
     return <div class="caf-doc-side-wrapper">{mainNav}</div>;
   }
-  render({ name }, { markdown, showcode, shownav }) {
+  codeBlock = createRef();
+  codeContainer = createRef();
+  render({ name }, { markdown, code, isCodeOpen, showcode, shownav }) {
     return (
       <div class="caf-doc">
         <h1 class="caf-doc-head">
@@ -106,12 +156,41 @@ export class Home extends Component {
             />
             {this.renderSide()}
           </div>
-          <div class="caf-doc-content">
-            <div
-              class="caf-markdown"
-              dangerouslySetInnerHTML={{ __html: markdown }}
-            />
-          </div>
+          {code && (
+            <div class="caf-doc-content caf-markdown">
+              <div
+                class="caf-markdown-contain"
+                dangerouslySetInnerHTML={{ __html: markdown }}
+              />
+              <div
+                class="caf-doc-code"
+                style={
+                  isCodeOpen
+                    ? {
+                        transitionDuration: `${this.codeTransTime}s`,
+                        maxHeight: `${this.codeMaxheight}px`
+                      }
+                    : {
+                        transitionDuration: `${this.codeTransTime}s`
+                      }
+                }
+              >
+                <h4 class="caf-doc-code-header">
+                  <span class="title">代码示例</span>
+                  <span class="btn" onClick={this.toggleStatus('isCodeOpen')}>
+                    <Icon icon={isCodeOpen ? 'invisible' : 'visible '} />
+                  </span>
+                </h4>
+                <div class="caf-doc-code-body">
+                  <div class="caf-doc-code-wrapper" ref={this.codeBlock}>
+                    <pre>
+                      <code class="jsx">{code}</code>
+                    </pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
           <div class="caf-doc-simulator" data-status={showcode ? 1 : 0}>
             <div class="simulator-head" />
             <iframe src={`/comp/${name}`} frameBorder="0" />

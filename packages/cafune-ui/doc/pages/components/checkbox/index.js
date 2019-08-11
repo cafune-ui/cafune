@@ -10,22 +10,27 @@ export default class CheckboxComp extends Component {
     checkList: [
       {
         value: 'hi',
+        text: '自定义颜色',
         checkedColor: '#369'
       },
       {
         value: 'holla',
+        text: '开启禁用',
         disabled: true
       },
       {
         value: 'bonjour',
+        text: '自定义激活图标',
         icons: {
           actived: 'more'
         }
       },
       {
         value: 'hello',
+        text: '自定义激活及未激活图标',
         icons: {
-          inactive: 'https://image.flaticon.com/icons/png/128/2026/2026450.png'
+          inactive: 'https://image.flaticon.com/icons/png/128/2026/2026450.png',
+          actived: 'https://image.flaticon.com/icons/png/128/2026/2026462.png'
         }
       }
     ]
@@ -44,7 +49,7 @@ export default class CheckboxComp extends Component {
               }}
               key={`s-${item.value}`}
             >
-              {item.value}
+              {item.text}
             </Checkbox>
           ))}
         </div>
@@ -60,7 +65,7 @@ export default class CheckboxComp extends Component {
                   console.log(val);
                 }}
               >
-                {item.value}
+                {item.text}
               </Checkbox>
             }
             key={`s-c-${item.id}`}
@@ -72,7 +77,7 @@ export default class CheckboxComp extends Component {
             {checkList.map(item => (
               <Cell
                 title="test"
-                value={<Checkbox {...item}>{item.value}</Checkbox>}
+                value={<Checkbox {...item}>{item.text}</Checkbox>}
                 key={`g-${item.value}`}
               />
             ))}
@@ -87,7 +92,7 @@ export default class CheckboxComp extends Component {
             {checkList.map(item => (
               <Cell
                 title="test"
-                value={<Checkbox {...item}>{item.value}</Checkbox>}
+                value={<Checkbox {...item}>{item.text}</Checkbox>}
                 key={`g-${item.value}`}
               />
             ))}

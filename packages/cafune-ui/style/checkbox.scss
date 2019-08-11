@@ -65,4 +65,18 @@ $size_normal: 30px;
       }
     }
   }
+  &__disabled {
+    color: #bbb;
+    #{$name} {
+      &-input {
+        &-inner {
+          &:not(#{$name}-input-inner__custom) {
+            &::after {
+              border-color: #e6e6e6;
+            }
+          }  
+        }
+      }
+    }
+  }
 }
