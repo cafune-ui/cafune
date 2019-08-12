@@ -35,9 +35,10 @@ export class Home extends Component {
   }
   getCode(name) {
     if (name && compInfo[name]) {
-      import(`!!raw-loader!../components/${name}/index.js`).then(code => {
+      import(`!!caf-code-loader!../components/${name}/index.js`).then(code => {
+        // code = code.match(/module.exports = ((.|\n)+);$/);
         if (code) {
-          // code = code.replace(/\\n+/g, '<br />').replace(/\\/g, '');
+          code = code.replace(/\\n+/g, '<br />').replace(/\\/g, '');
           this.setState({
             code
           });
@@ -58,9 +59,9 @@ export class Home extends Component {
     if (this.codeBlock && this.codeBlock.current) {
       // hljs.highlightBlock(this.codeBlock.current.querySelector('code'));
       const $codeContainer = this.codeBlock.current;
-      const codeMaxheight = $codeContainer.offsetHeight + 100;
+      const codeMaxheight = $codeContainer.offsetHeight + 200;
       this.codeMaxheight = codeMaxheight;
-      this.codeTransTime = 0.3 * (codeMaxheight / 1000);
+      this.codeTransTime = 0.3 * (codeMaxheight / 2000);
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -69,6 +70,7 @@ export class Home extends Component {
       this.getCode(nextProps.name);
       this.setState({
         showcode: false,
+        isCodeOpen: false,
         shownav: false
       });
     }
@@ -156,12 +158,12 @@ export class Home extends Component {
             />
             {this.renderSide()}
           </div>
-          {code && (
-            <div class="caf-doc-content caf-markdown">
-              <div
-                class="caf-markdown-contain"
-                dangerouslySetInnerHTML={{ __html: markdown }}
-              />
+          <div class="caf-doc-content caf-markdown">
+            <div
+              class="caf-markdown-contain"
+              dangerouslySetInnerHTML={{ __html: markdown }}
+            />
+            {code && (
               <div
                 class="caf-doc-code"
                 style={
@@ -184,13 +186,16 @@ export class Home extends Component {
                 <div class="caf-doc-code-body">
                   <div class="caf-doc-code-wrapper" ref={this.codeBlock}>
                     <pre>
-                      <code class="jsx">{code}</code>
+                      <code
+                        class="jsx"
+                        dangerouslySetInnerHTML={{ __html: code }}
+                      />
                     </pre>
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
           <div class="caf-doc-simulator" data-status={showcode ? 1 : 0}>
             <div class="simulator-head" />
             <iframe src={`/comp/${name}`} frameBorder="0" />

@@ -16,6 +16,9 @@ export default (config, env, helpers) => {
   config.resolveLoader.alias['caf-md-loader'] = require.resolve(
     './util/md-loader'
   );
+  config.resolveLoader.alias['caf-code-loader'] = require.resolve(
+    './util/code-loader'
+  );
   config.module.loaders.push({
     test: /\.md$/,
     use: [
