@@ -38,33 +38,6 @@ function checkIfPanel(el) {
  *   }
  * }
  * ```
- *
- * 单独使用Nav
- *
- * ```javascript
- * const tabsData = [
- *   {
- *     id: 'Sporttrey320',
- *    actived: true,
- *    label: '足球'
- *  },
- *  {
- *    id: 'Sporttrey307',
- *    actived: false,
- *   label: '篮球'
- *  },
- * {
- *    id: 'Sporttrey327',
- *    actived: false,
- *    label: 'aa球'
- *  }
- * ];
- * // ...
- * <TabNav tabsData={tabsData} type="card" />
- * // ...
- * ```
- *
- * 当需要隐藏掉某个tab但里面涉及的功能需要保留时，使用visable将该tab标签隐藏掉，需要配合activeId 更改
  */
 class Tabs extends Component {
   static Panel = Panel;

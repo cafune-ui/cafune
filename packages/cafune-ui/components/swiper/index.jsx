@@ -27,24 +27,6 @@ function checkIfItem(el) {
  *  ))}
  * </Swiper>
  * ```
- * 自定义指示器
- *
- * ```javascript
- * // ...
- * renderCustom() {
- *   const { current } = this.state;
- *   return (
- *    <div style="padding: 4px 10px;position: absolute;right: 10px;bottom:10px;background: rgba(0,0,0, .6);color: #fff;font-size:12px;">
- *      {current + 1}/4
- *    </div>
- *   );
- * }
- * // ...
- * <Swiper onChange={this.change} customIndicator={this.renderCustom()}>
- *   {Array(...Array(4)).map((_, ind) => (
- *     <SwiperItem key={ind}>{ind + 1}</SwiperItem>
- *   ))}
- * </Swiper>
  * ```
  */
 class Swiper extends Component {

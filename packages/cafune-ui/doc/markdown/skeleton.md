@@ -4,15 +4,6 @@
 ```jsx
 import { Skeleton } from 'components';
 ```
-## 使用
-
-```javascript
-<Skeleton>
-  <Circle radius={32} x={32} y={32} />
-  <Rect radius={4} width={120} height={20} x={80} y={10} />
-  <Rect radius={4} width={120} height={20} x={80} y={35} />
-</Skeleton>
-```
 
 ## 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |

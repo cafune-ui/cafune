@@ -102,6 +102,10 @@ export default class TabsComp extends Component {
         >
           <TabNav tabsData={tabsData} type="card" />
         </div>
+        <p>
+          当需要隐藏掉某个tab但里面涉及的功能需要保留时，使用visable将该tab标签隐藏掉，需要配合activeId
+          更改
+        </p>
       </div>
     );
   }

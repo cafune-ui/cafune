@@ -4,24 +4,6 @@
 ```jsx
 import { Modal } from 'components';
 ```
-## 使用
-
-- 普通弹框
-
- ```javascript
- Modal.alert({
-   title: 'this is a title',
-   message: 'this is msg content'
- })
- ```
-- 带取消按钮的弹框
-
- ```javascript
- Modal.confirm({
-   title: 'this is a title',
-  message: 'this is msg content'
- })
-```
 
 ## 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |

@@ -99,7 +99,7 @@ function getInfo(doc) {
   let example;
   let desc = description;
   if (descs[1]) {
-    example = descs[1];
+    // example = descs[1];
     desc = descs[0].replace(/\n/g, '');
   }
   const result = {
@@ -107,7 +107,7 @@ function getInfo(doc) {
     desc,
     props: getProps(props)
   };
-  if (example) result.example = example;
+  // if (example) result.example = example;
   return result;
 }
 

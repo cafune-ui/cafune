@@ -1,4 +1,4 @@
-import { ActionSheet } from 'cafune';
+import { ActionSheet, Button } from 'cafune';
 import { Component } from 'preact';
 
 export default class ActionSheetComp extends Component {
@@ -18,8 +18,8 @@ export default class ActionSheetComp extends Component {
   }
   render({}, { isActionShow1 }) {
     return (
-      <div class="">
-        <div onClick={this.showAction('isActionShow1')}>展示面板</div>
+      <div class="caf-demo-block">
+        <Button onClick={this.showAction('isActionShow1')}>展示面板</Button>
         <ActionSheet
           isShow={isActionShow1}
           title="test title"

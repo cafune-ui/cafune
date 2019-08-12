@@ -59,7 +59,7 @@ export class Home extends Component {
     if (this.codeBlock && this.codeBlock.current) {
       // hljs.highlightBlock(this.codeBlock.current.querySelector('code'));
       const $codeContainer = this.codeBlock.current;
-      const codeMaxheight = $codeContainer.offsetHeight + 200;
+      const codeMaxheight = $codeContainer.getBoundingClientRect().height + 200;
       this.codeMaxheight = codeMaxheight;
       this.codeTransTime = 0.3 * (codeMaxheight / 2000);
     }

@@ -4,62 +4,6 @@
 ```jsx
 import { Tabs } from 'components';
 ```
-## 使用
-
-```javascript
-class NormalTab extends Component {
-  state = {
-    activeId: 'a'
-  }
-  onChange = id =>  {
-   this.setState({
-      activeId: id,
-   })
-  }
- render({}, { activeId }) {
-   return (
-     <Tabs activeId={ activeId } onChange={ this.onChange }>
-       <TabPanel label="A" id="a">
-        <div>A</div>
-        </TabPanel>
-        <TabPanel label="B" id="b">
-          <div>B</div>
-       </TabPanel>
-       <TabPanel label="C" id="c" visable={false}>
-         <div>C</div>
-       </TabPanel>
-   </Tabs>
-    )
-  }
-}
-```
-
-单独使用Nav
-
-```javascript
-const tabsData = [
-  {
-    id: 'Sporttrey320',
-   actived: true,
-   label: '足球'
- },
- {
-   id: 'Sporttrey307',
-   actived: false,
-  label: '篮球'
- },
-{
-   id: 'Sporttrey327',
-   actived: false,
-   label: 'aa球'
- }
-];
-// ...
-<TabNav tabsData={tabsData} type="card" />
-// ...
-```
-
-当需要隐藏掉某个tab但里面涉及的功能需要保留时，使用visable将该tab标签隐藏掉，需要配合activeId 更改
 
 ## 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
