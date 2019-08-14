@@ -138,16 +138,22 @@ export class Home extends Component {
             class="head-icon head-icon__menu"
             onClick={this.toggleStatus('shownav')}
           >
-            <Icon icon="menu" />
+            <Icon icon="menu" size="20px" />
           </span>
           <div class="head-bar">
             <img src="/assets/Cafune.png" class="head-bar-logo" />
           </div>
+          <a
+            class="head-icon head-icon__github"
+            href="https://github.com/evont/preact-cafune/"
+            alt="cafune"
+            target="__blank"
+          />
           <span
             class="head-icon head-icon__code"
             onClick={this.toggleStatus('showcode')}
           >
-            <Icon icon="more" />
+            <Icon icon="more" size="20px" />
           </span>
         </h1>
         <div class="caf-doc-main">

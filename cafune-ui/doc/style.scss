@@ -2,11 +2,11 @@ html,
 body {
   font: 14px/1.21 'Helvetica Neue', arial, sans-serif;
   font-weight: 400;
-  background: #f4f4f4;
+  background: #f2f4f9;
 }
 
 $sidewidth: 240px;
-$headheight: 60px;
+$headheight: 80px;
 .caf {
   &-markdown {
     h1,
@@ -42,10 +42,10 @@ $headheight: 60px;
       word-break: break-all;
       white-space: pre-wrap;
       color: #455a64;
-      font-family: Source Code Pro, Monaco, Inconsolata, monospace;
+      font-family: monospace;
       background: #f3f3f3;
       &[class*="language"] {
-        background: #f3f3f3;
+        background: #f7f7f7;
         line-height: 24px;
         padding: 10px 15px;
         border-radius: 8px;
@@ -83,7 +83,7 @@ $headheight: 60px;
     .hljs-symbol,
     .hljs-template-tag,
     .hljs-template-variable {
-      color: #5758bb;
+      color: #9d8be6;
     }
     .hljs-comment,
     .hljs-quote {
@@ -112,7 +112,7 @@ $headheight: 60px;
     .hljs-tag,
     .hljs-title,
     .hljs-type {
-      color: #1889f9;
+      color: #68b0d2;
     }
     .hljs-emphasis {
       font-style: italic;
@@ -129,33 +129,29 @@ $headheight: 60px;
       margin-top: 12px;
       font-size: 12px;
       line-height: 1.5;
-      border-radius: 6px;
+      border-radius: 10px;
+      overflow: hidden;
       border-collapse: collapse;
       color: #34495e;
       word-wrap: break-word;
       th {
-        padding: 14px 0;
-        background-color: #f5f5f5;
-        border: 1px solid #eee; /* no */
+        padding: 12px;
+        background-color: #f8f8f8;
       }
       td {
         padding: 10px;
         text-align: center;
-        border: 1px solid #eee; /* no */
-        &:nth-child(1) {
-          width: 6%;
-          text-align: left;
-        }
-        &:nth-child(2) {
-          width: 28%;
-          text-align: left;
-        }
+        border: 1px solid #f5f5f5; /* no */
+        font-weight: 300;
+      }
+      th, td {
+        min-width: 80px;
       }
       code {
         margin: 2px 3px;
         padding: 2px 5px;
-        display: inline;
-        background-color: #f3f3f3;
+        display: inline-block;
+        background-color: #fafafa;
         font-size: 12px;
       }
     }
@@ -166,15 +162,21 @@ $headheight: 60px;
       align-items: center;
       height: $headheight;
       line-height: $headheight;
+      background-color: #fff;
+      box-shadow: 0 0 6px #e2e2e2;
       .head {
         &-icon {
           height: $headheight;
-          width: $headheight;
+          width: 50px;
           text-align: center;
           // line-height: 36px;
           display: none;
           &__menu {
             line-height: #{$headheight * 0.8};
+          }
+          &__github {
+            display: block;
+            background: url(/assets/github.svg) no-repeat center/28px;
           }
         }
         &-bar {
@@ -187,6 +189,7 @@ $headheight: 60px;
       }
     }
     &-main {
+      margin-top: 20px;
       position: relative;
       display: flex;
       height: calc(100vh - #{$headheight});
@@ -204,12 +207,15 @@ $headheight: 60px;
         width: $sidewidth;
         transition: transform 0.3s;
         height: 100%;
+        box-sizing: border-box;
+        padding: 10px 0 30px;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
         z-index: 2;
         background: #fff;
       }
       &-mask {
+        display: none;
         position: absolute;
         left: 0;
         top: 0;
@@ -220,25 +226,28 @@ $headheight: 60px;
         transition: opacity 0.3s;
       }
       .nav {
+        padding-left: 30px;
         &-head,
         &-item,
         &-name {
           display: block;
-          padding: 10px 0 10px 20px;
-          color: #333;
+          padding: 15px 0 15px;
+          color: #777;
           font-size: 14px;
         }
         &-head {
-          font-size: 18px;
+          padding: 10px 0;
+          font-size: 12px;
           line-height: 30px;
-          border-bottom: 1px solid #f5f5f5; /* no */
         }
         &-name {
-          padding-top: 20px;
-          font-size: 12px;
-          color: #888;
+          font-size: 14px;
+          color: #444;
+          font-weight: bold;
         }
         &-item {
+          padding: 8px 0 8px;
+          font-weight: 300;
           &__actived {
             color: #1989fa;
           }
@@ -250,13 +259,14 @@ $headheight: 60px;
     }
     &-content {
       margin-left: calc(#{$sidewidth} + 20px);
-      padding: 30px 20px;
+      padding: 30px;
       height: calc(100vh - #{$headheight});
       overflow: auto;
       flex: 1;
       background-color: #fff;
       box-sizing: border-box;
       -webkit-overflow-scrolling: touch;
+      border-radius: 10px;
     }
     &-simulator {
       position: relative;
@@ -282,13 +292,16 @@ $headheight: 60px;
       max-height: 200px;
       overflow: hidden;
       border: 1px solid #eee;/* no */
-      border-radius: 6px;
+      border-radius: 14px;
       transition-property: max-height;
       transition-timing-function: ease-in-out;
+      background-color: #f9f9f9;
       &-header {
         display: flex;
-        padding: 10px 15px;
+        padding: 15px 25px;
         border-bottom: 1px solid #eee;/* no */
+        background-color: #fff;
+        font-size: 16px;
         .title {
           flex: 1;
         }
@@ -331,7 +344,7 @@ $headheight: 60px;
   }
 }
 $sideName: '.caf-doc-side';
-@media (max-width: 960px) {
+@media (max-width: 1200px) {
   .caf {
     &-doc {
       &-head {
@@ -345,11 +358,13 @@ $sideName: '.caf-doc-side';
       }
       &-side {
         width: 0;
+        border-radius: 0;
         &-wrapper {
           transform: translate3d(-100%, 0, 0);
           transition-delay: 0.3s;
         }
         &-mask {
+          display: block;
           opacity: 0;
         }
         &[data-status='1'] {
