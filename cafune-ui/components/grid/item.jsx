@@ -24,7 +24,11 @@ class GridItem extends Component {
      */
     text: PropTypes.string
   };
-  render({ prefix, className, ind, icon, text, children, ...restProps }, {}, { gutter, column, square }) {
+  render(
+    { prefix, className, ind, icon, text, children, ...restProps },
+    {},
+    { gutter, column, square }
+  ) {
     const percent = `${100 / column}%`;
     const sty = {
       flexBasis: percent
@@ -33,11 +37,14 @@ class GridItem extends Component {
     if (square) {
       sty.paddingTop = percent;
       if (gutter) {
+        const halfGutter = gutter / 2;
         innerStyle = {
-          right: gutter,
-          bottom: gutter,
+          right: halfGutter,
+          left: halfGutter,
+          top: halfGutter,
+          bottom: halfGutter,
           height: 'auto'
-        }
+        };
       }
     } else if (gutter) {
       sty.paddingRight = gutter;
@@ -47,7 +54,9 @@ class GridItem extends Component {
     }
     return (
       <div className={cx(prefix, className)} style={sty} {...restProps}>
-        <div className={`${prefix}-inner`} style={innerStyle}>{children}</div>
+        <div className={`${prefix}-inner`} style={innerStyle}>
+          {children}
+        </div>
       </div>
     );
   }

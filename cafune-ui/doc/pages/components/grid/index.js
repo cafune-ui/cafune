@@ -9,7 +9,37 @@ export default class GridComp extends Component {
       <div>
         <div class="caf-demo-block">
           <p class="caf-demo-title">正常使用</p>
-          <Grid square={false}>
+          <Grid>
+            {IconList.map(item => (
+              <Item key={item}>
+                <Icon icon={item} />
+                <span>{item}</span>
+              </Item>
+            ))}
+          </Grid>
+
+          <p class="caf-demo-title">无边框</p>
+          <Grid border={false}>
+            {IconList.map(item => (
+              <Item key={item}>
+                <Icon icon={item} />
+                <span>{item}</span>
+              </Item>
+            ))}
+          </Grid>
+
+          <p class="caf-demo-title">不居中显示</p>
+          <Grid center={false}>
+            {IconList.map(item => (
+              <Item key={item}>
+                <Icon icon={item} />
+                <span>{item}</span>
+              </Item>
+            ))}
+          </Grid>
+
+          <p class="caf-demo-title">设置边距</p>
+          <Grid gutter={20}>
             {IconList.map(item => (
               <Item key={item}>
                 <Icon icon={item} />
