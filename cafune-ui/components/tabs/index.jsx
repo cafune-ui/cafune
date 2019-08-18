@@ -45,12 +45,13 @@ class Tabs extends Component {
   static propTypes = {
     /**
      * 自定义类名
-      */
+     */
     prefix: PropTypes.string,
     /**
      * 当前激活id
      */
-    activeId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    activeId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      .isRequired,
     /**
      * 组件类型
      */
@@ -72,8 +73,16 @@ class Tabs extends Component {
     type: 'slider',
     maxCount: 5
   };
+  state = {
+    activedKey: ''
+  };
   onTabChange = key => {
     const { onChange } = this.props;
+    if (!this.props.activeId) {
+      this.setState({
+        activedKey: key
+      })
+    }
     if (onChange) {
       onChange(key);
     }
@@ -109,15 +118,22 @@ class Tabs extends Component {
   }
   getTabsData(children, activeId) {
     const data = [];
-    children.forEach(item => {
+    const { activedKey } = this.state;
+    children.forEach((item, ind) => {
       if (checkIfPanel(item)) {
         const props = item.attributes;
         const { id, label, className } = props;
         const { children } = item;
+        let actived = false;
+        if (activeId) {
+          actived = id ? activeId === id : false;
+        } else {
+          actived = activedKey ? activedKey === id : ind === 0;
+        }
         data.push({
           label,
           id,
-          actived: activeId && id ? activeId === id : false,
+          actived,
           content: children,
           className
         });
@@ -126,7 +142,14 @@ class Tabs extends Component {
     return data;
   }
   renderWithPanel() {
-    const { prefix, children, activeId, className, navClass, ...restProps } = this.props;
+    const {
+      prefix,
+      children,
+      activeId,
+      className,
+      navClass,
+      ...restProps
+    } = this.props;
     const tabsData = this.getTabsData(children, activeId);
     const cls = cx(prefix, className);
     return (
@@ -139,13 +162,21 @@ class Tabs extends Component {
     );
   }
   renderWithoutPanel() {
-    const { prefix, children, activeId, className, navClass, tabs, ...restProps } = this.props;
-    tabs.forEach(item => item.actived = item.id === activeId )
+    const {
+      prefix,
+      children,
+      activeId,
+      className,
+      navClass,
+      tabs,
+      ...restProps
+    } = this.props;
+    tabs.forEach(item => (item.actived = item.id === activeId));
     const cls = cx(prefix, className);
     return (
       <div className={cls} {...restProps}>
         {this.renderNav(tabs, navClass)}
-        { children }
+        {children}
       </div>
     );
   }

@@ -28,7 +28,7 @@ export default class Panel extends Component {
   };
   static defaultProps = {
     visable: true,
-    prefox: 'caf-tabs-panel'
+    prefix: 'caf-tabs-panel'
   };
   render({ prefix, children, className, actived, ...restProps }) {
     const cls = cx(prefix, className);
