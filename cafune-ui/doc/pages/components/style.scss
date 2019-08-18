@@ -1,8 +1,5 @@
 .comp {
   padding: 20px 0;
-  &_container {
-    
-  }
   &_hd {
     padding: 10px 20px;
     &_name {
@@ -11,6 +8,18 @@
     &_cn {
       font-size: 12px;
       color: #888;
+    }
+  }
+
+  .caf-btn {
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  .caf-demo-button {
+    &-desc {
+      margin-top: 2px;
+      font-size: 10px;
     }
   }
 }

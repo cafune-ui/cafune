@@ -1,5 +1,6 @@
 import { render, Component } from 'preact';
 import PropTypes from 'prop-types';
+import Icon from '../icon';
 import { isBrowser } from '../../util/isomorphic';
 let seed = 0;
 function getUuid(type) {
@@ -18,9 +19,9 @@ const ToastList = {};
  *  ```js
  *  Toast.show({ content: 'show' });
  *  Toast.success({ content: 'success' });
- * 
+ *
  *  Toast.error({ content: 'error' });
- * 
+ *
  *  Toast.loading({ content: 'loading' });
  *  ```
  * - 自定义时长提示
@@ -58,6 +59,13 @@ class Toast extends Component {
      */
     duration: PropTypes.number,
     /**
+     * 自定义图标
+      */
+    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({
+      icon: PropTypes.string,
+      size: PropTypes.string
+    })]),
+    /**
      * toast 类型
      */
     type: PropTypes.oneOf(['normal', 'success', 'error', 'loading']),
@@ -68,12 +76,13 @@ class Toast extends Component {
     /**
      * 是否只显示一个toast，默认为false(`suceess` & `error` & `'loading'` 下默认为true)，将依次显示toast
      */
-    isOnly: PropTypes.bool
+    multiple: PropTypes.bool
   };
   static defaultProps = {
     duration: 2000,
     type: 'normal',
-    isOnly: false
+    multiple: false,
+    prefix: 'caf-toast'
   };
   constructor(props) {
     super(props);
@@ -123,14 +132,23 @@ class Toast extends Component {
   componentWillUnmount() {
     this.clearCloseTimer();
   }
-  render({ content, type }, { shouldClose }) {
+  render({ prefix, icon, content, type }, { shouldClose }) {
+    let toastIcon = null;
+    if (icon) {
+      if (typeof icon === 'string') {
+        toastIcon = <Icon icon={icon} size="42px" />
+      } else if (icon.icon){
+        toastIcon = <Icon icon={icon.icon} size={icon.size || '42px'} />
+      }
+    }
     return (
       <div
-        className="caf-toast"
+        className={prefix}
         data-type={type}
         data-status={shouldClose ? 0 : 1}
       >
-        {content}
+        {toastIcon}
+        <p className={`${prefix}-content`}>{content}</p>
       </div>
     );
   }
@@ -158,6 +176,7 @@ const createNotifyContainerNode = () => {
 function show({
   content,
   duration = durationDefault,
+  icon,
   type = 'normal',
   onClose,
   multiple = false
@@ -171,26 +190,27 @@ function show({
   const uid = getUuid(type);
   const props = {
     content,
+    icon,
     duration,
     onClose,
     type,
     uid
   };
-  let toast = render(<ToastComp {...props} />, notifyContainerNode);
+  let toast = render(<Toast {...props} />, notifyContainerNode);
   ToastList[uid].node = toast;
   return uid;
 }
 /**
  * 成功Toast
  */
-function success({ content, duration, onClose } = {}) {
-  return show({ content, duration, type: 'success', onClose });
+function success({ content, duration, icon = 'success', onClose } = {}) {
+  return show({ content, duration, icon, type: 'success', onClose });
 }
 /**
  * 失败Toast
  */
-function error({ content, duration, onClose } = {}) {
-  return show({ content, duration, type: 'error', onClose });
+function error({ content, duration, icon = 'error', onClose } = {}) {
+  return show({ content, duration, icon, type: 'error', onClose });
 }
 
 /**

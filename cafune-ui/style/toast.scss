@@ -31,7 +31,7 @@
   display: inline-block;
   max-width: 80%;
   min-width: 100px;
-  padding: 10px;
+  padding: 20px 10px;
   z-index: 100;
   border-radius: 3px;
   background-color: rgba($color: #000000, $alpha: 0.5);
@@ -42,16 +42,20 @@
   transition: all .2s;
   color: #fff;
   text-align: center;
-  &[data-type='error'] {
-    padding: 60px 10px 10px;
-    background-image: url(/assets/icons/toast-alert.png);
-    background-size: 40px;
+  // &[data-type='error'] {
+  //   padding: 60px 10px 10px;
+  //   background-image: url(/assets/icons/toast-alert.png);
+  //   background-size: 40px;
+  // }
+  // &[data-type='success'] {
+  //   padding: 60px 10px 10px;
+  //   background-image: url(/assets/icons/toast-success.png);
+  //   background-size: 40px;
+  // }
+  .caf-icon + &-content {
+    margin-top: 10px;
   }
-  &[data-type='success'] {
-    padding: 60px 10px 10px;
-    background-image: url(/assets/icons/toast-success.png);
-    background-size: 40px;
-  }
+  
   &[data-type='loading'] {
     padding: 60px 10px 10px;
     &::before {

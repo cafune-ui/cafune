@@ -1,6 +1,5 @@
 import { Button } from 'cafune';
 import { Component } from 'preact';
-import './style';
 
 export default class ButtonComp extends Component {
   render() {

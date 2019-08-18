@@ -10,6 +10,20 @@ const IconList = [
   'search',
   'back',
   'next',
-  'menu'
+  'menu',
+  'choice',
+  'upload',
+  'success',
+  'warning',
+  'error',
+  'like',
+  'like_o',
+  'browser',
+  'location',
+  'address',
+  'help',
+  'home',
+  'phone',
+  'password'
 ];
 export default IconList;
