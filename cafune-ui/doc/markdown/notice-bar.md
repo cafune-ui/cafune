@@ -14,7 +14,7 @@ import { NoticeBar } from 'components';
 | wrapable | 是否自动换行（仅在不滚动时生效） | bool | `false` | - | ❌ |
 | color | 文本颜色 | string | - | - | ❌ |
 | bgColor | 背景颜色 | string | - | - | ❌ |
-| icon | 左侧图标，`string` 类型时显示指定图标， 为`false` 时不显示图标，为`true` 时显示默认图标 | `string`/`bool` | `'notice'` | - | ❌ |
+| icon | 左侧图标，`string` 类型时显示指定图标， 为`false` 时不显示图标，为`true` 时显示默认图标 | string/bool | `'notice'` | - | ❌ |
 | speed | 滚动速度 | number | `50` | - | ❌ |
 | delay | 滚动延迟 | number | `1` | - | ❌ |
-| action | 点击类型 | `['closable','link']`/`node`/`element` | - | - | ❌ |
+| action | 点击类型 | ['closable','link']/node/element | - | - | ❌ |

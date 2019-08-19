@@ -9,8 +9,8 @@ import { Checkbox } from 'components';
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
 | prefix | 自定义类名 | string | `'caf-checkbox'` | - | ❌ |
-| icons | 自定义图标 | `actived: string ❌`,`inactive: string ❌` | - | - | ❌ |
-| value | 复选框值 | `string`/`number` | - | - | ✅  |
+| icons | 自定义图标 | <a class="caf-markdown-hover" data-desc="{ actived: string ❌,inactive: string ❌ }">custom</a> | - | - | ❌ |
+| value | 复选框值 | string/number | - | - | ✅  |
 | id | 复选框 id | string | - | - | ❌ |
 | checked | 默认是否选中 | bool | `false` | - | ❌ |
 | checkedColor | 选中状态颜色 | string | - | - | ❌ |

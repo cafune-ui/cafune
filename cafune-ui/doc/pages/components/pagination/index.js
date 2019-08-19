@@ -12,7 +12,10 @@ export default class Page extends Component {
     });
   };
   render({}, { pn, pages }) {
-    console.log(pn, pages);
-    return <Pagination pn={pn} pages={pages} onChange={this.onChange} />;
+    return (
+      <div class="caf-demo-block">
+        <Pagination pn={pn} pages={pages} onChange={this.onChange} />
+      </div>
+    );
   }
 }

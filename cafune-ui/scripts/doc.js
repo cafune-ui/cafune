@@ -20,7 +20,7 @@ function getProps(props) {
     for (const name in props) {
       const item = props[name];
       let { description, defaultValue, required } = item;
-      defaultValue = defaultValue ? defaultValue.value || '-' : '-';
+      defaultValue = defaultValue ? defaultValue.value || defaultValue : '-';
 
       const type = item.type || item.tsType;
       if (type) {
@@ -30,8 +30,8 @@ function getProps(props) {
         let val;
         switch (typeName) {
           case 'enum':
-            if (item.type.value.every(ele => /'.+?'/.test(ele.value))) typeName = 'string';
-            backupOption = item.type.value.map(ele => ele.value);
+            if (type.value && type.value.every(ele => /'.+?'/.test(ele.value))) typeName = 'string';
+            backupOption  = type.value.map(ele => ele.value);
             break;
           case 'union':
             typeName = type.value.map(item => {
@@ -149,19 +149,19 @@ function generatePropTab(props, showTitle = true) {
         backupOption = backupOption.map(item => `\`${item}\``).join(',');
       }
       if (defaultValue !== '-' && typeof defaultValue === 'string') {
-        defaultValue = `\`${defaultValue}\``;
+        defaultValue = `\`${defaultValue.replace(/\n/g, '')}\``;
       }
       if (typeof typeName !== 'string') {
         if (Array.isArray(typeName)) {
           const isStrList = typeName.every(item => typeof item === 'string');
           typeName = typeName.map(item => {
-            if (typeof item !== 'string') return `\`${item.key}: ${item.name} ${item.required ? '✅ ' : '❌'}\``
-            return `\`${item}\``;
+            if (typeof item !== 'string') return `${item.key}: ${item.name} ${item.required ? '✅ ' : '❌'}`
+            return item;
           });
           if (isStrList) {
             typeName = typeName.join('/');
           } else {
-            typeName = typeName.join(',');
+            typeName = `<a class="caf-markdown-hover" data-desc="{ ${typeName.join(',')} }">custom</a>`;
           }
         } else {
           typeName = `\`${JSON.stringify(typeName)}\``;

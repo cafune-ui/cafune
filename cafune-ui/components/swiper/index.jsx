@@ -35,7 +35,7 @@ class Swiper extends Component {
     /**
      * 自定义类名
       */
-    prefix: 'caf-swiper',
+    prefix: PropTypes.string,
     /**
      * 是否自动切换
      */

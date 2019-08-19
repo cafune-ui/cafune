@@ -28,11 +28,11 @@ const Pagination = ({
   onChange,
   ...restProps
 }) => {
-  const prevCx = cx('caf-page-btn', {
-    'caf-page-btn__disabled': pn <= 1
+  const prevCx = cx(`${prefix}-btn`, {
+    [`${prefix}__disabled`]: pn <= 1
   });
-  const nextCx = cx('caf-page-btn', {
-    'caf-page-btn__disabled': pn >= pages
+  const nextCx = cx(`${prefix}-btn`, {
+    [`${prefix}__disabled`]: pn >= pages
   });
 
   return (
@@ -40,7 +40,7 @@ const Pagination = ({
       <button onClick={changeFn(-1, pn, pages, onChange)} className={prevCx}>
         上一页
       </button>
-      <span className="caf-page-indicator">
+      <span className={`${prefix}-indicator`}>
         {pn} / {pages}
       </span>
       <button onClick={changeFn(1, pn, pages, onChange)} className={nextCx}>
@@ -48,6 +48,10 @@ const Pagination = ({
       </button>
     </div>
   );
+};
+Pagination.defaultProps = {
+  prefix: 'caf-page',
+
 };
 Pagination.propTypes = {
   /**

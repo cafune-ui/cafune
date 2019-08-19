@@ -13,4 +13,4 @@ import { PullRefresh } from 'components';
 | distance | 刷新距离 | number | - | - | ❌ |
 | isRefreshing | 是否处于刷新状态 | bool | - | - | ❌ |
 | onRefresh | 刷新回调 | func | - | - | ✅  |
-| indicator | 刷新指示器 | `pulling: union ❌`,`loosing: union ❌`,`loading: union ❌`,`finish: union ❌` | - | - | ❌ |
+| indicator | 刷新指示器 | <a class="caf-markdown-hover" data-desc="{ pulling: union ❌,loosing: union ❌,loading: union ❌,finish: union ❌ }">custom</a> | - | - | ❌ |

@@ -1,4 +1,4 @@
-import { Steps } from 'cafune';
+import { Steps, Button } from 'cafune';
 const { Step } = Steps;
 import { Component } from 'preact';
 
@@ -32,8 +32,8 @@ export default class StepsComp extends Component {
   }
   render({}, { current }) {
     return (
-      <div>
-        <div onClick={this.nextStep}>下一步</div>
+      <div class="caf-demo-block">
+        <Button onClick={this.nextStep}>下一步</Button>
         <p class="caf-demo-title">默认用法</p>
         <Steps step={current}>{this.renderSteps()}</Steps>
         <p class="caf-demo-title">数字进度</p>

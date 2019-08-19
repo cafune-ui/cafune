@@ -15,5 +15,5 @@ import { SearchBar } from 'components';
 | onCancel | 取消操作时回调 | func | - | - | ❌ |
 | onChange | 内容变更时回调 | func | - | - | ❌ |
 | leftIcon | 左侧按钮图标（参考 `Icon` 组件） | string | `'search'` | - | ❌ |
-| addition | 搜索框右侧附加功能 | `icon: string ❌`,`onClick: func ❌` | - | - | ❌ |
-| action | 右侧功能按钮 | `type: enum ❌`,`text: string ❌`,`keepShow: bool ❌`,`onClick: func ❌` | - | - | ❌ |
+| addition | 搜索框右侧附加功能 | <a class="caf-markdown-hover" data-desc="{ icon: string ❌,onClick: func ❌ }">custom</a> | - | - | ❌ |
+| action | 右侧功能按钮 | <a class="caf-markdown-hover" data-desc="{ type: enum ❌,text: string ❌,keepShow: bool ❌,onClick: func ❌ }">custom</a> | - | - | ❌ |

@@ -15,7 +15,7 @@ export class Home extends Component {
       [name]: !this.state[name]
     });
   };
-  render({ name }, { showcode, shownav }) {
+  render({ type, name }, { showcode, shownav }) {
     return (
       <div class="caf-doc">
         <Header toggleStatus={this.toggleStatus} />
@@ -31,11 +31,13 @@ export class Home extends Component {
             compInfo={compInfo}
             toggleStatus={this.toggleStatus}
           />
-          <div class="caf-doc-simulator" data-status={showcode ? 1 : 0}>
-            <div class="simulator-head" />
-            <iframe src={`/comp/${name}`} frameBorder="0" />
-            <div class="simulator-foot" />
-          </div>
+          {type === 'component' && (
+            <div class="caf-doc-simulator" data-status={showcode ? 1 : 0}>
+              <div class="simulator-head" />
+              <iframe src={`/comp/${name}`} frameBorder="0" />
+              <div class="simulator-foot" />
+            </div>
+          )}
         </div>
       </div>
     );

@@ -43,6 +43,7 @@ function getBtn(data, side = 'left', isConflict = false) {
   }
   return null;
 }
+
 /**
  * 导航栏
  */
@@ -89,7 +90,7 @@ const btnShape = PropTypes.shape({
    */
   badge: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 });
-NavBar.propType = {
+NavBar.propTypes = {
   /**
    * 自定义前缀
    */

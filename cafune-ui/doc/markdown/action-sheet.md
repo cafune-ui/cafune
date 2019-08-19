@@ -14,7 +14,7 @@ import { ActionSheet } from 'components';
 | closeOnClickMask | 是否在点击遮罩后关闭 | bool | `true` | - | ❌ |
 | horizon | 横向展示的数据 | arrayOf | - | - | ❌ |
 | vertialList | 纵向展示的数据 | arrayOf | - | - | ❌ |
-| title | 标题栏 | `element`/`node`/`string` | - | - | ❌ |
+| title | 标题栏 | element/node/string | - | - | ❌ |
 | cancelText | 取消按钮文字 | string | `'取消'` | - | ❌ |
 | onClose | 关闭时触发事件 | func | - | - | ❌ |
 | showCancel | 是否显示取消按钮 | bool | `true` | - | ❌ |

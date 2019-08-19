@@ -7,7 +7,7 @@ export default class LayoutComp extends Component {
   render() {
     return (
       <div class="caf-demo">
-        <div>
+        <div class="caf-demo-block">
           <p class="caf-demo-title">正常使用</p>
           <Layout>
             <Item col="3">col: 3</Item>
@@ -17,7 +17,7 @@ export default class LayoutComp extends Component {
             <Item col="8">col: 8</Item>
           </Layout>
         </div>
-        <div>
+        <div class="caf-demo-block">
           <p class="caf-demo-title">间距</p>
           <Layout gutter="20">
             <Item>col: 8, gutter: 20</Item>
@@ -30,7 +30,7 @@ export default class LayoutComp extends Component {
             <Item>col: 8, gutter: 8px</Item>
           </Layout>
         </div>
-        <div>
+        <div class="caf-demo-block">
           <p class="caf-demo-title">
             flex 方向
             <p class="caf-demo-title-addition">
@@ -61,7 +61,7 @@ export default class LayoutComp extends Component {
             <Item col="5">col: 5</Item>
           </Layout>
         </div>
-        <div>
+        <div class="caf-demo-block">
           <p class="caf-demo-title">
             flex 换行
             <p class="caf-demo-title-addition">
@@ -86,7 +86,7 @@ export default class LayoutComp extends Component {
             <Item col="10">col: 10</Item>
           </Layout>
         </div>
-        <div>
+        <div class="caf-demo-block">
           <p class="caf-demo-title">
             flex 主轴对齐
             <p class="caf-demo-title-addition">
@@ -123,7 +123,7 @@ export default class LayoutComp extends Component {
             <Item col="3">col: 3</Item>
           </Layout>
         </div>
-        <div>
+        <div class="caf-demo-block">
           <p class="caf-demo-title">
             flex 交叉轴对齐
             <p class="caf-demo-title-addition">
@@ -170,7 +170,7 @@ export default class LayoutComp extends Component {
             </Layout>
           </div>
         </div>
-        <div>
+        <div class="caf-demo-block">
           <p class="caf-demo-title">
             flex 交叉轴对齐
             <p class="caf-demo-title-addition" direction="column">
