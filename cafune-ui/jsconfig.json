@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "paths": {
+      "components": ["components"],
+      "util": ["util"]
+    },
+    "target": "es2018",
+    "module": "es6",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["**/*"],
+  "exclude": ["node_modules"]
+}

@@ -4,7 +4,7 @@ const path = require('path');
 const { getComponentName, sortByModulePath } = require('./util/comp');
 const styleRoot = path.resolve(process.cwd(), './style');
 const compRoot = path.resolve(process.cwd(), './components');
-const testRoot = path.resolve(process.cwd(), './__test__/components');
+// const testRoot = path.resolve(process.cwd(), './__test__/components');
 const docRoot = path.resolve(process.cwd(), './doc');
 console.clear();
 const inquirer = require('inquirer');
@@ -46,7 +46,7 @@ inquirer.prompt(questions).then(answers => {
 });
 
 function writeTestSuit(compName, name) {
-  const testCompDir = `${testRoot}/${name}`;
+  const testCompDir = `${compRoot}/${name}/test`;
   if (!fs.existsSync(testCompDir)) {
     fs.mkdirSync(testCompDir);
   } else {
@@ -56,9 +56,15 @@ function writeTestSuit(compName, name) {
   fs.writeFileSync(
     `${testCompDir}/index.test.js`,
     `
-  import { ${compName} } from 'components';
-  import { render } from 'enzyme';
-  import { shallow, deep } from 'preact-render-spy';
+import { ${compName} } from 'components';
+import { render } from 'enzyme';
+import { shallow, deep } from 'preact-render-spy';
+describe('${compName}', () => {
+  it('should render properly', () => {
+    const wrapper = shallow(<${compName} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
     `
   );
 }
@@ -74,13 +80,13 @@ function writeDoc(compName, name) {
   fs.writeFileSync(
     `${docCompDir}/index.js`,
     `
-  import { ${compName} } from 'cafune';
-  import { Component } from 'preact';
-  export default class ${compName}Comp extends Component {
-    render() {
-      return <div />
-    }
+import { ${compName} } from 'cafune';
+import { Component } from 'preact';
+export default class ${compName}Comp extends Component {
+  render() {
+    return <div />
   }
+}
     `
   );
 }
