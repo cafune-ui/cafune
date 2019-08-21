@@ -1,5 +1,5 @@
 
-  import { NavBar } from '../';
+  import  NavBar  from '../';
   import { render } from 'enzyme';
   import { shallow, deep } from 'preact-render-spy';
     

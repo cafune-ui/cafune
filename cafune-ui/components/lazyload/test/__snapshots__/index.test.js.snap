@@ -19,7 +19,7 @@ RenderContext {
       },
     ],
     "key": undefined,
-    "nodeName": undefined,
+    "nodeName": [Function],
   },
   "length": 1,
 }

@@ -1,4 +1,4 @@
-import { Calendar } from '../';
+import  Calendar  from '../';
 import { render } from 'enzyme';
 import { shallow, deep } from 'preact-render-spy';
 

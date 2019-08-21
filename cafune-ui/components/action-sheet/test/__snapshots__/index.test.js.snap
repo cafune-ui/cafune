@@ -3,10 +3,49 @@
 exports[`ActionSheet should render properly 1`] = `
 RenderContext {
   "0": VNode {
-    "attributes": undefined,
+    "attributes": Object {
+      "horizon": Object {
+        "list": Array [
+          Object {
+            "action": [Function],
+            "badge": true,
+            "icon": "https://image.uisdc.com/wp-content/uploads/2018/07/uiii-ps-icon.png",
+            "name": "hi",
+            "subName": "hi sub",
+          },
+          Object {
+            "action": "/",
+            "badge": "2",
+            "icon": "search",
+            "name": "hi2",
+            "subName": "hi2 sub",
+          },
+          Object {
+            "badge": "2",
+            "icon": "search",
+            "name": "hi2",
+            "subName": "hi2 sub",
+          },
+          Object {
+            "badge": "2",
+            "icon": "search",
+            "name": "hi2",
+            "subName": "hi2 sub",
+          },
+          Object {
+            "badge": "2",
+            "icon": "search",
+            "name": "hi2",
+            "subName": "hi2 sub",
+          },
+        ],
+        "wrap": false,
+      },
+      "title": "test title",
+    },
     "children": Array [],
     "key": undefined,
-    "nodeName": undefined,
+    "nodeName": [Function],
   },
   "length": 1,
 }

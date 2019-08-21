@@ -10,7 +10,7 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: './coverage',
   collectCoverageFrom: [
-    'components/**/*.{tsx, jsx}',
+    'components/**/*.jsx',
     '!**/node_modules/**'
   ],
   moduleNameMapper: {

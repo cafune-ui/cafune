@@ -1,5 +1,5 @@
 
-  import { Scroller } from '../';
+  import  Scroller  from '../';
   import { render } from 'enzyme';
   import { shallow, deep } from 'preact-render-spy';
     

@@ -1,7 +1,7 @@
-const Enzyme = require('enzyme');
-const { Adapter } = require('enzyme-adapter-preact');
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-preact-pure';
 
-Enzyme.configure({ adapter: new Adapter() });
+configure({ adapter: new Adapter });
 
 global.window = {android: {
   webFinish: jest.fn()

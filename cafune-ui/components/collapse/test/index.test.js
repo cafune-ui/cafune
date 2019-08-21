@@ -1,5 +1,5 @@
 
-  import { Collapse } from '../';
+  import  Collapse  from '../';
   import { render } from 'enzyme';
   import { shallow, deep } from 'preact-render-spy';
 

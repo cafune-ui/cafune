@@ -1,5 +1,5 @@
 
-  import { Grid } from '../';
+  import  Grid  from '../';
   import { render } from 'enzyme';
   import { shallow, deep } from 'preact-render-spy';
     

@@ -216,7 +216,7 @@ class ActionSheet extends Component {
   };
   renderContent = () => {
     const { prefix, horizon, vertialList } = this.props;
-    let $horizon = this.renderData(horizon.list, true, horizon.wrap);
+    let $horizon = this.renderData(horizon ? horizon.list || [] : [], true, horizon.wrap);
     let $vertical = this.renderData(vertialList, false);
     return (
       <div className={`${prefix}-content`}>

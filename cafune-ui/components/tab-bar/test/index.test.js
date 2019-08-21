@@ -36,9 +36,9 @@ describe('<TabBar />', () => {
         />
       </TabBar>
     );
-    wrapper.find('.tabbar_item').simulate('click');
-    expect(wrapper.find('.tabbar__fixed').length).toBe(1);
-    expect(wrapper.find('.tabbar_item').length).toBe(3);
+    wrapper.find('.caf-tabbar-item').simulate('click');
+    expect(wrapper.find('.caf-tabbar__fixed').length).toBe(1);
+    expect(wrapper.find('.caf-tabbar-item').length).toBe(3);
     expect(change).toHaveBeenCalled();
 
     wrapper = deep(
@@ -70,7 +70,7 @@ describe('<TabBar />', () => {
         />
       </TabBar>
     );
-    expect(wrapper.find('.tabbar__fixed').length).toBe(0);
+    expect(wrapper.find('.caf-tabbar__fixed').length).toBe(0);
     wrapper.render(null)
   });
 });

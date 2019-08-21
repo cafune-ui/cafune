@@ -1,4 +1,4 @@
-import { Lazyload } from '../';
+import  Lazyload  from '../';
 import { render } from 'enzyme';
 import { shallow, deep } from 'preact-render-spy';
 

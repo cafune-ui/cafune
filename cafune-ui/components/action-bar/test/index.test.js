@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { ActionBar } from '../';
+import  ActionBar  from '../';
 import { shallow, render } from 'enzyme';
 
 describe('<ActionBar />', () => {
