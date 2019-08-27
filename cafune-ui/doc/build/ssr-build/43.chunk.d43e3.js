@@ -1,0 +1,12 @@
+exports.ids = [43];
+exports.modules = {
+
+/***/ "hjNi":
+/***/ (function(module, exports) {
+
+module.exports = "<span class=\"hljs-keyword\">import</span> { Component } <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'preact'</span>;\n<span class=\"hljs-keyword\">import</span> { NoticeBar } <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'cafune'</span>;\n<span class=\"hljs-keyword\">import</span> <span class=\"hljs-string\">'./style.scss'</span>;\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">Page</span> <span class=\"hljs-keyword\">extends</span> <span class=\"hljs-title\">Component</span> </span>{\n  render() {\n    <span class=\"hljs-keyword\">return</span> (\n      &lt;div class=\"caf-demo caf-demo__noticebar\"&gt;\n        &lt;p&gt;基础用法&lt;/p&gt;\n        &lt;NoticeBar text=\"通知内容通知内容通知内容通知内容通知内容通知内容通知内容\" /&gt;\n        &lt;p&gt;自定义图标&lt;/p&gt;\n        &lt;NoticeBar\n          icon={false}\n          text=\"禁用图标通知内容通知内容通知内容通知内容通知内容通知内容通知内容\"\n        /&gt;\n        &lt;NoticeBar\n          icon=\"more\"\n          text=\"自定义图标通知内容通知内容通知内容通知内容通知内容通知内容通知内容\"\n        /&gt;\n        &lt;p&gt;禁止滚动&lt;/p&gt;\n        &lt;NoticeBar\n          scrollable={false}\n          text=\"通知内容通知内容通知内容通知内容通知内容通知内容通知内容\"\n        /&gt;\n        &lt;p&gt;多行展示&lt;/p&gt;\n        &lt;NoticeBar\n          wrapable={true}\n          text=\"通知内容通知内容通知内容通知内容通知内容通知内容通知内容\"\n        /&gt;\n        &lt;p&gt;自定义样式&lt;/p&gt;\n        &lt;NoticeBar\n          color=\"#fff\"\n          bgColor=\"#177cb0\"\n          icon=\"more\"\n          text=\"通知内容通知内容通知内容通知内容通知内容通知内容通知内容\"\n        /&gt;\n        &lt;p&gt;自定义右侧&lt;/p&gt;\n        &lt;NoticeBar\n          action=\"closable\"\n          onClick={() =&gt; {\n            console.log('closed ');\n          }}\n          text=\"通知内容通知内容通知内容通知内容通知内容通知内容通知内容\"\n        /&gt;\n        &lt;NoticeBar\n          action=\"link\"\n          text=\"通知内容通知内容通知内容通知内容通知内容通知内容通知内容\"\n        /&gt;\n        &lt;NoticeBar\n          action=\"去看看\"\n          text=\"通知内容通知内容通知内容通知内容通知内容通知内容通知内容\"\n        /&gt;\n        &lt;NoticeBar\n          action={&lt;span style=\"color: #88ada6;\"&gt;去看看&lt;/span&gt;}\n          text=\"通知内容通知内容通知内容通知内容通知内容通知内容通知内容\"\n        /&gt;\n      &lt;/div&gt;\n    );\n  }\n}\n"
+
+/***/ })
+
+};;
+//# sourceMappingURL=43.chunk.d43e3.js.map
