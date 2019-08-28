@@ -1,5 +1,9 @@
 import path from 'path';
 export default (config, env, helpers) => {
+  if (env.isProd) {
+    config.devtool = false;
+    config.output.publicPath = '/cafune/';
+  }
   const babelLoader = helpers.getLoadersByName(config, 'babel-loader');
   if (babelLoader) {
     babelLoader.forEach(({ rule }) =>

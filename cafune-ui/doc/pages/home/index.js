@@ -34,7 +34,7 @@ export class Home extends Component {
           {type === 'component' && (
             <div class="caf-doc-simulator" data-status={showcode ? 1 : 0}>
               <div class="simulator-head" />
-              <iframe src={`/comp/${name}`} frameBorder="0" />
+              <iframe src={`#/comp/${name}`} frameBorder="0" />
               <div class="simulator-foot" />
             </div>
           )}

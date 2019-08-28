@@ -3,6 +3,7 @@ import Home from './pages/home';
 import Comp from './pages/components';
 import 'cafune/style';
 import './style';
+import { createHashHistory } from 'history';
 // const nameMap = {
 //   cell: '单元格',
 //   collapse: '折叠面板',
@@ -19,7 +20,7 @@ import './style';
 // };
 
 export const App = () => (
-  <Router>
+  <Router history={createHashHistory()}>
     <Home path="/components/:name?" type="component" />
     <Home path="/doc/:name?" type="doc" />
     <Comp path="/comp/:name" />
