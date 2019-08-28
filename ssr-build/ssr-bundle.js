@@ -79,7 +79,7 @@ module.exports =
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+/******/ 	__webpack_require__.p = "/cafune";
 /******/
 /******/ 	// uncatched error handler for webpack runtime
 /******/ 	__webpack_require__.oe = function(err) {
@@ -1378,9 +1378,9 @@ var style_default_1 = /*#__PURE__*/__webpack_require__.n(style_1);
 var index__ref = Object(preact_min["h"])(
   preact_router_es_Router,
   null,
-  Object(preact_min["h"])(home, { path: '/components/:name?', type: 'component' }),
-  Object(preact_min["h"])(home, { path: '/doc/:name?', type: 'doc' }),
-  Object(preact_min["h"])(components["default"], { path: '/comp/:name' })
+  Object(preact_min["h"])(home, { path: '/cafune/components/:name?', type: 'component' }),
+  Object(preact_min["h"])(home, { path: '/cafune/doc/:name?', type: 'doc' }),
+  Object(preact_min["h"])(components["default"], { path: '/cafune/comp/:name' })
 );
 
 var App = function App() {
