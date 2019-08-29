@@ -141,17 +141,15 @@ $headheight: 80px;
     transition-timing-function: ease-in-out;
     background-color: #444;
     &-header {
-      display: flex;
       padding: 15px 25px;
       border-bottom: 1px solid #eee; /* no */
       background-color: #fff;
       font-size: 16px;
-      .title {
-        flex: 1;
+      .btn {
+        float: right;
       }
     }
     &-body {
-      flex: 1;
       margin: 15px;
       box-sizing: border-box;
       overflow: hidden;
@@ -159,7 +157,7 @@ $headheight: 80px;
     }
     &-wrapper {
       line-height: 22px;
-      code {
+      code, .code {
         background-color: transparent!important;
         color: #f5e2aa!important;
       }
@@ -218,6 +216,11 @@ $sideName: '.caf-doc-side';
               display: block;
             }
           }
+        }
+      }
+      &-content {
+        table {
+          table-layout: fixed;
         }
       }
       &-simulator {
