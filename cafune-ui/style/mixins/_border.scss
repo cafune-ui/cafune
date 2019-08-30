@@ -24,10 +24,10 @@
       @if $color {
         border-color: $color;
       }
-      @if not unit($radius) == '%' {
-        border-radius: $radius * 2;
-      } @else {
+      @if unitless($radius) {
         border-radius: $radius;
+      } @else {
+        border-radius: $radius * 2;
       }
     }
   }
@@ -43,10 +43,10 @@
       @if $color {
         border-color: $color;
       }
-      @if not unit($radius) == '%' {
-        border-radius: $radius * 3;
-      } @else {
+      @if unitless($radius) {
         border-radius: $radius;
+      } @else {
+        border-radius: $radius * 3;
       }
     }
   }
