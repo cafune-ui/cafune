@@ -4,6 +4,7 @@ import Header from './head';
 import Side from './side';
 import Content from './content';
 import './style';
+import 'prismjs/themes/prism-tomorrow';
 
 export class Home extends Component {
   state = {

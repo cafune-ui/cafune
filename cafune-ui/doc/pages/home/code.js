@@ -67,32 +67,34 @@ export default class Code extends Component {
   render({}, { code, isCodeOpen }) {
     return (
       code && (
-        <div
-          class="caf-doc-code"
-          style={
-            isCodeOpen
-              ? {
-                  transitionDuration: `${this.codeTransTime}s`,
-                  maxHeight: `${this.codeMaxheight}px`
-                }
-              : {
-                  transitionDuration: `${this.codeTransTime}s`
-                }
-          }
-        >
+        <div class="caf-doc-code">
           <h4 class="caf-doc-code-header">
             <span class="title">代码示例</span>
-            <span class="btn" onClick={this.toggleStatus('isCodeOpen')}>
+            <div class="btn" onClick={this.toggleStatus('isCodeOpen')}>
               <Icon icon={isCodeOpen ? 'invisible' : 'visible '} />
-            </span>
+            </div>
           </h4>
 
-          <div class="caf-doc-code-body">
+          <div
+            class="caf-doc-code-body"
+            style={
+              isCodeOpen
+                ? {
+                    transitionDuration: `${this.codeTransTime}s`,
+                    maxHeight: `${this.codeMaxheight}px`
+                  }
+                : {
+                    transitionDuration: `${this.codeTransTime}s`
+                  }
+            }
+          >
             <div class="caf-doc-code-wrapper" ref={this.codeBlock}>
-              <div
-                class="code"
-                dangerouslySetInnerHTML={{ __html: code }}
-              ></div>
+              <pre class="language-jsx">
+                <code
+                  class="language-jsx"
+                  dangerouslySetInnerHTML={{ __html: code }}
+                />
+              </pre>
             </div>
           </div>
         </div>

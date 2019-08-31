@@ -102,6 +102,7 @@ $headheight: 80px;
     }
   }
   &-content {
+    position: relative;
     margin-left: calc(#{$sidewidth} + 20px);
     padding: 30px;
     height: calc(100vh - #{$headheight});
@@ -130,34 +131,33 @@ $headheight: 80px;
   }
 
   &-code {
-    display: flex;
-    flex-direction: column;
     margin-top: 20px;
-    max-height: 200px;
-    overflow: hidden;
     border: 1px solid #eee; /* no */
     border-radius: 14px;
-    transition-property: max-height;
-    transition-timing-function: ease-in-out;
-    background-color: #444;
     &-header {
+      display: flex;
       padding: 15px 25px;
       border-bottom: 1px solid #eee; /* no */
       background-color: #fff;
       font-size: 16px;
-      .btn {
-        float: right;
+      .title {
+        flex: 1;
       }
     }
     &-body {
-      margin: 15px;
+      padding: 15px;
       box-sizing: border-box;
       overflow: hidden;
       background-color: #444;
+      max-height: 200px;
+      overflow: hidden;
+      transition-property: max-height;
+      transition-timing-function: ease-in-out;
+      border-radius: 0 0 14px 14px;
     }
     &-wrapper {
       line-height: 22px;
-      code, .code {
+      [class="language-jsx"] {
         background-color: transparent!important;
         color: #f5e2aa!important;
       }
@@ -201,12 +201,15 @@ $sideName: '.caf-doc-side';
       }
       &-content {
         margin-left: 20px;
+        table {
+          table-layout: fixed;
+        }
       }
     }
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 860px) {
   .caf {
     &-doc {
       &-head {
@@ -219,30 +222,19 @@ $sideName: '.caf-doc-side';
         }
       }
       &-content {
-        table {
-          table-layout: fixed;
-        }
+        margin-left: 0;
       }
       &-simulator {
         position: fixed;
         min-width: auto;
         height: calc(100vh - #{$headheight});
+        top: #{$headheight};
         margin: 0;
         width: 100%;
         transform: translate3d(0, 100%, 0);
         &[data-status='1'] {
           transform: translate3d(0, 0, 0);
         }
-      }
-    }
-  }
-}
-
-@media (max-width: 400px) {
-  .caf {
-    &-doc {
-      &-content {
-        margin-left: 0;
       }
     }
   }

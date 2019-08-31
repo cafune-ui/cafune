@@ -6,7 +6,7 @@ const Header = ({ toggleStatus }) => {
         <Icon icon="menu" size="20px" />
       </span>
       <div class="head-bar">
-        <img src="/cafune/assets/Cafune.png" class="head-bar-logo" />
+        <img src="../..//assets/Cafune.png" class="head-bar-logo" />
       </div>
       <a
         class="head-icon head-icon__github"
