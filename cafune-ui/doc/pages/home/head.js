@@ -1,4 +1,5 @@
 import { Icon } from 'cafune';
+import logImg from '../../assets/Cafune.png';
 const Header = ({ toggleStatus }) => {
   return (
     <h1 class="caf-doc-head">
@@ -6,7 +7,7 @@ const Header = ({ toggleStatus }) => {
         <Icon icon="menu" size="20px" />
       </span>
       <div class="head-bar">
-        <img src="../..//assets/Cafune.png" class="head-bar-logo" />
+        <img src={logImg} class="head-bar-logo" />
       </div>
       <a
         class="head-icon head-icon__github"
