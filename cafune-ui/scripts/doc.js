@@ -4,7 +4,7 @@ const path = require('path');
 const glob = require('glob');
 const docgen = require('react-docgen');
 
-const mdRoot = path.resolve(process.cwd(), './doc/markdown');
+const mdRoot = path.resolve(process.cwd(), './doc/markdown/components');
 if (fs.existsSync(mdRoot)) {
   del.sync(mdRoot);
 }

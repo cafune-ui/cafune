@@ -105,6 +105,7 @@ $headheight: 80px;
     position: relative;
     margin-left: calc(#{$sidewidth} + 20px);
     padding: 30px;
+    margin-right: 20px;
     height: calc(100vh - #{$headheight});
     overflow: auto;
     flex: 1;
@@ -118,7 +119,7 @@ $headheight: 80px;
     min-width: 375px; /* no */
     height: calc(100vh - #{$headheight} - 40px);
     border-radius: 18px;
-    margin: 20px;
+    margin: 0 20px 0 0;
     overflow: hidden;
     box-sizing: border-box;
     transition: transform 0.3s;
@@ -212,6 +213,9 @@ $sideName: '.caf-doc-side';
 @media (max-width: 860px) {
   .caf {
     &-doc {
+      &-main {
+        margin-top: 0;
+      }
       &-head {
         .head {
           &-icon {
@@ -223,6 +227,8 @@ $sideName: '.caf-doc-side';
       }
       &-content {
         margin-left: 0;
+        margin-right: 0;
+        border-radius: 0;
       }
       &-simulator {
         position: fixed;

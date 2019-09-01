@@ -28,7 +28,9 @@ body {
       margin-top: 20px;
     }
     code {
-			border-radius: 4px;
+      border-radius: 4px;
+      background-color: #f3f3f3;
+      padding: 3px 4px;
 			br {
 				display: block;
 			}
@@ -42,9 +44,17 @@ body {
     pre {
       margin: 0;
 		}
-		ul, ol, li {
+		ol, ol li {
 			list-style: none;
-		}
+    }
+    ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+    
+    li {
+      line-height: 26px;
+    }
 		ul, ol {
 			margin-top: 20px;
 		}

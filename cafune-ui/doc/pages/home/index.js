@@ -31,6 +31,7 @@ export class Home extends Component {
             name={name}
             compInfo={compInfo}
             toggleStatus={this.toggleStatus}
+            type={type}
           />
           {type === 'component' && (
             <div class="caf-doc-simulator" data-status={showcode ? 1 : 0}>

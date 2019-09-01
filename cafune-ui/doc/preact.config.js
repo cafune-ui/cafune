@@ -36,7 +36,7 @@ export default (config, env, helpers) => {
   });
   config.resolve.alias = Object.assign({}, config.resolve.alias, {
     cafune: path.resolve(__dirname, '../'),
-    docmd: path.resolve(__dirname, './markdown'),
+    '@docmd': path.resolve(__dirname, './markdown'),
     util: path.resolve(__dirname, './util')
   });
 };

@@ -10,20 +10,29 @@ export default class Content extends Component {
 
   getMd(name) {
     const { compInfo } = this.props;
-    if (name && compInfo[name]) {
-      import(`../../markdown/${name}.md`).then(data => {
-        let mdHtml = data.match(/module.exports = "((.|\n)+)";$/);
-        if (mdHtml) {
-          mdHtml = mdHtml[1].replace(/\\n+/g, '<br />').replace(/\\/g, '');
+    if (name) {
+      let mdPromise;
+      if (compInfo[name]) {
+        mdPromise = import(`@docmd/components/${name}.md`);
+      } else {
+        mdPromise = import(`@docmd/doc/${name}.md`);
+      }
+      mdPromise
+        .then(data => {
+          let mdHtml = data.match(/module.exports = "((.|\n)+)";$/);
+          if (mdHtml) {
+            mdHtml = mdHtml[1].replace(/\\n+/g, '<br />').replace(/\\/g, '');
+            this.setState({
+              markdown: mdHtml
+            });
+          }
+        })
+        .catch(e => {
+          console.error(e);
           this.setState({
-            markdown: mdHtml
+            markdown: `<div>markdown not exist</div>`
           });
-        }
-      });
-    } else {
-      this.setState({
-        markdown: `<div>unavailable md</div>`
-      });
+        });
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -37,14 +46,14 @@ export default class Content extends Component {
   componentWillMount() {
     this.getMd(this.props.name);
   }
-  render({ name, compInfo }, { markdown }) {
+  render({ name, compInfo, type }, { markdown }) {
     return (
       <div class="caf-doc-content caf-markdown">
         <div
           class="caf-markdown-contain"
           dangerouslySetInnerHTML={{ __html: markdown }}
         />
-        <CodeBlock name={name} compInfo={compInfo} />
+        {type === 'component' && <CodeBlock name={name} compInfo={compInfo} />}
       </div>
     );
   }
