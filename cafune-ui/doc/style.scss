@@ -30,7 +30,8 @@ body {
     code {
       border-radius: 4px;
       background-color: #f3f3f3;
-      padding: 3px 4px;
+      padding: 3px 6px;
+      color: #666;
 			br {
 				display: block;
 			}
@@ -40,23 +41,24 @@ body {
       line-height: 24px;
       border-radius: 8px;
       overflow-x: auto;
+      margin: 10px 0 0;
+    }
+    hr {
+      background-color: #eee;
+      margin: 30px 15px;
+      height: 1px;
+      border: none;
     }
     pre {
       margin: 0;
 		}
-		ol, ol li {
-			list-style: none;
-    }
-    ul {
-      list-style: disc;
-      padding-left: 20px;
-    }
-    
     li {
+      margin-top: 5px;
       line-height: 26px;
     }
 		ul, ol {
-			margin-top: 20px;
+      margin-top: 20px;
+      padding-left: 20px;
 		}
 		br {
 			height: 0;

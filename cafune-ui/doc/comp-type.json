@@ -8,6 +8,10 @@
           {
             "name": "介绍",
             "url": "intro"
+          },
+          {
+            "name": "使用",
+            "url": "usage"
           }
         ]
       }

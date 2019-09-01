@@ -1,6 +1,6 @@
-<div style="padding: 60px 0 120px 0;text-align: center">
-  <img src="/cafune/assets/Cafune.png">
-  <p>轻盈、优雅的移动端Preact 组件库</p>
+<div style="padding: 60px 0 90px 0;text-align: center">
+  <img src="/cafune/assets/Cafune.png" width="240px">
+  <p style="margin-top: 20px;">轻盈、优雅的移动端Preact 组件库</p>
 </div>
 
 ## 安装

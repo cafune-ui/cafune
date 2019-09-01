@@ -70,17 +70,17 @@ $headheight: 80px;
       transition: opacity 0.3s;
     }
     .nav {
-      padding-left: 30px;
+      // padding-left: 30px;
       &-head,
       &-item,
       &-name {
         display: block;
-        padding: 15px 0 15px;
+        padding: 15px 0 15px 25px;
         color: #777;
         font-size: 14px;
       }
       &-head {
-        padding: 10px 0;
+        padding: 10px 0 10px 25px;
         font-size: 12px;
         line-height: 30px;
       }
@@ -90,10 +90,11 @@ $headheight: 80px;
         font-weight: bold;
       }
       &-item {
-        padding: 8px 0 8px;
+        padding-left: 30px;
         font-weight: 300;
         &__actived {
           color: #1989fa;
+          background-color: #f9f9f9;
         }
         &:active {
           color: #1989fa;
