@@ -27,17 +27,17 @@ function destEntryFile(component, filename, ext = '') {
     getStyleRelativePath(component, dep, ext)
   );
 
-  // const esEntry = path.join(dir, component, `style/${filename}`);
+  const esEntry = path.join(dir, component, `style/${filename}`);
   const libEntry = path.join(
     __dirname,
     '../lib',
     component,
     `style/${filename}`
   );
-  // const esContent = deps.map(dep => `import '${dep}';`).join('\n');
+  const esContent = deps.map(dep => `import '${dep}';`).join('\n');
   const libContent = deps.map(dep => `require('${dep}');`).join('\n');
   try {
-    // fs.outputFileSync(esEntry, esContent);
+    fse.outputFileSync(esEntry, esContent);
     fse.outputFileSync(libEntry, libContent);
   } catch(e) {
     console.error(e)
