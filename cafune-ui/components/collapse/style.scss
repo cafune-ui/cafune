@@ -1,0 +1,37 @@
+.caf-collapse {
+  &-header {
+    .caf-icon {
+      position: absolute;
+      right: 15px;
+      transition: transform 0.3s;
+    }
+  }
+  &-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s;
+    &-content {
+      background-color: #fff;
+    }
+  }
+  &-item {
+    position: relative;
+    &__disabled {
+      .caf-collapse {
+        &-header {
+          color: #999;
+        }
+      }
+    }
+    &[data-status="1"] {
+      .caf-collapse {
+        &-header__default {
+          // color: #999;
+          .caf-icon {
+            transform: rotate(90deg);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+$name: '.caf-loading';
+#{$name} {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  padding: 10px;
+  &-text {
+    color: #969799;
+    margin: 0 0 0 10px;
+  }
+  &__vertical {
+    flex-direction: column;
+    #{$name}-text {
+      margin: 10px 0 0 0 ;
+    }
+  }
+}

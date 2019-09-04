@@ -36,7 +36,7 @@ inquirer.prompt(questions).then(answers => {
   const { name, isHasStyle, isHasStories } = answers;
   const compName = getComponentName(name);
   // writeMapping(compName, name);
-  // writeEntry(compName, name);
+  riteEntry(compName, name);
   writeComp(compName, name, isHasStyle);
   // if (isHasStories) {
   //   writeStories(compName, name);
@@ -44,6 +44,22 @@ inquirer.prompt(questions).then(answers => {
   writeDoc(compName, name);
   writeTestSuit(compName, name);
 });
+
+function writeEntry(compName, name) {
+  const entryPath = path.resolve(compRoot, 'index.js');
+  if (!fs.existsSync(entryPath)) {
+    fs.writeFileSync(entryPath, '');
+  }
+  const entryFile = fs.readFileSync(entryPath, 'utf-8');
+  const modExports = entryFile.trim().split('\n') || [];
+  const compDir = `${compRoot}/${name}`;
+  fs.mkdirSync(compDir);
+  // add to entry, in order to use component by tying 'import { comp } from 'components';
+  console.log(`Adding new components: ${compName} to index.js`);
+  modExports.push(`export * from './${name}';`);
+  sortByModulePath(modExports);
+  fs.writeFileSync(entryPath, `${modExports.join('\n')}\n`);
+}
 
 function writeTestSuit(compName, name) {
   const testCompDir = `${compRoot}/${name}/test`;

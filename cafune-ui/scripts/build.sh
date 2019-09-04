@@ -19,4 +19,4 @@ node-sass \
 postcss css --use autoprefixer --replace --no-map
 
 echo "Compile commonjs..."
-npx babel components --out-dir lib
+npx babel components --out-dir lib --copy-files

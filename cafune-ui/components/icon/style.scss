@@ -1,0 +1,124 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('../font/iconfont.eot'); /* IE9 */
+  src: url('../font/iconfont.eot#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */ url('../font/iconfont.woff2') format('woff2'),
+    url('../font/iconfont.woff') format('woff'),
+    url('../font/iconfont.ttf') format('truetype'),
+    /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+      url('../font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.caf-icon {
+  position: relative;
+  display: inline-block;
+  font-family: 'iconfont'!important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  &-img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+  &_notice::before {
+    content: '\e6ff';
+  }
+  &_arrow {
+    &_right:before {
+      content: '\e713';
+    }
+    &_left:before {
+      content: '\e712';
+    }
+  }
+  &_check::before {
+    content: '\e711';
+  }
+  &_wrong::before {
+    content: '\e710';
+  }
+  &_more {
+    &::before {
+      content: '\e70d';
+    }
+    &_o::before {
+      content: '\e70c';
+    }
+  }
+  &_search::before {
+    content: '\e707';
+  }
+  &_back::before {
+    content: '\e715';
+  }
+  &_next::before {
+    content: '\e716';
+  }
+  &_visible::before {
+    content: '\e71f';
+  }
+  &_invisible::before {
+    content: '\e720';
+  }
+  &_refresh::before {
+    content: '\e71a';
+  }
+  &_home::before {
+    content: '\e6fc';
+  }
+  &_news::before {
+    content: '\e6fb';
+  }
+  &_img::before {
+    content: '\e6f9';
+  }
+  &_menu:before {
+    content: '\e734';
+  }
+  &_choice:before {
+    content: '\e72c';
+  }
+  &_upload:before {
+    content: '\e727';
+  }
+  &_success:before {
+    content: '\e714';
+  }
+  &_warning:before {
+    content: '\e70f';
+  }
+  &_error:before {
+    content: '\e718';
+  }
+  &_like {
+    &:before {
+      content: '\e74b';
+    }
+    &_o:before {
+      content: '\e74c';
+    }
+  }
+  &_browser:before {
+    content: '\e722';
+  }
+  &_location:before {
+    content: '\e725';
+  }
+  &_address:before {
+    content: '\e705';
+  }
+  &_help:before {
+    content: '\e70e';
+  }
+  &_home:before {
+    content: '\e6fc';
+  }
+  &_phone:before {
+    content: '\e6fe';
+  }
+  &_password:before {
+    content: '\e702';
+  }
+}
