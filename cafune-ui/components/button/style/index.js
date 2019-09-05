@@ -1,4 +1,3 @@
-import '../../index/style.css';
-import '../../icon/style.css';
-import '../../loading/style.css';
-import '../style.css';
+import '../../icon/style.scss';
+import '../../loading/style.scss';
+import '../style.scss';

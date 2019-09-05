@@ -1,13 +1,21 @@
 const fs = require('fs');
+const glob = require('fast-glob');
 const fse = require('fs-extra');
 const path = require('path');
 const dependencyTree = require('dependency-tree');
+
+
+const sass = require('node-sass');
+const csso = require('csso');
+const postcss = require('postcss');
+const postcssrc = require('postcss-load-config');
 
 const dir = path.join(__dirname, '../components');
 
 const excludes = [
   'index.ts',
-  'index.less',
+  'index.js',
+  'index.scss',
   'utils',
   '.DS_Store'
 ];
@@ -57,14 +65,14 @@ function analyzeDependencies(component) {
     checkList
   );
   checkList.push(component);
-  try {
-    if (fse.pathExistsSync(getAssetsStylePath(component))) {
-      fse.copySync(getAssetsStylePath(component), getStylePath(component))
-      fse.copySync(getAssetsStylePath(component), getLibStylePath(component))
-    }
-  } catch (err) {
-    console.error(err)
-  }
+  // try {
+  //   if (fse.pathExistsSync(getAssetsStylePath(component))) {
+  //     fse.copySync(getAssetsStylePath(component), getStylePath(component))
+  //     fse.copySync(getAssetsStylePath(component), getLibStylePath(component))
+  //   }
+  // } catch (err) {
+  //   console.error(err)
+  // }
   return checkList.filter(item => checkComponentHasStyle(item));
 }
 
@@ -115,10 +123,61 @@ function getStyleRelativePath(component, style, ext) {
 }
 
 function checkComponentHasStyle(component) {
-  return fs.existsSync(getAssetsStylePath(component));
+  return fs.existsSync(getStylePath(component));
 }
 
 components.forEach(component => {
   // css entry
-  destEntryFile(component, 'index.js', '.css');
+  destEntryFile(component, 'index.js', '.scss');
 });
+
+
+async function compileSass(sassCodes, paths) {
+  const outputs = await Promise.all(
+    sassCodes.map((source, index) => new Promise((resolve, reject) => {
+      sass.render({
+        file: paths[index]
+      }, (err, result) => {
+        if (err) reject(err);
+        resolve(result)
+      })
+    }))
+  );
+  return outputs.map(item => item.css);
+}
+
+async function compilePostcss(cssCodes, paths) {
+  const postcssConfig = await postcssrc();
+  const outputs = await Promise.all(
+    cssCodes.map((css, index) =>
+      postcss(postcssConfig.plugins).process(css, { from: paths[index] })
+    )
+  );
+
+  return outputs.map(item => item.css);
+}
+
+async function compileCsso(cssCodes) {
+  return cssCodes.map(css => csso.minify(css).css);
+}
+
+async function dest(output, paths) {
+  await Promise.all(
+    output.map((css, index) => fs.writeFile(paths[index].replace('.scss', '.css'), css))
+  );
+}
+
+// compile component css
+async function compile() {
+  let codes;
+  const paths = await glob(['./components/**/*.scss', './lib/**/*.scss'], { absolute: true });
+
+  codes = await Promise.all(paths.map(path => fs.readFile(path, 'utf-8')));
+  codes = await compileSass(codes, paths);
+  codes = await compilePostcss(codes, paths);
+  codes = await compileCsso(codes);
+
+  await dest(codes, paths);
+}
+
+compile();
