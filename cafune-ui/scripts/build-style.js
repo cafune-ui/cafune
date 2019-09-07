@@ -16,6 +16,7 @@ const excludes = [
   'index.ts',
   'index.js',
   'index.scss',
+  'style',
   'utils',
   '.DS_Store'
 ];
@@ -163,7 +164,7 @@ async function compileCsso(cssCodes) {
 
 async function dest(output, paths) {
   await Promise.all(
-    output.map((css, index) => fs.writeFile(paths[index].replace('.scss', '.css'), css))
+    output.map((css, index) => fse.writeFile(paths[index].replace('.scss', '.css'), css))
   );
 }
 
@@ -172,7 +173,7 @@ async function compile() {
   let codes;
   const paths = await glob(['./components/**/*.scss', './lib/**/*.scss'], { absolute: true });
 
-  codes = await Promise.all(paths.map(path => fs.readFile(path, 'utf-8')));
+  codes = await Promise.all(paths.map(path => fse.readFile(path, 'utf-8')));
   codes = await compileSass(codes, paths);
   codes = await compilePostcss(codes, paths);
   codes = await compileCsso(codes);

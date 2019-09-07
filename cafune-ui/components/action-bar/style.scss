@@ -1,5 +1,5 @@
-@import '../../style/variables/color.scss';
-@import '../../style/mixins/_display.scss';
+@import '../style/variables/color.scss';
+@import '../style/mixins/_display.scss';
 .caf-actionbar {
   @include fixed;
   bottom: 0;

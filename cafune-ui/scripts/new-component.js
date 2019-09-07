@@ -36,12 +36,15 @@ inquirer.prompt(questions).then(answers => {
   const { name, isHasStyle, isHasStories } = answers;
   const compName = getComponentName(name);
   // writeMapping(compName, name);
-  riteEntry(compName, name);
+  writeEntry(compName, name);
+  console.log('writing component')
   writeComp(compName, name, isHasStyle);
   // if (isHasStories) {
   //   writeStories(compName, name);
   // }
+  console.log('writing doc')
   writeDoc(compName, name);
+  console.log('writing test')
   writeTestSuit(compName, name);
 });
 
@@ -56,7 +59,10 @@ function writeEntry(compName, name) {
   fs.mkdirSync(compDir);
   // add to entry, in order to use component by tying 'import { comp } from 'components';
   console.log(`Adding new components: ${compName} to index.js`);
-  modExports.push(`export * from './${name}';`);
+  const exportName = `export * from './${name}';`;
+  if (modExports.indexOf(exportName) === -1) {
+    modExports.push(`export * from './${name}';`);
+  }
   sortByModulePath(modExports);
   fs.writeFileSync(entryPath, `${modExports.join('\n')}\n`);
 }
@@ -65,9 +71,6 @@ function writeTestSuit(compName, name) {
   const testCompDir = `${compRoot}/${name}/test`;
   if (!fs.existsSync(testCompDir)) {
     fs.mkdirSync(testCompDir);
-  } else {
-    console.log(`${compName} already exists, please choose another name.`);
-    process.exit(2);
   }
   fs.writeFileSync(
     `${testCompDir}/index.test.js`,
@@ -110,9 +113,6 @@ function writeComp(compName, name, isHasStyle) {
   const compDir = `${compRoot}/${name}`;
   if (!fs.existsSync(compDir)) {
     fs.mkdirSync(compDir);
-  } else {
-    console.log(`${compName} already exists, please choose another name.`);
-    process.exit(2);
   }
   // create js & css to component folder
   fs.writeFileSync(
@@ -120,8 +120,8 @@ function writeComp(compName, name, isHasStyle) {
     `import { Component } from 'preact';\nimport PropTypes from 'prop-types';\nimport cx from 'classnames';\n\nclass ${compName} extends Component {\n  static defaultProps = {\n    prefix: 'caf-'\n  };\n  render({ prefix, className, ...restProps }) {\n    return <div className={cx(prefix, className)} {...restProps}>${compName}</div>;\n  }\n}\nexport default ${compName};\n`
   );
   if (isHasStyle) {
-    fs.writeFileSync(`${styleRoot}/${name}.scss`, '')
-    const entryCssPath = `${styleRoot}/index.scss`;
+    fs.writeFileSync(`${compDir}/style.scss`, '')
+    const entryCssPath = `${compRoot}/index.scss`;
     if (!fs.existsSync(entryCssPath)) {
       fs.writeFileSync(entryCssPath, '');
     }
