@@ -44,14 +44,24 @@ main();
 // }
 // 删除入口文件
 function deleteEnty(name) {
-  const entryPath = path.resolve(compRoot, 'index.js');
-  if (fs.existsSync(entryPath)) {
-    const entryFile = fs.readFileSync(entryPath, 'utf-8');
+  const entryJsPath = path.resolve(compRoot, 'index.js');
+  if (fs.existsSync(entryJsPath)) {
+    const entryFile = fs.readFileSync(entryJsPath, 'utf-8');
     const modExports = entryFile.trim().split('\n') || [];
     const exportIndex = modExports.indexOf(`export * from './${name}';`);
     if (exportIndex !== -1) {
       modExports.splice(exportIndex, 1);
-      fs.writeFileSync(entryPath, `${modExports.join('\n')}\n`);
+      fs.writeFileSync(entryJsPath, `${modExports.join('\n')}\n`);
+    }
+  }
+  const entryStylePath = path.resolve(compRoot, 'index.scss');
+  if (fs.existsSync(entryStylePath)) {
+    const entryFile = fs.readFileSync(entryStylePath, 'utf-8');
+    const modExports = entryFile.trim().split('\n') || [];
+    const exportIndex = modExports.indexOf(`@import './${name}';`);
+    if (exportIndex !== -1) {
+      modExports.splice(exportIndex, 1);
+      fs.writeFileSync(entryStylePath, `${modExports.join('\n')}\n`);
     }
   }
 }

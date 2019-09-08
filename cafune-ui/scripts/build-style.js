@@ -16,8 +16,9 @@ const excludes = [
   'index.ts',
   'index.js',
   'index.scss',
+  'index.css',
   'style',
-  'utils',
+  'util',
   '.DS_Store'
 ];
 
@@ -98,10 +99,6 @@ function search(tree, component, checkList) {
   });
 }
 
-function getAssetsStylePath(component, ext = '.scss') {
-  return path.join(__dirname, `../style/${component}${ext}`);
- }
-
 function getStylePath(component, ext = '.scss') {
  return path.join(__dirname, `../components/${component}/style${ext}`);
 }
@@ -124,7 +121,7 @@ function getStyleRelativePath(component, style, ext) {
 }
 
 function checkComponentHasStyle(component) {
-  return fs.existsSync(getStylePath(component));
+  return fse.existsSync(getStylePath(component));
 }
 
 components.forEach(component => {

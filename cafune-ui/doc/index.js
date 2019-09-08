@@ -2,7 +2,7 @@ import { Router } from 'preact-router';
 import Redirect from './pages/index';
 import Home from './pages/home';
 import Comp from './pages/components';
-import 'cafune/style';
+// import 'cafune/components/index.scss';
 import './style';
 import { createHashHistory } from 'history';
 

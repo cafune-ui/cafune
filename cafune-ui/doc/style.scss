@@ -4,7 +4,17 @@ body {
   font-weight: 400;
   background: #f2f4f9;
 }
-
+a {
+  text-decoration: none;
+  color: #323233;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+::-webkit-scrollbar {
+  display: none;
+}
 .caf {
   &-markdown {
     h1,
@@ -32,16 +42,20 @@ body {
       background-color: #f3f3f3;
       padding: 3px 6px;
       color: #666;
-			br {
-				display: block;
-			}
+			// br {
+      //   height: 1px;
+      //   display: block;
+      //   &:last-child {
+      //     display: none;
+      //   }
+			// }
     }
     [class*="language"] {
       background: #f7f7f7;
       line-height: 24px;
       border-radius: 8px;
       overflow-x: auto;
-      margin: 10px 0 0;
+      margin: 10px 0;
     }
     hr {
       background-color: #eee;
@@ -60,10 +74,10 @@ body {
       margin-top: 20px;
       padding-left: 20px;
 		}
-		br {
-			height: 0;
-			display: none;
-		}
+		// br {
+		// 	height: 1px;
+		// 	display: none;
+		// }
     table {
       width: 100%;
       margin-top: 12px;
@@ -90,7 +104,6 @@ body {
       code {
         margin: 2px 3px;
         padding: 2px 5px;
-        display: inline-block;
         background-color: #fafafa;
         font-size: 12px;
         word-break: break-all;

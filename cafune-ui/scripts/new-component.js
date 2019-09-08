@@ -127,7 +127,10 @@ function writeComp(compName, name, isHasStyle) {
     }
     const entryCss = fs.readFileSync(entryCssPath, 'utf-8');
     const styleImports = entryCss.trim().split('\n') || [];
-    styleImports.push(`@import './${name}';`);
+    const importName = `@import './${name}';`;
+    if (styleImports.indexOf(importName) === -1) {
+      styleImports.push(`@import './${name}';`);
+    }
     fs.writeFileSync(entryCssPath, `${styleImports.join('\n')}\n`);
   }
 }

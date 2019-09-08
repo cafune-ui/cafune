@@ -36,7 +36,7 @@ $ npm install babel-plugin-import --save-dev
 ```js
 {
   "plugins": [
-    ["import", { libraryName: "cafune", style: "css" }] // `style: true` 会加载 less 文件
+    ["import", { libraryName: "cafune", style: true }] // `style: true` 会加载 scss 文件
   ]
 }
 ```
@@ -44,4 +44,9 @@ $ npm install babel-plugin-import --save-dev
 ```jsx
 // babel-plugin-import 会帮助你加载 JS 和 CSS
 import { Button } from 'cafune';
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+var _button = require('cafune/lib/button');
+require('cafune/lib/button/style');
 ```

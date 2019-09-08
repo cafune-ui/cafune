@@ -11,7 +11,7 @@ export default (config, env, helpers) => {
         path.resolve(process.cwd(), './node_modules/babel-plugin-import'),
         {
           libraryName: 'cafune',
-          libraryDirectory: 'components'
+          style: true
         },
         'cafune'
       ])

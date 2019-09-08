@@ -21,7 +21,10 @@ export default class Content extends Component {
         .then(data => {
           let mdHtml = data.match(/module.exports = "((.|\n)+)";$/);
           if (mdHtml) {
-            mdHtml = mdHtml[1].replace(/\\n+/g, '<br />').replace(/\\/g, '');
+            mdHtml = mdHtml[1]
+              .replace(/\\n(?!(<\/|$))/g, '&#10;')
+              .replace(/\\n/g, '')
+              .replace(/\\/g, '');
             this.setState({
               markdown: mdHtml
             });

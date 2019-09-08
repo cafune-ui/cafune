@@ -1,4 +1,3 @@
 /node_modules
-/.storybook
 .vscode/
 .DS_Store

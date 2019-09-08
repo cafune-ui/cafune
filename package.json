@@ -5,7 +5,8 @@
   "main": "./lib/index.js",
   "module": "./cafune-ui/components/index.js",
   "scripts": {
-    "release-site": "node ./cafune-ui/scripts/release-site"
+    "release-site": "node ./cafune-ui/scripts/release-site",
+    "release": "./cafune-ui/scripts/release.sh"
   },
   "husky": {
     "hooks": {
