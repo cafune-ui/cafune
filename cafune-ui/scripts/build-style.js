@@ -100,11 +100,11 @@ function search(tree, component, checkList) {
 }
 
 function getStylePath(component, ext = '.scss') {
- return path.join(__dirname, `../components/${component}/style${ext}`);
+ return path.join(__dirname, `../components/${component}/index${ext}`);
 }
 
 function getLibStylePath(component, ext = '.scss') {
-  return path.join(__dirname, `../lib/${component}/style${ext}`);
+  return path.join(__dirname, `../lib/${component}/index${ext}`);
  }
 
 function replaceSeq(path) {
@@ -126,7 +126,7 @@ function checkComponentHasStyle(component) {
 
 components.forEach(component => {
   // css entry
-  destEntryFile(component, 'index.js', '.scss');
+  destEntryFile(component, 'index.js', '.css');
 });
 
 

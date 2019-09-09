@@ -23,7 +23,7 @@ export default class SwitchComp extends Component {
   };
   render({}, { isActived1, isActived2 }) {
     return (
-      <div class="">
+      <div class="caf-demo-block">
         <p>默认用法</p>
         <Switch isActived={isActived1} onChange={this.onChange('isActived1')} />
         <p>禁用状态</p>

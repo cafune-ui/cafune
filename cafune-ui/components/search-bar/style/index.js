@@ -1,2 +1,2 @@
-import '../../icon/style.scss';
-import '../style.scss';
+import '../../icon/index.css';
+import '../index.css';
