@@ -1,5 +1,4 @@
-import Prism from 'prismjs';
-
+const Prism = require('prismjs');
 module.exports = function(source) {
   this.cacheable && this.cacheable();
   // const highlightjs = hljs.highlight('javascript', source, true).value;

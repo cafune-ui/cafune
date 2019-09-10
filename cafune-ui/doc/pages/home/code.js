@@ -15,6 +15,7 @@ export default class Code extends Component {
       import(`!!caf-code-loader!../components/${name}/index.js`).then(code => {
         // code = code.match(/module.exports = ((.|\n)+);$/);
         if (code) {
+          code = code.default;
           code = code.replace(/\\n+/g, '<br />').replace(/\\/g, '');
           this.setState({
             code

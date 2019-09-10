@@ -19,7 +19,7 @@ export default class Content extends Component {
       }
       mdPromise
         .then(data => {
-          let mdHtml = data.match(/module.exports = "((.|\n)+)";$/);
+          let mdHtml = data.default.match(/module.exports = "((.|\n)+)";$/);
           if (mdHtml) {
             mdHtml = mdHtml[1]
               .replace(/\\n(?!(<\/|$))/g, '&#10;')

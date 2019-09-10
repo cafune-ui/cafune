@@ -1,14 +1,11 @@
 {
   "private": true,
-  "name": "Cafune",
+  "name": "cafune-ui-doc",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
-    "build": "preact build --service-worker false --no-prerender",
-    "serve": "preact build && preact serve",
-    "dev": "preact watch -p 2333",
-    "lint": "eslint src"
+    "build": "node ./config/build.js",
+    "dev": "node ./config/watch.js"
   },
   "eslintConfig": {
     "extends": "eslint-config-synacor"
@@ -18,20 +15,40 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.4.5",
+    "@babel/preset-typescript": "^7.6.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-esm-plugin": "^0.6.1",
     "babel-plugin-import": "^1.12.0",
+    "critters-webpack-plugin": "^2.4.0",
     "eslint": "^4.5.0",
     "eslint-config-synacor": "^1.1.0",
+    "esm": "^3.2.25",
+    "fast-async": "^6.3.8",
+    "file-loader": "^4.2.0",
+    "fork-ts-checker-webpack-plugin": "^1.5.0",
     "html-loader": "^0.5.5",
+    "html-webpack-exclude-assets-plugin": "0.0.7",
+    "html-webpack-plugin": "^3.2.0",
     "if-env": "^1.0.0",
     "markdown-it": "^8.4.2",
     "markdown-it-prism": "^2.0.2",
     "markdown-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "preact-async-route": "^2.2.1",
     "preact-cli": "^2.0.0",
     "prismjs": "^1.17.1",
     "pygmentize": "^0.5.3",
     "pygmentize-bundled": "^2.3.0",
-    "react-markdown": "^4.1.0"
+    "react-markdown": "^4.1.0",
+    "regenerator-runtime": "^0.13.3",
+    "size-plugin": "^2.0.0",
+    "typings-for-css-modules-loader": "^1.7.0",
+    "webpack": "^4.39.3",
+    "webpack-bundle-analyzer": "^3.4.1",
+    "webpack-cli": "^3.3.8",
+    "webpack-fix-style-only-entries": "^0.3.1",
+    "workbox-webpack-plugin": "^4.3.1"
   },
   "dependencies": {
     "preact": "^8.5.2",
