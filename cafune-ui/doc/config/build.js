@@ -8,7 +8,7 @@ async function build() {
   const argv = {
     production: true,
     prerender: false,
-    src: 'src',
+    src: '',
     cwd: '.',
     dest: 'build',
     sw: false,

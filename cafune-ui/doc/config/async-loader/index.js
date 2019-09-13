@@ -14,7 +14,7 @@ exports.pitch = function(req) {
     name = query.name;
   } else if ('formatName' in query) {
     name = query.formatName(this.resourcePath);
-	}
+  }
   return `
 		import Async from '@preact/async-loader/async';
 

@@ -2,7 +2,7 @@ const runWebpack = require('./lib/webpack/run-webpack');
 
 const argv = {
   production: false,
-  src: 'src',
+  src: '',
   cwd: '.',
   esm: false,
   sw: false,

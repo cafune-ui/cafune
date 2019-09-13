@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 /* global __webpack_public_path__ */
 
 import { h, render } from 'preact';

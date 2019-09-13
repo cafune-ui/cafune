@@ -329,15 +329,7 @@ function isDev(config) {
       stats: 'minimal',
       watchOptions: {
         ignored: [resolve(cwd, 'build'), resolve(cwd, 'node_modules')]
-      },
-      proxy: [
-        {
-          context: ['/api/**', '/sportapi/**', '/arsapi/**'],
-          target: 'http://127.0.0.1:9111',
-          changeOrigin: true,
-          changeHost: true
-        }
-      ]
+      }
     }
   };
 }

@@ -85,7 +85,6 @@ module.exports = function(env) {
   );
 
   let tsconfig = resolveTsconfig(cwd, isProd);
-
   return {
     context: src,
 
@@ -195,7 +194,7 @@ module.exports = function(env) {
         {
           // User styles
           test: /\.(css|less|s[ac]ss|styl)$/,
-          include: [source('components'), source('routes')],
+          include: [source('pages')],
           use: [
             isWatch ? 'style-loader' : MiniCssExtractPlugin.loader,
             {
@@ -220,7 +219,7 @@ module.exports = function(env) {
         {
           // External / `node_module` styles
           test: /\.(css|less|s[ac]ss|styl)$/,
-          exclude: [source('components'), source('routes')],
+          exclude: [source('pages')],
           use: [
             isWatch ? 'style-loader' : MiniCssExtractPlugin.loader,
             {

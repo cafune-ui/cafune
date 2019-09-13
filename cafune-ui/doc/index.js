@@ -1,5 +1,5 @@
 import { Router } from 'preact-router';
-import Redirect from './pages/index';
+import Redirect from './pages/redirectect';
 import Home from './pages/home';
 import Comp from './pages/components';
 // import 'cafune/components/index.scss';

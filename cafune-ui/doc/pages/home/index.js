@@ -3,7 +3,7 @@ import compInfo from '../../comp-info';
 import Header from './head';
 import Side from './side';
 import Content from './content';
-import './style';
+import './style.scss';
 import 'prismjs/themes/prism-tomorrow';
 
 export class Home extends Component {
