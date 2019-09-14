@@ -8,7 +8,7 @@ async function build() {
   const argv = {
     production: true,
     prerender: false,
-    src: '',
+    src: 'src',
     cwd: '.',
     dest: 'build',
     sw: false,
@@ -16,9 +16,8 @@ async function build() {
     rhl: false,
     json: false,
     port: 8080,
-    template: './template.html',
-    config: 'preact.config.js',
-    'inline-css': true
+    template: './src/template.html',
+    config: 'preact.config.js'
   };
 
   let cwd = resolve(argv.cwd);

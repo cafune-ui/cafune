@@ -1,9 +1,9 @@
 import { Router } from 'preact-router';
-import Redirect from './pages/redirectect';
-import Home from './pages/home';
-import Comp from './pages/components';
+import Redirect from './routes/redirect';
+import Home from './routes/home';
+import Comp from './routes/comp';
 // import 'cafune/components/index.scss';
-import './style';
+import './style.scss';
 import { createHashHistory } from 'history';
 
 export const App = () => (

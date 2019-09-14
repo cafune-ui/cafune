@@ -12,7 +12,7 @@ export default class Code extends Component {
   getCode(name) {
     const { compInfo } = this.props;
     if (name && compInfo[name]) {
-      import(`!!caf-code-loader!../components/${name}/index.js`).then(code => {
+      import(`!!caf-code-loader!../comp/${name}/index.js`).then(code => {
         // code = code.match(/module.exports = ((.|\n)+);$/);
         if (code) {
           code = code.default;

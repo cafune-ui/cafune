@@ -111,9 +111,8 @@ module.exports = function(env) {
         'react-dom': compat,
         'react-addons-css-transition-group': 'preact-css-transition-group',
         'preact-cli/async-component': require.resolve(
-          '../../async-loader/async'
+          '@preact/async-loader/async'
         ),
-        '@preact/async-loader': require.resolve('../../async-loader'),
         util: source('util'),
         components: source('components')
       }
@@ -194,14 +193,14 @@ module.exports = function(env) {
         {
           // User styles
           test: /\.(css|less|s[ac]ss|styl)$/,
-          include: [source('pages')],
+          include: [source('routes')],
           use: [
             isWatch ? 'style-loader' : MiniCssExtractPlugin.loader,
             {
               loader: 'css-loader',
               options: {
-                modules: true,
-                localIdentName: '[local]__[hash:base64:5]',
+                // modules: true,
+                // localIdentName: '[local]__[hash:base64:5]',
                 importLoaders: 1,
                 sourceMap: isProd
               }
@@ -219,7 +218,7 @@ module.exports = function(env) {
         {
           // External / `node_module` styles
           test: /\.(css|less|s[ac]ss|styl)$/,
-          exclude: [source('pages')],
+          exclude: [source('routes')],
           use: [
             isWatch ? 'style-loader' : MiniCssExtractPlugin.loader,
             {
