@@ -6,7 +6,7 @@ basepath=$(dirname $0)
 
 # clean
 echo "Clean up..."
-rm -rf lib
+rm -rf lib es
 
 # # transpile scss to css
 # # custom importer for @import '~some-node-module'
@@ -19,7 +19,7 @@ rm -rf lib
 # postcss css --use autoprefixer --replace --no-map
 
 echo "Compile commonjs..."
-npx babel components --out-dir lib --copy-files
+node $basepath/build-components.js
 
  echo "Compile styles..."
 node $basepath/build-style.js

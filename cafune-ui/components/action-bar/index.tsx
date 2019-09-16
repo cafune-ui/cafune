@@ -3,6 +3,29 @@ import cx from 'classnames';
 import { setPadding } from '../../util/isomorphic';
 import PropTypes from 'prop-types';
 
+interface IProps {
+  /**
+     * 左侧描述内容
+     */
+  descContent: any,
+  /**
+     * 按钮内容
+     */
+  btnContent: any,
+  /**
+     * 附加信息
+     */
+  additionMsg?: any,
+  /**
+     * action 触发事件
+     */
+  handleClick?: Function,
+   /**
+     * 是否禁止按钮，默认为false
+     */
+  disabled?: boolean
+}
+
 /**
  * 动作栏
  * @example
@@ -14,42 +37,20 @@ import PropTypes from 'prop-types';
  * />
  * ```
  */
-class ActionBar extends Component {
-  static propTypes = {
-    /**
-     * 左侧描述内容
-     */
-    descContent: PropTypes.any.isRequired,
-    /**
-     * 按钮内容
-     */
-    btnContent: PropTypes.any.isRequired,
-    /**
-     * 附加信息
-     */
-    additionMsg: PropTypes.any,
-    /**
-     * action 触发事件
-     */
-    handleClick: PropTypes.func,
-    /**
-     * 是否禁止按钮，默认为false
-     */
-    disabled: PropTypes.bool
-  };
+class ActionBar extends Component<IProps, {}> {
   static defaultProps = {
     handleClick: () => {},
     disabled: false,
     prefix: 'caf-actionbar'
   };
-
+  actionbar;
   componentDidMount() {
     setPadding(`${this.actionbar.getBoundingClientRect().height}px`);
   }
   componentWillUnmount() {
     setPadding('');
   }
-  render({
+  public render({
     prefix,
     className,
     descContent,

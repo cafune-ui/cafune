@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "paths": {
+      "components": ["components"],
+      "util/*": ["util/*"]
+    },
+    "outDir": "./ts",
+    "allowJs": true,
+    "jsx": "react",
+    "jsxFactory": "h",
+    "target": "es2018",
+    "module": "ESNext",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true
+  },
+  "include": ["components/**/*.ts", "components/**/*.tsx"],
+  "typeRoots": ["./types"],
+  "exclude": ["node_modules"]
+}
