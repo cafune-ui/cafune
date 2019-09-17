@@ -9,10 +9,7 @@ module.exports = {
   // 是否收集测试覆盖率，以及覆盖率文件路径
   collectCoverage: true,
   coverageDirectory: './coverage',
-  collectCoverageFrom: [
-    'components/**/*.jsx',
-    '!**/node_modules/**'
-  ],
+  collectCoverageFrom: ['components/**/*.{tsx, jsx}', '!**/node_modules/**'],
   moduleNameMapper: {
     '^util/(.*)$': '<rootDir>/util/$1',
     '^components(.*)$': '<rootDir>/components$1',

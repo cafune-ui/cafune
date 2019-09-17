@@ -36,7 +36,7 @@ module.exports = function(env, options = {}) {
         require.resolve('babel-plugin-import'),
         {
           libraryName: 'cafune',
-          libraryDirectory: 'components',
+          libraryDirectory: 'es',
           style: true
         }
       ]

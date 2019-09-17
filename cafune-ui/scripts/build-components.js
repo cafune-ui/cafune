@@ -4,15 +4,15 @@ const babel = require('@babel/core');
 
 const srcDir = path.join(__dirname, '../components');
 const esDir = path.join(__dirname, '../es');
-const libDir = path.join(__dirname, '../lib');
+// const libDir = path.join(__dirname, '../lib');
 
 const babelConfig = {
   configFile: path.join(__dirname, '../babel.config.js')
 };
 
-const scriptRegExp = /\.(ts|tsx)$/;
+const scriptRegExp = /\.(js|ts|tsx)$/;
 const isDir = dir => fs.lstatSync(dir).isDirectory();
-const isCode = file => !/(test|style)$/.test(file);
+const isCode = file => !/(test)$/.test(file);
 const isScript = file => scriptRegExp.test(file);
 
 function compile(dir) {
@@ -32,7 +32,7 @@ function compile(dir) {
       fs.removeSync(filePath);
       fs.outputFileSync(filePath.replace(scriptRegExp, '.js'), code);
     }
-  })
+  });
 }
 
 fs.emptyDirSync(esDir);

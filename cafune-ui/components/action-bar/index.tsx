@@ -1,7 +1,6 @@
-import { Component } from 'preact';
+import { Component, h } from 'preact';
 import cx from 'classnames';
 import { setPadding } from '../../util/isomorphic';
-import PropTypes from 'prop-types';
 
 interface IProps {
   /**

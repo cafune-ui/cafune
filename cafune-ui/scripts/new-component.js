@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const { getComponentName, sortByModulePath } = require('./util/comp');
-const styleRoot = path.resolve(process.cwd(), './style');
+// const styleRoot = path.resolve(process.cwd(), './style');
 const compRoot = path.resolve(process.cwd(), './components');
 // const testRoot = path.resolve(process.cwd(), './__test__/components');
 const docRoot = path.resolve(process.cwd(), './doc');
@@ -29,7 +29,7 @@ const questions = [
     name: 'isHasStyle',
     message: 'Would this component have a style.scss? ',
     default: true
-  },
+  }
 ];
 
 inquirer.prompt(questions).then(answers => {
@@ -37,14 +37,14 @@ inquirer.prompt(questions).then(answers => {
   const compName = getComponentName(name);
   // writeMapping(compName, name);
   writeEntry(compName, name);
-  console.log('writing component')
+  console.log('writing component');
   writeComp(compName, name, isHasStyle);
   // if (isHasStories) {
   //   writeStories(compName, name);
   // }
-  console.log('writing doc')
+  console.log('writing doc');
   writeDoc(compName, name);
-  console.log('writing test')
+  console.log('writing test');
   writeTestSuit(compName, name);
 });
 
@@ -89,7 +89,7 @@ describe('${compName}', () => {
 }
 
 function writeDoc(compName, name) {
-  const docCompDir = `${docRoot}/pages/components/${name}`;
+  const docCompDir = `${docRoot}/src/routes/comp/${name}`;
   if (!fs.existsSync(docCompDir)) {
     fs.mkdirSync(docCompDir);
   } else {
@@ -120,7 +120,7 @@ function writeComp(compName, name, isHasStyle) {
     `import { Component } from 'preact';\nimport PropTypes from 'prop-types';\nimport cx from 'classnames';\n\nclass ${compName} extends Component {\n  static defaultProps = {\n    prefix: 'caf-'\n  };\n  render({ prefix, className, ...restProps }) {\n    return <div className={cx(prefix, className)} {...restProps}>${compName}</div>;\n  }\n}\nexport default ${compName};\n`
   );
   if (isHasStyle) {
-    fs.writeFileSync(`${compDir}/style.scss`, '')
+    fs.writeFileSync(`${compDir}/style.scss`, '');
     const entryCssPath = `${compRoot}/index.scss`;
     if (!fs.existsSync(entryCssPath)) {
       fs.writeFileSync(entryCssPath, '');
