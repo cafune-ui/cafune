@@ -4,7 +4,6 @@ const fse = require('fs-extra');
 const path = require('path');
 const dependencyTree = require('dependency-tree');
 
-
 const sass = require('node-sass');
 const csso = require('csso');
 const postcss = require('postcss');
@@ -25,17 +24,13 @@ const excludes = [
 function getComponents() {
   const dirs = fs.readdirSync(path.resolve(__dirname, '../components'));
   return dirs.filter(dirName => excludes.indexOf(dirName) === -1);
-};
+}
 const components = getComponents();
-
 
 function destEntryFile(component, filename, ext = '') {
   const compdep = analyzeDependencies(component);
 
-
-  deps = compdep.map(dep =>
-    getStyleRelativePath(component, dep, ext)
-  );
+  deps = compdep.map(dep => getStyleRelativePath(component, dep, ext));
 
   const esEntry = path.join(dir, component, `style/${filename}`);
   const libEntry = path.join(
@@ -49,8 +44,8 @@ function destEntryFile(component, filename, ext = '') {
   try {
     fse.outputFileSync(esEntry, esContent);
     fse.outputFileSync(libEntry, libContent);
-  } catch(e) {
-    console.error(e)
+  } catch (e) {
+    console.error(e);
   }
 }
 
@@ -89,10 +84,7 @@ function search(tree, component, checkList) {
           .includes(item)
       )
       .forEach(item => {
-        if (
-          !checkList.includes(item) &&
-          item !== component
-        ) {
+        if (!checkList.includes(item) && item !== component) {
           checkList.push(item);
         }
       });
@@ -100,12 +92,12 @@ function search(tree, component, checkList) {
 }
 
 function getStylePath(component, ext = '.scss') {
- return path.join(__dirname, `../components/${component}/index${ext}`);
+  return path.join(__dirname, `../components/${component}/index${ext}`);
 }
 
 function getLibStylePath(component, ext = '.scss') {
   return path.join(__dirname, `../lib/${component}/index${ext}`);
- }
+}
 
 function replaceSeq(path) {
   return path.split(path.sep).join('/');
@@ -129,17 +121,22 @@ components.forEach(component => {
   destEntryFile(component, 'index.js', '.css');
 });
 
-
 async function compileSass(sassCodes, paths) {
   const outputs = await Promise.all(
-    sassCodes.map((source, index) => new Promise((resolve, reject) => {
-      sass.render({
-        file: paths[index]
-      }, (err, result) => {
-        if (err) reject(err);
-        resolve(result)
-      })
-    }))
+    sassCodes.map(
+      (source, index) =>
+        new Promise((resolve, reject) => {
+          sass.render(
+            {
+              file: paths[index]
+            },
+            (err, result) => {
+              if (err) reject(err);
+              resolve(result);
+            }
+          );
+        })
+    )
   );
   return outputs.map(item => item.css);
 }
@@ -161,14 +158,18 @@ async function compileCsso(cssCodes) {
 
 async function dest(output, paths) {
   await Promise.all(
-    output.map((css, index) => fse.writeFile(paths[index].replace('.scss', '.css'), css))
+    output.map((css, index) =>
+      fse.writeFile(paths[index].replace('.scss', '.css'), css)
+    )
   );
 }
 
 // compile component css
 async function compile() {
   let codes;
-  const paths = await glob(['./components/**/*.scss', './lib/**/*.scss'], { absolute: true });
+  const paths = await glob(['./components/**/*.scss', './lib/**/*.scss'], {
+    absolute: true
+  });
 
   codes = await Promise.all(paths.map(path => fse.readFile(path, 'utf-8')));
   codes = await compileSass(codes, paths);

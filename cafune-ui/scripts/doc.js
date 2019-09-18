@@ -30,13 +30,14 @@ function getProps(props) {
         let val;
         switch (typeName) {
           case 'enum':
-            if (type.value && type.value.every(ele => /'.+?'/.test(ele.value))) typeName = 'string';
-            backupOption  = type.value.map(ele => ele.value);
+            if (type.value && type.value.every(ele => /'.+?'/.test(ele.value)))
+              typeName = 'string';
+            backupOption = type.value.map(ele => ele.value);
             break;
           case 'union':
             typeName = type.value.map(item => {
               if (item.name === 'enum') {
-                return `[${item.value.map(ele => ele.value).join(',')}]`
+                return `[${item.value.map(ele => ele.value).join(',')}]`;
               }
               return item.name;
             });
@@ -96,7 +97,7 @@ function getProps(props) {
 function getInfo(doc) {
   const { displayName, description, props } = doc;
   const descs = description.split('@example');
-  let example;
+  // let example;
   let desc = description;
   if (descs[1]) {
     // example = descs[1];
@@ -155,13 +156,18 @@ function generatePropTab(props, showTitle = true) {
         if (Array.isArray(typeName)) {
           const isStrList = typeName.every(item => typeof item === 'string');
           typeName = typeName.map(item => {
-            if (typeof item !== 'string') return `${item.key}: ${item.name} ${item.required ? '✅ ' : '❌'}`
+            if (typeof item !== 'string')
+              return `${item.key}: ${item.name} ${
+                item.required ? '✅ ' : '❌'
+              }`;
             return item;
           });
           if (isStrList) {
             typeName = typeName.join('/');
           } else {
-            typeName = `<a class="caf-markdown-hover" data-desc="{ ${typeName.join(',')} }">custom</a>`;
+            typeName = `<a class="caf-markdown-hover" data-desc="{ ${typeName.join(
+              ','
+            )} }">custom</a>`;
           }
         } else {
           typeName = `\`${JSON.stringify(typeName)}\``;
@@ -197,7 +203,7 @@ function generateCompMd(compInfo) {
 }
 
 const compRoot = path.resolve(process.cwd(), './components/');
-glob(`${compRoot}/*/*.jsx`, (err, files) => {
+glob(`${compRoot}/*/*.?(jsx|tsx)`, (err, files) => {
   files.forEach(item => {
     const dirName = path.dirname(item);
     formateCompDoc(
@@ -213,7 +219,10 @@ glob(`${compRoot}/*/*.jsx`, (err, files) => {
     newCompInfo[i] = {
       desc: item.desc,
       displayName: item.info.displayName
-    }
+    };
   }
-  fs.writeFileSync('./doc/comp-info.json', JSON.stringify(newCompInfo, null, 2));
+  fs.writeFileSync(
+    './doc/comp-info.json',
+    JSON.stringify(newCompInfo, null, 2)
+  );
 });

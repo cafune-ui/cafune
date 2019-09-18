@@ -11,5 +11,5 @@ import { ActionBar } from 'components';
 | descContent | 左侧描述内容 | any | - | - | ✅  |
 | btnContent | 按钮内容 | any | - | - | ✅  |
 | additionMsg | 附加信息 | any | - | - | ❌ |
-| handleClick | action 触发事件 | func | `() => {}` | - | ❌ |
-| disabled | 是否禁止按钮，默认为false | bool | `false` | - | ❌ |
+| handleClick | action 触发事件 | Function | `() => {}` | - | ❌ |
+| disabled | 是否禁止按钮，默认为false | boolean | `false` | - | ❌ |

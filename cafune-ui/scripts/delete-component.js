@@ -1,13 +1,9 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
-// const styleRoot = path.resolve(process.cwd(), './style');
 const compRoot = path.resolve(process.cwd(), './components');
-// const storiesRoot = path.resolve(process.cwd(), './stories');
 const docRoot = path.resolve(process.cwd(), './doc');
-// const testRoot = path.resolve(process.cwd(), './__test__/components');
 const compMapPath = `${docRoot}/comp-type.json`;
-// const { getComponentName } = require('./util/comp');
 
 function main() {
   const args = process.argv;
