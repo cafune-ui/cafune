@@ -103,6 +103,7 @@ function getInfo(doc) {
     // example = descs[1];
     desc = descs[0].replace(/\n/g, '');
   }
+  console.log(doc);
   const result = {
     displayName,
     desc,

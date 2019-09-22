@@ -30,7 +30,7 @@ const components = getComponents();
 function destEntryFile(component, filename, ext = '') {
   const compdep = analyzeDependencies(component);
 
-  deps = compdep.map(dep => getStyleRelativePath(component, dep, ext));
+  const deps = compdep.map(dep => getStyleRelativePath(component, dep, ext));
 
   const esEntry = path.join(dir, component, `style/${filename}`);
   const libEntry = path.join(
