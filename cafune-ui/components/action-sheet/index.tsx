@@ -1,5 +1,4 @@
-import { Component, h } from 'preact';
-import PropTypes from 'prop-types';
+import { Component, h, VNode } from 'preact';
 import cx from 'classnames';
 import Icon from '../icon';
 import Loading from '../loading';
@@ -39,7 +38,7 @@ export interface iOption {
   /**
    * 点击时的反馈，如果为`string`时，视为链接，如为
    */
-  action?: String | Function;
+  action?: string | Function;
 }
 
 export interface IHorizon {
@@ -78,7 +77,7 @@ export interface IActionSheet {
   /**
    * 标题栏
    */
-  title?: any;
+  title?: string | VNode | Component | HTMLElement;
   /**
    * 取消按钮文字
    */
@@ -282,7 +281,9 @@ class ActionSheet extends Component<IActionSheet, {}> {
     const content = this.renderContent();
     let maskProp = {};
     if (closeOnClickMask) {
-      maskProp.onClick = this.onMaskClick;
+      maskProp = {
+        onClick: this.onMaskClick
+      }
     }
     return isShow ? (
       <div className={cx(prefix, className)} {...restProps}>

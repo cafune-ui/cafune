@@ -1,4 +1,4 @@
-import { Component } from 'preact';
+import { Component, h } from 'preact';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 /**

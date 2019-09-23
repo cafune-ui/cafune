@@ -1,27 +1,26 @@
-import { Component } from "preact";
-import PropTypes from "prop-types";
-import cx from "classnames";
-/**
- *
- */
-class CellGroup extends Component {
-  static defaultProps = {
-    prefix: "caf-cellgroup",
-    border: true
-  };
-  static propTypes = {
-    /**
+import { Component, h } from 'preact';
+import cx from 'classnames';
+interface IProps {
+  /**
      * 自定义类名
      */
-    prefix: PropTypes.string,
+    prefix?: string,
     /**
      * 分组标题
      */
-    title: PropTypes.string,
+    title?: string,
     /**
      * 是否显示边框
      */
-    border: PropTypes.bool
+    border?: boolean
+}
+/**
+ * 单元格组
+ */
+class CellGroup extends Component<IProps> {
+  static defaultProps = {
+    prefix: 'caf-cellgroup',
+    border: true
   };
   render({ prefix, className, border, title, children, ...restProps }) {
     return (

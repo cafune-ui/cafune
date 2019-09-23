@@ -1,4 +1,4 @@
-import { Component } from 'preact';
+import { Component, h } from 'preact';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from '../icon';
@@ -137,7 +137,7 @@ class Button extends Component {
     onClick,
     ...restProps
   }) {
-    let btnStyle = {};
+    let btnStyle:any = {};
     if (style) {
       btnStyle = Object.assign({}, style);
     }
@@ -153,7 +153,7 @@ class Button extends Component {
       radiusType = radius ? 'round' : 'square';
     }
     let btnIcon = null;
-    const iconStyle = {};
+    const iconStyle:any = {};
     let isReverse = false;
     if (loading) {
       loadingInfo = Object.assign({}, defaultLoadingInfo, loadingInfo);

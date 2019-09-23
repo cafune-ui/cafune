@@ -1,6 +1,12 @@
-import { Component, createRef } from 'preact';
+import { Component, createRef, h } from 'preact';
 import { inViewPort } from '../../util/browser';
-import PropTypes from 'prop-types';
+
+interface IProps {
+  /**
+   * 懒加载图片类名
+   */
+  imgClass?: string;
+}
 /**
  * 懒加载包裹组件
  * @example
@@ -12,15 +18,9 @@ import PropTypes from 'prop-types';
  * </Lazyload>
  * ```
  */
-class Lazyload extends Component {
+class Lazyload extends Component<IProps> {
   lazyLoadIns;
   imgsInfo = [];
-  static propTypes = {
-    /**
-     * 懒加载图片类名
-     */
-    imgClass: PropTypes.string
-  };
   static defaultProps = {
     imgClass: 'lazyImg'
   };
@@ -39,7 +39,8 @@ class Lazyload extends Component {
     if (this.container) {
       const imgsInfo = [];
       // eslint-disable-next-line prettier/prettier
-      const imgs = this.container.querySelectorAll(`.${this.props.imgClass}`) || [];
+      const imgs =
+        this.container.querySelectorAll(`.${this.props.imgClass}`) || [];
       for (let i = 0, len = imgs.length; i < len; i += 1) {
         const ele = imgs[i];
         if (ele.dataset.src !== ele.src) {

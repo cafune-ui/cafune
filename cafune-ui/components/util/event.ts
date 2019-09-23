@@ -18,7 +18,7 @@ export const touchEventMap = isSupportTouch
       out: 'mouseout'
     };
 
-export const getTouch = (e, type) =>
+export const getTouch = (e, type?) =>
   isSupportTouch
     ? type === 'touchend'
       ? e.changedTouches[0]

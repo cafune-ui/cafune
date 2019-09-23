@@ -1,11 +1,64 @@
-import { Component, createRef } from 'preact';
-import PropTypes from 'prop-types';
+import { Component, createRef, h, VNode } from 'preact';
 import cx from 'classnames';
 import Icon from '../icon';
+interface IProps {
+  /**
+   * 自定义前缀
+   */
+  prefix?: string;
+  /**
+   * 消息内容
+   */
+  text?: string;
+  /**
+   * 是否启用滚动
+   */
+  scrollable?: boolean;
+  /**
+   * 是否自动换行（仅在不滚动时生效）
+   */
+  wrapable?: boolean;
+  /**
+   * 文本颜色
+   */
+  color?: string;
+  /**
+   * 背景颜色
+   */
+  bgColor?: string;
+  /**
+   * 左侧图标，`string` 类型时显示指定图标， 为`false` 时不显示图标，为`true` 时显示默认图标
+   */
+  icon?: string | boolean;
+  /**
+   * 滚动速度
+   */
+  speed?: number;
+  /**
+   * 滚动延迟
+   */
+  delay?: number;
+  /**
+   * 点击类型
+   */
+  action?: 'closable' | 'link' | VNode | HTMLElement;
+  /**
+   * 点击事件
+   */
+  onClick?: Function;
+}
+
+function addPrefix(name, fn) {
+  const renamed = name.charAt(0).toUpperCase() + name.slice(1);
+  return {
+    [name]: fn,
+    ['webkit' + renamed]: fn
+  };
+}
 /**
  * 通知栏
  */
-class NoticeBar extends Component {
+class NoticeBar extends Component<IProps> {
   static defaultProps = {
     prefix: 'caf-noticebar',
     scrollable: true,
@@ -13,48 +66,6 @@ class NoticeBar extends Component {
     icon: 'notice',
     speed: 50,
     delay: 1
-  };
-  static propTypes = {
-    /**
-     * 自定义前缀
-     */
-    prefix: PropTypes.string,
-    /**
-     * 消息内容
-     */
-    text: PropTypes.string,
-    /**
-     * 是否启用滚动
-     */
-    scrollable: PropTypes.bool,
-    /**
-     * 是否自动换行（仅在不滚动时生效）
-     */
-    wrapable: PropTypes.bool,
-    /**
-     * 文本颜色
-     */
-    color: PropTypes.string,
-    /**
-     * 背景颜色
-     */
-    bgColor: PropTypes.string,
-    /**
-     * 左侧图标，`string` 类型时显示指定图标， 为`false` 时不显示图标，为`true` 时显示默认图标
-     */
-    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-    /**
-     * 滚动速度
-     */
-    speed: PropTypes.number,
-    /**
-     * 滚动延迟
-     */
-    delay: PropTypes.number,
-    /**
-     * 点击类型
-     */
-    action: PropTypes.oneOfType([PropTypes.oneOf(['closable', 'link']), PropTypes.node , PropTypes.element])
   };
   state = {
     wrapWidth: 0,
@@ -89,10 +100,10 @@ class NoticeBar extends Component {
     if (!wrap.current || !content.current) {
       return;
     }
-    wrap = wrap.current;
-    content = content.current;
-    const wrapWidth = wrap.getBoundingClientRect().width;
-    const offsetWidth = content.getBoundingClientRect().width;
+    const $wrap: HTMLElement = wrap.current;
+    const $content: HTMLElement = content.current;
+    const wrapWidth = $wrap.getBoundingClientRect().width;
+    const offsetWidth = $content.getBoundingClientRect().width;
 
     if (scrollable && offsetWidth > wrapWidth) {
       this.setState({
@@ -111,7 +122,19 @@ class NoticeBar extends Component {
     this.props.onClick && this.props.onClick();
   };
   render(
-    { prefix, className, text, icon, scrollable, wrapable, delay, color, bgColor, action, ...restProps },
+    {
+      prefix,
+      className,
+      text,
+      icon,
+      scrollable,
+      wrapable,
+      delay,
+      color,
+      bgColor,
+      action,
+      ...restProps
+    },
     { isFirst, duration, wrapWidth, isShow }
   ) {
     let barStyle = {};
@@ -138,7 +161,12 @@ class NoticeBar extends Component {
           </span>
         );
       } else {
-        rightIcon = typeof(action) === 'string' ? <span className={`${prefix}-action`}>{action}</span> : action;
+        rightIcon =
+          typeof action === 'string' ? (
+            <span className={`${prefix}-action`}>{action}</span>
+          ) : (
+            action
+          );
       }
     }
 
@@ -159,8 +187,7 @@ class NoticeBar extends Component {
                 [`${prefix}-content__scroll__infinite`]: !isFirst && !wrapable,
                 [`${prefix}-content__ellipsis`]: !scrollable && !wrapable
               })}
-              onAnimationend={this.onAnimationEnd}
-              onWebkitAnimationEnd={this.onAnimationEnd}
+              {...addPrefix('onAnimationEnd', this.onAnimationEnd)}
               ref={this.content}
               style={contentStyle}
             >

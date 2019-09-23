@@ -33,7 +33,7 @@ const questions = [
 ];
 
 inquirer.prompt(questions).then(answers => {
-  const { name, isHasStyle, isHasStories } = answers;
+  const { name, isHasStyle } = answers;
   const compName = getComponentName(name);
   // writeMapping(compName, name);
   writeEntry(compName, name);
@@ -116,8 +116,8 @@ function writeComp(compName, name, isHasStyle) {
   }
   // create js & css to component folder
   fs.writeFileSync(
-    `${compDir}/index.jsx`,
-    `import { Component } from 'preact';\nimport PropTypes from 'prop-types';\nimport cx from 'classnames';\n\nclass ${compName} extends Component {\n  static defaultProps = {\n    prefix: 'caf-'\n  };\n  render({ prefix, className, ...restProps }) {\n    return <div className={cx(prefix, className)} {...restProps}>${compName}</div>;\n  }\n}\nexport default ${compName};\n`
+    `${compDir}/index.tsx`,
+    `import { Component, h } from 'preact';\nimport PropTypes from 'prop-types';\nimport cx from 'classnames';\n\nclass ${compName} extends Component {\n  static defaultProps = {\n    prefix: 'caf-'\n  };\n  render({ prefix, className, ...restProps }) {\n    return <div className={cx(prefix, className)} {...restProps}>${compName}</div>;\n  }\n}\nexport default ${compName};\n`
   );
   if (isHasStyle) {
     fs.writeFileSync(`${compDir}/style.scss`, '');

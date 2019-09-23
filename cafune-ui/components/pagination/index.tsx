@@ -1,5 +1,5 @@
+import { h } from 'preact';
 import cx from 'classnames';
-import PropTypes from 'prop-types';
 
 function changeFn(direction, pn, pages, onChange) {
   pn = Number(pn);
@@ -12,6 +12,29 @@ function changeFn(direction, pn, pages, onChange) {
     };
   }
   return () => {};
+}
+
+interface IProps {
+  /**
+   * 自定义类名
+   */
+  prefix?: string,
+  /**
+   * 当前页码
+   */
+  pn: number,
+  /**
+   * 总页数
+   */
+  pages: number,
+  /**
+   * 点击切换时回调
+   */
+  onChange?: Function,
+  /**
+   * 自定义类名
+   */
+  className?: string
 }
 /**
  * 分页
@@ -27,7 +50,7 @@ const Pagination = ({
   pages,
   onChange,
   ...restProps
-}) => {
+}: IProps) => {
   const prevCx = cx(`${prefix}-btn`, {
     [`${prefix}__disabled`]: pn <= 1
   });
@@ -51,25 +74,6 @@ const Pagination = ({
 };
 Pagination.defaultProps = {
   prefix: 'caf-page',
-
-};
-Pagination.propTypes = {
-  /**
-   * 自定义类名
-   */
-  prefix: PropTypes.string,
-  /**
-   * 当前页码
-   */
-  pn: PropTypes.number.isRequired,
-  /**
-   * 总页数
-   */
-  pages: PropTypes.number.isRequired,
-  /**
-   * 点击切换时回调
-   */
-  onChange: PropTypes.func
 };
 
 export default Pagination;

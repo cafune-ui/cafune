@@ -26,16 +26,16 @@ function getProps(props) {
       if (type) {
         let typeName = type.name;
         let backupOption = '-';
-        const shape = type.value;
+        const shape = type.value || type.elements;
         let val;
         switch (typeName) {
           case 'enum':
-            if (type.value && type.value.every(ele => /'.+?'/.test(ele.value)))
+            if (shape && shape.every(ele => /'.+?'/.test(ele.value)))
               typeName = 'string';
-            backupOption = type.value.map(ele => ele.value);
+            backupOption = shape.map(ele => ele.value);
             break;
           case 'union':
-            typeName = type.value.map(item => {
+            typeName = shape.map(item => {
               if (item.name === 'enum') {
                 return `[${item.value.map(ele => ele.value).join(',')}]`;
               }
@@ -103,7 +103,7 @@ function getInfo(doc) {
     // example = descs[1];
     desc = descs[0].replace(/\n/g, '');
   }
-  console.log(doc);
+  // console.log(doc);
   const result = {
     displayName,
     desc,

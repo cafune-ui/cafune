@@ -1,69 +1,75 @@
-import { Component, createRef } from 'preact';
-import PropTypes from 'prop-types';
+import { Component, h, createRef } from 'preact';
 import cx from 'classnames';
 import Icon from '../icon';
 import CellGroup from './group';
 import { touchEventMap, getTouch } from '../util/event';
+
+interface ISwiperList {
+  clickHandler?: Function;
+  name?: boolean;
+  backgroundColor?: string;
+}
+interface IProps {
+  /**
+   * 自定义类名
+   */
+  prefix?: string;
+  /**
+   * 左侧图标
+   */
+  icon?: string;
+  /**
+   * 图标尺寸
+   */
+  iconSize?: string;
+  /**
+   * 单元标题
+   */
+  title: string;
+  /**
+   * 单元描述信息
+   */
+  label?: string;
+  /**
+   * 单元右侧内容
+   */
+  value?: string;
+  /**
+   * 单元链接，如果有的话将会出现右侧箭头并开启点击
+   */
+  url?: string;
+  /**
+   * 右侧图标
+   */
+  rightIcon?: string;
+  /**
+   * 是否垂直居中
+   */
+  middle?: boolean;
+  /**
+   * 右滑菜单
+   */
+  swipeList: ISwiperList[];
+}
+
 /**
  * 单元格
  */
-class Cell extends Component {
+class Cell extends Component<IProps> {
   static CellGroup = CellGroup;
   static defaultProps = {
     prefix: 'caf-cell',
     border: true,
     swipeList: []
   };
-  static propTypes = {
-    /**
-     * 自定义类名
-     */
-    prefix: PropTypes.string,
-    /**
-     * 左侧图标
-     */
-    icon: PropTypes.string,
-    /**
-     * 图标尺寸
-     */
-    iconSize: PropTypes.string,
-    /**
-     * 单元标题
-     */
-    title: PropTypes.string.isRequired,
-    /**
-     * 单元描述信息
-     */
-    label: PropTypes.string,
-    /**
-     * 单元右侧内容
-     */
-    value: PropTypes.string,
-    /**
-     * 单元链接，如果有的话将会出现右侧箭头并开启点击
-     */
-    url: PropTypes.string,
-    /**
-     * 右侧图标
-     */
-    rightIcon: PropTypes.string,
-    /**
-     * 是否垂直居中
-     */
-    middle: PropTypes.bool,
-    /**
-     * 右滑菜单
-     */
-    swipeList: PropTypes.arrayOf(
-      PropTypes.shape({
-        clickHandler: PropTypes.func,
-        name: PropTypes.bool,
-        backgroundColor: PropTypes.string
-      })
-    )
-  };
   isSwiping = false;
   movedSize = 0;
+  startTimeStamp: number;
+
+  startX: number;
+  deltaX: number;
+  direction: number;
+  offsetX: number;
   readyMoving = e => {
     this.startTimeStamp = Date.now();
     this.isSwiping = true;

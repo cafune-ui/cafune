@@ -64,7 +64,7 @@
     "displayName": "Pagination"
   },
   "pull-refresh": {
-    "desc": "下拉刷新",
+    "desc": "",
     "displayName": "PullRefresh"
   },
   "scroller": {
