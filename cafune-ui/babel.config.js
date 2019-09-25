@@ -3,11 +3,8 @@ module.exports = function(api) {
   const useESModules = BABEL_MODULE !== 'commonjs' && NODE_ENV !== 'test';
 
   api && api.cache(false);
-
   return {
-    compact: false,
     presets: [
-      '@babel/preset-typescript',
       [
         '@babel/preset-env',
         {
@@ -15,10 +12,19 @@ module.exports = function(api) {
           modules: useESModules ? false : 'commonjs',
           exclude: ['transform-regenerator', 'transform-async-to-generator']
         }
-      ]
+      ],
+      '@babel/preset-typescript'
     ],
     plugins: [
-      '@babel/plugin-syntax-dynamic-import',
+      [
+        '@babel/plugin-transform-runtime',
+        {
+          corejs: false,
+          helpers: true,
+          regenerator: false,
+          useESModules
+        }
+      ],
       '@babel/plugin-transform-object-assign',
       ['@babel/plugin-proposal-decorators', { legacy: true }],
       '@babel/plugin-proposal-class-properties',
@@ -26,8 +32,7 @@ module.exports = function(api) {
       [
         '@babel/plugin-transform-react-jsx',
         { pragma: 'h', pragmaFrag: 'Fragment' }
-      ],
-      'babel-plugin-macros'
+      ]
     ]
   };
 };

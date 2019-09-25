@@ -1,4 +1,4 @@
-export default {
+const svgMap = {
   step: {
     cSize: '60px',
     cColor: '#ccc',
@@ -13,7 +13,7 @@ export default {
           x="0px"
           y="0px"
           viewBox={`0 0 100 ${boxHeight}`}
-          enable-background="new 0 0 0 0"
+          enableBackground="new 0 0 0 0"
           xmlSpace="preserve"
           style={`fill: ${color || cColor};width:${size || cSize};`}
         >
@@ -61,9 +61,9 @@ export default {
           viewBox="0 0 38 38"
           stroke={color || cColor}
         >
-          <g fill="none" fill-rule="evenodd">
-            <g transform="translate(1 1)" stroke-width="2">
-              <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
+          <g fill="none" fillRule="evenodd">
+            <g transform="translate(1 1)" strokeWidth="2">
+              <circle strokeOpacity=".5" cx="18" cy="18" r="18" />
               <path
                 d="M36 18c0-9.94-8.06-18-18-18"
                 transform="rotate(275.955 18 18)"
@@ -91,17 +91,17 @@ export default {
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          style={{ width: size || cSize, height: size || cSize, }}
+          style={{ width: size || cSize, height: size || cSize }}
           viewBox="0 0 45 45"
           stroke={color || cColor}
         >
           <g
             fill="none"
-            fill-rule="evenodd"
+            fillRule="evenodd"
             transform="translate(1 1)"
-            stroke-width="2"
+            strokeWidth="2"
           >
-            <circle cx="22" cy="22" r="13.2878" stroke-opacity="0">
+            <circle cx="22" cy="22" r="13.2878" strokeOpacity="0">
               <animate
                 attributeName="r"
                 begin="1.5s"
@@ -127,7 +127,7 @@ export default {
                 repeatCount="indefinite"
               />
             </circle>
-            <circle cx="22" cy="22" r="21.2878" stroke-opacity="0">
+            <circle cx="22" cy="22" r="21.2878" strokeOpacity="0">
               <animate
                 attributeName="r"
                 begin="3s"
@@ -169,3 +169,5 @@ export default {
     }
   }
 };
+
+export default svgMap;

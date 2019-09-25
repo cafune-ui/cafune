@@ -1,33 +1,32 @@
-import { Component } from 'preact';
+import { Component, h } from 'preact';
 import cx from 'classnames';
-import PropTypes from 'prop-types';
-
-export default class TabBarItem extends Component {
-  static propTypes = {
-    /**
-     * 自定义类名
-      */
-    prefix: PropTypes.string,
-    /**
-     * 展示文字
-     */
-    text: PropTypes.string.isRequired,
-    /**
-     * tab唯一标示
-     */
-    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    /**
-     * 图标集
-     */
-    icons: PropTypes.shape({
-      actived: PropTypes.string,
-      normal: PropTypes.string
-    }),
-    /**
-     * 是否禁用
-     */
-    disabled: PropTypes.bool
-  };
+interface IItemIcon {
+  actived?: string,
+  normal?: string
+}
+interface IProps {
+  /**
+   * 自定义类名
+    */
+  prefix?: string,
+  /**
+   * 展示文字
+   */
+  text: string,
+  /**
+   * tab唯一标示
+   */
+  id: number | string,
+  /**
+   * 图标集
+   */
+  icons?: IItemIcon,
+  /**
+   * 是否禁用
+   */
+  disabled?: boolean
+}
+export default class TabBarItem extends Component<IProps> {
   static defaultProps = {
     disabled: false,
     prefix: 'caf-tabbar-item'

@@ -1,7 +1,37 @@
-import { Component } from 'preact';
-import PropTypes from 'prop-types';
+import { Component, h } from 'preact';
 import cx from 'classnames';
 import Loading from '../loading';
+
+interface IProps {
+  /**
+   * 开关开启状态
+   */
+  isActived?: boolean,
+  /**
+   * 是否处于加载状态
+   */
+  isLoading?: boolean,
+  /**
+   * 是否处于禁用状态
+   */
+  isDisabled?: boolean,
+  /**
+   * 自定义尺寸
+   */
+  size?: string,
+  /**
+   * 开启时背景颜色
+   */
+  activedColor?: string,
+  /**
+   * 关闭时背景颜色
+   */
+  inActivedColor?: string,
+  /**
+   * 状态切换时回调
+   */
+  onChange?: (isActived:boolean) => void
+}
 /**
  * 开关
  * @example
@@ -9,42 +39,12 @@ import Loading from '../loading';
  * <Switch />
  * ```
  */
-class Switch extends Component {
+class Switch extends Component<IProps> {
   static defaultProps = {
     prefix: 'caf-switch',
     isDisabled: false,
     isLoading: false,
     isActived: false
-  };
-  static propTypes = {
-    /**
-     * 开关开启状态
-     */
-    isActived: PropTypes.bool,
-    /**
-     * 是否处于加载状态
-     */
-    isLoading: PropTypes.bool,
-    /**
-     * 是否处于禁用状态
-     */
-    isDisabled: PropTypes.bool,
-    /**
-     * 自定义尺寸
-     */
-    size: PropTypes.string,
-    /**
-     * 开启时背景颜色
-     */
-    activedColor: PropTypes.string,
-    /**
-     * 关闭时背景颜色
-     */
-    inActivedColor: PropTypes.string,
-    /**
-     * 状态切换时回调
-     */
-    onChange: PropTypes.func
   };
   clickHandler = () => {
     const { isDisabled, isLoading, isActived, onChange } = this.props;
@@ -63,7 +63,7 @@ class Switch extends Component {
     inActivedColor,
     ...restProps
   }) {
-    const switchStyle = {};
+    const switchStyle:any = {};
     if (size) switchStyle.fontSize = size;
     let activeColor = isActived ? '#3f77f6' : '#ccc';
     if (activedColor || inActivedColor) {

@@ -1,5 +1,4 @@
-import { Component } from 'preact';
-import PropTypes from 'prop-types';
+import { Component, h } from 'preact';
 
 class Scroller extends Component {
   static defaultProps = {

@@ -1,5 +1,4 @@
-import { render, Component } from 'preact';
-import PropTypes from 'prop-types';
+import { render, Component, h } from 'preact';
 import Icon from '../icon';
 import { isBrowser } from '../../util/isomorphic';
 let seed = 0;
@@ -10,6 +9,42 @@ function getUuid(type) {
 let notifyContainerNode;
 const durationDefault = 2000;
 const ToastList = {};
+
+interface IProps {
+  /**
+   * 提示内容
+   */
+  content: string;
+  /**
+   * 唯一标识
+   */
+  uid?: string;
+  /**
+   * 提示时长(ms)，默认为2000ms
+   */
+  duration?: number;
+  /**
+   * 自定义图标
+   */
+  icon?:
+    | string
+    | {
+        icon?: string;
+        size?: string;
+      };
+  /**
+   * toast 类型
+   */
+  type?: 'normal' | 'success' | 'error' | 'loading';
+  /**
+   * 消失时回调函数
+   */
+  onClose?: () => void;
+  /**
+   * 是否只显示一个toast，默认为false(`suceess` & `error` & `'loading'` 下默认为true)，将依次显示toast
+   */
+  multiple?: boolean;
+}
 // const browserPrefixs = ['-webkit-', '-moz-', '-o-', ''];
 /**
  * 消息提示
@@ -43,41 +78,12 @@ const ToastList = {};
  * ```
  */
 
-class Toast extends Component {
+class Toast extends Component<IProps> {
   static show = show;
   static success = success;
   static error = error;
   static loading = loading;
   static hide = hide;
-  static propTypes = {
-    /**
-     * 提示内容
-     */
-    content: PropTypes.string.isRequired,
-    /**
-     * 提示时长(ms)，默认为2000ms
-     */
-    duration: PropTypes.number,
-    /**
-     * 自定义图标
-      */
-    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({
-      icon: PropTypes.string,
-      size: PropTypes.string
-    })]),
-    /**
-     * toast 类型
-     */
-    type: PropTypes.oneOf(['normal', 'success', 'error', 'loading']),
-    /**
-     * 消失时回调函数
-     */
-    onClose: PropTypes.func,
-    /**
-     * 是否只显示一个toast，默认为false(`suceess` & `error` & `'loading'` 下默认为true)，将依次显示toast
-     */
-    multiple: PropTypes.bool
-  };
   static defaultProps = {
     duration: 2000,
     type: 'normal',
@@ -136,9 +142,9 @@ class Toast extends Component {
     let toastIcon = null;
     if (icon) {
       if (typeof icon === 'string') {
-        toastIcon = <Icon icon={icon} size="42px" />
-      } else if (icon.icon){
-        toastIcon = <Icon icon={icon.icon} size={icon.size || '42px'} />
+        toastIcon = <Icon icon={icon} size="42px" />;
+      } else if (icon.icon) {
+        toastIcon = <Icon icon={icon.icon} size={icon.size || '42px'} />;
       }
     }
     return (
@@ -180,7 +186,7 @@ function show({
   type = 'normal',
   onClose,
   multiple = false
-}) {
+}: IProps) {
   if (!isBrowser) return null;
   notifyContainerNode = createNotifyContainerNode();
   if (!multiple) {
@@ -203,24 +209,38 @@ function show({
 /**
  * 成功Toast
  */
-function success({ content, duration, icon = 'success', onClose } = {}) {
+function success(
+  { content, duration, icon, onClose } = {
+    content: '',
+    duration: 2000,
+    icon: 'success',
+    onClose: null
+  }
+) {
   return show({ content, duration, icon, type: 'success', onClose });
 }
 /**
  * 失败Toast
  */
-function error({ content, duration, icon = 'error', onClose } = {}) {
+function error(
+  { content, duration, icon, onClose } = {
+    content: '',
+    duration: 2000,
+    icon: 'error',
+    onClose: null
+  }
+) {
   return show({ content, duration, icon, type: 'error', onClose });
 }
 
 /**
  * 加载中Toast
  */
-function loading({ content = '加载中', duration = 0, onClose } = {}) {
+function loading({ content = '加载中', duration = 0, onClose } = { content: '加载中', duration: 0, onClose: null }) {
   return show({ content, duration, type: 'loading', onClose });
 }
 
-function hide(toastid) {
+function hide(toastid?: string) {
   if (!isBrowser) return null;
   if (toastid && ToastList[toastid]) {
     ToastList[toastid].comp.close(true);

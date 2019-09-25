@@ -1,5 +1,4 @@
-import { Component, h } from 'preact';
-import PropTypes from 'prop-types';
+import { Component, h, VNode } from 'preact'; 
 import cx from 'classnames';
 import Icon from '../icon';
 import Loading from '../loading';
@@ -13,6 +12,95 @@ const defaultLoadingInfo = {
   type: 'spinner',
   size: '18px'
 };
+
+interface ILoading {
+  /**
+   * 加载图标类型
+   */
+  type?: 'step' | 'spin' | 'ripple',
+  /**
+   * 自定义颜色
+   */
+  color?: string,
+  /**
+   * 自定义加载图标尺寸
+   */
+  size?: string
+}
+interface IButtonIcon {
+  /**
+       * 按钮图标（加载状态时会被加载图标覆盖）
+       */
+  type?: string | VNode | HTMLElement,
+  /**
+       * 图标位置，当为`left` 或`right` 时，图标将出现在文字旁边。也可传入`{left: 'xx'. right: 'xx' }`来绝对定位图标
+       */
+  positon?: string | object
+}
+interface IGradient {
+  /**
+   * 渐变角度，默认为 0
+   */
+  angle?: number,
+  /**
+   * 起始颜色
+   */
+  from?: string,
+  /**
+   * 终止颜色
+   */
+  to?: string
+}
+interface IProps {
+  /**
+     * 自定义类名
+     */
+    prefix?: string,
+    /**
+     * 按钮类型
+     */
+    type?: 'default' | 'primary' | 'warning',
+    /**
+     * 是否为幽灵按钮
+     */
+    ghost?: boolean,
+    /**
+     * 按钮尺寸
+     */
+    size?: 'large' | 'normal' | 'small' | 'tiny',
+    /**
+     * 按钮图标（加载状态时会被加载图标覆盖）
+     */
+    icon?: IButtonIcon,
+    /**
+     * 是否禁用
+     */
+    disabled?: boolean,
+    /**
+     * 是否处于加载状态
+     */
+    loading?: boolean,
+    /**
+     * 加载图标信息
+     */
+    loadingInfo: ILoading,
+    /**
+     * 背景渐变
+     */
+    gradient: IGradient,
+    /**
+     * 圆角，若为`true`，则为全圆角矩形按钮，若为`false`，则为直角矩形，若为`String`类型。则为圆角尺寸，不指定时则使用默认圆角
+     */
+    radius?: boolean | string,
+    /**
+     * 是否为块级元素
+     */
+    block?: boolean,
+    /**
+     * 点击事件
+     */
+    onClick?: (event: Event) => void;
+}
 /**
  * 按钮
  * @example
@@ -20,7 +108,7 @@ const defaultLoadingInfo = {
  * <Button>按钮</Button>
  * ```
  */
-class Button extends Component {
+class Button extends Component<IProps> {
   static defaultProps = {
     prefix: 'caf-btn',
     size: 'normal',
@@ -29,95 +117,6 @@ class Button extends Component {
     disabled: false,
     loading: false,
     block: false
-  };
-  static propTypes = {
-    /**
-     * 自定义类名
-     */
-    prefix: PropTypes.string,
-    /**
-     * 按钮类型
-     */
-    type: PropTypes.oneOf(['default', 'primary', 'warning']),
-    /**
-     * 是否为幽灵按钮
-     */
-    ghost: PropTypes.bool,
-    /**
-     * 按钮尺寸
-     */
-    size: PropTypes.oneOf(['large', 'normal', 'small', 'tiny']),
-    /**
-     * 按钮图标（加载状态时会被加载图标覆盖）
-     */
-    icon: PropTypes.shape({
-      /**
-       * 按钮图标（加载状态时会被加载图标覆盖）
-       */
-      type: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.node,
-        PropTypes.element
-      ]),
-      /**
-       * 图标位置，当为`left` 或`right` 时，图标将出现在文字旁边。也可传入`{left: 'xx'. right: 'xx' }`来绝对定位图标
-       */
-      position: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-    }),
-    /**
-     * 是否禁用
-     */
-    disabled: PropTypes.bool,
-    /**
-     * 是否处于加载状态
-     */
-    loading: PropTypes.bool,
-    /**
-     * 加载图标信息
-     */
-    loadingInfo: PropTypes.shape({
-      /**
-       * 加载图标类型
-       */
-      type: PropTypes.oneOf(['step', 'spin', 'ripple']),
-      /**
-       * 自定义颜色
-       */
-      color: PropTypes.string,
-      /**
-       * 自定义加载图标尺寸
-       */
-      size: PropTypes.string
-    }),
-    /**
-     * 背景渐变
-     */
-    gradient: PropTypes.shape({
-      /**
-       * 渐变角度，默认为 0
-       */
-      angle: PropTypes.number,
-      /**
-       * 起始颜色
-       */
-      from: PropTypes.string,
-      /**
-       * 终止颜色
-       */
-      to: PropTypes.string
-    }),
-    /**
-     * 圆角，若为`true`，则为全圆角矩形按钮，若为`false`，则为直角矩形，若为`String`类型。则为圆角尺寸，不指定时则使用默认圆角
-     */
-    radius: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-    /**
-     * 是否为块级元素
-     */
-    block: PropTypes.bool,
-    /**
-     * 点击事件
-     */
-    onClick: PropTypes.func
   };
   render({
     prefix,

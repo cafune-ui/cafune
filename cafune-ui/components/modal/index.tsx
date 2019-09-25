@@ -1,6 +1,5 @@
-import { render, Component } from 'preact';
+import { render, Component, VNode, h } from 'preact';
 import { isBrowser } from '../../util/isomorphic';
-import PropTypes from 'prop-types';
 let modalComp;
 let containerNode = isBrowser && document.body;
 const viewWrap = containerNode;
@@ -15,6 +14,50 @@ const defaultOptions = {
   visable: true
 };
 
+interface IProps {
+  /**
+   * 标题
+   */
+  title?: string;
+  /**
+   * 消息内容，如有children 优先children
+   */
+  message?: string;
+  /**
+   * 文本对齐方式
+   */
+  align?: 'center' | 'left' | 'right';
+  /**
+   * 是否显示取消按钮
+   */
+  showCancel?: boolean;
+  /**
+   * 是否显示蒙层
+   */
+  mask?: boolean;
+  /**
+   * 确认按钮内容
+   */
+  confirmContent?: string;
+  /**
+   * 取消按钮内容
+   */
+  cancelContent?: string;
+  /**
+   * 确认事件回调
+   */
+  onConfirm: () => void;
+  /**
+   * 取消事件回调
+   */
+  onCancel: () => void;
+  /**
+   * 是否显示模态框
+   */
+  visable?: boolean;
+
+  children: any
+}
 /**
  * 渲染模态框到容器中
  */
@@ -63,45 +106,7 @@ const confirm = options => {
  *  })
  * ```
  */
-class Modal extends Component {
-  static propTypes = {
-    /**
-     * 标题
-     */
-    title: PropTypes.string,
-    /**
-     * 消息内容，如有children 优先children
-     */
-    message: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /**
-     * 文本对齐方式
-     */
-    align: PropTypes.oneOf(['center', 'left', 'right']),
-    /**
-     * 是否显示取消按钮
-     */
-    showCancel: PropTypes.bool,
-    /**
-     * 是否显示蒙层
-     */
-    mask: PropTypes.bool,
-    /**
-     * 确认按钮内容
-     */
-    confirmContent: PropTypes.string,
-    /**
-     * 取消按钮内容
-     */
-    cancelContent: PropTypes.string,
-    /**
-     * 确认事件回调
-     */
-    onConfirm: PropTypes.func,
-    /**
-     * 取消事件回调
-     */
-    onCancel: PropTypes.func
-  };
+class Modal extends Component<IProps, {}> {
   static defaultProps = {
     align: 'center',
     showCancel: false,
@@ -140,12 +145,12 @@ class Modal extends Component {
   }) {
     if (visable) {
       /* istanbul ignore if */
-      const Title = title && <div className="caf-modal-content-header">{title}</div>;
+      const Title = title && (
+        <div className="caf-modal-content-header">{title}</div>
+      );
       /* istanbul ignore else */
       const Content = (!!(children && children.length) || message) && (
-        <div
-          className={`caf-modal-content caf-modal-content__${align}`}
-        >
+        <div className={`caf-modal-content caf-modal-content__${align}`}>
           {children && children.length > 0 ? (
             children
           ) : (

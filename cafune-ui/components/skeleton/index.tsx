@@ -1,5 +1,4 @@
-import { Component } from 'preact';
-import PropTypes from 'prop-types';
+import { Component, h } from 'preact';
 import Circle from './circle';
 import Rect from './rect';
 import getRem from './rem';
@@ -9,6 +8,29 @@ const uid = () =>
   Math.random()
     .toString(36)
     .substring(2);
+
+interface IProps {
+  /**
+   * 动画速度
+   */
+  speed?: number,
+  /**
+   * 骨架屏宽度
+   */
+  width?: string | number,
+  /**
+   * 骨架屏高度
+   */
+  height?: string | number,
+  /**
+   * 背景颜色
+   */
+  primaryColor?: string
+  /**
+   * 渐变动画颜色
+   */
+  secondaryColor?: string
+}
 /**
  * 骨架屏
  * @example
@@ -20,31 +42,9 @@ const uid = () =>
  * </Skeleton>
  * ```
  */
-class Skeleton extends Component {
+class Skeleton extends Component<IProps> {
   static Circle = Circle;
   static Rect = Rect;
-  static propTypes = {
-    /**
-     * 动画速度
-     */
-    speed: PropTypes.number,
-    /**
-     * 骨架屏宽度
-     */
-    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    /**
-     * 骨架屏高度
-     */
-    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    /**
-     * 背景颜色
-     */
-    primaryColor: PropTypes.string,
-    /**
-     * 渐变动画颜色
-     */
-    secondaryColor: PropTypes.string
-  };
   static defaultProps = {
     speed: 2,
     width: '100%',

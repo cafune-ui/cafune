@@ -1,4 +1,4 @@
-import { Component, createRef } from 'preact';
+import { Component, createRef, h } from 'preact';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from '../icon';
@@ -31,81 +31,77 @@ function clearNextFrameAction(nextFrameId) {
   }
 }
 
-/**
- * 搜索栏
- */
-class SearchBar extends Component {
-  static defaultProps = {
-    prefix: 'caf-search',
-    align: 'center',
-    leftIcon: 'search'
-  };
-  static propTypes = {
-    /**
+interface IAction {
+  /**
+   * 按钮类型
+   */
+  type?: 'confirm' | 'cancel' | 'custom';
+  /**
+   * 按钮文字
+   */
+  text?: string,
+  /**
+   * 是否一直显示
+   */
+  keepShow?: boolean,
+  /**
+   * 功能按钮点击事件，默认情况下，点击时，`actionType`为`confirm`时会额外触发`onConfirm`事件，为`cancel`时会额外触发`onCancel`事件
+   */
+  onClick?: () => void
+}
+interface IProps {
+  /**
      * 自定义类名
      */
-    prefix: PropTypes.string,
+    prefix?: string;
     /**
      * 搜索框的
      */
     /**
      * 占位文字
      */
-    placeholder: PropTypes.string,
+    placeholder?: string,
     /**
      * 最多可允许输入字符个数
      */
-    maxLength: PropTypes.number,
+    maxLength?: number,
     /**
      * 确定搜索时回调，支持`enter` 触发
      */
-    onConfirm: PropTypes.func,
+    onConfirm?: (value?) => void,
     /**
      * 取消操作时回调
      */
-    onCancel: PropTypes.func,
+    onCancel?: (value?) => void;
     /**
      * 内容变更时回调
      */
-    onChange: PropTypes.func,
+    onChange?: (value?) => void;
     /**
      * 左侧按钮图标（参考 `Icon` 组件）
      */
-    leftIcon: PropTypes.string,
+    leftIcon?: string;
     /**
      * 搜索框右侧附加功能
      */
-    addition: PropTypes.shape({
-      /**
-       * 附加功能按钮
-       */
-      icon: PropTypes.string,
-      /**
-       * 附加功能点击事件
-       */
-      onClick: PropTypes.func
-    }),
+    // addition?: IAdditon,
     /**
      * 右侧功能按钮
      */
-    action: PropTypes.shape({
-      /**
-       * 按钮类型
-       */
-      type: PropTypes.oneOf(['confirm', 'cancel', 'custom']),
-      /**
-       * 按钮文字
-       */
-      text: PropTypes.string,
-      /**
-       * 是否一直显示
-       */
-      keepShow: PropTypes.bool,
-      /**
-       * 功能按钮点击事件，默认情况下，点击时，`actionType`为`confirm`时会额外触发`onConfirm`事件，为`cancel`时会额外触发`onCancel`事件
-       */
-      onClick: PropTypes.func
-    })
+    action?: IAction
+}
+interface IState {
+  focus: boolean,
+  value: string | number,
+}
+/**
+ * 搜索栏
+ */
+class SearchBar extends Component<IProps, IState> {
+  static defaultProps = {
+    prefix: 'caf-search',
+    align: 'center',
+    leftIcon: 'search'
   };
   constructor(props) {
     super(props);
@@ -165,9 +161,9 @@ class SearchBar extends Component {
       this.props.onChange(value);
     }
   };
-  onConfirm = e => {
+  onConfirm = (e?) => {
     e && e.preventDefault();
-    let val = '';
+    let val;
      if (this.inputRef && this.inputRef.current) {
       val = this.inputRef.current.value;
     } else {
@@ -187,6 +183,7 @@ class SearchBar extends Component {
       focus: true
     });
   };
+  blurFromOnClear:boolean = true;
   onBlur = () => {
     this.onBlurTimeout = onNextFrame(() => {
       if (!this.blurFromOnClear) {

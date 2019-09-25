@@ -1,9 +1,27 @@
-import { Component } from 'preact';
-import PropTypes from 'prop-types';
+import { Component, h } from 'preact';
 import cx from 'classnames';
 
 import svgMap from './svgMap';
-const typeMap = Object.keys(svgMap);
+// const typeMap = Object.keys(svgMap);
+
+interface IProps {
+  /**
+   * 加载图标类型
+   */
+  type?: 'step' | 'spinner' | 'ripple';
+  /**
+   * 加载提示文字
+   */
+  text?: string;
+  /**
+   * 自定义颜色
+   */
+  color?: string;
+  /**
+   * 自定义加载图标尺寸
+   */
+  size?: string;
+}
 /**
  * 加载
  * @example
@@ -13,29 +31,11 @@ const typeMap = Object.keys(svgMap);
  * // ...
  * ```
  */
-class Loading extends Component {
+class Loading extends Component<IProps> {
   static defaultProps = {
     prefix: 'caf-loading',
     type: 'spinner',
     vertical: false
-  };
-  static propTypes = {
-    /**
-     * 加载图标类型
-     */
-    type: PropTypes.oneOf(['step', 'spinner', 'ripple']),
-    /**
-     * 加载提示文字
-     */
-    text: PropTypes.string,
-    /**
-     * 自定义颜色
-     */
-    color: PropTypes.string,
-    /**
-     * 自定义加载图标尺寸
-     */
-    size: PropTypes.string
   };
   getSvg(type) {
     const { color, size } = this.props;

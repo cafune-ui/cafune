@@ -1,6 +1,5 @@
-import { Component, createRef } from 'preact';
+import { Component, createRef, h, VNode } from 'preact';
 import cx from 'classnames';
-import PropTypes from 'prop-types';
 import Item from './item';
 import { touchEventMap, getTouch } from '../util/event';
 
@@ -11,6 +10,40 @@ function checkIfItem(el) {
   return el.nodeName.displayName === 'swiperItem';
 }
 
+interface IProps {
+  /**
+   * 自定义前缀
+   */
+  prefix?: string;
+  /**
+   * 自定义类名
+   */
+  className?: string;
+  /**
+   * 是否自动切换
+   */
+  autoplay?: boolean;
+  /**
+   * 切换间隔事件（毫秒）
+   */
+  intervel?: number;
+  /**
+   * 初始index
+   */
+  initialIndex?: number;
+  /**
+   * 是否显示指示器
+   */
+  showIndicators?: boolean;
+  /**
+   * 切换时触发事件
+   */
+  onChange?: (ind?: number | Event) => void;
+  /**
+   * 自定义指示器
+   */
+  customIndicator?: VNode | HTMLElement;
+}
 /**
  * 轮播
  * @example
@@ -29,38 +62,8 @@ function checkIfItem(el) {
  * ```
  * ```
  */
-class Swiper extends Component {
+class Swiper extends Component<IProps> {
   static SwiperItem = Item;
-  static propTypes = {
-    /**
-     * 自定义类名
-      */
-    prefix: PropTypes.string,
-    /**
-     * 是否自动切换
-     */
-    autoplay: PropTypes.bool,
-    /**
-     * 切换间隔事件（毫秒）
-     */
-    intervel: PropTypes.number,
-    /**
-     * 初始index
-     */
-    initialIndex: PropTypes.number,
-    /**
-     * 是否显示指示器
-     */
-    showIndicators: PropTypes.bool,
-    /**
-     * 切换时触发事件
-     */
-    onChange: PropTypes.func,
-    /**
-     * 自定义指示器
-     */
-    customIndicator: PropTypes.node
-  };
   static defaultProps = {
     autoplay: true,
     intervel: 3000,
@@ -76,13 +79,14 @@ class Swiper extends Component {
     children.forEach((item, ind) => {
       if (item && checkIfItem(item)) {
         const props = item.attributes;
-        const { className } = props;
+        const { className, onItemClick } = props;
         const { children } = item;
         data.push({
           id: ind,
           actived: ind === this.state.current,
           content: children,
-          className
+          className,
+          onItemClick
         });
       }
     });
@@ -144,7 +148,7 @@ class Swiper extends Component {
 
     window.removeEventListener('resize', this.resize);
   }
-  moveTo({ ind, offset }) {
+  moveTo({ ind, offset }: { ind?: number, offset?: number | string}) {
     this.clearAutoPlay();
     if (this.swiperList && this.swiperList.current) {
       const $swiper = this.swiperList.current;
@@ -174,6 +178,7 @@ class Swiper extends Component {
   deltaX;
   offsetX = 0;
   direction;
+  startTimeStamp:number;
   onSwiperClick = e => {
     if (this.offsetX > 0) {
       e.preventDefault();
@@ -215,11 +220,12 @@ class Swiper extends Component {
     setTimeout(() => (this.offsetX = 0), 500);
   };
   renderIndicators(data) {
+    const { prefix } = this.props;
     return data && data.length > 1
       ? Array(...Array(data.length)).map((_, ind) => (
           <span
             key={ind}
-            className="caf-swiper-indicator-item"
+            className={`${prefix}-indicator-item`}
             data-status={ind === this.state.current ? 1 : 0}
             onClick={() => this.moveTo({ ind })}
           />
@@ -232,8 +238,7 @@ class Swiper extends Component {
         return (
           <Item
             key={item.id}
-            onItemClick={this.onItemClick}
-            actived={item.actived}
+            onItemClick={item.onItemClick}
             width={`${(1 / data.length) * 100}%`}
           >
             {item.content}
@@ -246,13 +251,24 @@ class Swiper extends Component {
   swiperList = createRef();
   swiperContainer = createRef();
   renderSwipers() {
-    const { prefix, children, className, showIndicators, customIndicator, ...restProps } = this.props;
-    if (children && children.length) {
+    const {
+      prefix,
+      children,
+      className,
+      showIndicators,
+      customIndicator,
+      ...restProps
+    } = this.props;
+    if (children && (children as preact.ComponentChild[]).length) {
       const swiperData = this.getSwiperData(children);
       this.swiperData = swiperData;
       this.total = swiperData.length;
       return (
-        <div className={cx(prefix, className)} ref={this.swiperContainer} {...restProps}>
+        <div
+          className={cx(prefix, className)}
+          ref={this.swiperContainer}
+          {...restProps}
+        >
           <div className={`${prefix}-container`} ref={this.swiperList}>
             {this.renderItems(swiperData)}
           </div>

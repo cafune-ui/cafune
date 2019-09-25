@@ -1,6 +1,5 @@
-import { Component, createRef } from 'preact';
+import { Component, createRef, h, VNode } from 'preact';
 import cx from 'classnames';
-import PropTypes from 'prop-types';
 
 const MIN_DISTANCE = 10;
 function getDirection(x, y) {
@@ -23,61 +22,73 @@ function setTransform(obj, offsetY) {
 function getScrolltop() {
   return  document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
 }
-const stateMap = {
-  'loosing': '',
-  'pulling': '释放可刷新',
-  'loading': '加载中...',
-
+// const stateMap = {
+//   'loosing': '',
+//   'pulling': '释放可刷新',
+//   'loading': '加载中...',
+// }
+interface IIndicator {
+  /**
+   * 下拉中指示器
+   */
+  pulling?: string | VNode;
+  /**
+   * 释放时指示器
+   */
+  loosing?: string | VNode;
+  /**
+   * 加载中指示器
+   */
+  loading?: string | VNode;
+  /**
+   * 刷新结束指示器
+   */
+  finish?: string | VNode;
+}
+interface IProps {
+  /**
+   * 自定义前缀
+   */
+  prefix?: string;
+  /**
+   * 自定义类名
+   */
+  className?: string;
+  /**
+   * 自元素
+   */
+  children?: any;
+  /**
+   * 是否禁用
+   */
+  disabled?: boolean;
+  /**
+   * 拉动方向
+   */
+  direction?: 'up' | 'down';
+  /**
+   * 刷新距离
+   */
+  distance?: number;
+  /**
+   * 是否处于刷新状态
+   */
+  isRefreshing?: boolean;
+  /**
+   * 刷新回调
+   */
+  onRefresh?: () => void;
+  /**
+   * 刷新指示器
+   */
+  indicator?: IIndicator;
 }
 /**
  * 下拉刷新
  */
-class PullRefresh extends Component {
+class PullRefresh extends Component<IProps> {
   static defaultProps = {
     prefix: 'caf-pullref'
-  };
-  static propTypes = {
-    /**
-     * 自定义类名
-     */
-    prefix: PropTypes.string,
-    /**
-     * 拉动方向
-     */
-    direction: PropTypes.oneOf(['up', 'down']),
-    /**
-     * 刷新距离
-     */
-    distance: PropTypes.number,
-    /**
-     * 是否处于刷新状态
-     */
-    isRefreshing: PropTypes.bool,
-    /**
-     * 刷新回调
-     */
-    onRefresh: PropTypes.func.isRequired,
-    /**
-     * 刷新指示器
-     */
-    indicator: PropTypes.shape({
-      /**
-       * 下拉中指示器
-       */
-      pulling: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-      /**
-       * 释放时指示器
-       */
-      loosing: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-      /**
-       * 加载中指示器
-       */
-      loading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-      /**
-       * 刷新结束指示器
-       */
-      finish: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
-    })
   };
   state = {
     status: 'normal',
@@ -104,6 +115,13 @@ class PullRefresh extends Component {
     }
   }
   headHeight = 50;
+  startX: number;
+  startY:number;
+  deltaX:number;
+  deltaY:number;
+  offsetX:number;
+  offsetY:number;
+  direction:string;
   touchStart = (event) => {
     this.resetTouchStatus();
     this.startX = event.touches[0].clientX;
@@ -135,6 +153,7 @@ class PullRefresh extends Component {
       this.touchStart(event);
     }
   }
+  ceiling:boolean;
   onTouchMove = (event) => {
     if (this.untouchable()) {
       return;
@@ -170,7 +189,7 @@ class PullRefresh extends Component {
         ? Math.round(headHeight + (height - headHeight) / 2)
         : height > headHeight * 1.5 ? headHeight * 1.5 : Math.round(headHeight * 1.5 + (height - headHeight * 2) / 4);
   }
-  setStatus(height, isLoading) {
+  setStatus(height, isLoading = false) {
     setTransform(this.pullrefresh_loading.current, height);
     const status = isLoading
       ? 'loading'

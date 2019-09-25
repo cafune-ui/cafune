@@ -1,9 +1,37 @@
-import { Component } from 'preact';
-import PropTypes from 'prop-types';
+import { Component, h } from 'preact';
 import cx from 'classnames';
 import Item from './item';
 import { setPadding } from '../../util/isomorphic';
-
+interface IProps {
+   /**
+     * 自定义前缀
+     */
+    prefix?: string;
+    /**
+     * 自定义类名
+     */
+    className?: string;
+    /**
+     * 子元素
+     */
+    children?: any;
+    /**
+     * 是否使用 `fixed` 定位
+     */
+    fixed?: boolean;
+    /**
+     * 当前激活的id
+     */
+    activedId: string | number
+    /**
+     * 激活时文字颜色
+     */
+    activedColor?: string,
+    /**
+     * 切换时回调
+     */
+    onChange?: (activedId) => void
+} 
 /**
  * 标签栏
  * @example
@@ -39,34 +67,12 @@ import { setPadding } from '../../util/isomorphic';
  * }
  * ```
  */
-class TabBar extends Component {
+class TabBar extends Component<IProps> {
   static TabBarItem = Item;
   static defaultProps = {
     prefix: 'caf-tabbar',
     fixed: true,
     activedColor: '#3f77f6'
-  };
-  static propTypes = {
-    /**
-     * 自定义类名
-     */
-    prefix: PropTypes.string,
-    /**
-     * 是否使用 `fixed` 定位
-     */
-    fixed: PropTypes.bool,
-    /**
-     * 当前激活的id
-     */
-    activedId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    /**
-     * 激活时文字颜色
-     */
-    activedColor: PropTypes.string,
-    /**
-     * 切换时回调
-     */
-    onChange: PropTypes.func
   };
   currentActive = this.props.activedId;
   componentDidMount() {
@@ -89,7 +95,7 @@ class TabBar extends Component {
       onChange: this.onChange
     };
   }
-  render({ prefix, className, fixed, children, ...restProps }) {
+  render({ prefix, className, activedId, fixed, children, ...restProps }) {
     const cls = cx(prefix, className, { [`${prefix}__fixed`]: fixed });
     return (
       <div className={cls} {...restProps}>

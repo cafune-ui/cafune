@@ -1,11 +1,48 @@
-import { Component } from 'preact';
-import PropTypes from 'prop-types';
+import { Component, h } from 'preact';
 import cx from 'classnames';
+interface IProps {
+  /**
+   * 自定义类名
+   */
+  prefix?: string,
+  /**
+   * 当前值
+   */
+  value: number,
+  /**
+   * 最小值
+   */
+  min?: number,
+  /**
+   * 最大值
+   */
+  max?: number,
+  /**
+   * 步进数
+   */
 
+  step?: number,
+  /**
+   * 是否处于禁用状态
+   */
+  disabled?: boolean,
+  /**
+   * 是否限定为整数
+   */
+  integerOnly?: boolean,
+  /**
+   * 数值是否只读
+   */
+  readOnly?: boolean,
+  /**
+   * 数值改变时回调
+   */
+  onChange?: (result) => void
+}
 /**
  * 步进器
  */
-class Stepper extends Component {
+class Stepper extends Component<IProps> {
   static defaultProps = {
     prefix: 'caf-stepper',
     step: 1,
@@ -15,57 +52,18 @@ class Stepper extends Component {
     min: 0,
     max: Infinity
   };
-  static propTypes = {
-    /**
-     * 自定义类名
-     */
-    prefix: PropTypes.string,
-    /**
-     * 当前值
-     */
-    value: PropTypes.number.isRequired,
-    /**
-     * 最小值
-     */
-    min: PropTypes.number,
-    /**
-     * 最大值
-     */
-    max: PropTypes.number,
-    /**
-     * 步进数
-     */
-
-    step: PropTypes.number,
-    /**
-     * 是否处于禁用状态
-     */
-    disabled: PropTypes.bool,
-    /**
-     * 是否限定为整数
-     */
-    integerOnly: PropTypes.bool,
-    /**
-     * 数值是否只读
-     */
-    readOnly: PropTypes.bool,
-    /**
-     * 数值改变时回调
-     */
-    onChange: PropTypes.func
-  };
   minus = () => {
     const { onChange, value, step, min, disabled } = this.props;
     if (value != min && !disabled) {
       const result = value - step <= min ? min : value - step;
-      onChange(result, -1);
+      onChange(result);
     }
   };
   plus = () => {
     const { onChange, value, step, max, disabled } = this.props;
     if (value != max && !disabled) {
       const result = value + step >= max ? max : value + step;
-      onChange(result, -1);
+      onChange(result);
     }
   };
   onInputChange = e => {
@@ -81,10 +79,9 @@ class Stepper extends Component {
       if (integerOnly && +tarVal % 1 !== 0) final = Math.round(tarVal);
     }
     if (final && final !== tarVal) {
-      console.log(final);
       $target.value = final;
     }
-    onChange($target.value, 0);
+    onChange($target.value);
   };
   render({ prefix, className, disabled, step, min, max, value, readOnly, ...restProps }) {
     const isReachMin = value - step < min || value === min;

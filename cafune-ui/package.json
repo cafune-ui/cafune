@@ -39,14 +39,15 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.0",
-    "@babel/core": "^7.6.0",
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-decorators": "^7.6.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/plugin-transform-object-assign": "^7.2.0",
     "@babel/plugin-transform-react-constant-elements": "^7.6.0",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-typescript": "^7.6.0",
     "autoprefixer": "^9.6.1",
     "babel-eslint": "^10.0.3",
@@ -82,7 +83,7 @@
     "tslint-consistent-codestyle": "^1.15.1",
     "tslint-react": "^4.1.0",
     "typescript": "^3.6.3",
-    "webpack": "^4.40.2",
+    "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9"
   }
 }
