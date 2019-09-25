@@ -1,6 +1,6 @@
 module.exports = function(api) {
-  const { BABEL_MODULE, NODE_ENV } = process.env;
-  const useESModules = BABEL_MODULE !== 'commonjs' && NODE_ENV !== 'test';
+  const { BABEL_MODULE } = process.env;
+  const useESModules = BABEL_MODULE !== 'commonjs';
 
   api && api.cache(false);
   return {
@@ -32,7 +32,8 @@ module.exports = function(api) {
       [
         '@babel/plugin-transform-react-jsx',
         { pragma: 'h', pragmaFrag: 'Fragment' }
-      ]
+      ],
+      'babel-plugin-macros'
     ]
   };
 };
