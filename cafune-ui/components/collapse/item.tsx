@@ -1,40 +1,47 @@
-import { Component, createRef } from 'preact';
-import PropType from 'prop-types';
+import { Component, createRef, h, VNode } from 'preact';
 import cx from 'classnames';
 import Cell from '../cell';
 // import Icon from '../icon';
 
+interface IProps {
+  /**
+   * 标题
+   */
+  title: string | VNode;
+  /**
+   * 唯一标识
+   */
+  id?: string;
+  /**
+   * 自定义前缀
+   */
+  prefix?: string;
+  /**
+   * 是否处于激活状态
+   */
+  actived?: boolean;
+  /**
+   * 是否禁用此单元
+   */
+  disabled?: boolean;
+  /**
+   * 右侧按钮
+   */
+  icon?: string;
+  /**
+   * 切换回调
+   */
+  onToggle?: (id:any) => void;
+}
 /**
  * 折叠面板子项
  */
-class Item extends Component {
+class Item extends Component<IProps> {
   static displayName = 'CollapseItem';
   static defaultProps = {
     prefix: 'caf-collapse',
     icon: 'arrow_right',
     disabled: false
-  };
-  static propType = {
-    /**
-     * 标题
-     */
-    title: PropType.oneOfType([PropType.string, PropType.node]).isRequired,
-    /**
-     * 自定义前缀
-     */
-    prefix: PropType.string,
-    /**
-     * 是否处于激活状态
-     */
-    actived: PropType.bool,
-    /**
-     * 是否禁用此单元
-     */
-    disabled: PropType.bool,
-     /**
-     * 右侧按钮
-     */
-    icon: PropType.string
   };
   contentRef = createRef();
   contentWrapRef = createRef();
@@ -61,18 +68,37 @@ class Item extends Component {
   componentDidMount() {
     this.updateStyle();
   }
-  render({ prefix, className, children, title, actived, disabled, icon, ...restProps }) {
+  render({
+    prefix,
+    className,
+    children,
+    title,
+    actived,
+    disabled,
+    icon,
+    ...restProps
+  }) {
     return (
       <div
-        className={cx(`${prefix}-item`, className, { [`${prefix}-item__disabled`]: disabled })}
+        className={cx(`${prefix}-item`, className, {
+          [`${prefix}-item__disabled`]: disabled
+        })}
         data-status={actived ? 1 : 0}
         {...restProps}
       >
-        <div className={cx(`${prefix}-header`, {[`${prefix}-header__default`]: icon === Item.defaultProps.icon })} onClick={this.onToggle}>
+        <div
+          className={cx(`${prefix}-header`, {
+            [`${prefix}-header__default`]: icon === Item.defaultProps.icon
+          })}
+          onClick={this.onToggle}
+        >
           <Cell title={title} rightIcon={icon} />
         </div>
         <div className={`${prefix}-wrapper`} ref={this.contentRef}>
-          <div className={`${prefix}-wrapper-content`} ref={this.contentWrapRef}>
+          <div
+            className={`${prefix}-wrapper-content`}
+            ref={this.contentWrapRef}
+          >
             {children}
           </div>
         </div>

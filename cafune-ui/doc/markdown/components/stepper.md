@@ -13,7 +13,7 @@ import { Stepper } from 'components';
 | min | 最小值 | number | `0` | - | ❌ |
 | max | 最大值 | number | `Infinity` | - | ❌ |
 | step | 步进数 | number | `1` | - | ❌ |
-| disabled | 是否处于禁用状态 | bool | `false` | - | ❌ |
-| integerOnly | 是否限定为整数 | bool | `false` | - | ❌ |
-| readOnly | 数值是否只读 | bool | `false` | - | ❌ |
-| onChange | 数值改变时回调 | func | - | - | ❌ |
+| disabled | 是否处于禁用状态 | boolean | `false` | - | ❌ |
+| integerOnly | 是否限定为整数 | boolean | `false` | - | ❌ |
+| readOnly | 数值是否只读 | boolean | `false` | - | ❌ |
+| onChange | 数值改变时回调 | (result) => void | - | - | ❌ |

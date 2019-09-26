@@ -55,7 +55,6 @@ interface IProps {
    * 是否显示模态框
    */
   visable?: boolean;
-
   children: any
 }
 /**

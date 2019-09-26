@@ -8,28 +8,31 @@ import { Tabs } from 'components';
 ## 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
-| prefix | 自定义类名 | string | - | - | ❌ |
-| activeId | 当前激活id | string/number | - | - | ✅  |
-| type | 组件类型 | string | `'slider'` | `'slider'`,`'round'`,`'card'` | ❌ |
-| onTabChange | 切换tab时回调 | func | - | - | ❌ |
+| prefix | 自定义前缀 | string | - | - | ❌ |
+| className | 自定义类名 | string | - | - | ❌ |
+| activeId | 当前激活id | string/number | - | - | ❌ |
+| type | 组件类型 | literal/literal/literal | `'slider'` | - | ❌ |
+| onChange | 切换tab时回调 | (key) => void | - | - | ❌ |
 | navClass | 自定义标签栏类名 | string | - | - | ❌ |
 | maxCount | 最大可容纳标签数 | number | `5` | - | ❌ |
+| tabs | 自定义tab 列表 | Array/any | - | - | ❌ |
 
 ### Nav 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
-| prefix | 自定义类名 | string | `'caf-tabs-nav'` | - | ❌ |
-| tabsData | 当前激活id | <a class="caf-markdown-hover" data-desc="{ id: union ✅ ,label: string ✅ ,actived: bool ✅ ,className: string ✅ ,visable: bool ✅  }">custom</a> | - | - | ✅  |
-| type | 组件类型 | string | `'slider'` | `'slider'`,`'round'`,`'card'` | ❌ |
-| onChange | 切换tab时回调 | func | - | - | ❌ |
+| prefix | 自定义前缀 | string | `'caf-tabs-nav'` | - | ❌ |
+| className | 自定义类名 | string | - | - | ❌ |
+| tabsData | 当前激活id | Array | - | - | ❌ |
+| type | 组件类型 | literal/literal/literal | `'slider'` | - | ❌ |
+| onChange | 切换tab时回调 | (id) => void | - | - | ❌ |
 | navClass | 自定义标签栏类名 | string | - | - | ❌ |
 | maxCount | 最大可容纳标签数 | number | `5` | - | ❌ |
 
 ### TabPanel 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
-| prefix | 自定义类名 | string | `'caf-tabs-panel'` | - | ❌ |
-| id | 面板的id | string/number | - | - | ✅  |
+| prefix | 自定义前缀 | string | `'caf-tabs-panel'` | - | ❌ |
 | label | 标签名字 | string | - | - | ❌ |
 | className | 自定义类名 | string | - | - | ❌ |
-| visable | 是否显示 | bool | `true` | - | ❌ |
+| visable | 是否显示 | boolean | `true` | - | ❌ |
+| actived | 是否激活 | boolean | - | - | ❌ |

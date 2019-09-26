@@ -1,12 +1,29 @@
-import { Component } from "preact";
-import PropType from 'prop-types';
+import { Component, h } from 'preact';
 import cx from 'classnames';
-import Item from "./item";
+import Item from './item';
 
 function checkIfItem(el) {
-  return el.nodeName.displayName === "CollapseItem";
+  return el.nodeName.displayName === 'CollapseItem';
 }
 
+interface IProps {
+  /**
+   * 是否开启手风琴效果
+   */
+  accordion?: boolean;
+  /**
+   * 自定义前缀
+   */
+  prefix?: string;
+  /**
+   * 激活的列表
+   */
+  actives?: string | string[];
+  /**
+   * 自定义类名
+   */
+  className?: string;
+}
 /**
  * 折叠面板
  * @example
@@ -26,25 +43,15 @@ function checkIfItem(el) {
  * </Collapse>
  * ```
  */
-class Collapse extends Component {
+class Collapse extends Component<IProps> {
   static Item = Item;
   state = {
     actives: this.props.actives
   };
   static defaultProps = {
     accordion: false,
-    prefix: "caf-collapse"
+    prefix: 'caf-collapse'
   };
-  static propType = {
-    /**
-     * 是否开启手风琴效果
-      */
-    accordion: PropType.bool,
-    /**
-     * 自定义前缀
-      */
-    prefix: PropType.string,
-  }
   onToggle = id => {
     let { actives } = this.state;
     if (Array.isArray(actives)) {
@@ -76,10 +83,10 @@ class Collapse extends Component {
   getListData(children, actives, accordion) {
     if (accordion) {
       if (Array.isArray(actives)) {
-        console.error("actives should be a String while using accordion");
+        console.error('actives should be a String while using accordion');
         return;
       }
-    } else if (typeof actives === "string") {
+    } else if (typeof actives === 'string') {
       actives = [actives];
     }
     const data = [];
@@ -91,7 +98,7 @@ class Collapse extends Component {
         let actived = false;
         if (actives && id)
           actived =
-            typeof actives === "string"
+            typeof actives === 'string'
               ? actives == id
               : actives.indexOf(id) !== -1;
         data.push({
@@ -107,7 +114,11 @@ class Collapse extends Component {
     const { prefix, children, accordion, className, ...restProps } = this.props;
     const { actives } = this.state;
     const listData = this.getListData(children, actives, accordion);
-    return <div className={cx(prefix, className)} {...restProps}>{this.renderContent(listData)}</div>;
+    return (
+      <div className={cx(prefix, className)} {...restProps}>
+        {this.renderContent(listData)}
+      </div>
+    );
   }
   render() {
     return this.renderList();

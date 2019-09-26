@@ -1,5 +1,4 @@
-import { Component } from 'preact';
-import PropTypes from 'prop-types';
+import { Component, h } from 'preact';
 import cx from 'classnames';
 
 import CheckboxGroup from './group';
@@ -8,66 +7,66 @@ import Icon from '../icon';
 function isImage(icon) {
   return icon && icon.indexOf('/') !== -1;
 }
-
+interface IIcon {
+  /**
+   * 激活图标
+   */
+  actived?: string;
+  /**
+   * 未激活时图标
+   */
+  inactive?: string;
+}
+interface IProps {
+  /**
+   * 自定义类名
+   */
+  prefix?: string;
+  /**
+   * 自定义图标
+   */
+  icons?: IIcon;
+  /**
+   * 复选框值
+   */
+  value: string | number;
+  /**
+   * 复选框 id
+   */
+  id?: string;
+  /**
+   * 默认是否选中
+   */
+  checked?: boolean;
+  /**
+   * 选中状态颜色
+   */
+  checkedColor?: string;
+  /**
+   * 是否处于禁用状态
+   */
+  disabled?: boolean;
+  /**
+   * 值变化时回调事件
+   */
+  handleChange?: (val: any) => void;
+}
 /**
  * 复选框
  */
-class Checkbox extends Component {
+class Checkbox extends Component<IProps> {
   static CheckboxGroup = CheckboxGroup;
   static defaultProps = {
     prefix: 'caf-checkbox',
     checked: false,
     disabled: false
   };
-  static propTypes = {
-    /**
-     * 自定义类名
-     */
-    prefix: PropTypes.string,
-    /**
-     * 自定义图标
-     */
-    icons: PropTypes.shape({
-      /**
-       * 激活图标
-       */
-      actived: PropTypes.string,
-      /**
-       * 未激活时图标
-       */
-      inactive: PropTypes.string
-    }),
-    /**
-     * 复选框值
-     */
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    /**
-     * 复选框 id
-      */
-    id: PropTypes.string,
-    /**
-     * 默认是否选中
-     */
-    checked: PropTypes.bool,
-    /**
-     * 选中状态颜色
-     */
-    checkedColor: PropTypes.string,
-    /**
-     * 是否处于禁用状态
-     */
-    disabled: PropTypes.bool,
-    /**
-     * 值变化时回调事件
-     */
-    handleChange: PropTypes.func
-  };
   constructor(props) {
     super(props);
   }
   state = {
     checked: false
-  }
+  };
   componentDidMount() {
     const { value, checked = false } = this.props;
     const { model = [] } = this.context || {};
@@ -75,7 +74,7 @@ class Checkbox extends Component {
 
     this.setState({
       checked: isChecked
-    })
+    });
   }
   componentWillReceiveProps(nextProps) {
     if ('checked' in nextProps && !this.context.model) {
@@ -116,7 +115,7 @@ class Checkbox extends Component {
     { checked },
     { allDisabled = false } = {}
   ) {
-    const innerStyle = {};
+    const innerStyle: any = {};
     if (checkedColor && checked) {
       innerStyle.backgroundColor = checkedColor;
     }
@@ -126,11 +125,15 @@ class Checkbox extends Component {
     if (icons) {
       if ('actived' in icons && checked) {
         isCustomIcon = isImage(icons.actived);
-        icon = <Icon icon={icons.actived} size={isCustomIcon ? '14px' : '12px'} />;
+        icon = (
+          <Icon icon={icons.actived} size={isCustomIcon ? '14px' : '12px'} />
+        );
       }
       if ('inactive' in icons && !checked) {
         isCustomIcon = isImage(icons.inactive);
-        icon = <Icon icon={icons.inactive} size={isCustomIcon ? '14px' : '12px'} />;
+        icon = (
+          <Icon icon={icons.inactive} size={isCustomIcon ? '14px' : '12px'} />
+        );
       }
     }
     return (

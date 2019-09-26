@@ -1,5 +1,4 @@
-import { Component } from 'preact';
-import PropTypes from 'prop-types';
+import { Component, h } from 'preact';
 import Tab from './components/tab';
 import cx from 'classnames';
 import { isBrowser } from '../../util/isomorphic';
@@ -11,40 +10,44 @@ function setTransform(obj, offsetLeft) {
   obj.style.webkitTransform = `translate3d(${offsetLeft}px, 0, 0)`;
 }
 
+interface IProps {
+  /**
+   * 自定义前缀
+   */
+  prefix?: string;
+  /**
+   * 自定义类名
+   */
+  className?: string;
+  /**
+   * 当前激活id
+   */
+  tabsData?: {
+    id: string | number;
+    label: string;
+    actived: boolean;
+    className?: string;
+    visable?: boolean;
+  }[];
+  /**
+   * 组件类型
+   */
+  type?: 'slider' | 'round' | 'card';
+  /**
+   * 切换tab时回调
+   */
+  onChange?: (id) => void;
+  /**
+   * 自定义标签栏类名
+   */
+  navClass?: string;
+  /**
+   * 最大可容纳标签数
+   */
+  maxCount?: number;
+}
 const defaultMax = 5;
-export default class Nav extends Component {
-  static propTypes = {
-    /**
-     * 自定义类名
-     */
-    prefix: PropTypes.string,
-    /**
-     * 当前激活id
-     */
-    tabsData: PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-      label: PropTypes.string.isRequired,
-      actived: PropTypes.bool.isRequired,
-      className: PropTypes.string,
-      visable: PropTypes.bool
-    }).isRequired,
-    /**
-     * 组件类型
-     */
-    type: PropTypes.oneOf(['slider', 'round', 'card']),
-    /**
-     * 切换tab时回调
-     */
-    onChange: PropTypes.func,
-    /**
-     * 自定义标签栏类名
-     */
-    navClass: PropTypes.string,
-    /**
-     * 最大可容纳标签数
-     */
-    maxCount: PropTypes.number
-  };
+export default class Nav extends Component<IProps> {
   static defaultProps = {
     type: 'slider',
     prefix: 'caf-tabs-nav',
@@ -73,6 +76,8 @@ export default class Nav extends Component {
   componentWillUnmount() {
     window.removeEventListener('resize', this.resizing);
   }
+  inkBar:any;
+  activeTab:any;
   // 定位底部指示线
   positionInkBar() {
     const { inkBar, activeTab } = this;
@@ -88,12 +93,12 @@ export default class Nav extends Component {
   renderTabs() {
     const { tabsData, maxCount } = this.props;
     const tabs = [];
-    tabsData.forEach(item => {
+    (tabsData as any[]).forEach(item => {
       let ref;
       if (item.actived) {
         ref = c => (this.activeTab = c);
       }
-      let tabStyle = {};
+      let tabStyle:any = {};
       if (maxCount !== defaultMax) {
         tabStyle.style = `min-width:${(1 / maxCount) * 100}%`;
       }

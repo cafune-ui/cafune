@@ -1,5 +1,4 @@
-import { Component } from 'preact';
-import PropTypes from 'prop-types';
+import { Component, h, createRef } from 'preact';
 import Panel from './panel';
 import Nav from './nav';
 import cx from 'classnames';
@@ -7,7 +6,46 @@ import cx from 'classnames';
 function checkIfPanel(el) {
   return el.nodeName.displayName === 'TabPanel';
 }
-
+interface IProps {
+  /**
+   * 自定义前缀
+   */
+  prefix?: string;
+  /**
+   * 自定义类名
+   */
+  className?: string;
+  /**
+   * 当前激活id
+   */
+  activeId?: string | number;
+  /**
+   * 组件类型
+   */
+  type?: 'slider' | 'round' | 'card';
+  /**
+   * 切换tab时回调
+   */
+  onChange?: (key) => void;
+  /**
+   * 自定义标签栏类名
+   */
+  navClass?: string;
+  /**
+   * 最大可容纳标签数
+   */
+  maxCount?: number;
+  /**
+   * 自定义tab 列表
+   */
+  tabs?:
+    | {
+        id: string | number;
+        actived?: boolean;
+        label: string;
+      }[]
+    | any;
+}
 /**
  * 标签卡
  * @example
@@ -39,36 +77,9 @@ function checkIfPanel(el) {
  * }
  * ```
  */
-class Tabs extends Component {
+class Tabs extends Component<IProps> {
   static Panel = Panel;
   static Nav = Nav;
-  static propTypes = {
-    /**
-     * 自定义类名
-     */
-    prefix: PropTypes.string,
-    /**
-     * 当前激活id
-     */
-    activeId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-      .isRequired,
-    /**
-     * 组件类型
-     */
-    type: PropTypes.oneOf(['slider', 'round', 'card']),
-    /**
-     * 切换tab时回调
-     */
-    onTabChange: PropTypes.func,
-    /**
-     * 自定义标签栏类名
-     */
-    navClass: PropTypes.string,
-    /**
-     * 最大可容纳标签数
-     */
-    maxCount: PropTypes.number
-  };
   static defaultProps = {
     type: 'slider',
     maxCount: 5
@@ -81,24 +92,25 @@ class Tabs extends Component {
     if (!this.props.activeId) {
       this.setState({
         activedKey: key
-      })
+      });
     }
     if (onChange) {
       onChange(key);
     }
   };
+  tabNav = createRef();
+  tabPanel = createRef();
   renderNav(data, navClass) {
-    const { type, align, maxCount } = this.props;
+    const { type, maxCount } = this.props;
     if (data && data.length) {
       return (
         <Nav
           onChange={this.onTabChange}
           tabsData={data}
           type={type}
-          align={align}
-          navclassName={navClass}
+          navClass={navClass}
           maxCount={maxCount}
-          ref={c => (this.tabNav = c)}
+          ref={this.tabNav}
         />
       );
     }
@@ -155,9 +167,7 @@ class Tabs extends Component {
     return (
       <div className={cls} {...restProps}>
         {this.renderNav(tabsData, navClass)}
-        <div ref={c => (this.tabPanel = c)}>
-          {this.renderTabPanel(tabsData)}
-        </div>
+        <div ref={this.tabPanel}>{this.renderTabPanel(tabsData)}</div>
       </div>
     );
   }

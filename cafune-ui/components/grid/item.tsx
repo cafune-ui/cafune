@@ -1,28 +1,27 @@
-import { Component } from 'preact';
-import PropTypes from 'prop-types';
+import { Component, h } from 'preact';
 import cx from 'classnames';
 
+interface IProps {
+  /**
+   * 自定义前缀
+   */
+  prefix?: string;
+  /**
+   * 列数
+   */
+  icon?: string;
+  /**
+   * 是否固定为正方形
+   */
+  text?: string;
+}
 /**
  * 宫格单元
  */
-class GridItem extends Component {
+class GridItem extends Component<IProps> {
   static displayName = 'GridItem';
   static defaultProps = {
     prefix: 'caf-grid-item'
-  };
-  static propTypes = {
-    /**
-     * 自定义前缀
-     */
-    prefix: PropTypes.string,
-    /**
-     * 列数
-     */
-    icon: PropTypes.string,
-    /**
-     * 是否固定为正方形
-     */
-    text: PropTypes.string
   };
   render(
     { prefix, className, ind, icon, text, children, ...restProps },
@@ -30,7 +29,7 @@ class GridItem extends Component {
     { gutter, column, square }
   ) {
     const percent = `${100 / column}%`;
-    const sty = {
+    const sty: any = {
       flexBasis: percent
     };
     let innerStyle = {};
