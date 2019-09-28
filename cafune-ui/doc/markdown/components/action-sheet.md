@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { ActionSheet } from 'components';
+import { ActionSheet } from 'cafune';
 ```
 
 ## 配置项

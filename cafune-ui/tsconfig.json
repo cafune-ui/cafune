@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "experimentalDecorators": true,
     "paths": {
-      "components": ["components"],
+      "cafune": ["src"],
       "util/*": ["util/*"]
     },
     "outDir": "./es",
@@ -18,5 +18,5 @@
   },
   "include": ["components/**/*.ts", "components/**/*.tsx"],
   "typeRoots": ["./types"],
-  "exclude": ["node_modules", "doc", "components/*/test"]
+  "exclude": ["node_modules", "doc", "es", "lib", "components/*/test"]
 }

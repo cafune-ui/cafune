@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Pagination } from 'components';
+import { Pagination } from 'cafune';
 ```
 
 ## 配置项

@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { TabBar } from 'components';
+import { TabBar } from 'cafune';
 ```
 
 ## 配置项

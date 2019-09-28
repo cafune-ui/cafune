@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { getComponentName, sortByModulePath } = require('./util/comp');
 // const styleRoot = path.resolve(process.cwd(), './style');
-const compRoot = path.resolve(process.cwd(), './components');
+const compRoot = path.resolve(process.cwd(), './src');
 // const testRoot = path.resolve(process.cwd(), './__test__/components');
 const docRoot = path.resolve(process.cwd(), './doc');
 console.clear();
@@ -49,7 +49,7 @@ inquirer.prompt(questions).then(answers => {
 });
 
 function writeEntry(compName, name) {
-  const entryPath = path.resolve(compRoot, 'index.js');
+  const entryPath = path.resolve(compRoot, 'index.ts');
   if (!fs.existsSync(entryPath)) {
     fs.writeFileSync(entryPath, '');
   }
@@ -58,7 +58,7 @@ function writeEntry(compName, name) {
   const compDir = `${compRoot}/${name}`;
   fs.mkdirSync(compDir);
   // add to entry, in order to use component by tying 'import { comp } from 'components';
-  console.log(`Adding new components: ${compName} to index.js`);
+  console.log(`Adding new components: ${compName} to entry`);
   const exportName = `export * from './${name}';`;
   if (modExports.indexOf(exportName) === -1) {
     modExports.push(`export * from './${name}';`);
@@ -75,7 +75,7 @@ function writeTestSuit(compName, name) {
   fs.writeFileSync(
     `${testCompDir}/index.test.js`,
     `
-import { ${compName} } from 'components';
+import { ${compName} } from 'cafune';
 import { render } from 'enzyme';
 import { shallow, deep } from 'preact-render-spy';
 describe('${compName}', () => {

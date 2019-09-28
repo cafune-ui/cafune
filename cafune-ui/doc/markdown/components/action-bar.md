@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { ActionBar } from 'components';
+import { ActionBar } from 'cafune';
 ```
 
 ## 配置项

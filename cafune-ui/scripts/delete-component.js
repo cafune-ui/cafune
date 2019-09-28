@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
-const compRoot = path.resolve(process.cwd(), './components');
+const compRoot = path.resolve(process.cwd(), './src');
 const docRoot = path.resolve(process.cwd(), './doc');
 const compMapPath = `${docRoot}/comp-type.json`;
 
@@ -22,7 +22,7 @@ main();
 
 // 删除入口文件
 function deleteEnty(name) {
-  const entryJsPath = path.resolve(compRoot, 'index.js');
+  const entryJsPath = path.resolve(compRoot, 'index.ts');
   if (fs.existsSync(entryJsPath)) {
     const entryFile = fs.readFileSync(entryJsPath, 'utf-8');
     const modExports = entryFile.trim().split('\n') || [];

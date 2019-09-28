@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Steps } from 'components';
+import { Steps } from 'cafune';
 ```
 
 ## 配置项

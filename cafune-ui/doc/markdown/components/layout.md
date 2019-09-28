@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Layout } from 'components';
+import { Layout } from 'cafune';
 ```
 
 ## 配置项

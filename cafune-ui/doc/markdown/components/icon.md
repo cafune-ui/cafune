@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Icon } from 'components';
+import { Icon } from 'cafune';
 ```
 
 ## 配置项

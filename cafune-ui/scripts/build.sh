@@ -21,5 +21,5 @@ rm -rf lib es
 echo "Compile commonjs..."
 node $basepath/build-components.js
 
- echo "Compile styles..."
+echo "Compile styles..."
 node $basepath/build-style.js

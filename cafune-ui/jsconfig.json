@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "experimentalDecorators": true,
     "paths": {
-      "components": ["components"],
+      "cafune": ["src"],
       "util": ["util"]
     },
     "target": "es2018",

@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { NavBar } from 'components';
+import { NavBar } from 'cafune';
 ```
 
 ## 配置项

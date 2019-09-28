@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { SearchBar } from 'components';
+import { SearchBar } from 'cafune';
 ```
 
 ## 配置项

@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Skeleton } from 'components';
+import { Skeleton } from 'cafune';
 ```
 
 ## 配置项

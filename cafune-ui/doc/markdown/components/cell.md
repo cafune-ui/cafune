@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Cell } from 'components';
+import { Cell } from 'cafune';
 ```
 
 ## 配置项

@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Collapse } from 'components';
+import { Collapse } from 'cafune';
 ```
 
 ## 配置项

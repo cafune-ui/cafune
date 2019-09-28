@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Lazyload } from 'components';
+import { Lazyload } from 'cafune';
 ```
 
 ## 配置项

@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Grid } from 'components';
+import { Grid } from 'cafune';
 ```
 
 ## 配置项

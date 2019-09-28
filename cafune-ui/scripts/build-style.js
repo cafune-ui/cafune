@@ -9,7 +9,7 @@ const csso = require('csso');
 const postcss = require('postcss');
 const postcssrc = require('postcss-load-config');
 
-const dir = path.join(__dirname, '../components');
+const dir = path.join(__dirname, '../es');
 
 const excludes = [
   'index.ts',
@@ -22,14 +22,13 @@ const excludes = [
 ];
 
 function getComponents() {
-  const dirs = fs.readdirSync(path.resolve(__dirname, '../components'));
+  const dirs = fs.readdirSync(path.resolve(__dirname, '../es'));
   return dirs.filter(dirName => excludes.indexOf(dirName) === -1);
 }
 const components = getComponents();
 
 function destEntryFile(component, filename, ext = '') {
   const compdep = analyzeDependencies(component);
-
   const deps = compdep.map(dep => getStyleRelativePath(component, dep, ext));
 
   const esEntry = path.join(dir, component, `style/${filename}`);
@@ -39,8 +38,8 @@ function destEntryFile(component, filename, ext = '') {
     component,
     `style/${filename}`
   );
-  const esContent = deps.map(dep => `import '${dep}';`).join('\n');
-  const libContent = deps.map(dep => `require('${dep}');`).join('\n');
+  const esContent = deps.map(dep => `import '${dep}';\n`).join('');
+  const libContent = deps.map(dep => `require('${dep}');\n`).join('');
   try {
     fse.outputFileSync(esEntry, esContent);
     fse.outputFileSync(libEntry, libContent);
@@ -55,7 +54,7 @@ function analyzeDependencies(component) {
   search(
     dependencyTree({
       directory: dir,
-      filename: path.join(dir, component, 'index.jsx'),
+      filename: path.join(dir, component, 'index.js'),
       filter: path => !~path.indexOf('node_modules')
     }),
     component,
@@ -92,7 +91,7 @@ function search(tree, component, checkList) {
 }
 
 function getStylePath(component, ext = '.scss') {
-  return path.join(__dirname, `../components/${component}/index${ext}`);
+  return path.join(__dirname, `../es/${component}/index${ext}`);
 }
 
 function getLibStylePath(component, ext = '.scss') {
@@ -106,7 +105,7 @@ function replaceSeq(path) {
 function getStyleRelativePath(component, style, ext) {
   return replaceSeq(
     path.relative(
-      path.join(__dirname, `../components/${component}/style`),
+      path.join(__dirname, `../es/${component}/style`),
       getStylePath(style, ext)
     )
   );
@@ -167,7 +166,7 @@ async function dest(output, paths) {
 // compile component css
 async function compile() {
   let codes;
-  const paths = await glob(['./components/**/*.scss', './lib/**/*.scss'], {
+  const paths = await glob(['./es/**/*.scss', './lib/**/*.scss'], {
     absolute: true
   });
 

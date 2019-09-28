@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Button } from 'components';
+import { Button } from 'cafune';
 ```
 
 ## 配置项

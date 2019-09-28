@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Modal } from 'components';
+import { Modal } from 'cafune';
 ```
 
 ## 配置项

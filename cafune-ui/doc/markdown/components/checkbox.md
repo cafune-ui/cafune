@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Checkbox } from 'components';
+import { Checkbox } from 'cafune';
 ```
 
 ## 配置项

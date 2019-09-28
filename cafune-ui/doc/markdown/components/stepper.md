@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Stepper } from 'components';
+import { Stepper } from 'cafune';
 ```
 
 ## 配置项

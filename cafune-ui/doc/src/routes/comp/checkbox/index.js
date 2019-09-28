@@ -40,21 +40,21 @@ export default class CheckboxComp extends Component {
       <div>
         <p class="caf-demo-title">单独使用</p>
         <div class="caf-demo-block">
-          {checkList.map(item => (
+          {checkList.map((item, ind) => (
             <Checkbox
               checked={check === item.value}
               {...item}
               handleChange={val => {
                 console.log(val);
               }}
-              key={`s-${item.value}`}
+              key={`s-${ind}-${item.value}`}
             >
               {item.text}
             </Checkbox>
           ))}
         </div>
         <p class="caf-demo-title">与Cell 组件一起使用</p>
-        {checkList.map(item => (
+        {checkList.map((item, ind) => (
           <Cell
             title="test"
             value={
@@ -68,17 +68,17 @@ export default class CheckboxComp extends Component {
                 {item.text}
               </Checkbox>
             }
-            key={`s-c-${item.id}`}
+            key={`s-c-${ind}-${item.id}`}
           />
         ))}
 
         <CellGroup title="复选框组">
           <CheckboxGroup model={checks} handleChange={val => console.log(val)}>
-            {checkList.map(item => (
+            {checkList.map((item, ind) => (
               <Cell
                 title="test"
                 value={<Checkbox {...item}>{item.text}</Checkbox>}
-                key={`g-${item.value}`}
+                key={`g-${ind}-${item.value}`}
               />
             ))}
           </CheckboxGroup>
@@ -89,11 +89,11 @@ export default class CheckboxComp extends Component {
             handleChange={val => console.log(val)}
             maxSelect={2}
           >
-            {checkList.map(item => (
+            {checkList.map((item, ind) => (
               <Cell
                 title="test"
                 value={<Checkbox {...item}>{item.text}</Checkbox>}
-                key={`g-${item.value}`}
+                key={`g-${ind}-${item.value}`}
               />
             ))}
           </CheckboxGroup>

@@ -2,5 +2,5 @@
 
 ## 引入
 ```jsx
-import { Scroller } from 'components';
+import { Scroller } from 'cafune';
 ```

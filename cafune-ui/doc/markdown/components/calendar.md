@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Calendar } from 'components';
+import { Calendar } from 'cafune';
 ```
 
 ## 配置项

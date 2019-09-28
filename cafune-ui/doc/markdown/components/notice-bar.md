@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { NoticeBar } from 'components';
+import { NoticeBar } from 'cafune';
 ```
 
 ## 配置项

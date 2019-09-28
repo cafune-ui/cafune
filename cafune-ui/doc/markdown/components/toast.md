@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Toast } from 'components';
+import { Toast } from 'cafune';
 ```
 
 ## 配置项

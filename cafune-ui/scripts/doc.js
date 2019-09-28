@@ -186,7 +186,7 @@ function generateCompMd(compInfo) {
       const comp = compInfo[name];
       const { info, chidlren = [] } = comp;
       const { displayName, desc, props, example } = info;
-      md += `# ${displayName} - ${desc}\n\n## 引入\n\`\`\`jsx\nimport { ${displayName} } from 'components';\n\`\`\`\n`;
+      md += `# ${displayName} - ${desc}\n\n## 引入\n\`\`\`jsx\nimport { ${displayName} } from 'cafune';\n\`\`\`\n`;
       if (example) {
         md += `## 使用\n${example}\n`;
       }
@@ -203,7 +203,7 @@ function generateCompMd(compInfo) {
   }
 }
 
-const compRoot = path.resolve(process.cwd(), './components/');
+const compRoot = path.resolve(process.cwd(), './src/');
 glob(`${compRoot}/*/*.?(jsx|tsx)`, (err, files) => {
   files.forEach(item => {
     const dirName = path.dirname(item);

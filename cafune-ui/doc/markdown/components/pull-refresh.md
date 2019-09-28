@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { PullRefresh } from 'components';
+import { PullRefresh } from 'cafune';
 ```
 
 ## 配置项

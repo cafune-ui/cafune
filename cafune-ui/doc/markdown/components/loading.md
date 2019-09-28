@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Loading } from 'components';
+import { Loading } from 'cafune';
 ```
 
 ## 配置项

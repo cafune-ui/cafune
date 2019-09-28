@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Swiper } from 'components';
+import { Swiper } from 'cafune';
 ```
 
 ## 配置项

@@ -2,7 +2,7 @@
 
 ## 引入
 ```jsx
-import { Switch } from 'components';
+import { Switch } from 'cafune';
 ```
 
 ## 配置项

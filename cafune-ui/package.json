@@ -80,7 +80,7 @@
     "sass-loader": "^7.3.1",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-consistent-codestyle": "^1.15.1",
+    "tslint-consistent-codestyle": "^1.16.0",
     "tslint-react": "^4.1.0",
     "typescript": "^3.6.3",
     "webpack": "^4.41.0",

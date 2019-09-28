@@ -2,7 +2,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const babel = require('@babel/core');
 
-const srcDir = path.join(__dirname, '../components');
+const srcDir = path.join(__dirname, '../src');
 const esDir = path.join(__dirname, '../es');
 const libDir = path.join(__dirname, '../lib');
 
