@@ -1,12 +1,12 @@
 html,
 body {
-  font: 14px/1.21 'Helvetica Neue', arial, sans-serif;
+  font: 14px/1.2 'Helvetica Neue', arial, sans-serif;/* no */
   font-weight: 400;
   background: #f2f4f9;
 }
 a {
   text-decoration: none;
-  color: #323233;
+  color: #1989fa;
 }
 * {
   margin: 0;
@@ -55,7 +55,7 @@ a {
       line-height: 24px;
       border-radius: 8px;
       overflow-x: auto;
-      margin: 10px 0;
+      margin: 16px 0;
     }
     hr {
       background-color: #eee;
@@ -67,7 +67,7 @@ a {
       margin: 0;
 		}
     li {
-      margin-top: 5px;
+      margin-top: 8px;
       line-height: 26px;
     }
 		ul, ol {

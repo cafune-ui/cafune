@@ -1,6 +1,7 @@
 $sidewidth: 240px;
 $headheight: 80px;
 .caf-doc {
+  padding-bottom: 30px;
   &-head {
     display: flex;
     align-items: center;
@@ -46,6 +47,8 @@ $headheight: 80px;
     left: 0;
     top: 0;
     z-index: 20;
+    border-radius: 10px;
+    overflow: hidden;
     &-wrapper {
       position: relative;
       width: $sidewidth;
@@ -90,11 +93,12 @@ $headheight: 80px;
         font-weight: bold;
       }
       &-item {
-        padding-left: 30px;
+        padding-left: 34px;
         font-weight: 300;
         &__actived {
           color: #1989fa;
-          background-color: #f9f9f9;
+          background-color: #f7fcff;
+          font-weight: 500;
         }
         &:active {
           color: #1989fa;
@@ -105,7 +109,7 @@ $headheight: 80px;
   &-content {
     position: relative;
     margin-left: calc(#{$sidewidth} + 20px);
-    padding: 30px;
+    padding: 30px 50px;
     margin-right: 20px;
     height: calc(100vh - #{$headheight});
     overflow: auto;
@@ -146,7 +150,7 @@ $headheight: 80px;
       }
     }
     &-body {
-      padding: 15px;
+      padding: 0 15px 15px;
       box-sizing: border-box;
       overflow: hidden;
       background-color: #444;

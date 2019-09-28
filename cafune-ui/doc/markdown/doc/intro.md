@@ -9,6 +9,13 @@ $ npm install cafune-ui --save
 ```
 
 ## 特性
+
 - 基于`Preact` 开发的组件
 - 使用 `npm` + `webpack` + `babel` 的工作流，支持`ES2015`
 - 提供友好的 API，可灵活的使用组件
+- 支持按需引入（基于`babel-plugin-import`）
+- 支持 `typscript`
+
+## 使用
+
+请参考 [使用](/cafune/#/doc/usage) 章节
