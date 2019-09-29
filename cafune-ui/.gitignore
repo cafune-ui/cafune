@@ -4,6 +4,6 @@
 /es
 /css
 /coverage
-/storybook-static
-/demo
 /style
+/package-lock.json
+/yarn.lock

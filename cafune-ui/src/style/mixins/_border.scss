@@ -11,6 +11,7 @@
 @mixin pixelBorder($radius: 0px, $color: false) {
   border-style: solid;
   border-width: 1px;
+  border-color: $color;
   z-index: 2;
   /* 2倍屏 */
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
@@ -32,7 +33,7 @@
     }
   }
   /* 3倍屏 */
-  @media (-webkit-min-device-pixel-ratio: 4), (min-resolution: 4dppx) {
+  @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
     border: none;
     &::after {
       content: '';

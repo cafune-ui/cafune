@@ -9,7 +9,7 @@ const csso = require('csso');
 const postcss = require('postcss');
 const postcssrc = require('postcss-load-config');
 
-const dir = path.join(__dirname, '../es');
+const dir = path.join(__dirname, '../src');
 
 const excludes = [
   'index.ts',
@@ -22,7 +22,7 @@ const excludes = [
 ];
 
 function getComponents() {
-  const dirs = fs.readdirSync(path.resolve(__dirname, '../es'));
+  const dirs = fs.readdirSync(dir);
   return dirs.filter(dirName => excludes.indexOf(dirName) === -1);
 }
 const components = getComponents();
@@ -31,16 +31,23 @@ function destEntryFile(component, filename, ext = '') {
   const compdep = analyzeDependencies(component);
   const deps = compdep.map(dep => getStyleRelativePath(component, dep, ext));
 
-  const esEntry = path.join(dir, component, `style/${filename}`);
+  const srcEntry = path.join(dir, component, `style/${filename}`);
+  const esEntry = path.join(
+    __dirname,
+    '../es',
+    component,
+    `style/${filename.replace(/ts/, 'js')}`
+  );
   const libEntry = path.join(
     __dirname,
     '../lib',
     component,
-    `style/${filename}`
+    `style/${filename.replace(/ts/, 'js')}`
   );
   const esContent = deps.map(dep => `import '${dep}';\n`).join('');
   const libContent = deps.map(dep => `require('${dep}');\n`).join('');
   try {
+    fse.outputFileSync(srcEntry, esContent);
     fse.outputFileSync(esEntry, esContent);
     fse.outputFileSync(libEntry, libContent);
   } catch (e) {
@@ -54,8 +61,9 @@ function analyzeDependencies(component) {
   search(
     dependencyTree({
       directory: dir,
-      filename: path.join(dir, component, 'index.js'),
-      filter: path => !~path.indexOf('node_modules')
+      filename: path.join(dir, component, 'index.tsx'),
+      filter: path => !~path.indexOf('node_modules'),
+      tsConfig: './tsconfig.json'
     }),
     component,
     checkList
@@ -94,10 +102,6 @@ function getStylePath(component, ext = '.scss') {
   return path.join(__dirname, `../es/${component}/index${ext}`);
 }
 
-function getLibStylePath(component, ext = '.scss') {
-  return path.join(__dirname, `../lib/${component}/index${ext}`);
-}
-
 function replaceSeq(path) {
   return path.split(path.sep).join('/');
 }
@@ -117,7 +121,8 @@ function checkComponentHasStyle(component) {
 
 components.forEach(component => {
   // css entry
-  destEntryFile(component, 'index.js', '.css');
+  destEntryFile(component, 'index.ts', '.css');
+  destEntryFile(component, 'scss.ts', '.scss');
 });
 
 async function compileSass(sassCodes, paths) {
@@ -166,9 +171,12 @@ async function dest(output, paths) {
 // compile component css
 async function compile() {
   let codes;
-  const paths = await glob(['./es/**/*.scss', './lib/**/*.scss'], {
-    absolute: true
-  });
+  const paths = await glob(
+    ['./src/**/*.scss', './es/**/*.scss', './lib/**/*.scss'],
+    {
+      absolute: true
+    }
+  );
 
   codes = await Promise.all(paths.map(path => fse.readFile(path, 'utf-8')));
   codes = await compileSass(codes, paths);
