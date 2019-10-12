@@ -37,7 +37,7 @@ module.exports = function(env, options = {}) {
         {
           libraryName: 'cafune',
           libraryDirectory: 'src',
-          style: true
+          style: name => `${name}/style/scss`
         }
       ]
     ].filter(Boolean)

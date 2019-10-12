@@ -172,7 +172,7 @@ async function dest(output, paths) {
 async function compile() {
   let codes;
   const paths = await glob(
-    ['./src/**/*.scss', './es/**/*.scss', './lib/**/*.scss'],
+    ['./src/**/!(_*).scss', './es/**/!(_*).scss', './lib/**/!(_*).scss'],
     {
       absolute: true
     }
