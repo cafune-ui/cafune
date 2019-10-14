@@ -1,2 +1,2 @@
-import '../../loading/index.css';
-import '../index.css';
+import '../../loading/index.scss';
+import '../index.scss';

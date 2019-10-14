@@ -121,8 +121,8 @@ function checkComponentHasStyle(component) {
 
 components.forEach(component => {
   // css entry
-  destEntryFile(component, 'index.ts', '.css');
-  destEntryFile(component, 'scss.ts', '.scss');
+  destEntryFile(component, 'index.ts', '.scss');
+  destEntryFile(component, 'css.ts', '.css');
 });
 
 async function compileSass(sassCodes, paths) {
