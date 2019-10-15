@@ -3,6 +3,7 @@ import cx from 'classnames';
 import Icon from '../icon';
 import CellGroup from './group';
 import { touchEventMap, getTouch } from '../util/event';
+import { isBrowser } from '../util/isomorphic';
 
 interface ISwiperList {
   clickHandler?: Function;
@@ -118,22 +119,25 @@ class Cell extends Component<IProps> {
     setTimeout(func.bind(this), 0);
   };
   registeSwiperEvent() {
-    if (this.cellSwiper && this.cellSwiper.current) {
-      this.swipable = true;
-      const swipe = this.cellSwiper.current;
-      const size = swipe.getBoundingClientRect();
-      this.swiperSize = size.width;
+    if (isBrowser) {
+      if (this.cellSwiper && this.cellSwiper.current) {
+        this.swipable = true;
+        const swipe = this.cellSwiper.current;
+        const size = swipe.getBoundingClientRect();
+        this.swiperSize = size.width;
+      }
+      if (this.cellMain && this.cellMain.current) {
+        const rect = this.cellMain.current;
+        rect.addEventListener(touchEventMap.down, this.readyMoving);
+        rect.addEventListener(touchEventMap.move, this.startMoving);
+        rect.addEventListener(touchEventMap.up, this.endMoving);
+        rect.addEventListener(touchEventMap.out, this.endMoving);
+      }
     }
-    if (this.cellMain && this.cellMain.current) {
-      const rect = this.cellMain.current;
-      rect.addEventListener(touchEventMap.down, this.readyMoving);
-      rect.addEventListener(touchEventMap.move, this.startMoving);
-      rect.addEventListener(touchEventMap.up, this.endMoving);
-      rect.addEventListener(touchEventMap.out, this.endMoving);
-    }
+    
   }
   unRegisteSwiperEvent() {
-    if (this.cellMain && this.cellMain.current && this.swipable) {
+    if (this.cellMain && this.cellMain.current && this.swipable && isBrowser) {
       const rect = this.cellMain.current;
       this.swipable = false;
       rect.removeEventListener(touchEventMap.down, this.readyMoving);

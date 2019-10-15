@@ -22,4 +22,4 @@ import { Collapse } from 'cafune';
 | actived | 是否处于激活状态 | boolean | - | - | ❌ |
 | disabled | 是否禁用此单元 | boolean | `false` | - | ❌ |
 | icon | 右侧按钮 | string | `'arrow_right'` | - | ❌ |
-| onToggle | 切换回调 | (id:any) => void | - | - | ❌ |
+| onToggle | 切换回调 | (id: any) => void | - | - | ❌ |

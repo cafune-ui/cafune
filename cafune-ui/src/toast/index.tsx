@@ -1,6 +1,6 @@
 import { render, Component, h } from 'preact';
 import Icon from '../icon';
-import { isBrowser } from '../../util/isomorphic';
+import { isBrowser } from '../util/isomorphic';
 let seed = 0;
 function getUuid(type) {
   const now = Date.now();

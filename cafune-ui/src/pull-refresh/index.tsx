@@ -1,5 +1,6 @@
 import { Component, createRef, h, VNode } from 'preact';
 import cx from 'classnames';
+import { isBrowser } from '../util/isomorphic';
 
 const MIN_DISTANCE = 10;
 function getDirection(x, y) {
@@ -97,7 +98,7 @@ class PullRefresh extends Component<IProps> {
   pullrefresh = createRef();
   pullrefresh_loading = createRef();
   componentDidMount() {
-    if (this.pullrefresh) {
+    if (this.pullrefresh && isBrowser) {
       const pullrefresh = this.pullrefresh.current;
       pullrefresh.addEventListener('touchstart', this.onTouchStart, false);
       pullrefresh.addEventListener('touchmove', this.onTouchMove, false);
@@ -106,7 +107,7 @@ class PullRefresh extends Component<IProps> {
     }
   }
   componentWillUnmount() {
-    if (this.pullrefresh) {
+    if (this.pullrefresh && isBrowser) {
       const pullrefresh = this.pullrefresh.current;
       pullrefresh.removeEventListener('touchstart', this.onTouchStart, false);
       pullrefresh.removeEventListener('touchmove', this.onTouchMove, false);

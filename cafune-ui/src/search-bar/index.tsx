@@ -1,8 +1,7 @@
 import { Component, createRef, h } from 'preact';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from '../icon';
-
+import { isBrowser } from '../util/isomorphic';
 const actionDefault = {
   confirm: {
     text: '搜索',
@@ -123,7 +122,7 @@ class SearchBar extends Component<IProps, IState> {
     this.componentDidUpdate();
   }
   componentDidUpdate() {
-    if (this.actionRef && this.actionRef.current) {
+    if (this.actionRef && this.actionRef.current && isBrowser) {
       let { action } = this.props;
       action = Object.assign({}, actionDefault[action.type], action);
       const { focus } = this.state;
@@ -139,7 +138,7 @@ class SearchBar extends Component<IProps, IState> {
   }
   onBlurTimeout;
   componentWillUnmount() {
-    if (this.onBlurTimeout) {
+    if (this.onBlurTimeout && isBrowser) {
       clearNextFrameAction(this.onBlurTimeout);
       this.onBlurTimeout = null;
     }
@@ -186,7 +185,7 @@ class SearchBar extends Component<IProps, IState> {
   blurFromOnClear:boolean = true;
   onBlur = () => {
     this.onBlurTimeout = onNextFrame(() => {
-      if (!this.blurFromOnClear) {
+      if (!this.blurFromOnClear && isBrowser) {
         if (document.activeElement !== this.inputRef) {
           this.setState({
             focus: false

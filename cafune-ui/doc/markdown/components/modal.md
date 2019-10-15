@@ -8,6 +8,7 @@ import { Modal } from 'cafune';
 ## 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
+| prefix | 自定义前缀 | string | `'caf-modal'` | - | ❌ |
 | title | 标题 | string | - | - | ❌ |
 | message | 消息内容，如有children 优先children | string | - | - | ❌ |
 | align | 文本对齐方式 | literal/literal/literal | `'center'` | - | ❌ |

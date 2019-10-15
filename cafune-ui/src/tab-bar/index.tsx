@@ -1,7 +1,7 @@
 import { Component, h } from 'preact';
 import cx from 'classnames';
 import Item from './item';
-import { setPadding } from '../../util/isomorphic';
+import { setPadding } from '../util/isomorphic';
 interface IProps {
    /**
      * 自定义前缀

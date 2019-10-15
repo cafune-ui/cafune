@@ -3,10 +3,9 @@
 // if (isBrowser) {
 //   doc = window.document.documentElement;
 // }
-function getRem(px) {
+function getRem(px, rate = 14) {
   px = Number(px.replace('px', ''));
   // const docWidth = isBrowser ? doc.clientWidth : 375;
-  let rate = 14;
   // if (docWidth > 374) {
   //   rate = 14;
   // } else if (docWidth > 359) {

@@ -1,6 +1,8 @@
 import { Component, createRef, h, VNode } from 'preact';
 import cx from 'classnames';
 import Icon from '../icon';
+
+import { isBrowser } from '../util/isomorphic';
 interface IProps {
   /**
    * 自定义前缀
@@ -97,7 +99,7 @@ class NoticeBar extends Component<IProps> {
   calcInfo() {
     let { wrap, content } = this;
     const { scrollable, speed } = this.props;
-    if (!wrap.current || !content.current) {
+    if (!wrap.current || !content.current || !isBrowser) {
       return;
     }
     const $wrap: HTMLElement = wrap.current;

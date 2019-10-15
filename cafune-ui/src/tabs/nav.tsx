@@ -1,7 +1,7 @@
 import { Component, h } from 'preact';
 import Tab from './components/tab';
 import cx from 'classnames';
-import { isBrowser } from '../../util/isomorphic';
+import { isBrowser } from '../util/isomorphic';
 
 function setTransform(obj, offsetLeft) {
   obj.style.transform = `translate3d(${offsetLeft}px, 0, 0)`;

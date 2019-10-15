@@ -1,6 +1,6 @@
 import { Component, createRef, h } from 'preact';
-import { inViewPort } from '../../util/browser';
-
+import { inViewPort } from '../util/browser';
+import { isBrowser } from '../util/isomorphic';
 interface IProps {
   /**
    * 懒加载图片类名
@@ -26,17 +26,19 @@ class Lazyload extends Component<IProps> {
   };
   container;
   componentDidMount() {
-    const container = this.lazyContainer.current;
-    this.container = container;
-    this.updateImgs();
-    window.addEventListener('scroll', this.onScroll);
+    if (isBrowser) {
+      const container = this.lazyContainer.current;
+      this.container = container;
+      this.updateImgs();
+      window.addEventListener('scroll', this.onScroll);
+    }
   }
   componentDidUpdate() {
     /* istanbul ignore next  */
     this.updateImgs();
   }
   updateImgs() {
-    if (this.container) {
+    if (this.container && isBrowser) {
       const imgsInfo = [];
       // eslint-disable-next-line prettier/prettier
       const imgs =
@@ -55,7 +57,7 @@ class Lazyload extends Component<IProps> {
     }
   }
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll);
+    if (isBrowser) window.removeEventListener('scroll', this.onScroll);
   }
   updateLazy() {
     const { imgsInfo } = this;

@@ -1,5 +1,5 @@
 import { render, Component, VNode, h } from 'preact';
-import { isBrowser } from '../../util/isomorphic';
+import { isBrowser } from '../util/isomorphic';
 let modalComp;
 let containerNode = isBrowser && document.body;
 const viewWrap = containerNode;
@@ -15,6 +15,10 @@ const defaultOptions = {
 };
 
 interface IProps {
+  /**
+   * 自定义前缀
+   */
+  prefix?: string;
   /**
    * 标题
    */
@@ -55,7 +59,7 @@ interface IProps {
    * 是否显示模态框
    */
   visable?: boolean;
-  children: any
+  children: any;
 }
 /**
  * 渲染模态框到容器中
@@ -107,6 +111,7 @@ const confirm = options => {
  */
 class Modal extends Component<IProps, {}> {
   static defaultProps = {
+    prefix: 'caf-modal',
     align: 'center',
     showCancel: false,
     confirmContent: '确定',
@@ -132,6 +137,7 @@ class Modal extends Component<IProps, {}> {
     }
   }
   render({
+    prefix = 'caf-modal',
     title = '', // 标题
     message = '', // 消息内容，如有children 优先children
     align = 'center', // 文本对齐方式
@@ -145,33 +151,33 @@ class Modal extends Component<IProps, {}> {
     if (visable) {
       /* istanbul ignore if */
       const Title = title && (
-        <div className="caf-modal-content-header">{title}</div>
+        <div className={`${prefix}-content-header`}>{title}</div>
       );
       /* istanbul ignore else */
       const Content = (!!(children && children.length) || message) && (
-        <div className={`caf-modal-content caf-modal-content__${align}`}>
+        <div className={`${prefix}-content ${prefix}-content__${align}`}>
           {children && children.length > 0 ? (
             children
           ) : (
             <div
               dangerouslySetInnerHTML={{ __html: message }}
-              className={`caf-modal-content-content caf-modal-content-content__${align}`}
+              className={`${prefix}-content-content ${prefix}-content__${align}`}
             />
           )}
         </div>
       );
       const Buttons = (
-        <div className="caf-modal-btngroup">
+        <div className={`${prefix}-btngroup`}>
           {showCancel && (
             <div
-              className="caf-modal-btngroup__cancel"
+              className={`${prefix}-btngroup__cancel`}
               onClick={this.handleClick.bind(this, 'cancel')}
             >
               {cancelContent}
             </div>
           )}
           <div
-            className="caf-modal-btngroup__confirm"
+            className={`${prefix}-btngroup__confirm`}
             onClick={this.handleClick.bind(this, 'confirm')}
           >
             {confirmContent}
@@ -179,9 +185,9 @@ class Modal extends Component<IProps, {}> {
         </div>
       );
       return (
-        <div className="caf-modal">
-          {mask && <div className="caf-modal-bg" />}
-          <div className="caf-modal-content">
+        <div className={prefix}>
+          {mask && <div className={`${prefix}-bg`} />}
+          <div className={`${prefix}-content`}>
             {Title}
             {Content}
             {Buttons}

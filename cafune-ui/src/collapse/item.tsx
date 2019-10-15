@@ -1,6 +1,7 @@
 import { Component, createRef, h, VNode } from 'preact';
 import cx from 'classnames';
 import Cell from '../cell';
+import { isBrowser } from '../util/isomorphic';
 // import Icon from '../icon';
 
 interface IProps {
@@ -31,7 +32,7 @@ interface IProps {
   /**
    * 切换回调
    */
-  onToggle?: (id:any) => void;
+  onToggle?: (id: any) => void;
 }
 /**
  * 折叠面板子项
@@ -52,14 +53,16 @@ class Item extends Component<IProps> {
     }
   };
   updateStyle() {
-    let style = '';
-    const { actived } = this.props;
-    /* istanbul ignore if  */
-    if (this.contentWrapRef.current && this.contentRef.current) {
-      style = `max-height: ${
-        actived ? this.contentWrapRef.current.offsetHeight : 0
-      }px`;
-      this.contentRef.current.style = style;
+    if (isBrowser) {
+      let style = '';
+      const { actived } = this.props;
+      /* istanbul ignore if  */
+      if (this.contentWrapRef.current && this.contentRef.current) {
+        style = `max-height: ${
+          actived ? this.contentWrapRef.current.offsetHeight : 0
+        }px`;
+        this.contentRef.current.style = style;
+      }
     }
   }
   componentDidUpdate() {

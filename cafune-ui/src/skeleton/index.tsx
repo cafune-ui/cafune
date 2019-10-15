@@ -22,6 +22,10 @@ interface IProps {
    * 骨架屏高度
    */
   height?: string | number,
+   /**
+   * 骨架屏换算倍率，如基准像素为14则传入14
+   */
+  remRate: number,
   /**
    * 背景颜色
    */
@@ -47,14 +51,21 @@ class Skeleton extends Component<IProps> {
   static Rect = Rect;
   static defaultProps = {
     speed: 2,
+    remRate: 0,
     width: '100%',
     height: '9.28rem',
     primaryColor: '#f5f5f5',
     secondaryColor: '#eaeaea'
   };
+  getChildContext() {
+    return {
+      remRate: this.props.remRate || 0
+    };
+  }
   render({
     width,
     height,
+    remRate,
     style,
     speed,
     children,
@@ -63,8 +74,10 @@ class Skeleton extends Component<IProps> {
   }) {
     const idClip = uid();
     const idGradient = uid();
-    if (pxReg.test(width)) width = getRem(width);
-    if (pxReg.test(height)) height = getRem(height);
+    if (remRate && remRate > 0) {
+      if (pxReg.test(width)) width = getRem(width);
+      if (pxReg.test(height)) height = getRem(height);
+    }
     return (
       <svg
         width={width}
