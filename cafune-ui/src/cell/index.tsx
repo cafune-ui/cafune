@@ -187,7 +187,7 @@ class Cell extends Component<IProps> {
       </div>
     ) : null;
     const rIcon = showRightIcon ? (
-      <Icon icon={rightIcon || 'arrow_right'} />
+      <Icon icon={rightIcon || 'arrow-right'} />
     ) : null;
     const Tag = !!url ? 'a' : 'div';
     const urlProps = !!url ? { href: url } : {};

@@ -41,7 +41,7 @@ class Item extends Component<IProps> {
   static displayName = 'CollapseItem';
   static defaultProps = {
     prefix: 'caf-collapse',
-    icon: 'arrow_right',
+    icon: 'arrow-right',
     disabled: false
   };
   contentRef = createRef();

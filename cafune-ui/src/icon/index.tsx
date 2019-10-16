@@ -30,6 +30,10 @@ interface IProps {
    * 自定义类名
    */
   className?: string;
+  /**
+   * 自定义字体前缀
+   */
+  customPrefix?: string;
 }
 /**
  * 图标
@@ -45,16 +49,17 @@ interface IProps {
  * ```
  */
 const Icon = ({
-  prefix = 'caf-icon',
+  prefix,
   className,
   icon,
   color,
   size,
-  tag = 'i',
+  tag,
+  customPrefix,
   ...restProps
 }: IProps) => {
   const isImg = isImage(icon);
-  const iconClass = cx(prefix, className, { [`${prefix}_${icon}`]: !isImg });
+  const iconClass = cx(prefix, className, customPrefix, { [`${customPrefix}-${icon}`]: !isImg });
   const prop:any = { ...restProps };
   if (isImg) {
     size = size || '16px';
@@ -72,8 +77,9 @@ const Icon = ({
     <Tag className={iconClass} {...prop} />
   );
 };
-Icon.defalutProps = {
-  prefix: 'caf-icon',
+Icon.defaultProps = {
+  prefix: 'caf-icons',
+  customPrefix: 'caf-icon',
   tag: 'i'
 };
 export default Icon;

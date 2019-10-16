@@ -9,11 +9,9 @@
       url('../../font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
 
-.caf-icon {
+.caf-icons {
   position: relative;
   display: inline-block;
-  font-family: 'iconfont'!important;
-  font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -22,103 +20,107 @@
     width: 100%;
     object-fit: contain;
   }
-  &_notice::before {
+}
+.caf-icon {
+  font-family: 'iconfont'!important;
+  font-size: 16px;
+  &-notice::before {
     content: '\e6ff';
   }
-  &_arrow {
-    &_right:before {
+  &-arrow {
+    &-right:before {
       content: '\e713';
     }
-    &_left:before {
+    &-left:before {
       content: '\e712';
     }
   }
-  &_check::before {
+  &-check::before {
     content: '\e711';
   }
-  &_wrong::before {
+  &-wrong::before {
     content: '\e710';
   }
-  &_more {
+  &-more {
     &::before {
       content: '\e70d';
     }
-    &_o::before {
+    &-o::before {
       content: '\e70c';
     }
   }
-  &_search::before {
+  &-search::before {
     content: '\e707';
   }
-  &_back::before {
+  &-back::before {
     content: '\e715';
   }
-  &_next::before {
+  &-next::before {
     content: '\e716';
   }
-  &_visible::before {
+  &-visible::before {
     content: '\e71f';
   }
-  &_invisible::before {
+  &-invisible::before {
     content: '\e720';
   }
-  &_refresh::before {
+  &-refresh::before {
     content: '\e71a';
   }
-  &_home::before {
+  &-home::before {
     content: '\e6fc';
   }
-  &_news::before {
+  &-news::before {
     content: '\e6fb';
   }
-  &_img::before {
+  &-img::before {
     content: '\e6f9';
   }
-  &_menu:before {
+  &-menu:before {
     content: '\e734';
   }
-  &_choice:before {
+  &-choice:before {
     content: '\e72c';
   }
-  &_upload:before {
+  &-upload:before {
     content: '\e727';
   }
-  &_success:before {
+  &-success:before {
     content: '\e714';
   }
-  &_warning:before {
+  &-warning:before {
     content: '\e70f';
   }
-  &_error:before {
+  &-error:before {
     content: '\e718';
   }
-  &_like {
+  &-like {
     &:before {
       content: '\e74b';
     }
-    &_o:before {
+    &-o:before {
       content: '\e74c';
     }
   }
-  &_browser:before {
+  &-browser:before {
     content: '\e722';
   }
-  &_location:before {
+  &-location:before {
     content: '\e725';
   }
-  &_address:before {
+  &-address:before {
     content: '\e705';
   }
-  &_help:before {
+  &-help:before {
     content: '\e70e';
   }
-  &_home:before {
+  &-home:before {
     content: '\e6fc';
   }
-  &_phone:before {
+  &-phone:before {
     content: '\e6fe';
   }
-  &_password:before {
+  &-password:before {
     content: '\e702';
   }
 }

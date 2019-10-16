@@ -16,22 +16,6 @@ interface ICicle {
   radius?: string | number;
 }
 const pxReg = /\d+px/;
-// const Circle = ({ x, y, radius }: ICicle) => {
-//   console.log(this);
-//   // const { remRate } = this.context;
-//   // if (remRate && remRate > 0) {
-//   //   if (pxReg.test(x as string)) x = getRem(x);
-//   //   if (pxReg.test(y as string)) y = getRem(y);
-//   //   if (pxReg.test(radius as string)) radius = getRem(radius);
-//   // }
-//   return <circle cx={x} cy={y} r={radius} />;
-// };
-
-// Circle.defaultProps = {
-//   x: 0,
-//   y: 0,
-//   radius: 50
-// };
 class  Circle extends Component<ICicle> {
   defaultProps: {
     x: 0,
@@ -44,7 +28,6 @@ class  Circle extends Component<ICicle> {
       if (pxReg.test(y as string)) y = getRem(y);
       if (pxReg.test(radius as string)) radius = getRem(radius);
     }
-    console.log(x, y, radius)
     return <circle cx={x} cy={y} r={radius} />;
   }
 }

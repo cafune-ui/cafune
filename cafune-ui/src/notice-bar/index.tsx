@@ -159,7 +159,7 @@ class NoticeBar extends Component<IProps> {
       if (action === 'closable' || action === 'link') {
         rightIcon = (
           <span className={`${prefix}-action`} onClick={this.onRightClick}>
-            <Icon icon={action === 'closable' ? 'wrong' : 'arrow_right'} />
+            <Icon icon={action === 'closable' ? 'wrong' : 'arrow-right'} />
           </span>
         );
       } else {

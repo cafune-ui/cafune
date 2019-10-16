@@ -2,7 +2,7 @@ import { Component, createRef, h, VNode } from 'preact';
 import cx from 'classnames';
 import Item from './item';
 import { touchEventMap, getTouch } from '../util/event';
-
+import { isBrowser } from '../util/isomorphic';
 // function checkIfIndicaotr(el) {
 //   return el.nodeName.displayName === 'SwiperIndicator';
 // }
@@ -107,18 +107,20 @@ class Swiper extends Component<IProps> {
     }
   };
   componentDidMount() {
-    this.resize();
-    window.addEventListener('resize', this.resize);
-    const rect = this.swiperList.current;
-    if (rect) {
-      rect.addEventListener('click', this.onSwiperClick, true);
-      rect.addEventListener(touchEventMap.down, this.readyMoving);
-      rect.addEventListener(touchEventMap.move, this.startMoving);
-      rect.addEventListener(touchEventMap.up, this.endMoving);
-      rect.addEventListener(touchEventMap.out, this.endMoving);
+    if (isBrowser) {
+      this.resize();
+      window.addEventListener('resize', this.resize);
+      const rect = this.swiperList.current;
+      if (rect) {
+        rect.addEventListener('click', this.onSwiperClick, true);
+        rect.addEventListener(touchEventMap.down, this.readyMoving);
+        rect.addEventListener(touchEventMap.move, this.startMoving);
+        rect.addEventListener(touchEventMap.up, this.endMoving);
+        rect.addEventListener(touchEventMap.out, this.endMoving);
+      }
+      this.moveTo({ ind: this.state.current });
+      this.autoPlay();
     }
-    this.moveTo({ ind: this.state.current });
-    this.autoPlay();
   }
   clearAutoPlay() {
     this.autoPlayTimer && clearTimeout(this.autoPlayTimer);
@@ -136,19 +138,21 @@ class Swiper extends Component<IProps> {
     }
   }
   componentWillUnmount() {
-    this.clearAutoPlay();
-    const rect = this.swiperList.current;
-    if (rect) {
-      rect.removeEventListener('click', this.onSwiperClick, true);
-      rect.removeEventListener(touchEventMap.down, this.readyMoving);
-      rect.removeEventListener(touchEventMap.move, this.startMoving);
-      rect.removeEventListener(touchEventMap.up, this.endMoving);
-      rect.removeEventListener(touchEventMap.out, this.endMoving);
-    }
+    if (isBrowser) {
+      this.clearAutoPlay();
+      const rect = this.swiperList.current;
+      if (rect) {
+        rect.removeEventListener('click', this.onSwiperClick, true);
+        rect.removeEventListener(touchEventMap.down, this.readyMoving);
+        rect.removeEventListener(touchEventMap.move, this.startMoving);
+        rect.removeEventListener(touchEventMap.up, this.endMoving);
+        rect.removeEventListener(touchEventMap.out, this.endMoving);
+      }
 
-    window.removeEventListener('resize', this.resize);
+      window.removeEventListener('resize', this.resize);
+    }
   }
-  moveTo({ ind, offset }: { ind?: number, offset?: number | string}) {
+  moveTo({ ind, offset }: { ind?: number; offset?: number | string }) {
     this.clearAutoPlay();
     if (this.swiperList && this.swiperList.current) {
       const $swiper = this.swiperList.current;
@@ -178,7 +182,7 @@ class Swiper extends Component<IProps> {
   deltaX;
   offsetX = 0;
   direction;
-  startTimeStamp:number;
+  startTimeStamp: number;
   onSwiperClick = e => {
     if (this.offsetX > 0) {
       e.preventDefault();
