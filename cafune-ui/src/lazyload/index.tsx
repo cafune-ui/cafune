@@ -9,14 +9,6 @@ interface IProps {
 }
 /**
  * 懒加载包裹组件
- * @example
- * ```javascript
- * <Lazyload imgclassName="lazy">
- * // ...
- * <img src="/placeholder" data-src={originalpic} className="lazy" />
- * // ...
- * </Lazyload>
- * ```
  */
 class Lazyload extends Component<IProps> {
   lazyLoadIns;

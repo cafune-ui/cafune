@@ -91,23 +91,6 @@ const confirm = options => {
 };
 /**
  * 模态框
- * @example
- * - 普通弹框
- *
- *  ```javascript
- *  Modal.alert({
- *    title: 'this is a title',
- *    message: 'this is msg content'
- *  })
- *  ```
- * - 带取消按钮的弹框
- *
- *  ```javascript
- *  Modal.confirm({
- *    title: 'this is a title',
- *   message: 'this is msg content'
- *  })
- * ```
  */
 class Modal extends Component<IProps, {}> {
   static defaultProps = {

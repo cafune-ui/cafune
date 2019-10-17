@@ -103,10 +103,6 @@ interface IProps {
 }
 /**
  * 按钮
- * @example
- * ```jsx
- * <Button>按钮</Button>
- * ```
  */
 class Button extends Component<IProps> {
   static defaultProps = {

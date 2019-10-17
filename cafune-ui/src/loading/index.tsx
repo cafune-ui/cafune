@@ -24,12 +24,6 @@ interface IProps {
 }
 /**
  * 加载
- * @example
- * ```javascript
- * <Loading />
- * <Loading type="spinner" />
- * // ...
- * ```
  */
 class Loading extends Component<IProps> {
   static defaultProps = {

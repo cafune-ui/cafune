@@ -37,16 +37,28 @@ interface IProps {
 }
 /**
  * 图标
- * @example
- * ```jsx
- * // 使用内置图标
- *
- * <Icon icon="back" />
- *
- * // 使用图片地址
- *
- * <Icon icon="http://someicon.com/someicon.png" />
+ * @自定义图标
+ * 如需在现有基础上拓展更多图标，可引入第三方 iconfont 对应的字体文件和 CSS 文件
+ * ```css
+ * // 引入第三方或自定义的字体图标样式
+ * @font-face {
+ *   font-family: 'ri-icon';
+ *   src: url('./ri-icon.ttf') format('truetype');
+ * }
+
+ * .ri {
+ *   font-family: 'my-icon';
+ * }
+
+ * .ri-home::before {
+ *   content: '\e626';
+ * }
  * ```
+ * 在组件中指定字体前缀
+ * ```jsx
+ * <Icon classPrefix="ri" name="home" />
+ * ```
+ * ---
  */
 const Icon = ({
   prefix,
@@ -59,8 +71,10 @@ const Icon = ({
   ...restProps
 }: IProps) => {
   const isImg = isImage(icon);
-  const iconClass = cx(prefix, className, customPrefix, { [`${customPrefix}-${icon}`]: !isImg });
-  const prop:any = { ...restProps };
+  const iconClass = cx(prefix, className, customPrefix, {
+    [`${customPrefix}-${icon}`]: !isImg
+  });
+  const prop: any = { ...restProps };
   if (isImg) {
     size = size || '16px';
     prop.style = `width: ${size};height: ${size};line-height: ${size};`;

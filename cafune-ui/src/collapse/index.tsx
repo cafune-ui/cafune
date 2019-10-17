@@ -26,22 +26,6 @@ interface IProps {
 }
 /**
  * 折叠面板
- * @example
- * ```javascript
- * const CollapseItem = Collapse.Item;
- * // ...
- * <Collapse actives={activeCol} onChange={this.onChange}>
- *  <CollapseItem title="标题1" id="a">
- *    内容1
- *  </CollapseItem>
- *  <CollapseItem title="标题2" id="b">
- *    内容2
- *  </CollapseItem>
- *  <CollapseItem title="标题3" id="c" disabled>
- *    内容3
- *  </CollapseItem>
- * </Collapse>
- * ```
  */
 class Collapse extends Component<IProps> {
   static Item = Item;

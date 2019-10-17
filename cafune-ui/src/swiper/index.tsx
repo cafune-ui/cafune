@@ -46,21 +46,6 @@ interface IProps {
 }
 /**
  * 轮播
- * @example
- * ```javascript
- * <Swiper
- *  initialIndex={0}
- *  showIndicators={true}
- *  autoplay={true}
- *  intervel={3000}
- *  onChange={action('handleChange')}
- * >
- *  {Array(...Array(sliderNum)).map((_, ind) => (
- *    <SwiperItem key={ind}>{ind + 1}</SwiperItem>
- *  ))}
- * </Swiper>
- * ```
- * ```
  */
 class Swiper extends Component<IProps> {
   static SwiperItem = Item;

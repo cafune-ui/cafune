@@ -38,10 +38,6 @@ interface IProps {
 }
 /**
  * 分页
- * @example
- * ```javascript
- * <Pagination pn={pn} pages={pages} onChange={this.onPageChange} />
- * ```
  */
 const Pagination = ({
   prefix,

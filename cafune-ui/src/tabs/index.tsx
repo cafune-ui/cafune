@@ -48,34 +48,6 @@ interface IProps {
 }
 /**
  * 标签卡
- * @example
- * ```javascript
- * class NormalTab extends Component {
- *   state = {
- *     activeId: 'a'
- *   }
- *   onChange = id =>  {
- *    this.setState({
- *       activeId: id,
- *    })
- *   }
- *  render({}, { activeId }) {
- *    return (
- *      <Tabs activeId={ activeId } onChange={ this.onChange }>
- *        <TabPanel label="A" id="a">
- *         <div>A</div>
- *         </TabPanel>
- *         <TabPanel label="B" id="b">
- *           <div>B</div>
- *        </TabPanel>
- *        <TabPanel label="C" id="c" visable={false}>
- *          <div>C</div>
- *        </TabPanel>
- *    </Tabs>
- *     )
- *   }
- * }
- * ```
  */
 class Tabs extends Component<IProps> {
   static Panel = Panel;

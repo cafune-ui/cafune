@@ -96,17 +96,21 @@ function getProps(props) {
  */
 function getInfo(doc) {
   const { displayName, description, props } = doc;
-  const descs = description.split('@example');
-  // let example;
+  const pat = new RegExp(`@(.+?)\\n([\\s\\S]+?)\\n---`, 'g');
   let desc = description;
-  if (descs[1]) {
-    // example = descs[1];
-    desc = descs[0].replace(/\n/g, '');
+  const addition = [];
+  let patMatch = pat.exec(desc);
+  while (patMatch) {
+    addition.push(`\n ## ${patMatch[1]}\n${patMatch[2]}`);
+    patMatch = pat.exec(desc);
   }
-  // console.log(doc);
+  if (pat.test(description)) {
+    desc = description.replace(pat, '').replace(/\n/g, '');
+  }
   const result = {
     displayName,
     desc,
+    addition,
     props: getProps(props)
   };
   // if (example) result.example = example;
@@ -185,10 +189,11 @@ function generateCompMd(compInfo) {
       let md = '';
       const comp = compInfo[name];
       const { info, chidlren = [] } = comp;
-      const { displayName, desc, props, example } = info;
+      const { displayName, desc, addition, props } = info;
       md += `# ${displayName} - ${desc}\n\n## 引入\n\`\`\`jsx\nimport { ${displayName} } from 'cafune';\n\`\`\`\n`;
-      if (example) {
-        md += `## 使用\n${example}\n`;
+      if (addition && addition.length) {
+        md += addition.join('\n');
+        md += '\n';
       }
       md += generatePropTab(props);
       if (chidlren.length) {

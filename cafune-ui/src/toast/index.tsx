@@ -48,34 +48,6 @@ interface IProps {
 // const browserPrefixs = ['-webkit-', '-moz-', '-o-', ''];
 /**
  * 消息提示
- * @example
- * - 不同类型提示
- *
- *  ```js
- *  Toast.show({ content: 'show' });
- *  Toast.success({ content: 'success' });
- *
- *  Toast.error({ content: 'error' });
- *
- *  Toast.loading({ content: 'loading' });
- *  ```
- * - 自定义时长提示
- *
- *  ```javascript
- *  Toast.show({ content: '3秒之后消失', duration: 3000 })
- *  ```
- * - 带回调函数提示
- *
- *  ```javascript
- *  Toast.show({ content: '弹出消失alert', onClose() { alert('消失！') } })
- *  ```
- * - 自定义取消Toast
- * 当 duration 为0时，toast 需要调用`hide` 方法才能让toast 消失，loading 方法默认duration 为0
- *
- *  ```javascript
- * const toast = Toast.loading({ content: '弹出消失alert', onClose() { alert('消失！') } });
- * Toast.hide(toast);
- * ```
  */
 
 class Toast extends Component<IProps> {

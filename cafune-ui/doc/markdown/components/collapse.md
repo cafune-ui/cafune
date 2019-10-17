@@ -21,5 +21,5 @@ import { Collapse } from 'cafune';
 | prefix | 自定义前缀 | string | `'caf-collapse'` | - | ❌ |
 | actived | 是否处于激活状态 | boolean | - | - | ❌ |
 | disabled | 是否禁用此单元 | boolean | `false` | - | ❌ |
-| icon | 右侧按钮 | string | `'arrow_right'` | - | ❌ |
+| icon | 右侧按钮 | string | `'arrow-right'` | - | ❌ |
 | onToggle | 切换回调 | (id: any) => void | - | - | ❌ |

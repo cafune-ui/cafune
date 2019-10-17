@@ -27,14 +27,6 @@ interface IProps {
 
 /**
  * 动作栏
- * @example
- * ```javascript
- * <ActionBar
- *   descContent="描述文字"
- *   btnContent="按钮文字"
- *   handleClick={ () => console.log('click') }
- * />
- * ```
  */
 class ActionBar extends Component<IProps, {}> {
   static defaultProps = {

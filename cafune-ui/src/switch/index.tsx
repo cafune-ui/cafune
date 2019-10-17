@@ -34,10 +34,6 @@ interface IProps {
 }
 /**
  * 开关
- * @example
- * ```jsx
- * <Switch />
- * ```
  */
 class Switch extends Component<IProps> {
   static defaultProps = {
