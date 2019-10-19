@@ -59,9 +59,9 @@ function writeEntry(compName, name) {
   fs.mkdirSync(compDir);
   // add to entry, in order to use component by tying 'import { comp } from 'components';
   console.log(`Adding new components: ${compName} to entry`);
-  const exportName = `export * from './${name}';`;
+  const exportName = `export { default as ${compName} } from './${name}';`;
   if (modExports.indexOf(exportName) === -1) {
-    modExports.push(`export * from './${name}';`);
+    modExports.push(exportName);
   }
   sortByModulePath(modExports);
   fs.writeFileSync(entryPath, `${modExports.join('\n')}\n`);

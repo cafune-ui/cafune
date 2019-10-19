@@ -2,7 +2,7 @@ import { Router } from 'preact-router';
 import Redirect from './routes/redirect';
 import Home from './routes/home';
 import Comp from './routes/comp';
-// import 'cafune/components/index.scss';
+import 'cafune/es/index.scss';
 
 import './_custom.scss';
 import './style.scss';

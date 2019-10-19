@@ -18,5 +18,5 @@
   },
   "include": ["components/**/*.ts", "components/**/*.tsx"],
   "typeRoots": ["./types"],
-  "exclude": ["node_modules", "doc", "es", "lib", "components/*/test"]
+  "exclude": ["node_modules", "doc", "es", "lib", "components/*/test", "src/font"]
 }

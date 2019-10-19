@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
+const { getComponentName } = require('./util/comp');
 const compRoot = path.resolve(process.cwd(), './src');
 const docRoot = path.resolve(process.cwd(), './doc');
 const compMapPath = `${docRoot}/comp-type.json`;
@@ -26,7 +27,9 @@ function deleteEnty(name) {
   if (fs.existsSync(entryJsPath)) {
     const entryFile = fs.readFileSync(entryJsPath, 'utf-8');
     const modExports = entryFile.trim().split('\n') || [];
-    const exportIndex = modExports.indexOf(`export * from './${name}';`);
+    const exportIndex = modExports.indexOf(
+      `export { default as ${getComponentName(name)} } from './${name}';`
+    );
     if (exportIndex !== -1) {
       modExports.splice(exportIndex, 1);
       fs.writeFileSync(entryJsPath, `${modExports.join('\n')}\n`);

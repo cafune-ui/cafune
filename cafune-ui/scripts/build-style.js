@@ -17,6 +17,7 @@ const excludes = [
   'index.scss',
   'index.css',
   'style',
+  'font',
   'util',
   '.DS_Store'
 ];
