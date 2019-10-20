@@ -1,4 +1,3 @@
-// import '../../../_custom.scss';
 import { Switch } from 'cafune';
 import { Component } from 'preact';
 

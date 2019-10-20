@@ -12,6 +12,10 @@
           {
             "name": "使用",
             "url": "usage"
+          },
+          {
+            "name": "自定义主题",
+            "url": "customTheme"
           }
         ]
       }

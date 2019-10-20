@@ -113,8 +113,7 @@ module.exports = function(env) {
         'preact-cli/async-component': require.resolve(
           '@preact/async-loader/async'
         ),
-        util: source('util'),
-        components: source('components')
+        util: source('util')
       }
     },
 
@@ -170,6 +169,14 @@ module.exports = function(env) {
                 }
               }
             }
+            // { loader: 'sass-resources-loader',
+            //   options: {
+            //     sourceMap: true,
+            //     resources: [
+            //       resolve(cwd, 'src/custom.scss')
+            //     ]
+            //   }
+            // }
           ]
         },
         {
