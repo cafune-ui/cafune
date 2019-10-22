@@ -8,7 +8,6 @@ $headheight: 80px;
     height: $headheight;
     line-height: $headheight;
     background-color: #fff;
-    box-shadow: 0 0 6px #e2e2e2;
     .head {
       &-icon {
         height: $headheight;
@@ -34,7 +33,6 @@ $headheight: 80px;
     }
   }
   &-main {
-    margin-top: 20px;
     position: relative;
     display: flex;
     height: calc(100vh - #{$headheight});
@@ -107,6 +105,7 @@ $headheight: 80px;
     }
   }
   &-content {
+    margin-top: 20px;
     position: relative;
     margin-left: calc(#{$sidewidth} + 20px);
     padding: 30px 50px;
@@ -124,7 +123,7 @@ $headheight: 80px;
     min-width: 375px; /* no */
     height: calc(100vh - #{$headheight} - 40px);
     border-radius: 18px;
-    margin: 0 20px 0 0;
+    margin: 20px 20px 0 0;
     overflow: hidden;
     box-sizing: border-box;
     transition: transform 0.3s;
@@ -249,3 +248,29 @@ $sideName: '.caf-doc-side';
     }
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .caf-doc {
+    &-head, &-content {
+      background-color: #565f67;
+      color: #fff;
+    }
+    &-side {
+      &-wrapper {
+        background-color: #565f67;
+      }
+      .nav {
+        &-head {
+          color: #fff;
+        }
+        &-item {
+          color: #fff;
+          &__actived {
+            color: #fff;
+            background-color: #3d4248;
+          }
+        }
+      }
+    }
+  }
+} 

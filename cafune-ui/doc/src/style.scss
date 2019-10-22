@@ -1,6 +1,6 @@
 html,
 body {
-  font: 14px/1.2 'Helvetica Neue', arial, sans-serif;/* no */
+  font: 14px/1.2 'Helvetica Neue', arial, sans-serif; /* no */
   font-weight: 400;
   background: #f2f4f9;
 }
@@ -37,25 +37,37 @@ a {
     h3 {
       margin-top: 20px;
     }
+    p {
+      line-height: 26px;
+    }
     code {
       border-radius: 4px;
       background-color: #f3f3f3;
       padding: 3px 6px;
+      margin: 0 4px;
       color: #666;
-			// br {
+      // br {
       //   height: 1px;
       //   display: block;
       //   &:last-child {
       //     display: none;
       //   }
-			// }
+      // }
     }
-    [class*="language"] {
+    [class*='language-'] {
       background: #f7f7f7;
       line-height: 24px;
       border-radius: 8px;
       overflow-x: auto;
       margin: 16px 0;
+      text-shadow: none;
+    }
+    .token.operator,
+    .token.entity,
+    .token.url,
+    .language-css .token.string,
+    .style .token.string {
+      background-color: transparent;
     }
     hr {
       background-color: #eee;
@@ -65,19 +77,20 @@ a {
     }
     pre {
       margin: 0;
-		}
+    }
     li {
       margin-top: 8px;
       line-height: 26px;
     }
-		ul, ol {
+    ul,
+    ol {
       margin-top: 20px;
       padding-left: 20px;
-		}
-		// br {
-		// 	height: 1px;
-		// 	display: none;
-		// }
+    }
+    // br {
+    // 	height: 1px;
+    // 	display: none;
+    // }
     table {
       width: 100%;
       margin-top: 12px;
@@ -88,6 +101,7 @@ a {
       border-collapse: collapse;
       color: #34495e;
       word-wrap: break-word;
+      background-color: #fff;
       th {
         padding: 12px;
         background-color: #f8f8f8;
@@ -98,7 +112,8 @@ a {
         border: 1px solid #f5f5f5; /* no */
         font-weight: 300;
       }
-      th, td {
+      th,
+      td {
         min-width: 80px;
       }
       code {
@@ -113,7 +128,7 @@ a {
     &-hover {
       position: relative;
       padding-bottom: 2px;
-      border-bottom: 1px solid #59b4bd;/* no */
+      border-bottom: 1px solid #59b4bd; /* no */
       &:hover::after {
         content: attr(data-desc);
         display: block;
@@ -152,3 +167,26 @@ a {
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  .caf-doc {
+    background: #3c3c3c;
+  }
+  .caf {
+    &-markdown {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: #fff;
+      }
+      code {
+      }
+      [class*='language-'] {
+        background-color: #171717;
+        color: #fff;
+      }
+    }
+  }
+}

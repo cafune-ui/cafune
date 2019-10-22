@@ -35,6 +35,5 @@
       "pragma": "jsx",
       "version": "detect"
     }
-  },
-  "exclude": ["font"]
+  }
 }

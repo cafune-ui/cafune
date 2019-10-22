@@ -37,7 +37,7 @@ module.exports = function(env, options = {}) {
         {
           libraryName: 'cafune',
           libraryDirectory: 'src',
-          style: true,
+          style: true
           // style: name => {
           //   if(/cafune\/.+?\/switch/.test(name)) {
           //     return false;
