@@ -1,5 +1,5 @@
 import { Icon } from 'cafune';
-import logImg from '../../assets/Cafune.png';
+import logImg from '../../assets/icon.png';
 const Header = ({ toggleStatus }) => {
   return (
     <h1 class="caf-doc-head">

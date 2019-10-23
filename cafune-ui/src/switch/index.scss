@@ -27,7 +27,7 @@ $name: '.caf-switch';
     padding: 8px 0;
   }
   &__on {
-    background-color: $color_theme_blue;
+    background-color: $color_theme;
     #{$name}-circle {
       transform: translateX(1em);
     }

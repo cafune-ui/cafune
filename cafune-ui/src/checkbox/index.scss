@@ -1,7 +1,7 @@
 @import '../style/mixins/_border.scss';
 @import '../style/variables/color.scss';
 $name: '.caf-checkbox';
-$activeColor: $color_theme_blue;
+$activeColor: $color_theme;
 
 $size_normal: 30px;
 #{$name} {

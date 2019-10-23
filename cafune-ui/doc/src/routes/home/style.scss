@@ -1,5 +1,5 @@
 $sidewidth: 240px;
-$headheight: 80px;
+$headheight: 70px;
 .caf-doc {
   padding-bottom: 30px;
   &-head {
@@ -11,23 +11,30 @@ $headheight: 80px;
     .head {
       &-icon {
         height: $headheight;
-        width: 50px;
+        width: 30px;
+        
         text-align: center;
         // line-height: 36px;
         display: none;
         &__menu {
+          padding-left: 20px;
           line-height: #{$headheight * 0.8};
         }
         &__github {
+          
           display: block;
           background: url(../../assets/github.svg) no-repeat center/28px;
+        }
+        &__github, &__code {
+          padding: 0 10px;
         }
       }
       &-bar {
         flex: 1;
-        padding: 0 20px;
+        padding: 0 15px;
         &-logo {
-          height: 24px;
+          margin-top: 26px;
+          height: 42px;
         }
       }
     }
@@ -105,7 +112,6 @@ $headheight: 80px;
     }
   }
   &-content {
-    margin-top: 20px;
     position: relative;
     margin-left: calc(#{$sidewidth} + 20px);
     padding: 30px 50px;
@@ -123,7 +129,7 @@ $headheight: 80px;
     min-width: 375px; /* no */
     height: calc(100vh - #{$headheight} - 40px);
     border-radius: 18px;
-    margin: 20px 20px 0 0;
+    margin: 0 20px 0 0;
     overflow: hidden;
     box-sizing: border-box;
     transition: transform 0.3s;
@@ -133,6 +139,10 @@ $headheight: 80px;
       height: 100%;
       -webkit-overflow-scrolling: touch;
     }
+  }
+
+  &-side, &-content, &-simulator {
+    margin-top: 20px;
   }
 
   &-code {
@@ -229,16 +239,18 @@ $sideName: '.caf-doc-side';
         }
       }
       &-content {
+        margin-top: 10px;
         margin-left: 0;
         margin-right: 0;
         border-radius: 0;
+        padding: 20px;
       }
       &-simulator {
         position: fixed;
         min-width: auto;
         height: calc(100vh - #{$headheight});
         top: #{$headheight};
-        margin: 0;
+        margin: 10px 0 0;
         width: 100%;
         transform: translate3d(0, 100%, 0);
         &[data-status='1'] {
@@ -252,25 +264,26 @@ $sideName: '.caf-doc-side';
 @media (prefers-color-scheme: dark) {
   .caf-doc {
     &-head, &-content {
-      background-color: #565f67;
+      background-color: #3d3d3d;
       color: #fff;
     }
     &-side {
       &-wrapper {
-        background-color: #565f67;
+        background-color: #3d3d3d;
       }
       .nav {
-        &-head {
+        &-head, &-name, &-item, &-item__actived {
           color: #fff;
         }
         &-item {
-          color: #fff;
           &__actived {
-            color: #fff;
-            background-color: #3d4248;
+            background-color: #272727;
           }
         }
       }
+    }
+    &-simulator {
+      box-shadow: none;
     }
   }
 } 
