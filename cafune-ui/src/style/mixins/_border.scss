@@ -8,7 +8,7 @@
   border-width: 1px;
   transform-origin: top left;
 }
-@mixin pixelBorder($radius: 0px, $color: false) {
+@mixin pixelBorder($color: false) {
   border-style: solid;
   border-width: 1px;
   border-color: $color;
@@ -21,14 +21,10 @@
       width: 200%;
       height: 200%;
       transform: scale(0.5);
+      border-radius: inherit;
       @include borderProps;
       @if $color {
         border-color: $color;
-      }
-      @if unitless($radius) {
-        border-radius: $radius;
-      } @else {
-        border-radius: $radius * 2;
       }
     }
   }
@@ -40,14 +36,10 @@
       width: 300%;
       height: 300%;
       transform: scale(0.33);
+      border-radius: inherit;
       @include borderProps;
       @if $color {
         border-color: $color;
-      }
-      @if unitless($radius) {
-        border-radius: $radius;
-      } @else {
-        border-radius: $radius * 3;
       }
     }
   }

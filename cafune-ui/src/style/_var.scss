@@ -1,0 +1,37 @@
+
+// color
+$blue: #6595d0;
+$red: #e27777;
+
+$color_theme: #3f77f6 !default;
+// border
+$border-color: #dedede !default;
+$border-radius-sm: 2px !default;
+$border-radius-md: 4px !default;
+
+// Font
+$font-size-xs: 10px !default;
+$font-size-sm: 12px !default;
+$font-size-md: 14px !default;
+$font-size-lg: 16px !default;
+$font-weight-bold: 500;
+
+// button
+$button-tiny-height: 24px !default;
+$button-tiny-font-size: $font-size-xs !default;
+$button-small-height: 36px !default;
+$button-small-font-size: $font-size-sm !default;
+$button-normal-height: 42px !default;
+$button-normal-font-size: $font-size-md !default;
+$button-large-height: 50px !default;
+$button-large-font-size: $font-size-lg !default;
+
+$button-default-height: 42px !default;
+$button-default-background-color: #fff !default;
+$button-default-border-color: $border-color !default;
+
+$button-primary-background-color: $blue !default;
+$button-primary-border-color: $blue !default;
+
+$button-warning-background-color: $red !default;
+$button-warning-border-color: $red !default;

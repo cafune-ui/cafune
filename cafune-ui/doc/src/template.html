@@ -22,9 +22,7 @@
 		<% } %>
 	</head>
 	<body>
-		<%= htmlWebpackPlugin.options.ssr({
-			url: '/'
-		}) %>
+		<div id="app"></div>
 		<script defer src="<%= htmlWebpackPlugin.files.chunks['bundle'].entry %>"></script>
 		<script>window.fetch||document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
 	</body>

@@ -43,7 +43,7 @@ $size_normal: 30px;
         border-radius: 50%;
         background-color: #fff;
         color: transparent;
-        @include pixelBorder(50%, #ccc);
+        @include pixelBorder(#ccc);
         text-align: center;
       }
     }
@@ -59,7 +59,7 @@ $size_normal: 30px;
           &:not(#{$name}-input-inner__custom) {
             background-color: $activeColor;
             color: #fff;
-            @include pixelBorder(50%, $activeColor);
+            @include pixelBorder($activeColor);
           }  
         }
       }

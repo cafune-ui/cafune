@@ -37,7 +37,7 @@ if (typeof app === 'function') {
 
   let init = () => {
     let app = interopDefault(require('preact-cli-entrypoint'));
-    root = render(h(app), document.body, root);
+    root = render(h(app), root);
   };
 
   if (module.hot) module.hot.accept('preact-cli-entrypoint', init);

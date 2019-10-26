@@ -63,10 +63,10 @@ const svgMap = {
         >
           <g fill="none" fillRule="evenodd">
             <g transform="translate(1 1)" strokeWidth="2">
-              <circle strokeOpacity=".5" cx="18" cy="18" r="18" />
+              <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
               <path
                 d="M36 18c0-9.94-8.06-18-18-18"
-                transform="rotate(275.955 18 18)"
+                transform="rotate(125.364 18 18)"
               >
                 <animateTransform
                   attributeName="transform"
@@ -75,7 +75,7 @@ const svgMap = {
                   to="360 18 18"
                   dur="1s"
                   repeatCount="indefinite"
-                />
+                ></animateTransform>
               </path>
             </g>
           </g>

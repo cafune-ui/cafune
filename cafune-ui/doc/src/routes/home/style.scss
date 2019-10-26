@@ -1,13 +1,17 @@
 $sidewidth: 240px;
 $headheight: 70px;
+
 .caf-doc {
-  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--themebg);
   &-head {
     display: flex;
     align-items: center;
     height: $headheight;
     line-height: $headheight;
-    background-color: #fff;
+    background-color: var(--theme);
+    color: var(--textcolor);
     .head {
       &-icon {
         height: $headheight;
@@ -39,20 +43,30 @@ $headheight: 70px;
       }
     }
   }
+  &-body {
+    position: relative;
+    display: flex;
+    flex: 1;
+  }
   &-main {
     position: relative;
     display: flex;
-    height: calc(100vh - #{$headheight});
-    overflow: auto;
+    margin: 20px;
+    flex: 1;
+    background-color: var(--theme);
+    border-radius: 16px;
+    overflow: hidden;
   }
   &-side {
-    position: absolute;
+    
     width: $sidewidth;
-    height: calc(100vh - #{$headheight});
+    height: 100vh;
     left: 0;
     top: 0;
     z-index: 20;
     border-radius: 10px;
+    margin: 20px 10px;
+    box-sizing: border-box;
     overflow: hidden;
     &-wrapper {
       position: relative;
@@ -64,7 +78,7 @@ $headheight: 70px;
       overflow: auto;
       -webkit-overflow-scrolling: touch;
       z-index: 2;
-      background: #fff;
+      background: var(--theme);
     }
     &-mask {
       display: none;
@@ -84,7 +98,7 @@ $headheight: 70px;
       &-name {
         display: block;
         padding: 15px 0 15px 25px;
-        color: #777;
+        color: var(--textcolor);
         font-size: 14px;
       }
       &-head {
@@ -94,7 +108,7 @@ $headheight: 70px;
       }
       &-name {
         font-size: 14px;
-        color: #444;
+        color: var(--textcolor2);
         font-weight: bold;
       }
       &-item {
@@ -102,7 +116,8 @@ $headheight: 70px;
         font-weight: 300;
         &__actived {
           color: #1989fa;
-          background-color: #f7fcff;
+          background-color: var(--actived);
+
           font-weight: 500;
         }
         &:active {
@@ -113,13 +128,12 @@ $headheight: 70px;
   }
   &-content {
     position: relative;
-    margin-left: calc(#{$sidewidth} + 20px);
-    padding: 30px 50px;
-    margin-right: 20px;
+    padding: 30px 20px;
     height: calc(100vh - #{$headheight});
     overflow: auto;
     flex: 1;
-    background-color: #fff;
+    background-color: var(--theme);
+    color: var(--textcolor);
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
     border-radius: 10px;
@@ -127,13 +141,13 @@ $headheight: 70px;
   &-simulator {
     position: relative;
     min-width: 375px; /* no */
-    height: calc(100vh - #{$headheight} - 40px);
+    height: calc(100vh - #{$headheight});
     border-radius: 18px;
     margin: 0 20px 0 0;
     overflow: hidden;
     box-sizing: border-box;
     transition: transform 0.3s;
-    box-shadow: 0 4px 8px #ccc;
+    border: 1Px solid rgba(222, 222, 222, 0.3);
     iframe {
       width: 100%;
       height: 100%;
@@ -141,8 +155,8 @@ $headheight: 70px;
     }
   }
 
-  &-side, &-content, &-simulator {
-    margin-top: 20px;
+  &-content, &-simulator {
+    margin: 20px;
   }
 
   &-code {
@@ -191,9 +205,14 @@ $sideName: '.caf-doc-side';
           }
         }
       }
+      &-main {
+        margin: 20px;
+      }
       &-side {
+        position: fixed;
         width: 0;
         border-radius: 0;
+        margin: #{$headheight} 0 0 0;
         &-wrapper {
           transform: translate3d(-100%, 0, 0);
           transition-delay: 0.3s;
@@ -226,9 +245,6 @@ $sideName: '.caf-doc-side';
 @media (max-width: 860px) {
   .caf {
     &-doc {
-      &-main {
-        margin-top: 0;
-      }
       &-head {
         .head {
           &-icon {
@@ -238,6 +254,9 @@ $sideName: '.caf-doc-side';
           }
         }
       }
+      &-main {
+        margin: 10px 10px 30px;
+      }
       &-content {
         margin-top: 10px;
         margin-left: 0;
@@ -246,12 +265,13 @@ $sideName: '.caf-doc-side';
         padding: 20px;
       }
       &-simulator {
-        position: fixed;
+        position: absolute;
         min-width: auto;
-        height: calc(100vh - #{$headheight});
-        top: #{$headheight};
-        margin: 10px 0 0;
+        height: 100%;
+        top: 0;
+        margin: 0;
         width: 100%;
+        box-sizing: border-box;
         transform: translate3d(0, 100%, 0);
         &[data-status='1'] {
           transform: translate3d(0, 0, 0);
@@ -260,30 +280,3 @@ $sideName: '.caf-doc-side';
     }
   }
 }
-
-@media (prefers-color-scheme: dark) {
-  .caf-doc {
-    &-head, &-content {
-      background-color: #3d3d3d;
-      color: #fff;
-    }
-    &-side {
-      &-wrapper {
-        background-color: #3d3d3d;
-      }
-      .nav {
-        &-head, &-name, &-item, &-item__actived {
-          color: #fff;
-        }
-        &-item {
-          &__actived {
-            background-color: #272727;
-          }
-        }
-      }
-    }
-    &-simulator {
-      box-shadow: none;
-    }
-  }
-} 

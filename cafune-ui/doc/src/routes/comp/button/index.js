@@ -39,7 +39,7 @@ export default class ButtonComp extends Component {
               图标位置
             </Button>
             <Button
-              icon={{ type: 'arrow_right', position: { right: '10px' } }}
+              icon={{ type: 'arrow-right', position: { right: '10px' } }}
               style={{ width: '120px', justifyContent: 'flex-start' }}
             >
               图标位置

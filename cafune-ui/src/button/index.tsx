@@ -112,7 +112,8 @@ class Button extends Component<IProps> {
     ghost: false,
     disabled: false,
     loading: false,
-    block: false
+    block: false,
+    radius: true
   };
   render({
     prefix,
@@ -178,13 +179,13 @@ class Button extends Component<IProps> {
     return (
       <a
         role="button"
-        className={cx(prefix, `${prefix}__t_${type}`, `${prefix}__s_${size}`, {
-          [`${prefix}__reverse`]: isReverse,
-          [`${prefix}__block`]: block,
-          [`${prefix}__disabled`]: disabled,
-          [`${prefix}__loading`]: loading,
-          [`${prefix}__ghost`]: ghost,
-          [`${prefix}__${radiusType}`]: !!radiusType,
+        className={cx(prefix, `${prefix}--t-${type}`, `${prefix}--s-${size}`, {
+          [`${prefix}--reverse`]: isReverse,
+          [`${prefix}--block`]: block,
+          [`${prefix}--disabled`]: disabled,
+          [`${prefix}--loading`]: loading,
+          [`${prefix}--ghost`]: ghost,
+          [`${prefix}--${radiusType}`]: !!radiusType,
           [className]: !!className
         })}
         style={btnStyle}
@@ -192,11 +193,11 @@ class Button extends Component<IProps> {
         {...restProps}
       >
         {!!btnIcon && (
-          <span className={`${prefix}-icon`} style={iconStyle}>
+          <span className={`${prefix}__icon`} style={iconStyle}>
             {btnIcon}
           </span>
         )}
-        <span className={`${prefix}-content`}>{children}</span>
+        <span className={`${prefix}__content`}>{children}</span>
       </a>
     );
   }

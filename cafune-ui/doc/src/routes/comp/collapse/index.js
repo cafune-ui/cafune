@@ -16,8 +16,8 @@ export default class CollapseCom extends Component {
   };
   render({}, { actives, activeCol }) {
     return (
-      <div class="">
-        <p>默认模式</p>
+      <div class="caf-demo">
+        <p class="caf-demo-title">默认模式</p>
         <Collapse actives={activeCol} onChange={this.onChange('activeCol')}>
           <CollapseItem title="基础组件" id="basic">
             <div style="padding: 15px">默认开启</div>
@@ -26,7 +26,7 @@ export default class CollapseCom extends Component {
             <div style="padding: 15px">默认关闭</div>
           </CollapseItem>
         </Collapse>
-        <p>手风车效果（只开一个）</p>
+        <p class="caf-demo-title">手风车效果（只开一个）</p>
         <Collapse actives={actives} accordion>
           <CollapseItem title="基础组件" id="basic">
             <div style="padding: 15px">默认开启内容</div>

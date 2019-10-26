@@ -1,11 +1,5 @@
-a {
-  text-decoration: none;
-  color: #323233;
-}
-* {
-  margin: 0;
-  padding: 0;
-}
-::-webkit-scrollbar {
-  display: none;
-}
+@import './variables/_color.scss';
+@import './variables/_size.scss';
+
+@import './mixins/_border.scss';
+@import './mixins/_display.scss';

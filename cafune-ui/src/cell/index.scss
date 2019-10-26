@@ -91,10 +91,12 @@
   }
   &-wrapper {
     position: relative;
+    border-radius: 8px;
+    overflow: hidden;
     &__border {
       position: relative;
-      @include pixelBorder(0, #eee);
+      @include pixelBorder( #eee);
     }
-    @include pixelBorder(6px, transparent);
+    @include pixelBorder(transparent);
   }
 }
