@@ -24,34 +24,34 @@ export default class SwitchComp extends Component {
   render({}, { isActived1, isActived2 }) {
     return (
       <div class="caf-demo-block">
-        <p>默认用法</p>
+        <p class="caf-demo-title">默认用法</p>
         <Switch isActived={isActived1} onChange={this.onChange('isActived1')} />
-        <p>禁用状态</p>
+        <p class="caf-demo-title">禁用状态</p>
         <Switch
           isActived={isActived1}
           isDisabled
           onChange={this.onChange('isActived1')}
         />
-        <p>自定义尺寸</p>
+        <p class="caf-demo-title">自定义尺寸</p>
         <Switch
           isActived={isActived1}
           size="20px"
           onChange={this.onChange('isActived1')}
         />
-        <p>加载状态</p>
+        <p class="caf-demo-title">加载状态</p>
         <Switch
           isActived={isActived1}
           isLoading={true}
           onChange={this.onChange('isActived1')}
         />
-        <p>自定义颜色</p>
+        <p class="caf-demo-title">自定义颜色</p>
         <Switch
           isActived={isActived1}
           activedColor="#2e4e7e"
           inActivedColor="#bbcdc5"
           onChange={this.onChange('isActived1')}
         />
-        <p>异步切换（1秒后才切换）</p>
+        <p class="caf-demo-title">异步切换（1秒后才切换）</p>
         <Switch
           isActived={isActived2}
           onChange={this.onChange('isActived2', true)}

@@ -1,28 +1,26 @@
 import { Component, h } from 'preact';
 import cx from 'classnames';
 import { setPadding } from '../util/isomorphic';
+import Button from '../button';
+import { IProps as CafButtonInt } from '../button';
 
 interface IProps {
   /**
-     * 左侧描述内容
-     */
-  descContent: any,
+   * 左侧描述内容
+   */
+  desc: any;
   /**
-     * 按钮内容
-     */
-  btnContent: any,
+   * 按钮内容
+   */
+  btns: CafButtonInt[];
   /**
-     * 附加信息
-     */
-  additionMsg?: any,
+   * 附加信息
+   */
+  additionMsg?: any;
   /**
-     * action 触发事件
-     */
-  handleClick?: Function,
-   /**
-     * 是否禁止按钮，默认为false
-     */
-  disabled?: boolean
+   * action 触发事件
+   */
+  handleClick?: (event: Event) => void;
 }
 
 /**
@@ -30,8 +28,7 @@ interface IProps {
  */
 class ActionBar extends Component<IProps, {}> {
   static defaultProps = {
-    handleClick: () => {},
-    disabled: false,
+    handleClick: evt => {},
     prefix: 'caf-actionbar'
   };
   actionbar;
@@ -44,24 +41,26 @@ class ActionBar extends Component<IProps, {}> {
   public render({
     prefix,
     className,
-    descContent,
-    btnContent,
+    desc,
+    btns,
+    capsule,
     additionMsg,
     handleClick,
-    disabled = false,
     ...restProps
   }) {
     return (
-      <div className={cx(prefix, className)} ref={c => (this.actionbar = c)} {...restProps}>
-        {!!additionMsg && <div className={`${prefix}-tip`}>{additionMsg}</div>}
-        <div className={`${prefix}-main`}>
-          <div className={`${prefix}-main-desc`}>{descContent}</div>
-          <div
-            className={`${prefix}-main-btn`}
-            onClick={handleClick}
-            data-disabled={disabled ? 1 : 0}
-          >
-            {btnContent || '确定'}
+      <div
+        className={cx(prefix, className)}
+        ref={c => (this.actionbar = c)}
+        {...restProps}
+      >
+        {!!additionMsg && <div className={`${prefix}__tip`}>{additionMsg}</div>}
+        <div className={`${prefix}__main`}>
+          <div className={`${prefix}__main__desc`}>{desc}</div>
+          <div className={`${prefix}__main__action`}>
+            {btns.map((item, ind) => (
+              <Button {...item} key={ind} />
+            ))}
           </div>
         </div>
       </div>

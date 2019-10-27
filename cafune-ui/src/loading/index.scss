@@ -5,13 +5,13 @@ $name: '.caf-loading';
   justify-content: center;
   vertical-align: middle;
   padding: 10px;
-  &-text {
+  &__text {
     color: #969799;
     margin: 0 0 0 10px;
   }
-  &__vertical {
+  &--vertical {
     flex-direction: column;
-    #{$name}-text {
+    #{$name}__text {
       margin: 10px 0 0 0 ;
     }
   }

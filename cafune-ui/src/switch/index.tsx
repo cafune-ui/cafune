@@ -70,14 +70,14 @@ class Switch extends Component<IProps> {
     return (
       <div
         className={cx(prefix, className, {
-          [`${prefix}__on`]: isActived,
-          [`${prefix}__disabled`]: isDisabled
+          [`${prefix}--on`]: isActived,
+          [`${prefix}--disabled`]: isDisabled
         })}
         style={switchStyle}
         onClick={this.clickHandler}
         {...restProps}
       >
-        <div className={`${prefix}-circle`}>
+        <div className={`${prefix}__circle`}>
           { isLoading && <Loading size="16px" color={activeColor} /> }
         </div>
       </div>

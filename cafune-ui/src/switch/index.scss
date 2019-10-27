@@ -1,38 +1,44 @@
-@import '../style/variables/color.scss';
+@import '../style/_var.scss';
+@import '../style/mixins/_border.scss';
 $name: '.caf-switch';
 #{$name} {
   position: relative;
   display: inline-block;
   box-sizing: content-box;
-  width: 2em;
-  height: 1em;
-  border-radius: 1em;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, .1);
+  width: $switch-width;
+  height: $switch-height;
+  border-radius: $switch-height;
+  background-color: $switch-background-color;
+  // @include pixelBorder(rgba(0, 0, 0, .1));
+
+  box-shadow: 0 4px 8px -2px $switch-background-color;
   transition: background-color 0.3s;
-  font-size: 32px;
-  &-circle {
+  font-size: $switch-size;
+  &__circle {
     position: absolute;
     top: 0;
-    left: 0;
+    bottom: 0;
+    left: 1px;
+    margin: auto;
     z-index: 1;
-    width: 1em;
-    height: 1em;
-    border-radius: 50%;
-    box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05), 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
-    background-color: #fff;
+    width: $switch-circle-width;
+    height: $switch-circle-height;
+    border-radius: $switch-circle-radius;
+    background-color: $switch-circle-background-color;
     transition: .3s;
   }
   .caf-loading {
-    padding: 8px 0;
+    padding: 7px 0;
   }
-  &__on {
-    background-color: $color_theme;
-    #{$name}-circle {
+  &--on {
+    background-color: $switch-active-background-color;
+    box-shadow: 0 4px 8px -2px $switch-active-background-color;
+    #{$name}__circle {
       transform: translateX(1em);
+      background-color: $switch-circle-on-background-color;
     }
   }
-  &__disabled {
+  &--disabled {
     opacity: .4;
   }
 }

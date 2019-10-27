@@ -9,7 +9,7 @@ $name: '.caf-btn';
   box-sizing: border-box;
   border-radius: 6px;
   text-align: center;
-  @include pixelBorder();
+  // @include pixelBorder();
   &__icon {
     padding: 0 5px;
   }
@@ -19,31 +19,49 @@ $name: '.caf-btn';
   &--t {
     &-default {
       background-color: $button-default-background-color;
-      border-color: $button-default-border-color;
-      &::after {
-        border-color: $button-default-border-color;
+      // border-color: $button-default-border-color;
+      // &::after {
+      //   border-color: $button-default-border-color;
+      // }
+      &#{$name}--shadow {
+        box-shadow: $button-default-box-shadow;
       }
     }
     &-primary {
       background-color: $button-primary-background-color;
       color: #fff;
-      border-color: $button-primary-border-color;
-      &::after {
-        border-color: $button-primary-border-color;
-      }
+      
+      // border-color: $button-primary-border-color;
+      // &::after {
+      //   border-color: $button-primary-border-color;
+      // }
       &#{$name}--ghost {
         color: $button-primary-background-color;
+        border-color: $button-primary-border-color;
+        &::after {
+          border-color: $button-primary-border-color;
+        }
+      }
+      &#{$name}--shadow {
+        box-shadow: $button-primary-box-shadow;
       }
     }
     &-warning {
       background-color: $button-warning-background-color;
       color: #fff;
-      border-color: $button-warning-border-color;
-      &::after {
-        border-color: $button-warning-border-color;
-      }
+      // border-color: $button-warning-border-color;
+      // &::after {
+      //   border-color: $button-warning-border-color;
+      // }
       &#{$name}--ghost {
         color: $button-warning-background-color;
+        border-color: $button-warning-border-color;
+        &::after {
+          border-color: $button-warning-border-color;
+        }
+      }
+      &#{$name}--shadow {
+        box-shadow: $button-warning-box-shadow;
       }
     }
   }
@@ -53,10 +71,7 @@ $name: '.caf-btn';
       padding: 0 20px;
       font-size: $button-large-font-size;
       &#{$name}--round {
-        border-radius: 50px;
-        &::after {
-          border-radius: 50px;
-        }
+        border-radius: $button-large-height;
       }
     }
     &-normal {
@@ -65,9 +80,6 @@ $name: '.caf-btn';
       font-size: $button-normal-font-size;
       &#{$name}--round {
         border-radius: $button-normal-height;
-        &::after {
-          border-radius: $button-normal-height;
-        }
       }
     }
     &-small {
@@ -76,9 +88,6 @@ $name: '.caf-btn';
       font-size: $button-small-font-size;
       &#{$name}--round {
         border-radius: $button-small-height;
-        &::after {
-          border-radius: $button-small-height;
-        }
       }
     }
     &-tiny {
@@ -88,9 +97,6 @@ $name: '.caf-btn';
       transform: scale(0.83333);
       &#{$name}--round {
         border-radius: $button-tiny-height;
-        &::after {
-          border-radius: $button-tiny-height;
-        }
       }
     }
   }
@@ -101,6 +107,8 @@ $name: '.caf-btn';
     display: flex;
   }
   &--ghost {
+    @include pixelBorder();
+    box-shadow: none;
     background-color: transparent;
   }
   &--disabled {
@@ -109,7 +117,7 @@ $name: '.caf-btn';
   &--square {
     border-radius: 0;
     &::after {
-      border-radius: 0!important;
+      border-radius: 0 !important;
     }
   }
 }

@@ -15,8 +15,10 @@ import { Button } from 'cafune';
 | icon | 按钮图标（加载状态时会被加载图标覆盖） | IButtonIcon | - | - | ❌ |
 | disabled | 是否禁用 | boolean | `false` | - | ❌ |
 | loading | 是否处于加载状态 | boolean | `false` | - | ❌ |
-| loadingInfo | 加载图标信息 | ILoading | - | - | ✅  |
-| gradient | 背景渐变 | IGradient | - | - | ✅  |
-| radius | 圆角，若为`true`，则为全圆角矩形按钮，若为`false`，则为直角矩形，若为`String`类型。则为圆角尺寸，不指定时则使用默认圆角 | boolean/string | - | - | ❌ |
+| loadingInfo | 加载图标信息 | ILoading | - | - | ❌ |
+| gradient | 背景渐变 | IGradient | - | - | ❌ |
+| radius | 圆角，若为`true`，则为全圆角矩形按钮，若为`false`，则为直角矩形，若为`String`类型。则为圆角尺寸 | boolean/string | `true` | - | ❌ |
 | block | 是否为块级元素 | boolean | `false` | - | ❌ |
+| shadow | 是否拥有阴影 | boolean | `true` | - | ❌ |
+| bgColor | 背景颜色 | string | - | - | ❌ |
 | onClick | 点击事件 | (event: Event) => void | - | - | ❌ |

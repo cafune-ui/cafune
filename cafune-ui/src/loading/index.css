@@ -1,1 +1,1 @@
-.caf-loading{display:flex;align-items:center;justify-content:center;vertical-align:middle;padding:.714286rem}.caf-loading-text{color:#969799;margin:0 0 0 .714286rem}.caf-loading__vertical{flex-direction:column}.caf-loading__vertical .caf-loading-text{margin:.714286rem 0 0}
+.caf-loading{display:flex;align-items:center;justify-content:center;vertical-align:middle;padding:.714286rem}.caf-loading__text{color:#969799;margin:0 0 0 .714286rem}.caf-loading--vertical{flex-direction:column}.caf-loading--vertical .caf-loading__text{margin:.714286rem 0 0}

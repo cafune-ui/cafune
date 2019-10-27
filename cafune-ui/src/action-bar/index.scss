@@ -1,45 +1,53 @@
-@import '../style/variables/color.scss';
+@import '../style/_var.scss';
 @import '../style/mixins/_display.scss';
+@keyframes show {
+  from {
+    transform: translateY(50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 .caf-actionbar {
   @include fixed;
   bottom: 0;
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
-  &-tip {
+  &__tip {
     margin: 0 15px -15px;
-    padding: 0 15px 15px;
+    padding: 5px 20px 20px;
     height: 28px;
     line-height: 28px;
     border-radius: 16px 16px 0 0;
-    background-color: #fffcf0;
-    color: #ee8a09;
+    background-color: $action-tip-background-color;
+    color: $action-tip-color;
     font-size: 12px;
+    animation: show .3s ease-in-out;
+    z-index: 0;
   }
-  &-main {
+  &__main {
+    position: relative;
+    z-index: 3;
     display: flex;
     align-items: center;
-    margin: 0 15px 10px;
+    margin: 0 15px 15px;
     padding: 12px 15px;
     border-radius: 16px;
     overflow: hidden;
     background: #fff;
     font-weight: 500;
-    &-desc {
+    box-shadow: 0 4px 8px #e6e6e6;
+    &__desc {
       padding: 0 10px;
       flex: 1;
     }
-    &-btn {
-      height: 42px;
-      line-height: 42px;
-      width: 120px;
-      padding: 0 5px;
-      border-radius: 42px;
-      background-color: $color_theme;
-      color: #fff;
-      text-align: center;
-      text-overflow: ellipsis;
-      &[data-disabled='1'] {
-        background-color: #bbb;
+    &__action {
+      .caf-btn + .caf-btn {
+        margin-left: 10px;
+      }
+      &:only-child {
+        flex: 1;
+        text-align: center;
       }
     }
   }

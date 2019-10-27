@@ -26,12 +26,30 @@ $button-normal-font-size: $font-size-md !default;
 $button-large-height: 50px !default;
 $button-large-font-size: $font-size-lg !default;
 
-$button-default-height: 42px !default;
 $button-default-background-color: #fff !default;
 $button-default-border-color: $border-color !default;
+$button-default-box-shadow: 0 3px 8px #e6e6e6 !default;
 
 $button-primary-background-color: $blue !default;
 $button-primary-border-color: $blue !default;
+$button-primary-box-shadow: 0 3px 8px $blue  !default;
 
 $button-warning-background-color: $red !default;
 $button-warning-border-color: $red !default;
+$button-warning-box-shadow: 0 3px 8px $red  !default;
+
+// action-bar
+$action-tip-color: #96b3a2 !default;
+$action-tip-background-color: #d5edef !default;
+
+// switch
+$switch-background-color: #d4e5f1 !default;
+$switch-active-background-color: $blue !default;
+$switch-size: 32px !default;
+$switch-height: 1em !default;
+$switch-width: 2em !default;
+$switch-circle-width: 0.9em !default;
+$switch-circle-height: 0.9em !default;
+$switch-circle-radius: 1em !default;
+$switch-circle-background-color: #fff !default;
+$switch-circle-on-background-color: #fff !default;

@@ -1,6 +1,6 @@
 import { Button } from 'cafune';
 import { Component } from 'preact';
-
+import './index.scss';
 export default class ButtonComp extends Component {
   render() {
     return (
@@ -10,14 +10,24 @@ export default class ButtonComp extends Component {
           <div class="caf-demo-buttons">
             <Button onClick={() => alert('btn clicked')}>默认按钮</Button>
             <Button type="primary">主要按钮</Button>
+            <Button type="warning">警告按钮</Button>
+          </div>
+        </div>
+        <div class="caf-demo-block">
+          <p class="caf-demo-title">幽灵按钮</p>
+          <div class="caf-demo-buttons">
             <Button type="primary" ghost>
               <p>主要按钮</p>
-              <p class="caf-demo-button-desc">(幽灵状态)</p>
             </Button>
-            <Button type="warning">警告按钮</Button>
+            <Button type="primary" ghost loading>
+              <p>主要按钮</p>
+            </Button>
+            <br />
             <Button type="warning" ghost>
               <p>警告按钮</p>
-              <p class="caf-demo-button-desc">(幽灵状态)</p>
+            </Button>
+            <Button type="warning" ghost loading>
+              <p>警告按钮</p>
             </Button>
           </div>
         </div>
@@ -93,7 +103,14 @@ export default class ButtonComp extends Component {
         <div class="caf-demo-block">
           <p class="caf-demo-title">按钮渐变</p>
           <div class="caf-demo-buttons">
-            <Button gradient={{ angle: 30, from: '#FC5C7D', to: '#6A82FB' }}>
+            <Button
+              gradient={{
+                angle: 30,
+                from: '#FC5C7D',
+                to: '#6A82FB',
+                shadow: '0 6px 8px -3px #d9669e'
+              }}
+            >
               渐变按钮
             </Button>
             <Button

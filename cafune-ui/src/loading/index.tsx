@@ -41,12 +41,12 @@ class Loading extends Component<IProps> {
       !!resultSvg && (
         <div
           className={cx(prefix, className, {
-            [`${prefix}__vertical`]: vertical
+            [`${prefix}--vertical`]: vertical
           })}
           {...restProps}
         >
           {resultSvg}
-          {!!text && <span className={`${prefix}-text`}>{text}</span>}
+          {!!text && <span className={`${prefix}__text`}>{text}</span>}
         </div>
       )
     );
