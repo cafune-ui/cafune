@@ -11,6 +11,7 @@ export default class ButtonComp extends Component {
             <Button onClick={() => alert('btn clicked')}>默认按钮</Button>
             <Button type="primary">主要按钮</Button>
             <Button type="warning">警告按钮</Button>
+            <Button type="cancel">取消按钮</Button>
           </div>
         </div>
         <div class="caf-demo-block">

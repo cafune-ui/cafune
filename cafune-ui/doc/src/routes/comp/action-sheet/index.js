@@ -1,4 +1,4 @@
-import { ActionSheet, Button } from 'cafune';
+import { ActionSheet, Button, Cell, Switch } from 'cafune';
 import { Component } from 'preact';
 
 export default class ActionSheetComp extends Component {
@@ -27,63 +27,51 @@ export default class ActionSheetComp extends Component {
             wrap: false,
             list: [
               {
-                name: 'hi',
-                subName: 'hi sub',
-                icon:
-                  'https://image.uisdc.com/wp-content/uploads/2018/07/uiii-ps-icon.png',
+                name: 'upload',
+                icon: 'upload',
                 badge: true,
                 action() {
                   console.log('ps hi');
                 }
               },
               {
-                name: 'hi2',
-                subName: 'hi2 sub',
+                name: 'search',
                 icon: 'search',
                 badge: '2',
                 action: '/'
               },
               {
-                name: 'hi2',
-                subName: 'hi2 sub',
-                icon: 'search',
-                badge: '2'
+                name: 'notice',
+                icon: 'notice'
               },
               {
-                name: 'hi2',
-                subName: 'hi2 sub',
-                icon: 'search',
-                badge: '2'
+                name: 'home',
+                icon: 'home'
               },
               {
-                name: 'hi2',
-                subName: 'hi2 sub',
-                icon: 'search',
-                badge: '2'
+                name: 'ps',
+                icon:
+                  'https://image.uisdc.com/wp-content/uploads/2018/07/uiii-ps-icon.png'
               }
             ]
           }}
           vertialList={[
             {
-              name: 'hi',
-              subName: 'hi sub',
-              icon:
-                'https://image.uisdc.com/wp-content/uploads/2018/07/uiii-ps-icon.png',
-              badge: true,
-              align: 'right',
+              name: 'browser',
+              icon: 'browser'
+            },
+            {
+              name: 'address',
+              subName: 'some address',
+              icon: 'address',
+              align: 'center',
               isDisabled: true
             },
             {
-              name: 'hi2',
-              subName: 'hi2 sub',
-              icon: 'search',
-              badge: '2',
-              isLoading: true
-            },
-            {
-              name: 'hi2',
-              subName: 'hi2 sub',
-              badge: '2',
+              name: 'location',
+              subName: 'search location',
+              icon: 'location',
+              align: 'right',
               isLoading: true
             }
           ]}
@@ -92,7 +80,9 @@ export default class ActionSheetComp extends Component {
               isActionShow1: false
             });
           }}
-        />
+        >
+          <Cell title="自定义元素" value={<Switch isActived />} middle />
+        </ActionSheet>
       </div>
     );
   }

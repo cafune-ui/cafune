@@ -2,6 +2,7 @@ import { Component, h, VNode } from 'preact';
 import cx from 'classnames';
 import Icon from '../icon';
 import Loading from '../loading';
+import Button from '../button';
 export interface iOption {
   /**
    * 单元项目图标
@@ -83,9 +84,17 @@ export interface IActionSheet {
    */
   cancelText?: string;
   /**
+   * 确认按钮文字
+   */
+  confirmText?: string;
+  /**
    * 关闭时触发事件
    */
   onClose?: Function;
+   /**
+   * 确认时触发事件
+   */
+  onConfirm?: Function;
   /**
    *  开启时触发事件*/
   onOpen?: Function;
@@ -93,8 +102,11 @@ export interface IActionSheet {
    * 是否显示取消按钮
    */
   showCancel?: boolean;
+  /**
+   * 是否显示确认按钮
+   */
+  showConfirm?: boolean;
 }
-
 
 const availableAlign = ['left', 'center', 'right'];
 const prefix = 'caf-actsheet';
@@ -103,25 +115,25 @@ function renderList(list = [], horizon, wrap = false) {
   return (
     <div
       className={cx(`${prefix}-list`, {
-        [`${prefix}-list__hori`]: horizon,
-        [`${prefix}-list__vert`]: !horizon
+        [`${prefix}-list--hori`]: horizon,
+        [`${prefix}-list--vert`]: !horizon
       })}
     >
       <div
-        className={cx(`${prefix}-list-wrapper`, {
-          [`${prefix}-list-wrapper__wrap`]: wrap
+        className={cx(`${prefix}-list__wrapper`, {
+          [`${prefix}-list__wrapper--wrap`]: wrap
         })}
       >
         {list.map(item => {
           const hasBadge = item.badge === '' || !!item.badge;
           const Badge = (
-            <span className={`${prefix}-item-badge`}>{item.badge}</span>
+            <span className={`${prefix}-item__badge`}>{item.badge}</span>
           );
           if (item.align) {
             item.align =
-              availableAlign.indexOf(item.align) === -1 ? 'center' : item.align;
+              availableAlign.indexOf(item.align) === -1 ? 'left' : item.align;
           } else if (!horizon) {
-            item.align = !!item.icon ? 'left' : 'center';
+            item.align = 'left';
           }
           const action =
             typeof item.action === 'string'
@@ -129,31 +141,31 @@ function renderList(list = [], horizon, wrap = false) {
                   location.href = item.action;
                 }
               : item.action;
-          const alignClass = `${prefix}-item__${item.align}`;
+          const alignClass = `${prefix}-item--${item.align}`;
           const icon = <Icon icon={item.icon} size={item.iconSize || '24px'} />;
           return (
             <div
               className={cx(`${prefix}-item`, {
                 [alignClass]: !horizon,
-                [`${prefix}-item__loading`]: item.isLoading,
-                [`${prefix}-item__disabled`]: item.isDisabled
+                [`${prefix}-item--loading`]: item.isLoading,
+                [`${prefix}-item--disabled`]: item.isDisabled
               })}
               onClick={action}
             >
               {horizon ? (
-                <div className={`${prefix}-item-icon`}>
+                <div className={`${prefix}-item__icon`}>
                   {icon}
                   {hasBadge && Badge}
                 </div>
               ) : (
                 !!item.icon && (
-                  <div className={`${prefix}-item-icon`}>{icon}</div>
+                  <div className={`${prefix}-item__icon`}>{icon}</div>
                 )
               )}
-              <div className={`${prefix}-item-name`}>
-                <p className={`${prefix}-item-name-main`}>{item.name}</p>
-                {!!item.subName && (
-                  <p className={`${prefix}-item-name-sub`}>{item.subName}</p>
+              <div className={`${prefix}-item__name`}>
+                <p className={`${prefix}-item__name--main`}>{item.name}</p>
+                {(!!item.subName && !horizon) && (
+                  <p className={`${prefix}-item__name--sub`}>{item.subName}</p>
                 )}
                 {!horizon && hasBadge && Badge}
               </div>
@@ -180,6 +192,7 @@ class ActionSheet extends Component<IActionSheet, {}> {
     showMask: true,
     closeOnClickMask: true,
     cancelText: '取消',
+    confirmText: '确定',
     showCancel: true
   };
   componentWillReceiveProps(nextProps) {
@@ -227,7 +240,7 @@ class ActionSheet extends Component<IActionSheet, {}> {
     );
     let $vertical = this.renderData(vertialList, false);
     return (
-      <div className={`${prefix}-content`}>
+      <div className={`${prefix}__content`}>
         {$horizon}
         {$vertical}
       </div>
@@ -236,7 +249,7 @@ class ActionSheet extends Component<IActionSheet, {}> {
   onMaskClick = e => {
     const $target = e.target;
     const className = $target.className;
-    if (className === `${prefix}-wrapper`) {
+    if (className === `${prefix}__wrapper`) {
       this.closeAct();
     }
   };
@@ -264,6 +277,18 @@ class ActionSheet extends Component<IActionSheet, {}> {
       }
     );
   };
+  confirmAct = () => {
+    this.setState(
+      {
+        isFadding: true
+      },
+      () => {
+        setTimeout(() => {
+          this.props.onConfirm && this.props.onConfirm();
+        }, 500);
+      }
+    );
+  };
   render() {
     const {
       prefix,
@@ -271,10 +296,12 @@ class ActionSheet extends Component<IActionSheet, {}> {
       showMask,
       children,
       cancelText,
+      confirmText,
       closeOnClickMask,
       title,
       isShow,
       showCancel,
+      showConfirm,
       ...restProps
     } = this.props;
     const { isFadding } = this.state;
@@ -283,24 +310,33 @@ class ActionSheet extends Component<IActionSheet, {}> {
     if (closeOnClickMask) {
       maskProp = {
         onClick: this.onMaskClick
-      }
+      };
     }
     return isShow ? (
       <div className={cx(prefix, className)} {...restProps}>
-        {showMask && <div className={`${prefix}-mask`} />}
-        <div className={`${prefix}-wrapper`} {...maskProp}>
+        {showMask && <div className={`${prefix}__mask`} />}
+        <div className={`${prefix}__wrapper`} {...maskProp}>
           <div
-            className={`${prefix}-container`}
+            className={`${prefix}__container`}
             data-status={isFadding ? 0 : 1}
           >
-            {!!title && <div className={`${prefix}-title`}>{title}</div>}
-            <div className={`${prefix}-main`}>
+            {!!title && <div className={`${prefix}__title`}>{title}</div>}
+            <div className={`${prefix}__main`}>
               {children}
               {content}
             </div>
-            {showCancel && (
-              <div className={`${prefix}-cancel`} onClick={this.closeAct}>
-                {cancelText}
+            {(showCancel || showConfirm) && (
+              <div className={`${prefix}__action`}>
+                {showCancel && (
+                  <Button block type="cancel" onClick={this.closeAct}>
+                    {cancelText}
+                  </Button>
+                )}
+                {showConfirm && (
+                  <Button block type="primary" onClick={this.confirmAct}>
+                    {confirmText}
+                  </Button>
+                )}
               </div>
             )}
           </div>

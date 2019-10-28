@@ -9,7 +9,7 @@ import { Button } from 'cafune';
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
 | prefix | 自定义类名 | string | `'caf-btn'` | - | ❌ |
-| type | 按钮类型 | literal/literal/literal | `'default'` | - | ❌ |
+| type | 按钮类型 | literal/literal/literal/literal | `'default'` | - | ❌ |
 | ghost | 是否为幽灵按钮 | boolean | `false` | - | ❌ |
 | size | 按钮尺寸 | literal/literal/literal/literal | `'normal'` | - | ❌ |
 | icon | 按钮图标（加载状态时会被加载图标覆盖） | IButtonIcon | - | - | ❌ |

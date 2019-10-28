@@ -67,7 +67,7 @@ export interface IProps {
   /**
    * 按钮类型
    */
-  type?: 'default' | 'primary' | 'warning';
+  type?: 'default' | 'primary' | 'warning' | 'cancel';
   /**
    * 是否为幽灵按钮
    */

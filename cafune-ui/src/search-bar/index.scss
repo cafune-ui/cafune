@@ -1,39 +1,48 @@
+@import '../style/_var.scss';
 $name: '.caf-search';
 #{$name} {
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
-  padding: 10px 15px;
+  height: $search-bar-height;
+  line-height: $search-bar-height;
+  border-radius: $search-bar-height;
+  padding: $search-bar-padding;
+  margin: 0 $margin-horizontal $search-bar-margin-bottom;
   background-color: #fff;
-  &-input {
+  box-shadow: 0 4px 8px -2px $box-shadow-default-color;
+  box-sizing: border-box;
+  
+  &__input {
     position: relative;
     display: flex;
     flex: 1;
-    background-color: #f7f8fa;
-    height: 32px;
-    line-height: 32px;
-    border-radius: 32px;
+    // background-color: #f7f8fa;
+   
     .caf-icon {
       padding: 0 10px;
+      color: $search-bar-icon-color;
     }
     input[type='search'] {
       box-sizing: border-box;
       width: 100%;
-      height: 32px;
       outline: none;
       appearance: none;
       border: 0;
       padding: 0 10px 0 0;
       background-color: transparent;
+      $search-bar-input-color: #aaa;
+      &::placeholder {
+        color: $search-bar-placeholder-color;
+      }
     }
   }
-  &-action {
-    padding: 10px 0;
-    overflow: hidden;
+  &__action {
+    padding: 6px 0 10px;
     margin-left: 8px;
     transition: all 0.3s ease-in-out;
-    &__hide {
+    &--hide {
       visibility: hidden;
     }
   }

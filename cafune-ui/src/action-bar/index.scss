@@ -14,14 +14,12 @@
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
   &__tip {
-    margin: 0 15px -15px;
-    padding: 5px 20px 20px;
-    height: 28px;
-    line-height: 28px;
-    border-radius: 16px 16px 0 0;
+    margin: 0 $margin-horizontal -15px;
+    padding: 10px 20px 20px;
+    border-radius: $border-radius-card $border-radius-card 0 0;
     background-color: $action-tip-background-color;
     color: $action-tip-color;
-    font-size: 12px;
+    font-size: $action-tip-font-size;
     animation: show .3s ease-in-out;
     z-index: 0;
   }
@@ -30,13 +28,13 @@
     z-index: 3;
     display: flex;
     align-items: center;
-    margin: 0 15px 15px;
+    margin: 0 $margin-horizontal 15px;
     padding: 12px 15px;
-    border-radius: 16px;
+    border-radius: $border-radius-card;
     overflow: hidden;
     background: #fff;
     font-weight: 500;
-    box-shadow: 0 4px 8px #e6e6e6;
+    box-shadow: 0 4px 8px $box-shadow-default-color;
     &__desc {
       padding: 0 10px;
       flex: 1;

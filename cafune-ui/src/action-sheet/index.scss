@@ -1,16 +1,22 @@
+@import '../style/_var.scss';
 $name: '.caf-actsheet';
 #{$name} {
-  &-container {
+  &__container {
+    display: flex;
+    flex-direction: column;
     position: fixed;
-    left: 2%;
+    left: 0;
+    right: 0;
     bottom: 0;
-    width: 96%;
-    background-color: #fff;
-    border-radius: 12px;
+    width: $action-sheet-width;
+    margin: auto;
+    max-height: $action-sheet-max-height;
+    background-color: $action-sheet-background-color;
+    border-radius: $action-sheet-border-radius;
     overflow: auto;
-    padding-top: 25px;
     transition: transform .3s;
-    margin-bottom: calc(env(safe-area-inset-bottom) + 15px);
+    margin-bottom: $action-sheet-margin-bottom;
+    margin-bottom: calc(env(safe-area-inset-bottom) + #{$action-sheet-margin-bottom});
     &[data-status='1'] {
       transform: translateY(0);
     }
@@ -19,19 +25,17 @@ $name: '.caf-actsheet';
     }
     &::before {
       content: '';
-      position: absolute;
-      top: 10px;
       left: 0;
       right: 0;
-      margin: auto;
+      margin: 10px auto;
       height: 4px;
       width: 50px;
       border-radius: 4px;
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.2);
     }
   }
-  &-mask,
-  &-wrapper {
+  &__mask,
+  &__wrapper {
     position: fixed;
     top: 0;
     right: 0;
@@ -39,48 +43,53 @@ $name: '.caf-actsheet';
     left: 0;
     z-index: 1000;
   }
-  &-mask {
-    background-color: rgba(0, 0, 0, 0.4);
+  &__mask {
+    background-color: $action-sheet-mask-background-color;
     height: 100%;
   }
-  &-title {
-    padding: 10px 15px;
-    font-size: 16px;
+  &__title {
+    padding: $action-sheet-title-padding;
+    font-size: $action-sheet-title-font-size;
   }
-  &-content {
+  &__main {
+    flex: 1;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
     padding: 0 15px;
   }
   &-list {
-    &__hori {
+    &--hori {
       #{$name}-item {
         flex-direction: column;
-        max-width: 25%;
-        min-width: 25%;
+        flex-basis: 25%;
+        flex-shrink: 0;
         text-align: center;
       }
       #{$name}-list {
-        &-wrapper {
+        &__wrapper {
           display: flex;
           overflow: auto;
           -webkit-overflow-scrolling: touch;
           flex-wrap: nowrap;
-          &__wrap {
+          padding: 10px 0;
+          &--wrap {
             flex-wrap: wrap;
           }
         }
       }
     }
-    & + & {
-      position: relative;
-      &::before {
-        content: '';
-        position: absolute;
-        box-sizing: border-box;
-        left: 0;
-        right: 0;
-        top: 0;
-        border-top: 1px solid #eee;
-        transform: scaleY(0.5);
+    &--vert {
+      #{$name}-item {
+        border-radius: 16px;
+        background-color: #f5f5f5;
+        & + #{$name}-item {
+          margin-top: 10px;
+        }
+      }
+      #{$name}-list {
+        &__wrapper {
+          padding: 10px 0;
+        }
       }
     }
   }
@@ -88,12 +97,13 @@ $name: '.caf-actsheet';
     position: relative;
     display: flex;
     align-items: center;
-    padding: 10px 5px;
+    padding: 10px 15px;
     box-sizing: border-box;
-    &-icon {
+    &__icon {
       position: relative;
+      height: 30px;
       padding: 0 10px;
-      #{$name}-item-badge {
+      #{$name}-item__badge {
         right: 5px;
         top: -4px;
       }
@@ -101,7 +111,7 @@ $name: '.caf-actsheet';
         vertical-align: middle;
       }
     }
-    &-badge {
+    &__badge {
       position: absolute;
       display: inline-block;
       background-color: #ff5b05;
@@ -122,33 +132,37 @@ $name: '.caf-actsheet';
         border-radius: 18px;
       }
     }
-    &-name {
+    &__name {
       position: relative;
       line-height: 24px;
-      &-sub {
+      &--sub {
         color: #999;
         line-height: 16px;
         font-size: 12px;
       }
-      #{$name}-item-badge {
+      #{$name}-item__badge {
         left: 100%;
         top: 2px;
       }
     }
-    &__center {
+    &--center {
       justify-content: center;
     }
-    &__left {
+    &--left {
       justify-content: flex-start;
     }
-    &__right {
+    &--right {
       justify-content: flex-end;
+      &#{$name}-item--loading .caf-loading {
+        left: 15px;
+        right: auto;
+      }
     }
-    &__disabled {
-      opacity: .4;
+    &--disabled {
+      opacity: .5;
     }
-    &__loading {
-      &::before {
+    &--loading {
+      &::before { 
         content: '';
         display: block;
         position: absolute;
@@ -169,10 +183,11 @@ $name: '.caf-actsheet';
       }
     }
   }
-  &-cancel {
-    background-color: #f0f0f0;
-    padding: 15px 0;
-    text-align: center;
-    font-size: 16px;
+  &__action {
+    display: flex;
+    padding: 15px 10px;
+    .caf-btn + .caf-btn {
+      margin-left: 10px;
+    }
   }
 }

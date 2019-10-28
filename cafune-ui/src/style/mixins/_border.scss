@@ -23,9 +23,7 @@
       transform: scale(0.5);
       border-radius: inherit;
       @include borderProps;
-      @if $color {
-        border-color: $color;
-      }
+      border-color: inherit;
     }
   }
   /* 3倍屏 */
@@ -38,9 +36,7 @@
       transform: scale(0.33);
       border-radius: inherit;
       @include borderProps;
-      @if $color {
-        border-color: $color;
-      }
+      border-color: inherit;
     }
   }
 }

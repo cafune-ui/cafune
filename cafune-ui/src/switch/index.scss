@@ -10,8 +10,8 @@ $name: '.caf-switch';
   border-radius: $switch-height;
   background-color: $switch-background-color;
   // @include pixelBorder(rgba(0, 0, 0, .1));
-
   box-shadow: 0 4px 8px -2px $switch-background-color;
+  margin-bottom: -4px;
   transition: background-color 0.3s;
   font-size: $switch-size;
   &__circle {

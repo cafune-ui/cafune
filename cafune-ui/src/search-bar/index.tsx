@@ -1,6 +1,7 @@
 import { Component, createRef, h } from 'preact';
 import cx from 'classnames';
 import Icon from '../icon';
+import Button from '../button';
 import { isBrowser } from '../util/isomorphic';
 const actionDefault = {
   confirm: {
@@ -38,60 +39,60 @@ interface IAction {
   /**
    * 按钮文字
    */
-  text?: string,
+  text?: string;
   /**
    * 是否一直显示
    */
-  keepShow?: boolean,
+  keepShow?: boolean;
   /**
    * 功能按钮点击事件，默认情况下，点击时，`actionType`为`confirm`时会额外触发`onConfirm`事件，为`cancel`时会额外触发`onCancel`事件
    */
-  onClick?: () => void
+  onClick?: () => void;
 }
 interface IProps {
   /**
-     * 自定义类名
-     */
-    prefix?: string;
-    /**
-     * 搜索框的
-     */
-    /**
-     * 占位文字
-     */
-    placeholder?: string,
-    /**
-     * 最多可允许输入字符个数
-     */
-    maxLength?: number,
-    /**
-     * 确定搜索时回调，支持`enter` 触发
-     */
-    onConfirm?: (value?) => void,
-    /**
-     * 取消操作时回调
-     */
-    onCancel?: (value?) => void;
-    /**
-     * 内容变更时回调
-     */
-    onChange?: (value?) => void;
-    /**
-     * 左侧按钮图标（参考 `Icon` 组件）
-     */
-    leftIcon?: string;
-    /**
-     * 搜索框右侧附加功能
-     */
-    // addition?: IAdditon,
-    /**
-     * 右侧功能按钮
-     */
-    action?: IAction
+   * 自定义类名
+   */
+  prefix?: string;
+  /**
+   * 搜索框的
+   */
+  /**
+   * 占位文字
+   */
+  placeholder?: string;
+  /**
+   * 最多可允许输入字符个数
+   */
+  maxLength?: number;
+  /**
+   * 确定搜索时回调，支持`enter` 触发
+   */
+  onConfirm?: (value?) => void;
+  /**
+   * 取消操作时回调
+   */
+  onCancel?: (value?) => void;
+  /**
+   * 内容变更时回调
+   */
+  onChange?: (value?) => void;
+  /**
+   * 左侧按钮图标（参考 `Icon` 组件）
+   */
+  leftIcon?: string;
+  /**
+   * 搜索框右侧附加功能
+   */
+  // addition?: IAdditon,
+  /**
+   * 右侧功能按钮
+   */
+  action?: IAction;
 }
 interface IState {
-  focus: boolean,
-  value: string | number,
+  focus: boolean;
+  value: string | number;
 }
 /**
  * 搜索栏
@@ -163,7 +164,7 @@ class SearchBar extends Component<IProps, IState> {
   onConfirm = (e?) => {
     e && e.preventDefault();
     let val;
-     if (this.inputRef && this.inputRef.current) {
+    if (this.inputRef && this.inputRef.current) {
       val = this.inputRef.current.value;
     } else {
       val = this.state.value;
@@ -182,7 +183,7 @@ class SearchBar extends Component<IProps, IState> {
       focus: true
     });
   };
-  blurFromOnClear:boolean = true;
+  blurFromOnClear: boolean = true;
   onBlur = () => {
     this.onBlurTimeout = onNextFrame(() => {
       if (!this.blurFromOnClear && isBrowser) {
@@ -204,7 +205,15 @@ class SearchBar extends Component<IProps, IState> {
   actionRef = createRef();
   formRef = createRef();
   render(
-    { prefix, className, placeholder, maxLength, action, leftIcon, ...restProps },
+    {
+      prefix,
+      className,
+      placeholder,
+      maxLength,
+      action,
+      leftIcon,
+      ...restProps
+    },
     { value, focus }
   ) {
     let isBtnHide = false;
@@ -218,7 +227,7 @@ class SearchBar extends Component<IProps, IState> {
         onSubmit={this.onConfirm}
         {...restProps}
       >
-        <div className={`${prefix}-input`}>
+        <div className={`${prefix}__input`}>
           <Icon icon={leftIcon} />
           <input
             type="search"
@@ -233,21 +242,26 @@ class SearchBar extends Component<IProps, IState> {
         </div>
         {!!action && (
           <div
-            className={cx(`${prefix}-action`, {
-              [`${prefix}-action__hide`]: isBtnHide
+            className={cx(`${prefix}__action`, {
+              [`${prefix}__action--hide`]: isBtnHide
             })}
-            onClick={() => {
-              if (action.type === 'cancel') {
-                this.onCancel()
-              } else if (action.type === 'confirm') {
-                this.onConfirm();
-              }
-              action.onClick();
-            }}
             style={{ marginRight: isBtnHide ? `${this.actionSize * -1}px` : 0 }}
             ref={this.actionRef}
           >
-            {action.text}
+            <Button
+              type={ action.type === 'cancel' ? 'warning' : 'primary' }
+              size="small"
+              onClick={() => {
+                if (action.type === 'cancel') {
+                  this.onCancel();
+                } else if (action.type === 'confirm') {
+                  this.onConfirm();
+                }
+                action.onClick();
+              }}
+            >
+              {action.text}
+            </Button>
           </div>
         )}
       </form>

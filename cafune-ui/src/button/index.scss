@@ -29,7 +29,7 @@ $name: '.caf-btn';
     }
     &-primary {
       background-color: $button-primary-background-color;
-      color: #fff;
+      color: $button-primary-color;
       
       // border-color: $button-primary-border-color;
       // &::after {
@@ -38,9 +38,6 @@ $name: '.caf-btn';
       &#{$name}--ghost {
         color: $button-primary-background-color;
         border-color: $button-primary-border-color;
-        &::after {
-          border-color: $button-primary-border-color;
-        }
       }
       &#{$name}--shadow {
         box-shadow: $button-primary-box-shadow;
@@ -48,7 +45,7 @@ $name: '.caf-btn';
     }
     &-warning {
       background-color: $button-warning-background-color;
-      color: #fff;
+      color: $button-warning-color;
       // border-color: $button-warning-border-color;
       // &::after {
       //   border-color: $button-warning-border-color;
@@ -56,12 +53,24 @@ $name: '.caf-btn';
       &#{$name}--ghost {
         color: $button-warning-background-color;
         border-color: $button-warning-border-color;
-        &::after {
-          border-color: $button-warning-border-color;
-        }
       }
       &#{$name}--shadow {
         box-shadow: $button-warning-box-shadow;
+      }
+    }
+    &-cancel {
+      background-color: $button-cancel-background-color;
+      color: $button-cancel-color;
+      // border-color: $button-warning-border-color;
+      // &::after {
+      //   border-color: $button-warning-border-color;
+      // }
+      &#{$name}--ghost {
+        color: $button-cancel-background-color;
+        border-color: $button-cancel-border-color;
+      }
+      &#{$name}--shadow {
+        box-shadow: $button-cancel-box-shadow;
       }
     }
   }
@@ -84,7 +93,7 @@ $name: '.caf-btn';
     }
     &-small {
       height: $button-small-height;
-      padding: 0 10px;
+      padding: 0 15px;
       font-size: $button-small-font-size;
       &#{$name}--round {
         border-radius: $button-small-height;
@@ -105,6 +114,7 @@ $name: '.caf-btn';
   }
   &--block {
     display: flex;
+    width: 100%;
   }
   &--ghost {
     @include pixelBorder();
@@ -116,8 +126,5 @@ $name: '.caf-btn';
   }
   &--square {
     border-radius: 0;
-    &::after {
-      border-radius: 0 !important;
-    }
   }
 }

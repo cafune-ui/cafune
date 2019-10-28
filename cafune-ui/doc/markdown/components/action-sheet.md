@@ -17,6 +17,9 @@ import { ActionSheet } from 'cafune';
 | vertialList | 纵向展示的数据 | Array | - | - | ✅  |
 | title | 标题栏 | string/VNode/Component/HTMLElement | - | - | ❌ |
 | cancelText | 取消按钮文字 | string | `'取消'` | - | ❌ |
+| confirmText | 确认按钮文字 | string | `'确定'` | - | ❌ |
 | onClose | 关闭时触发事件 | Function | - | - | ❌ |
+| onConfirm | 确认时触发事件 | Function | - | - | ❌ |
 | onOpen | 开启时触发事件 | Function | - | - | ❌ |
 | showCancel | 是否显示取消按钮 | boolean | `true` | - | ❌ |
+| showConfirm | 是否显示确认按钮 | boolean | - | - | ❌ |

@@ -1,49 +1,77 @@
 
 // color
-$blue: #6595d0;
-$red: #e27777;
+$blue: #6595d0 !default;
+$red: #e27777 !default;
+$green: #d5edef !default;
+$grey: #e6e6e6 !default;
+$white: #fff  !default;
+
+$box-shadow-default-color: #e6e6e6 !default;
 
 $color_theme: #3f77f6 !default;
+// margin
+$margin-horizontal: 15px;
+
 // border
 $border-color: #dedede !default;
 $border-radius-sm: 2px !default;
 $border-radius-md: 4px !default;
+$border-radius-card: 16px !default;
 
-// Font
+
+// font
 $font-size-xs: 10px !default;
 $font-size-sm: 12px !default;
 $font-size-md: 14px !default;
 $font-size-lg: 16px !default;
 $font-weight-bold: 500;
 
+// action-sheet 
+$action-sheet-width: 94%;
+$action-sheet-max-height: 70% !default;
+$action-sheet-background-color: #fff !default;
+$action-sheet-border-radius: $border-radius-card !default;
+$action-sheet-margin-bottom: 15px !default;
+$action-sheet-mask-background-color: rgba(0, 0, 0, 0.4) !default;
+$action-sheet-title-padding: 10px 20px !default;
+$action-sheet-title-font-size: 16px!default;
+
 // button
 $button-tiny-height: 24px !default;
 $button-tiny-font-size: $font-size-xs !default;
-$button-small-height: 36px !default;
+$button-small-height: 28px !default;
 $button-small-font-size: $font-size-sm !default;
 $button-normal-height: 42px !default;
 $button-normal-font-size: $font-size-md !default;
 $button-large-height: 50px !default;
 $button-large-font-size: $font-size-lg !default;
 
-$button-default-background-color: #fff !default;
+$button-default-background-color: $white !default;
 $button-default-border-color: $border-color !default;
 $button-default-box-shadow: 0 3px 8px #e6e6e6 !default;
 
+$button-primary-color: $white !default;
 $button-primary-background-color: $blue !default;
 $button-primary-border-color: $blue !default;
 $button-primary-box-shadow: 0 3px 8px $blue  !default;
 
+$button-warning-color: $white !default;
 $button-warning-background-color: $red !default;
 $button-warning-border-color: $red !default;
 $button-warning-box-shadow: 0 3px 8px $red  !default;
 
+$button-cancel-color: #a2a2a2 !default;
+$button-cancel-background-color: $grey !default;
+$button-cancel-border-color: $grey !default;
+$button-cancel-box-shadow: 0 3px 8px $grey  !default;
+
 // action-bar
 $action-tip-color: #96b3a2 !default;
-$action-tip-background-color: #d5edef !default;
+$action-tip-font-size: 12px !default;
+$action-tip-background-color: $green !default;
 
 // switch
-$switch-background-color: #d4e5f1 !default;
+$switch-background-color: $green !default;
 $switch-active-background-color: $blue !default;
 $switch-size: 32px !default;
 $switch-height: 1em !default;
@@ -51,5 +79,13 @@ $switch-width: 2em !default;
 $switch-circle-width: 0.9em !default;
 $switch-circle-height: 0.9em !default;
 $switch-circle-radius: 1em !default;
-$switch-circle-background-color: #fff !default;
-$switch-circle-on-background-color: #fff !default;
+$switch-circle-background-color: $white !default;
+$switch-circle-on-background-color: $white !default;
+
+// search-bar
+$search-bar-height: 42px !default;
+$search-bar-margin-bottom: 12px !default;
+$search-bar-padding: 10px 15px 10px 10px !default;
+$search-bar-icon-color: #aaa !default;
+$search-bar-input-color: #333 !default;
+$search-bar-placeholder-color: #ccc !default;
