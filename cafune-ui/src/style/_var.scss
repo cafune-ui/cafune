@@ -10,7 +10,7 @@ $box-shadow-default-color: #e6e6e6 !default;
 
 $color_theme: #3f77f6 !default;
 // margin
-$margin-horizontal: 15px;
+$horizontal-distance: 15px;
 
 // border
 $border-color: #dedede !default;
@@ -89,3 +89,21 @@ $search-bar-padding: 10px 15px 10px 10px !default;
 $search-bar-icon-color: #aaa !default;
 $search-bar-input-color: #333 !default;
 $search-bar-placeholder-color: #ccc !default;
+
+// stepper
+$stepper-height: 32px !default;
+$stepper-background-color: $blue !default;
+$stepper-input-color: $white !default;
+$stepper-disabled-color: rgba(255, 255, 255, .5) !default;
+$stepper-input-min-width: 28px !default;
+$stepper-input-max-width: 28px !default;
+$stepper-input-font-size: 18px !default;
+$stepper-btn-width: $stepper-height !default;
+$stepper-btn-minus-background-color: #f2f2f2 !default;
+$stepper-btn-plus-background-color: $blue !default;
+$stepper-btn-plus-color: rgba(255, 255, 255, .6) !default;
+$stepper-btn-minus-color: rgba(255, 255, 255, .6) !default;
+$stepper-btn-minus-size: 10px !default;
+$stepper-btn-plus-size: 10px !default;
+$stepper-icon-thick: 1px !default;
+$stepper-icon-percent: 32% !default;

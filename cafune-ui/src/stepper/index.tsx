@@ -6,9 +6,9 @@ interface IProps {
    */
   prefix?: string,
   /**
-   * 当前值
+   * 初始值
    */
-  value: number,
+  initVal?: number,
   /**
    * 最小值
    */
@@ -20,8 +20,11 @@ interface IProps {
   /**
    * 步进数
    */
-
   step?: number,
+  /**
+   * 是否显示前后数字，更直观预知
+   */
+  showNum?: boolean,
   /**
    * 是否处于禁用状态
    */
@@ -46,28 +49,42 @@ class Stepper extends Component<IProps> {
   static defaultProps = {
     prefix: 'caf-stepper',
     step: 1,
+    showNum: false,
     disabled: false,
     integerOnly: false,
     readOnly: false,
     min: 0,
     max: Infinity
   };
+  state = {
+    value: this.props.initVal || 1
+  }
+  triggerChange(result) {
+    const { onChange } = this.props;
+    this.setState({
+      value: Number(result)
+    })
+    onChange && onChange(result);
+  }
   minus = () => {
-    const { onChange, value, step, min, disabled } = this.props;
+    const { onChange, step, min, disabled } = this.props;
+    const { value } = this.state;
     if (value != min && !disabled) {
       const result = value - step <= min ? min : value - step;
-      onChange(result);
+      this.triggerChange(result);
     }
   };
   plus = () => {
-    const { onChange, value, step, max, disabled } = this.props;
+    const { onChange, step, max, disabled } = this.props;
+    const { value } = this.state;
     if (value != max && !disabled) {
       const result = value + step >= max ? max : value + step;
-      onChange(result);
+      this.triggerChange(result);
     }
   };
   onInputChange = e => {
-    const { value, min, max, integerOnly, onChange } = this.props;
+    const { min, max, integerOnly } = this.props;
+    const { value } = this.state;
     const $target = e.target;
     const tarVal = $target.value;
     let final;
@@ -81,28 +98,29 @@ class Stepper extends Component<IProps> {
     if (final && final !== tarVal) {
       $target.value = final;
     }
-    onChange($target.value);
+    this.triggerChange($target.value);
   };
-  render({ prefix, className, disabled, step, min, max, value, readOnly, ...restProps }) {
-    const isReachMin = value - step < min || value === min;
-    const isReachMax = value + step > max || value === max;
+  render({ prefix, className, disabled, step, min, max, showNum, readOnly, ...restProps }, { value }) {
+    const isReachMin = Number(value) - step < min || value === min;
+    const isReachMax = Number(value) + step > max || value === max;
     return (
       <div className={cx(prefix, className)} {...restProps}>
         <span
-          className={cx(`${prefix}-btn`, `${prefix}-btn__minus`, {
-            [`${prefix}-btn__disabled`]: disabled || isReachMin
+          className={cx(`${prefix}__btn`, `${prefix}__btn--minus`, {
+            [`${prefix}__btn--disabled`]: disabled || isReachMin
           })}
           onClick={this.minus}
-        />
+        >{ showNum ? isReachMin ? min : Number(value) - step : ''}</span>
         <div
-          className={cx(`${prefix}-input`, {
-            [`${prefix}-input__disabled`]: disabled
+          className={cx(`${prefix}__input`, {
+            [`${prefix}__input--disabled`]: disabled
           })}
         >
           {readOnly ? (
-            <p className={`${prefix}-input-content`}>{value}</p>
+            <p className={`${prefix}__input__content`}>{value}</p>
           ) : (
             <input
+              type="number"
               aria-valuemin={min}
               aria-valuemax={max}
               disabled={disabled}
@@ -113,11 +131,11 @@ class Stepper extends Component<IProps> {
           )}
         </div>
         <span
-          className={cx(`${prefix}-btn`, `${prefix}-btn__plus`, {
-            [`${prefix}-btn__disabled`]: disabled || isReachMax
+          className={cx(`${prefix}__btn`, `${prefix}__btn--plus`, {
+            [`${prefix}__btn--disabled`]: disabled || isReachMax
           })}
           onClick={this.plus}
-        />
+        >{ showNum ? isReachMax ? min : Number(value) + step : ''}</span>
       </div>
     );
   }

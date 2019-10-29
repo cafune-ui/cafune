@@ -61,16 +61,16 @@ export default class ActionSheetComp extends Component {
               icon: 'browser'
             },
             {
-              name: 'address',
-              subName: 'some address',
-              icon: 'address',
+              name: 'error',
+              subName: 'on disabled state',
+              icon: 'error',
               align: 'center',
               isDisabled: true
             },
             {
-              name: 'location',
-              subName: 'search location',
-              icon: 'location',
+              name: 'refresh',
+              subName: 'on loading state',
+              icon: 'refresh',
               align: 'right',
               isLoading: true
             }
@@ -80,6 +80,7 @@ export default class ActionSheetComp extends Component {
               isActionShow1: false
             });
           }}
+          showConfirm
         >
           <Cell title="自定义元素" value={<Switch isActived />} middle />
         </ActionSheet>
