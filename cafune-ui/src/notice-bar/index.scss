@@ -1,3 +1,5 @@
+@import '../style/_var.scss';
+
 $name: '.caf-noticebar';
 @keyframes caf-noticebar-display {
   to {
@@ -13,55 +15,70 @@ $name: '.caf-noticebar';
   display: flex;
   align-items: center;
   position: relative;
-  height: 40px;
-  line-height: 24px;
+  height: $noticebar-height;
+  border-radius: $noticebar-border-radius;
+  line-height: $noticebar-line-height;
   padding: 0 15px;
-  color: #ed6a0c;
-  background-color: #fffbe8;
   .caf-icon {
-    min-width: 22px;
+    min-width: 26px;
     text-align: left;
   }
-  &-wrapper {
+  &__wrapper {
     position: relative;
     flex: 1;
     overflow: hidden;
-    height: 24px;
+    height: $noticebar-line-height;
   }
-  &-content {
+  &__content {
     position: absolute;
-    &__scroll {
+    &--scroll {
       white-space: nowrap;
       animation: caf-noticebar-display linear both;
-      &__infinite {
+      &-infinite {
         animation: caf-noticebar-display-infinite linear infinite both;
       }
     }
-    &__ellipsis {
+    &--ellipsis {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       max-width: 100%;
     }
   }
-  &-action {
+  &__action {
     padding-left: 5px;
     text-align: right;
     .caf-icon {
       text-align: right;
     }
   }
-  &__wrapable {
+  &--wrapable {
     height: auto;
     padding: 8px 15px;
     #{$name} {
-      &-content {
+      &__content {
         position: relative;
         white-space: normal;
       }
-      &-wrapper {
+      &__wrapper {
         height: auto;
       }
     }
+  }
+  &--notice {
+    background-color: $noticebar-notice-background-color;
+    color: $noticebar-notice-color;
+  }
+  &--error {
+    background-color: $noticebar-error-background-color;
+    color: $noticebar-error-color;
+  }
+  &--warning {
+    background-color: $noticebar-warning-background-color;
+    color: $noticebar-warning-color;
+  }
+  &--success {
+    background-color: $noticebar-success-background-color;
+    color: $noticebar-success-color;
   }
 }

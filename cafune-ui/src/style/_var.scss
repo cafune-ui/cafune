@@ -107,3 +107,15 @@ $stepper-btn-minus-size: 10px !default;
 $stepper-btn-plus-size: 10px !default;
 $stepper-icon-thick: 1px !default;
 $stepper-icon-percent: 32% !default;
+
+//noticebar
+$noticebar-height: 40px !default;$noticebar-border-radius: $noticebar-height !default;
+$noticebar-line-height: 24px !default;
+$noticebar-notice-background-color: #ececec !default;
+$noticebar-notice-color: #5d5d5d !default;
+$noticebar-error-background-color: #f9b0b0 !default;
+$noticebar-error-color: #f35858 !default;
+$noticebar-warning-background-color: #fffbe8 !default;
+$noticebar-warning-color: #ed6a0c !default;
+$noticebar-success-background-color: #c4ead3 !default;
+$noticebar-success-color: #5eb19f !default;

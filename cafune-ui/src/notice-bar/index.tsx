@@ -11,6 +11,10 @@ interface IProps {
   /**
    * 消息内容
    */
+  type?: 'error' | 'success' | 'notice' | 'error';
+  /**
+   * 消息内容
+   */
   text?: string;
   /**
    * 是否启用滚动
@@ -65,7 +69,8 @@ class NoticeBar extends Component<IProps> {
     prefix: 'caf-noticebar',
     scrollable: true,
     wrapable: false,
-    icon: 'notice',
+    type: 'notice',
+    icon: '',
     speed: 50,
     delay: 1
   };
@@ -74,7 +79,8 @@ class NoticeBar extends Component<IProps> {
     offsetWidth: 0,
     duration: 0,
     isFirst: true,
-    isShow: true
+    isShow: true,
+    isOverflow: true
   };
   wrap = createRef();
   content = createRef();
@@ -106,13 +112,17 @@ class NoticeBar extends Component<IProps> {
     const $content: HTMLElement = content.current;
     const wrapWidth = $wrap.getBoundingClientRect().width;
     const offsetWidth = $content.getBoundingClientRect().width;
-
     if (scrollable && offsetWidth > wrapWidth) {
       this.setState({
+        isOverflow: true,
         wrapWidth,
         offsetWidth,
         duration: offsetWidth / speed
       });
+    } else {
+      this.setState({
+        isOverflow: false
+      })
     }
   }
   onRightClick = () => {
@@ -127,6 +137,7 @@ class NoticeBar extends Component<IProps> {
     {
       prefix,
       className,
+      type,
       text,
       icon,
       scrollable,
@@ -137,7 +148,7 @@ class NoticeBar extends Component<IProps> {
       action,
       ...restProps
     },
-    { isFirst, duration, wrapWidth, isShow }
+    { isFirst, duration, wrapWidth, isShow, isOverflow }
   ) {
     let barStyle = {};
     if (color || bgColor) {
@@ -147,7 +158,7 @@ class NoticeBar extends Component<IProps> {
       };
     }
     let contentStyle = {};
-    if (!wrapable) {
+    if (!wrapable && isOverflow) {
       contentStyle = {
         paddingLeft: isFirst ? 0 : wrapWidth + 'px',
         animationDelay: (isFirst ? delay : 0) + 's',
@@ -158,14 +169,14 @@ class NoticeBar extends Component<IProps> {
     if (!!action) {
       if (action === 'closable' || action === 'link') {
         rightIcon = (
-          <span className={`${prefix}-action`} onClick={this.onRightClick}>
+          <span className={`${prefix}__action`} onClick={this.onRightClick}>
             <Icon icon={action === 'closable' ? 'wrong' : 'arrow-right'} />
           </span>
         );
       } else {
         rightIcon =
           typeof action === 'string' ? (
-            <span className={`${prefix}-action`}>{action}</span>
+            <span className={`${prefix}__action`}>{action}</span>
           ) : (
             action
           );
@@ -176,18 +187,19 @@ class NoticeBar extends Component<IProps> {
       return (
         <div
           className={cx(prefix, className, {
-            [`${prefix}__wrapable`]: wrapable
+            [`${prefix}--wrapable`]: wrapable,
+            [`${prefix}--${type}`]: !!type && ~['notice', 'error', 'warning', 'success'].indexOf(type)
           })}
           style={barStyle}
           {...restProps}
         >
-          {!!icon && <Icon icon={typeof icon === 'string' ? icon : 'notice'} />}
-          <div className={`${prefix}-wrapper`} ref={this.wrap}>
+          {(typeof icon === 'string' || icon) && <Icon icon={icon || type} />}
+          <div className={`${prefix}__wrapper`} ref={this.wrap}>
             <p
-              className={cx(`${prefix}-content`, {
-                [`${prefix}-content__scroll`]: scrollable && !wrapable,
-                [`${prefix}-content__scroll__infinite`]: !isFirst && !wrapable,
-                [`${prefix}-content__ellipsis`]: !scrollable && !wrapable
+              className={cx(`${prefix}__content`, {
+                [`${prefix}__content--scroll`]: scrollable && !wrapable && isOverflow,
+                [`${prefix}__content--scroll-infinite`]: !isFirst && !wrapable && isOverflow,
+                [`${prefix}__content--ellipsis`]: !scrollable && !wrapable
               })}
               {...addPrefix('onAnimationEnd', this.onAnimationEnd)}
               ref={this.content}

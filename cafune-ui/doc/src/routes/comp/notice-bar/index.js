@@ -4,9 +4,21 @@ import './style.scss';
 export default class Page extends Component {
   render() {
     return (
-      <div class="caf-demo caf-demo__noticebar">
+      <div class="caf-demo caf-demo-block caf-demo__noticebar">
         <p>基础用法</p>
-        <NoticeBar text="通知内容通知内容通知内容通知内容通知内容通知内容通知内容" />
+        <NoticeBar text="默认类型通告栏，用于正常的通告信息或提示信息，相对不醒目" />
+        <NoticeBar
+          type="warning"
+          text="提醒类型通告栏，带有一定警示性，用于可能发生误操作或提醒用户的情况"
+        />
+        <NoticeBar
+          type="error"
+          text="错误类型通告栏，用于发生了错误操作或有重要警示信息时使用"
+        />
+        <NoticeBar
+          type="success"
+          text="成功类型通告栏，用于成功操作后的页面提醒或一些温馨提醒，相对柔和"
+        />
         <p>自定义图标</p>
         <NoticeBar
           icon={false}
@@ -28,9 +40,8 @@ export default class Page extends Component {
         />
         <p>自定义样式</p>
         <NoticeBar
-          color="#fff"
-          bgColor="#177cb0"
-          icon="more"
+          color="#bd9e6f"
+          bgColor="#4c4c4c"
           text="通知内容通知内容通知内容通知内容通知内容通知内容通知内容"
         />
         <p>自定义右侧</p>

@@ -120,7 +120,6 @@ class Stepper extends Component<IProps> {
             <p className={`${prefix}__input__content`}>{value}</p>
           ) : (
             <input
-              type="number"
               aria-valuemin={min}
               aria-valuemax={max}
               disabled={disabled}
