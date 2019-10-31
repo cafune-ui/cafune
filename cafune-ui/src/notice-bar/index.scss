@@ -19,9 +19,11 @@ $name: '.caf-noticebar';
   border-radius: $noticebar-border-radius;
   line-height: $noticebar-line-height;
   padding: 0 15px;
-  .caf-icon {
-    min-width: 26px;
-    text-align: left;
+  &__icon {
+    .caf-icon {
+      min-width: 26px;
+      text-align: left;
+    }
   }
   &__wrapper {
     position: relative;
@@ -49,7 +51,7 @@ $name: '.caf-noticebar';
     padding-left: 5px;
     text-align: right;
     .caf-icon {
-      text-align: right;
+      text-align: center;
     }
   }
   &--wrapable {
@@ -68,17 +70,23 @@ $name: '.caf-noticebar';
   &--notice {
     background-color: $noticebar-notice-background-color;
     color: $noticebar-notice-color;
+
+    box-shadow: 0 4px 8px -2px $noticebar-notice-background-color;
   }
   &--error {
     background-color: $noticebar-error-background-color;
     color: $noticebar-error-color;
+
+    box-shadow: 0 4px 8px -2px $noticebar-error-background-color;
   }
   &--warning {
     background-color: $noticebar-warning-background-color;
     color: $noticebar-warning-color;
+    box-shadow: 0 4px 8px -2px $noticebar-warning-background-color;
   }
   &--success {
     background-color: $noticebar-success-background-color;
     color: $noticebar-success-color;
+    box-shadow: 0 4px 8px -2px $noticebar-success-background-color;
   }
 }

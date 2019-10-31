@@ -112,10 +112,31 @@ $stepper-icon-percent: 32% !default;
 $noticebar-height: 40px !default;$noticebar-border-radius: $noticebar-height !default;
 $noticebar-line-height: 24px !default;
 $noticebar-notice-background-color: #ececec !default;
-$noticebar-notice-color: #5d5d5d !default;
-$noticebar-error-background-color: #f9b0b0 !default;
-$noticebar-error-color: #f35858 !default;
-$noticebar-warning-background-color: #fffbe8 !default;
-$noticebar-warning-color: #ed6a0c !default;
+$noticebar-notice-color: #8e8e8e !default;
+$noticebar-error-background-color: #f9caca !default;
+$noticebar-error-color:#ec8888 !default;
+$noticebar-warning-background-color: #fbf5d9 !default;
+$noticebar-warning-color: #f7a76e !default;
 $noticebar-success-background-color: #c4ead3 !default;
 $noticebar-success-color: #5eb19f !default;
+
+// steps
+$steps-normal-color: $grey !default;
+$steps-success-color: $blue !default;
+$steps-failed-color: $red !default;
+$steps-decimal-size: 18px !default;
+$steps-decimal-font-size: 10px !default;
+$steps-circle-size: 8px !default;
+$steps-content-desc-font-size: 10px !default;
+$steps-content-desc-margin: 4px 0 0 0 !default;
+$steps-content-desc-padding: 0 4px !default;
+$steps-content-title-font-size: 12px !default;
+$steps-content-title-line-height: 18px !default;
+
+$steps-vertical-padding: 0 15px !default;
+$steps-vertical-block-size: 40px !default;
+$steps-vertical-block-margin-top: 20px !default;
+$steps-vertical-block-margin-left: 36px !default;
+
+$steps-horizontal-padding: 15px 0 !default;
+$steps-horizontal-content-margin: 8px 0 0!default;

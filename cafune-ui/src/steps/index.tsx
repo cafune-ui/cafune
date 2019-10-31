@@ -16,7 +16,7 @@ interface IProps {
   /**
    * 当前步骤状态
    */
-  status?: 'pend' | 'process' | 'finish' | 'error';
+  status?: 'pend' | 'process' | 'finish' | 'failed';
   /**
    * 步骤条方向
    */
@@ -90,7 +90,7 @@ class Steps extends Component<IProps> {
   render({ prefix, className, direction, ...restProps }) {
     return (
       <div
-        className={cx(prefix, className, `${prefix}__${direction}`)}
+        className={cx(prefix, className, `${prefix}--${direction}`)}
         {...restProps}
       >
         {this.renderSteps()}

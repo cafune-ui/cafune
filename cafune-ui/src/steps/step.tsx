@@ -3,23 +3,23 @@ import cx from 'classnames';
 import Icon from '../icon';
 const defaultIconMap = (prefix, status, isDecimal, ind) => {
   if (isDecimal) {
-    return <span className={`${prefix}-icon-decimal`}>{ind}</span>;
+    return <span className={`${prefix}__icon__decimal`}>{ind}</span>;
   } else {
     if (status === 'finish') {
       return (
-        <span className={`${prefix}-icon-container`}>
+        <span className={`${prefix}__icon__container`}>
           <Icon icon="check" />
         </span>
       );
     }
-    if (status === 'error') {
+    if (status === 'failed') {
       return (
-        <span className={`${prefix}-icon-container`}>
+        <span className={`${prefix}__icon__container`}>
           <Icon icon="wrong" />
         </span>
       );
     }
-    return <i className={`${prefix}-icon-circle`} />;
+    return <i className={`${prefix}__icon__circle`} />;
   }
 };
 interface IProps {
@@ -93,14 +93,14 @@ class Step extends Component<IProps> {
   render({ prefix, className, title, desc, status, ...restProps }) {
     return (
       <div
-        className={cx(prefix, className, `${prefix}__${status}`)}
+        className={cx(prefix, className, `${prefix}--${status}`)}
         {...restProps}
       >
-        <div className={`${prefix}-tail`}></div>
-        <div className={`${prefix}-icon`}>{this.renderIcon()}</div>
-        <div className={`${prefix}-content`}>
-          {!!title && <div className={`${prefix}-content-title`}>{title}</div>}
-          {!!desc && <div className={`${prefix}-content-desc`}>{desc}</div>}
+        <div className={`${prefix}__tail`}></div>
+        <div className={`${prefix}__icon`}>{this.renderIcon()}</div>
+        <div className={`${prefix}__content`}>
+          {!!title && <div className={`${prefix}__content__title`}>{title}</div>}
+          {!!desc && <div className={`${prefix}__content__desc`}>{desc}</div>}
         </div>
       </div>
     );

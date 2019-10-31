@@ -146,6 +146,7 @@ class NoticeBar extends Component<IProps> {
       color,
       bgColor,
       action,
+      speed,
       ...restProps
     },
     { isFirst, duration, wrapWidth, isShow, isOverflow }
@@ -174,12 +175,7 @@ class NoticeBar extends Component<IProps> {
           </span>
         );
       } else {
-        rightIcon =
-          typeof action === 'string' ? (
-            <span className={`${prefix}__action`}>{action}</span>
-          ) : (
-            action
-          );
+        rightIcon = <div className={`${prefix}__action`}>{action}</div>
       }
     }
 
@@ -193,7 +189,7 @@ class NoticeBar extends Component<IProps> {
           style={barStyle}
           {...restProps}
         >
-          {(typeof icon === 'string' || icon) && <Icon icon={icon || type} />}
+          {(typeof icon === 'string' || icon) && <div className={`${prefix}__icon`}><Icon icon={icon || type} /></div>}
           <div className={`${prefix}__wrapper`} ref={this.wrap}>
             <p
               className={cx(`${prefix}__content`, {

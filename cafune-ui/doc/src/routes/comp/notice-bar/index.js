@@ -1,11 +1,11 @@
 import { Component } from 'preact';
-import { NoticeBar } from 'cafune';
+import { NoticeBar, Button } from 'cafune';
 import './style.scss';
 export default class Page extends Component {
   render() {
     return (
       <div class="caf-demo caf-demo-block caf-demo__noticebar">
-        <p>基础用法</p>
+        <p class="caf-demo-title">基础用法</p>
         <NoticeBar text="默认类型通告栏，用于正常的通告信息或提示信息，相对不醒目" />
         <NoticeBar
           type="warning"
@@ -19,7 +19,7 @@ export default class Page extends Component {
           type="success"
           text="成功类型通告栏，用于成功操作后的页面提醒或一些温馨提醒，相对柔和"
         />
-        <p>自定义图标</p>
+        <p class="caf-demo-title">自定义图标</p>
         <NoticeBar
           icon={false}
           text="禁用图标通知内容通知内容通知内容通知内容通知内容通知内容通知内容"
@@ -28,23 +28,28 @@ export default class Page extends Component {
           icon="more"
           text="自定义图标通知内容通知内容通知内容通知内容通知内容通知内容通知内容"
         />
-        <p>禁止滚动</p>
+        <p class="caf-demo-title">禁止滚动</p>
         <NoticeBar
           scrollable={false}
           text="通知内容通知内容通知内容通知内容通知内容通知内容通知内容"
         />
-        <p>多行展示</p>
+        <p class="caf-demo-title">多行展示</p>
         <NoticeBar
           wrapable={true}
           text="通知内容通知内容通知内容通知内容通知内容通知内容通知内容"
         />
-        <p>自定义样式</p>
+        <p class="caf-demo-title">自定义样式</p>
         <NoticeBar
           color="#bd9e6f"
           bgColor="#4c4c4c"
           text="通知内容通知内容通知内容通知内容通知内容通知内容通知内容"
         />
-        <p>自定义右侧</p>
+        <p class="caf-demo-title">自定义速度</p>
+        <NoticeBar
+          speed="100"
+          text="通知内容通知内容通知内容通知内容通知内容通知内容通知内容"
+        />
+        <p class="caf-demo-title">自定义操作</p>
         <NoticeBar
           action="closable"
           onClick={() => {
@@ -61,7 +66,11 @@ export default class Page extends Component {
           text="通知内容通知内容通知内容通知内容通知内容通知内容通知内容"
         />
         <NoticeBar
-          action={<span style="color: #88ada6;">去看看</span>}
+          action={
+            <Button size="small" shadow={false}>
+              去看看
+            </Button>
+          }
           text="通知内容通知内容通知内容通知内容通知内容通知内容通知内容"
         />
       </div>

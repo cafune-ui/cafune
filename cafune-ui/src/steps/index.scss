@@ -1,7 +1,7 @@
+@import '../style/_var.scss';
+
 $stepsName: '.caf-steps';
 $stepName: '.caf-step';
-$color_success: #5b97e6;
-$color_error: #d41616;
 #{$stepsName} {
   display: flex;
   box-sizing: border-box;
@@ -11,7 +11,7 @@ $color_error: #d41616;
   }
   #{$stepName} {
     position: relative;
-    &-tail {
+    &__tail {
       position: absolute;
       &::before,
       &::after {
@@ -19,97 +19,96 @@ $color_error: #d41616;
         display: inline-block;
         position: absolute;
         top: 0;
-        left: -2px;
       }
       &::before {
         background-color: #e1e1e1;
       }
       &::after {
-        background-color: $color_success;
+        background-color: $steps-success-color;
         transition: all 0.3s ease-in-out;
       }
     }
-    &-icon {
-      width: 18px;
-      height: 18px;
+    &__icon {
+      width: $steps-decimal-size;
+      height: $steps-decimal-size;
       margin: auto;
       text-align: center;
       transition: all 0.3s ease-in-out;
-      &-decimal {
+      &__decimal {
         display: inline-block;
-        height: 18px;
-        line-height: 18px;
-        width: 18px;
+        height: $steps-decimal-size;
+        line-height: $steps-decimal-size;
+        width: $steps-decimal-size;
         border-radius: 50%;
         color: #fff;
-        background-color: #ccc;
-        font-size: 12px;
+        background-color: $steps-normal-color;
+        font-size: $steps-decimal-font-size;
       }
-      &-circle {
+      &__circle {
         display: inline-block;
-        height: 6px;
-        width: 6px;
+        height: $steps-circle-size;
+        width: $steps-circle-size;
         margin: auto;
         border-radius: 50%;
-        background-color: #ccc;
+        background-color: $steps-normal-color;
       }
     }
-    &-content {
-      &-desc {
-        margin-top: 4px;
-        font-size: 12px;
+    &__content {
+      &__desc {
+        padding: $steps-content-desc-padding;
+        font-size: $steps-content-desc-font-size;
         color: #999;
       }
-      &-title {
-        line-height: 20px;
-        font-size: 14px;
+      &__title {
+        line-height: $steps-content-title-line-height;
+        font-size: $steps-content-title-font-size;
         color: #333;
-        & + #{$stepName}-content-desc {
-          margin-top: 4px;
+        & + #{$stepName}__content__desc {
+          margin: $steps-content-desc-margin;
         }
       }
     }
-    &__process {
+    &--process {
       #{$stepName} {
-        &-icon {
-          &-decimal,
-          &-circle {
-            background-color: $color_success;
+        &__icon {
+          &__decimal,
+          &__circle {
+            background-color: $steps-success-color;
           }
         }
       }
     }
-    &__finish {
+    &--finish {
       #{$stepName} {
-        color: $color_success;
-        &-icon {
-          color: $color_success;
-          &-circle {
-            background-color: $color_success;
+        color: $steps-success-color;
+        &__icon {
+          color: $steps-success-color;
+          &__circle {
+            background-color: $steps-success-color;
           }
-          &-decimal {
-            background-color: $color_success;
+          &__decimal {
+            background-color: $steps-success-color;
           }
         }
       }
     }
 
-    &__error {
+    &--error {
       #{$stepName} {
-        &-tail::after {
-          background-color: $color_error;
+        &__tail::after {
+          background-color: $steps-failed-color;
         }
-        &-icon {
-          color: $color_error;
-          &-circle {
-            background-color: $color_error;
+        &__icon {
+          color: $steps-failed-color;
+          &__circle {
+            background-color: $steps-failed-color;
           }
-          &-decimal {
-            background-color: $color_error;
+          &__decimal {
+            background-color: $steps-failed-color;
           }
         }
-        &-content-title {
-          color: $color_error;
+        &__content__title {
+          color: $steps-failed-color;
         }
       }
     }
@@ -117,7 +116,7 @@ $color_error: #d41616;
     &:first-child {
       #{$stepName} {
         position: relative;
-        &-tail {
+        &__tail {
           &::before,
           &::after {
             display: none;
@@ -127,16 +126,16 @@ $color_error: #d41616;
     }
   }
 
-  &__vertical {
+  &--vertical {
     display: block;
-    padding: 0 20px;
+    padding: $steps-vertical-padding;
     #{$stepName} {
       display: block;
-      height: 35px;
-      &-tail {
+      height: $steps-vertical-block-size;
+      &__tail {
         width: 1px;
         height: 65%;
-        left: 10px;
+        left: calc(#{$steps-decimal-size} / 2);
         top: -90%;
         &::before {
           width: 1px;
@@ -147,18 +146,18 @@ $color_error: #d41616;
           height: 0;
         }
       }
-      &-icon {
+      &__icon {
         float: left;
       }
-      &-content {
-        margin-left: 30px;
+      &__content {
+        margin-left: $steps-vertical-block-margin-left;
       }
       & + #{$stepName} {
-        margin-top: 20px;
+        margin-top: $steps-vertical-block-margin-top;
       }
-      &__finish, &__error, &__process {
+      &--finish, &--error, &--process {
         #{$stepName} {
-          &-tail {
+          &__tail {
             &::after {
               height: 100%;
             }
@@ -167,17 +166,17 @@ $color_error: #d41616;
       }
     }
   }
-  &__horizontal {
-    padding: 15px 0;
+  &--horizontal {
+    padding: $steps-horizontal-padding;
     text-align: center;
     #{$stepName} {
       display: inline-block;
       flex: 1;
-      &-tail {
+      &__tail {
         height: 1px;
         width: 50%;
-        top: 8px;
-        left: -25%;
+        top: calc(#{$steps-decimal-size} / 2);
+        left: -50%;
         &::before {
           height: 1px;
           width: 100%;
@@ -187,12 +186,12 @@ $color_error: #d41616;
           width: 0;
         }
       }
-      &-content {
-        margin-top: 8px;
+      &__content {
+        margin: $steps-horizontal-content-margin;
       }
-      &__finish, &__error, &__process {
+      &--finish, &--error, &--process {
         #{$stepName} {
-          &-tail {
+          &__tail {
             &::after {
               width: 100%;
             }
