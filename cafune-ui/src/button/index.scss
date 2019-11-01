@@ -77,7 +77,7 @@ $name: '.caf-btn';
   &--s {
     &-large {
       height: $button-large-height;
-      padding: 0 20px;
+      padding: $button-large-padding;
       font-size: $button-large-font-size;
       &#{$name}--round {
         border-radius: $button-large-height;
@@ -85,7 +85,7 @@ $name: '.caf-btn';
     }
     &-normal {
       height: $button-normal-height;
-      padding: 0 15px;
+      padding: $button-normal-padding;
       font-size: $button-normal-font-size;
       &#{$name}--round {
         border-radius: $button-normal-height;
@@ -93,7 +93,7 @@ $name: '.caf-btn';
     }
     &-small {
       height: $button-small-height;
-      padding: 0 15px;
+      padding: $button-small-padding;
       font-size: $button-small-font-size;
       &#{$name}--round {
         border-radius: $button-small-height;
@@ -101,7 +101,7 @@ $name: '.caf-btn';
     }
     &-tiny {
       height: $button-tiny-height;
-      padding: 0 5px;
+      padding: $button-tiny-padding;
       font-size: $button-tiny-font-size;
       transform: scale(0.83333);
       &#{$name}--round {

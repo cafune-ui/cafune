@@ -1,109 +1,87 @@
 
 
-$color_tab: #3f77f6;
-.caf-tabs {
+@import '../style/_var.scss';
+$name: '.caf-tabs';
+#{$name} {
   display: block;
   width: 100%;
   min-width: 320px;
   max-width: 480px;
   margin: auto;
-  &-item {
+  &__item {
     position: relative;
-    flex: 1;
+    
     height: 100%;
     min-width: 20%;
-    color: #909297;
+    color: $tabs-unactived-color;
     text-align: center;
     font-weight: 500;
-    &-inner {
+    font-weight: normal;
+    &__inner {
       position: relative;
       top: 50%;
       transform: translate3d(0, -50%, 0);
     }
-    &__actived {
-      color: $color_tab;
+    &--actived {
+      color: $tabs-actived-color;
     }
   }
-  &-panel {
-    &[data-actived='0'] {
-      display: none;
+  &__panel {
+    display: none;
+    &--actived {
+      display: block;
     }
   }
-  &-nav {
+  &__main {
+    margin-top: 10px;
+  }
+  &__nav {
     position: relative;
     z-index: 5;
     overflow: auto;
     width: 100%;
-    min-width: 320px;
-    max-width: 480px;
     margin: auto;
-    &-content {
+    &__content {
       display: flex;
       align-items: center;
       height: 42px;
     }
-    &__slider {
+    &--slider {
       background: #fff;
-      border-bottom: 1px solid #eee;
-      .caf-tabs-nav-ink {
-        position: absolute;
-        bottom: 0;
-        display: inline-block;
-        height: 2px;
-        background-color: $color_tab;
-        transition: transform .3s;
-      }
-    }
-    &__round {
-      .caf-tabs-item {
-        &-inner {
-          width: 70%;
-          height: 30px;
-          line-height: 30px;
-          margin: auto;
-          border-radius: 30px;
-          background: #fff;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 4px 8px #eee;
+      // border-bottom: 1px solid #eee;
+      #{$name} {
+        &__item {
+          flex: 1;
         }
-        &__actived {
-          .caf-tabs-item {
-            &-inner {
-              color: #fff;
-              background-color: $color_tab;
-            }
-          }
+        &__nav__ink {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          display: inline-block;
+          height: $tabs-ink-height;
+          width: $tabs-ink-width;
+          border-radius: $tabs-ink-border-radius;
+          background-color: $tabs-actived-color;
+          transition: transform .3s;
         }
       }
     }
-    &__card {
-      width: auto;
-      border-radius: 4px;
-      overflow: hidden;
-      min-width: 0;
-      border: 1px solid #fff;/* no */
-      background: $color_tab;
-      .caf-tabs-content {
-        height: 30px;
-      }
-      .caf-tabs-item {
-        width: auto;
-        &-inner {
-          width: 70%;
-          height: 24px;
-          line-height: 24px;
-          margin: auto;
-          color: #fff;
-          font-size: 14px;
-        }
-        &__actived {
-          background-color: #fff;
-          .caf-tabs-item {
-            &-inner {
-              color: $color_tab;
-            }
+    &--card {
+
+    }
+    &--hightlight {
+      #{$name} {
+        &__item {
+          font-size: $tabs-hightlight-item-font-size;
+          color: $tabs-hightlight-item-color;
+          transition: all .3s ease-in-out;
+          &--actived {
+            font-size: $tabs-hightlight-item-actived-font-size;
+            font-weight: $tabs-hightlight-item-actived-font-weight;
+            color: $tabs-hightlight-item-actived-color;
           }
-        }
-        & + .caf-tabs-item {
-          border-left: 1px solid #fff;/* no */
         }
       }
     }

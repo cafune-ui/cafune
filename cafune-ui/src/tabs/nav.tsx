@@ -32,7 +32,7 @@ interface IProps {
   /**
    * 组件类型
    */
-  type?: 'slider' | 'round' | 'card';
+  type?: 'slider' | 'hightlight' | 'card';
   /**
    * 切换tab时回调
    */
@@ -50,7 +50,7 @@ const defaultMax = 5;
 export default class Nav extends Component<IProps> {
   static defaultProps = {
     type: 'slider',
-    prefix: 'caf-tabs-nav',
+    prefix: 'caf-tabs__nav',
     maxCount: 5
   };
   onTabSelected = id => {
@@ -76,17 +76,16 @@ export default class Nav extends Component<IProps> {
   componentWillUnmount() {
     window.removeEventListener('resize', this.resizing);
   }
-  inkBar:any;
-  activeTab:any;
+  inkBar: any;
+  activeTab: any;
   // 定位底部指示线
   positionInkBar() {
     const { inkBar, activeTab } = this;
     if (activeTab) {
       const { base } = activeTab;
       const itemWidth = base.offsetWidth;
-      const percent = 0.6;
-      inkBar.style.width = `${itemWidth * percent}px`;
-      const offsetLeft = itemWidth * ((1 - percent) / 2) + base.offsetLeft;
+      const inkWidth = inkBar.offsetWidth;
+      const offsetLeft = (itemWidth - inkWidth) / 2 + base.offsetLeft;
       setTransform(inkBar, offsetLeft);
     }
   }
@@ -98,7 +97,7 @@ export default class Nav extends Component<IProps> {
       if (item.actived) {
         ref = c => (this.activeTab = c);
       }
-      let tabStyle:any = {};
+      let tabStyle: any = {};
       if (maxCount !== defaultMax) {
         tabStyle.style = `min-width:${(1 / maxCount) * 100}%`;
       }
@@ -118,20 +117,11 @@ export default class Nav extends Component<IProps> {
     return tabs;
   }
   render({ prefix, className, navClass, type, ...restProps }) {
-    const cls = cx(
-      prefix,
-      className,
-      {
-        [`${prefix}__slider`]: type === 'slider',
-        [`${prefix}__round`]: type === 'round',
-        [`${prefix}__card`]: type === 'card'
-      },
-      navClass
-    );
+    const cls = cx(prefix, className, `${prefix}--${type}`, navClass);
     return (
       <div className={cls} {...restProps}>
-        <div className={`${prefix}-content`}>{this.renderTabs()}</div>
-        <span className={`${prefix}-ink`} ref={c => (this.inkBar = c)} />
+        <div className={`${prefix}__content`}>{this.renderTabs()}</div>
+        <span className={`${prefix}__ink`} ref={c => (this.inkBar = c)} />
       </div>
     );
   }

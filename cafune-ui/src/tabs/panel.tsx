@@ -27,12 +27,14 @@ export default class Panel extends Component<IProps> {
   static displayName = 'TabPanel';
   static defaultProps = {
     visable: true,
-    prefix: 'caf-tabs-panel'
+    prefix: 'caf-tabs__panel'
   };
   render({ prefix, children, className, actived, ...restProps }) {
-    const cls = cx(prefix, className);
+    const cls = cx(prefix, className, {
+      [`${prefix}--actived`]: actived
+    });
     return (
-      <div className={cls} data-actived={actived ? 1 : 0} {...restProps}>
+      <div className={cls} {...restProps}>
         {children}
       </div>
     );

@@ -5,15 +5,14 @@ import Button from '../button';
 import { isBrowser } from '../util/isomorphic';
 const actionDefault = {
   confirm: {
-    text: '搜索',
+    icon: 'search',
     keepShow: true
   },
   cancel: {
-    text: '取消',
+    icon: 'wrong',
     keepShow: false
   },
   custom: {
-    text: '确定',
     keepShow: true
   }
 };
@@ -251,6 +250,7 @@ class SearchBar extends Component<IProps, IState> {
             <Button
               type={ action.type === 'cancel' ? 'warning' : 'primary' }
               size="small"
+              icon={action.icon ? { type: action.icon } : {}}
               onClick={() => {
                 if (action.type === 'cancel') {
                   this.onCancel();
@@ -260,7 +260,7 @@ class SearchBar extends Component<IProps, IState> {
                 action.onClick();
               }}
             >
-              {action.text}
+              {action.text || ''}
             </Button>
           </div>
         )}

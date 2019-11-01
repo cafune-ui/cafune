@@ -38,12 +38,16 @@ $action-sheet-title-font-size: 16px!default;
 
 // button
 $button-tiny-height: 24px !default;
+$button-tiny-padding: 0 5px !default;
 $button-tiny-font-size: $font-size-xs !default;
 $button-small-height: 28px !default;
+$button-small-padding: 0 10px !default;
 $button-small-font-size: $font-size-sm !default;
 $button-normal-height: 42px !default;
+$button-normal-padding: 0 15px !default;
 $button-normal-font-size: $font-size-md !default;
 $button-large-height: 50px !default;
+$button-large-padding: 0 20px !default;
 $button-large-font-size: $font-size-lg !default;
 
 $button-default-background-color: $white !default;
@@ -140,3 +144,17 @@ $steps-vertical-block-margin-left: 36px !default;
 
 $steps-horizontal-padding: 15px 0 !default;
 $steps-horizontal-content-margin: 8px 0 0!default;
+
+// tabs
+$tabs-actived-color: $blue !default;
+$tabs-unactived-color: #ababab !default;
+$tabs-ink-height: 2px !default;
+$tabs-ink-width: 20px !default;
+$tabs-ink-border-radius: $tabs-ink-height !default;
+
+$tabs-hightlight-item-color: #aaa !default;
+$tabs-hightlight-item-font-size: 12px !default;
+
+$tabs-hightlight-item-actived-font-size: 16px !default;
+$tabs-hightlight-item-actived-font-weight: bold !default;
+$tabs-hightlight-item-actived-color: #555 !default;

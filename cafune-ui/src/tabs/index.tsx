@@ -22,7 +22,7 @@ interface IProps {
   /**
    * 组件类型
    */
-  type?: 'slider' | 'round' | 'card';
+  type?: 'slider' | 'hightlight' | 'card';
   /**
    * 切换tab时回调
    */
@@ -38,8 +38,7 @@ interface IProps {
   /**
    * 自定义tab 列表
    */
-  tabs?:
-    | {
+  tabs?: {
         id: string | number;
         actived?: boolean;
         label: string;
@@ -54,6 +53,7 @@ class Tabs extends Component<IProps> {
   static Nav = Nav;
   static defaultProps = {
     type: 'slider',
+    prefix: 'caf-tabs',
     maxCount: 5
   };
   state = {
@@ -73,10 +73,11 @@ class Tabs extends Component<IProps> {
   tabNav = createRef();
   tabPanel = createRef();
   renderNav(data, navClass) {
-    const { type, maxCount } = this.props;
+    const { type, maxCount, prefix } = this.props;
     if (data && data.length) {
       return (
         <Nav
+          prefix={`${prefix}__nav`}
           onChange={this.onTabChange}
           tabsData={data}
           type={type}
@@ -106,7 +107,7 @@ class Tabs extends Component<IProps> {
     children.forEach((item, ind) => {
       if (checkIfPanel(item)) {
         const props = item.attributes;
-        const { id, label, className } = props;
+        const { id, label, className, prefix } = props;
         const { children } = item;
         let actived = false;
         if (activeId) {
@@ -115,6 +116,7 @@ class Tabs extends Component<IProps> {
           actived = activedKey ? activedKey === id : ind === 0;
         }
         data.push({
+          prefix,
           label,
           id,
           actived,
@@ -139,7 +141,7 @@ class Tabs extends Component<IProps> {
     return (
       <div className={cls} {...restProps}>
         {this.renderNav(tabsData, navClass)}
-        <div ref={this.tabPanel}>{this.renderTabPanel(tabsData)}</div>
+        <div className={`${prefix}__main`} ref={this.tabPanel}>{this.renderTabPanel(tabsData)}</div>
       </div>
     );
   }
