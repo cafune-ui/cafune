@@ -22,7 +22,7 @@ interface IProps {
   /**
    * 组件类型
    */
-  type?: 'slider' | 'hightlight' | 'card';
+  type?: 'slider' | 'contrast' | 'card';
   /**
    * 切换tab时回调
    */

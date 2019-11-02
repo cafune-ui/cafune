@@ -8,7 +8,7 @@ interface IProps {
 }
 export default class Tab extends Component<IProps, {}> {
   static defaultProps = {
-    prefix: 'caf-tabs__item'
+    prefix: 'caf-tabs__nav__item'
   }
   onItemClick = () => {
     const { id, actived, onSelected } = this.props;

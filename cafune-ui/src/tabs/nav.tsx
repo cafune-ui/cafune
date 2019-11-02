@@ -32,7 +32,7 @@ interface IProps {
   /**
    * 组件类型
    */
-  type?: 'slider' | 'hightlight' | 'card';
+  type?: 'slider' | 'contrast' | 'card';
   /**
    * 切换tab时回调
    */
@@ -61,32 +61,38 @@ export default class Nav extends Component<IProps> {
     this.positionInkBar();
   };
   componentDidMount() {
-    const { type = 'slider' } = this.props;
-    if (type === 'slider' && isBrowser) {
+    if (isBrowser) {
       this.positionInkBar();
       window.addEventListener('resize', this.resizing);
     }
   }
   componentDidUpdate() {
-    const { type = 'slider' } = this.props;
-    if (type === 'slider' && isBrowser) {
+    if (isBrowser) {
       this.positionInkBar();
     }
   }
   componentWillUnmount() {
-    window.removeEventListener('resize', this.resizing);
+    if (isBrowser) {
+      window.removeEventListener('resize', this.resizing);
+    } 
   }
   inkBar: any;
   activeTab: any;
+  navContainer: any;
   // 定位底部指示线
   positionInkBar() {
-    const { inkBar, activeTab } = this;
-    if (activeTab) {
+    const { inkBar, activeTab, navContainer } = this;
+    if (activeTab && activeTab.base) {
       const { base } = activeTab;
       const itemWidth = base.offsetWidth;
       const inkWidth = inkBar.offsetWidth;
       const offsetLeft = (itemWidth - inkWidth) / 2 + base.offsetLeft;
       setTransform(inkBar, offsetLeft);
+      const navSW = navContainer.scrollLeft - navContainer.offsetWidth;
+      if (navContainer.scrollLeft + navContainer.offsetWidth < base.offsetLeft + base.offsetWidth || base.offsetLeft -  navContainer.scrollLeft < 0) {
+        // console.log(base.offsetLeft - navContainer.offsetWidth)
+        navContainer.scrollBy(base.offsetLeft + base.offsetWidth - navContainer.offsetWidth, 0)
+      }
     }
   }
   renderTabs() {
@@ -119,8 +125,8 @@ export default class Nav extends Component<IProps> {
   render({ prefix, className, navClass, type, ...restProps }) {
     const cls = cx(prefix, className, `${prefix}--${type}`, navClass);
     return (
-      <div className={cls} {...restProps}>
-        <div className={`${prefix}__content`}>{this.renderTabs()}</div>
+      <div className={cls} {...restProps} ref={c => (this.navContainer = c)}>
+        <div className={`${prefix}__container`}>{this.renderTabs()}</div>
         <span className={`${prefix}__ink`} ref={c => (this.inkBar = c)} />
       </div>
     );

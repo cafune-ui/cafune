@@ -1,31 +1,9 @@
-
-
 @import '../style/_var.scss';
 $name: '.caf-tabs';
 #{$name} {
   display: block;
   width: 100%;
-  min-width: 320px;
-  max-width: 480px;
   margin: auto;
-  &__item {
-    position: relative;
-    
-    height: 100%;
-    min-width: 20%;
-    color: $tabs-unactived-color;
-    text-align: center;
-    font-weight: 500;
-    font-weight: normal;
-    &__inner {
-      position: relative;
-      top: 50%;
-      transform: translate3d(0, -50%, 0);
-    }
-    &--actived {
-      color: $tabs-actived-color;
-    }
-  }
   &__panel {
     display: none;
     &--actived {
@@ -41,46 +19,106 @@ $name: '.caf-tabs';
     overflow: auto;
     width: 100%;
     margin: auto;
-    &__content {
+    scroll-behavior: smooth;
+    &__item {
+      position: relative;
+      user-select: none;
+      min-width: $tabs-item-min-width;
+      color: $tabs-unactived-color;
+      text-align: center;
+      font-weight: 400;
+      &__inner {
+        position: relative;
+      }
+    }
+    &__container {
       display: flex;
       align-items: center;
-      height: 42px;
     }
     &--slider {
-      background: #fff;
-      border-radius: 0 0 16px 16px;
-      box-shadow: 0 4px 8px #eee;
+      background: $tabs-nav-slider-background-color;
+      border-radius: $tabs-nav-slider-border-radius;
+      box-shadow: $tabs-nav-slider-box-shadow;
       // border-bottom: 1px solid #eee;
       #{$name} {
-        &__item {
-          flex: 1;
-        }
-        &__nav__ink {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          display: inline-block;
-          height: $tabs-ink-height;
-          width: $tabs-ink-width;
-          border-radius: $tabs-ink-border-radius;
-          background-color: $tabs-actived-color;
-          transition: transform .3s;
+        &__nav {
+          &__container {
+            height: $tabs-nav-slider-height;
+          }
+          &__ink {
+            position: absolute;
+            bottom: $tabs-nav-slider-ink-bottom;
+            left: 0;
+            display: inline-block;
+            height: $tabs-nav-slider-ink-height;
+            width: $tabs-nav-slider-ink-width;
+            border-radius: $tabs-nav-slider-ink-border-radius;
+            background-color: $tabs-nav-slider-actived-ink-background-color;
+            box-shadow: 0 2px 4px $tabs-nav-slider-actived-ink-background-color;
+            transition: transform 0.3s;
+          }
+          &__item {
+            flex: 1;
+            &--actived {
+              color: $tabs-nav-slider-actived-color;
+            }
+          }
         }
       }
     }
-    &--card {
-
-    }
-    &--hightlight {
+    &--round {
       #{$name} {
-        &__item {
-          font-size: $tabs-hightlight-item-font-size;
-          color: $tabs-hightlight-item-color;
-          transition: all .3s ease-in-out;
-          &--actived {
-            font-size: $tabs-hightlight-item-actived-font-size;
-            font-weight: $tabs-hightlight-item-actived-font-weight;
-            color: $tabs-hightlight-item-actived-color;
+        &__nav {
+          &__container {
+            padding: 8px 4px;
+          }
+          &__item {
+            height: $tabs-nav-round-height;
+            line-height: $tabs-nav-round-height;
+            background: $tabs-nav-round-background;
+            border-radius: 8px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 6px #eee;
+            transition: all .3s ease-in-out;
+            &--actived {
+              background: $tabs-nav-round-actived-background;
+              box-shadow: 0 2px 6px #{$tabs-nav-round-actived-background-color};
+              color: $tabs-nav-round-color;
+            }
+            & + #{$name}__nav__item {
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+    }
+    &--contrast {
+      #{$name} {
+        &__nav {
+          &__container {
+            height: $tabs-nav-contrast-height;
+          }
+          &__item {
+            font-size: $tabs-contrast-item-font-size;
+            color: $tabs-contrast-item-color;
+            transition: all 0.3s ease-in-out;
+            transform-origin: 50% 100%;
+            &--actived {
+              transform: $tabs-contrast-item-actived-transform;
+              font-weight: $tabs-contrast-item-actived-font-weight;
+              color: $tabs-contrast-item-actived-color;
+            }
+          }
+          &__ink {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: inline-block;
+            height: $tabs-contrast-ink-height;
+            width: $tabs-contrast-ink-height;
+            border-radius: $tabs-contrast-ink-height;
+            background-color: $tabs-contrast-item-actived-color;
+            transition: transform 0.3s;
           }
         }
       }

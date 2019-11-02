@@ -146,15 +146,31 @@ $steps-horizontal-padding: 15px 0 !default;
 $steps-horizontal-content-margin: 8px 0 0!default;
 
 // tabs
-$tabs-actived-color: $blue !default;
+$tabs-item-min-width: 25%;
 $tabs-unactived-color: #ababab !default;
-$tabs-ink-height: 2px !default;
-$tabs-ink-width: 20px !default;
-$tabs-ink-border-radius: $tabs-ink-height !default;
+$tabs-nav-slider-height: 42px !default;
+$tabs-nav-slider-background-color: #fff !default;
+$tabs-nav-slider-border-radius: 0 0 16px 16px !default;
+$tabs-nav-slider-box-shadow: 0 4px 8px #eee !default;
+$tabs-nav-slider-actived-color: $blue !default;
+$tabs-nav-slider-ink-height: 2px !default;
+$tabs-nav-slider-ink-bottom: 3px !default;
+$tabs-nav-slider-ink-width: 20px !default;
+$tabs-nav-slider-ink-border-radius: $tabs-nav-slider-ink-height !default;
+$tabs-nav-slider-actived-ink-background-color: $blue !default;
 
-$tabs-hightlight-item-color: #aaa !default;
-$tabs-hightlight-item-font-size: 12px !default;
+$tabs-nav-contrast-height: 42px !default;
+$tabs-contrast-item-color: #aaa !default;
+$tabs-contrast-item-font-size: 12px !default;
+$tabs-contrast-ink-height: 4px !default;
+$tabs-contrast-ink-width: 4px !default;
+$tabs-contrast-item-actived-transform: scale(1.1) !default;
+$tabs-contrast-item-actived-font-size: 16px !default;
+$tabs-contrast-item-actived-font-weight: bold !default;
+$tabs-contrast-item-actived-color: #555 !default;
 
-$tabs-hightlight-item-actived-font-size: 16px !default;
-$tabs-hightlight-item-actived-font-weight: bold !default;
-$tabs-hightlight-item-actived-color: #555 !default;
+$tabs-nav-round-height: 32px !default;
+$tabs-nav-round-background: #fff !default;
+$tabs-nav-round-actived-background: $blue !default;
+$tabs-nav-round-actived-background-color: $blue !default;
+$tabs-nav-round-color: #fff;
