@@ -37,7 +37,6 @@ export default class RadioComp extends Component {
               key={item.value}
               value={item.value}
               disabled={item.disabled}
-              checked={item.value === 'option2'}
             >
               {item.label}
             </RadioItem>

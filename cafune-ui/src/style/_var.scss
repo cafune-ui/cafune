@@ -83,7 +83,7 @@ $radio-height: 42px !default;
 $radio-padding: 0 15px !default;
 
 // switch
-$switch-background-color: $green !default;
+$switch-background-color: $grey !default;
 $switch-active-background-color: $blue !default;
 $switch-size: 32px !default;
 $switch-height: 1em !default;
@@ -120,7 +120,7 @@ $stepper-btn-plus-size: 10px !default;
 $stepper-icon-thick: 1px !default;
 $stepper-icon-percent: 32% !default;
 
-//noticebar
+//notice-bar
 $noticebar-height: 40px !default;$noticebar-border-radius: $noticebar-height !default;
 $noticebar-line-height: 24px !default;
 $noticebar-notice-background-color: #ececec !default;
@@ -186,3 +186,22 @@ $tabs-nav-round-actived-background: $blue !default;
 $tabs-nav-round-actived-background-color: $blue !default;
 $tabs-nav-round-color: #fff;
 
+// tab-bar
+$tabbar-height: 52px !default;
+$tabbar-radius: 16px 16px 0 0 !default;
+$tabbar-background-color: $white !default; 
+$tabbar-font-size: 12px !default;
+$tabbar-actived-color: $blue !default;
+$tabbar-icon-size: 24px !default;
+$tabbar-icon-width: $tabbar-icon-size !default;
+$tabbar-icon-height: $tabbar-icon-size !default;
+$tabbar-disabled-opacity: 0.3 !default;
+
+$tabbar-bubble-flex-basis: 18% !default;
+$tabbar-bubble-container-width: 80% !default;
+$tabbar-bubble-container-height: 36px !default;
+$tabbar-bubble-container-padding: 0 10px !default;
+$tabbar-bubble-actived-container-background-color: #e7f5fd !default;
+
+$tabbar-flash-item-indicator-height: 3px !default;
+$tabbar-flash-item-indicator-width: 8px !default;

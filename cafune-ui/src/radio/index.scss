@@ -16,9 +16,12 @@ $name: '.caf-radio';
       position: relative;
       width: $radio-icon-size;
       height: $radio-icon-size;
-      @include pixelBorder();
+      // @include pixelBorder();
+      border-width: 2px;
+      border-style: solid;
       background-color: $radio-icon-color;
       color: $radio-icon-color;
+      box-sizing: border-box;
       border-radius: 50%;
       overflow: hidden;
       &__indicator {
@@ -27,8 +30,11 @@ $name: '.caf-radio';
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        left: 0;
         top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
         background-color: $white;
         // transform: scale();
         transition: transform 0.3s ease-in-out;
@@ -38,7 +44,7 @@ $name: '.caf-radio';
       #{$name}-item {
         &__icon {
           &__indicator {
-            transform: scale(0.5);
+            transform: scale(0.4);
           }
         }
       }
