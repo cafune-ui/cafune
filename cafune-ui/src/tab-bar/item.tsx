@@ -29,7 +29,7 @@ interface IProps {
 export default class TabBarItem extends Component<IProps> {
   static defaultProps = {
     disabled: false,
-    prefix: 'caf-tabbar-item'
+    prefix: 'caf-tabbar__item'
   };
   handleChange = () => {
     const { id, disabled } = this.props;
@@ -43,15 +43,17 @@ export default class TabBarItem extends Component<IProps> {
     const tabStyle = isActived ? { color: activedColor } : {};
     return (
       <div
-        className={cx(prefix, className)}
+        className={cx(prefix, className, {
+          [`${prefix}--actived`]: isActived,
+          [`${prefix}--disabled`]: disabled
+        })}
         onClick={this.handleChange}
         style={tabStyle}
-        data-status={isActived ? 1 : disabled ? 2 : 0}
         {...restProps}
       >
         {!!icons && (
           <div
-            className={`${prefix}-icon`}
+            className={`${prefix}__icon`}
             style={`background-image: url(${icons[iconType] || icons.normal})`}
           />
         )}

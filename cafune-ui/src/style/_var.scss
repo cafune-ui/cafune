@@ -74,6 +74,14 @@ $action-tip-color: #96b3a2 !default;
 $action-tip-font-size: 12px !default;
 $action-tip-background-color: $green !default;
 
+// radio
+$radio-icon-size: 18px !default;
+$radio-icon-color: $blue !default;
+$radio-icon-inneer-color: $white !default;
+$radio-disabled-opacity: .4 !default;
+$radio-height: 42px !default;
+$radio-padding: 0 15px !default;
+
 // switch
 $switch-background-color: $green !default;
 $switch-active-background-color: $blue !default;
@@ -145,6 +153,9 @@ $steps-vertical-block-margin-left: 36px !default;
 $steps-horizontal-padding: 15px 0 !default;
 $steps-horizontal-content-margin: 8px 0 0!default;
 
+// swiper
+
+
 // tabs
 $tabs-item-min-width: 25%;
 $tabs-unactived-color: #ababab !default;
@@ -174,3 +185,4 @@ $tabs-nav-round-background: #fff !default;
 $tabs-nav-round-actived-background: $blue !default;
 $tabs-nav-round-actived-background-color: $blue !default;
 $tabs-nav-round-color: #fff;
+

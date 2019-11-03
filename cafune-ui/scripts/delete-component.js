@@ -39,7 +39,7 @@ function deleteEnty(name) {
   if (fs.existsSync(entryStylePath)) {
     const entryFile = fs.readFileSync(entryStylePath, 'utf-8');
     const modExports = entryFile.trim().split('\n') || [];
-    const exportIndex = modExports.indexOf(`@import './${name}';`);
+    const exportIndex = modExports.indexOf(`@import './${name}/index.scss';`);
     if (exportIndex !== -1) {
       modExports.splice(exportIndex, 1);
       fs.writeFileSync(entryStylePath, `${modExports.join('\n')}\n`);

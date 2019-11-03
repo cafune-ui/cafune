@@ -26,12 +26,12 @@ interface IProps {
 class SwiperItem extends Component<IProps> {
   static displayName = 'swiperItem';
   static defaultProps = {
-    prefix: 'caf-swiper-container'
+    prefix: 'caf-swiper__container'
   };
   render({ prefix, className, children, width, onItemClick, ...restProps }) {
     return (
       <div
-        className={cx(`${prefix}-item`, className)}
+        className={cx(`${prefix}__item`, className)}
         onClick={onItemClick}
         style={{ width }}
         {...restProps}

@@ -15,6 +15,7 @@ export { default as NavBar } from './nav-bar';
 export { default as NoticeBar } from './notice-bar';
 export { default as Pagination } from './pagination';
 export { default as PullRefresh } from './pull-refresh';
+export { default as Radio } from './radio';
 export { default as Scroller } from './scroller';
 export { default as SearchBar } from './search-bar';
 export { default as Skeleton } from './skeleton';

@@ -50,6 +50,7 @@ interface IProps {
 class Swiper extends Component<IProps> {
   static SwiperItem = Item;
   static defaultProps = {
+    prefix: 'caf-swiper',
     autoplay: true,
     intervel: 3000,
     initialIndex: 0,
@@ -214,8 +215,10 @@ class Swiper extends Component<IProps> {
       ? Array(...Array(data.length)).map((_, ind) => (
           <span
             key={ind}
-            className={`${prefix}-indicator-item`}
-            data-status={ind === this.state.current ? 1 : 0}
+            className={cx(`${prefix}__indicator__item`, {
+              [`${prefix}__indicator__item--actived`]:
+                ind === this.state.current
+            })}
             onClick={() => this.moveTo({ ind })}
           />
         ))
@@ -258,13 +261,13 @@ class Swiper extends Component<IProps> {
           ref={this.swiperContainer}
           {...restProps}
         >
-          <div className={`${prefix}-container`} ref={this.swiperList}>
+          <div className={`${prefix}__container`} ref={this.swiperList}>
             {this.renderItems(swiperData)}
           </div>
           {customIndicator
             ? customIndicator
             : showIndicators && (
-                <div className={`${prefix}-indicator`}>
+                <div className={`${prefix}__indicator`}>
                   {this.renderIndicators(swiperData)}
                 </div>
               )}

@@ -49,6 +49,9 @@
             "url": "switch"
           },
           {
+            "url": "radio"
+          },
+          {
             "url": "checkbox"
           },
           {

@@ -54,9 +54,6 @@ interface IProps {
    */
   prefix?: string;
   /**
-   * 搜索框的
-   */
-  /**
    * 占位文字
    */
   placeholder?: string;

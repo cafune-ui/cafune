@@ -228,7 +228,7 @@ glob(`${compRoot}/*/*.?(jsx|tsx)`, (err, files) => {
     };
   }
   fs.writeFileSync(
-    './doc/comp-info.json',
+    './doc/src/comp-info.json',
     JSON.stringify(newCompInfo, null, 2)
   );
 });

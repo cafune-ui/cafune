@@ -3,20 +3,19 @@
   width: 100%;
   overflow: hidden;
   user-select: none;
-  &-container {
+  &__container {
     height: 100%;
     // transition: transform .5s;
-    &-item {
+    &__item {
       float: left;
-      background-color: #eee;
     }
   }
-  &-indicator {
+  &__indicator {
     display: flex;
     position: absolute;
     right: 20px;
     bottom: 10px;
-    &-item {
+    &__item {
       display: inline-block;
       height: 3px;
       width: 10px;
@@ -34,7 +33,7 @@
         width: 0;
         transition: width .2s;
       }
-      &[data-status='1']::before {
+      &--actived::before {
         left: 0;
         width: 100%;
       }

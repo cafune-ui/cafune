@@ -67,6 +67,10 @@
     "desc": "下拉刷新",
     "displayName": "PullRefresh"
   },
+  "radio": {
+    "desc": "单选框",
+    "displayName": "Radio"
+  },
   "scroller": {
     "desc": "",
     "displayName": "Scroller"

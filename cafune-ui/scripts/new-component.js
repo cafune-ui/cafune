@@ -117,19 +117,19 @@ function writeComp(compName, name, isHasStyle) {
   // create js & css to component folder
   fs.writeFileSync(
     `${compDir}/index.tsx`,
-    `import { Component, h } from 'preact';\nimport PropTypes from 'prop-types';\nimport cx from 'classnames';\n\nclass ${compName} extends Component {\n  static defaultProps = {\n    prefix: 'caf-'\n  };\n  render({ prefix, className, ...restProps }) {\n    return <div className={cx(prefix, className)} {...restProps}>${compName}</div>;\n  }\n}\nexport default ${compName};\n`
+    `import { Component, h } from 'preact';\nimport cx from 'classnames';\n\nclass ${compName} extends Component {\n  static defaultProps = {\n    prefix: 'caf-'\n  };\n  render({ prefix, className, ...restProps }) {\n    return <div className={cx(prefix, className)} {...restProps}>${compName}</div>;\n  }\n}\nexport default ${compName};\n`
   );
   if (isHasStyle) {
-    fs.writeFileSync(`${compDir}/style.scss`, '');
+    fs.writeFileSync(`${compDir}/index.scss`, '');
     const entryCssPath = `${compRoot}/index.scss`;
     if (!fs.existsSync(entryCssPath)) {
       fs.writeFileSync(entryCssPath, '');
     }
     const entryCss = fs.readFileSync(entryCssPath, 'utf-8');
     const styleImports = entryCss.trim().split('\n') || [];
-    const importName = `@import './${name}';`;
+    const importName = `@import './${name}/index.scss';`;
     if (styleImports.indexOf(importName) === -1) {
-      styleImports.push(`@import './${name}';`);
+      styleImports.push(importName);
     }
     fs.writeFileSync(entryCssPath, `${styleImports.join('\n')}\n`);
   }

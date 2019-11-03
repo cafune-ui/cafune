@@ -16,6 +16,10 @@ interface IProps {
      */
     children?: any;
     /**
+     * 标签栏类型
+     */
+    type?: 'normal' | 'bubble' | 'flashy';
+    /**
      * 是否使用 `fixed` 定位
      */
     fixed?: boolean;
@@ -28,9 +32,13 @@ interface IProps {
      */
     activedColor?: string,
     /**
+     * 未激活时文字颜色
+     */
+    inactivedColor?: string,
+    /**
      * 切换时回调
      */
-    onChange?: (activedId) => void
+    onChange?: (activedId:string | number) => void
 } 
 /**
  * 标签栏
@@ -39,8 +47,7 @@ class TabBar extends Component<IProps> {
   static TabBarItem = Item;
   static defaultProps = {
     prefix: 'caf-tabbar',
-    fixed: true,
-    activedColor: '#3f77f6'
+    fixed: true
   };
   currentActive = this.props.activedId;
   componentDidMount() {
@@ -64,7 +71,7 @@ class TabBar extends Component<IProps> {
     };
   }
   render({ prefix, className, activedId, fixed, children, ...restProps }) {
-    const cls = cx(prefix, className, { [`${prefix}__fixed`]: fixed });
+    const cls = cx(prefix, className, { [`${prefix}--fixed`]: fixed });
     return (
       <div className={cls} {...restProps}>
         {children}
