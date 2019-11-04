@@ -116,8 +116,11 @@ class Checkbox extends Component<IProps> {
     { allDisabled = false } = {}
   ) {
     const innerStyle: any = {};
+    const labelStyle: any = {};
     if (checkedColor && checked) {
-      innerStyle.backgroundColor = checkedColor;
+      // innerStyle.backgroundColor = checkedColor;
+      // innerStyle.borderColor = checkedColor;
+      innerStyle.color = checkedColor;
     }
     const isDisabled = disabled || allDisabled;
     let icon = <Icon icon="check" />;
@@ -125,27 +128,24 @@ class Checkbox extends Component<IProps> {
     if (icons) {
       if ('actived' in icons && checked) {
         isCustomIcon = isImage(icons.actived);
-        icon = (
-          <Icon icon={icons.actived} size={isCustomIcon ? '14px' : '12px'} />
-        );
+        icon = <Icon icon={icons.actived} />;
       }
       if ('inactive' in icons && !checked) {
         isCustomIcon = isImage(icons.inactive);
-        icon = (
-          <Icon icon={icons.inactive} size={isCustomIcon ? '14px' : '12px'} />
-        );
+        icon = <Icon icon={icons.inactive} />;
       }
     }
     return (
       <div
         className={cx(prefix, className, {
-          [`${prefix}__checked`]: checked,
-          [`${prefix}__disabled`]: isDisabled
+          [`${prefix}--checked`]: checked,
+          [`${prefix}--disabled`]: isDisabled
         })}
         onClick={this.onClick}
+        style={labelStyle}
         {...restProps}
       >
-        <div className={`${prefix}-input`}>
+        <div className={`${prefix}__input`}>
           <input
             type="checkbox"
             id={id}
@@ -154,15 +154,17 @@ class Checkbox extends Component<IProps> {
             value={value}
           />
           <span
-            className={cx(`${prefix}-input-inner`, {
-              [`${prefix}-input-inner__custom`]: isCustomIcon
+            className={cx(`${prefix}__input__inner`, {
+              [`${prefix}__input__inner--custom`]: isCustomIcon
             })}
             style={innerStyle}
           >
             {icon}
           </span>
         </div>
-        <div className={`${prefix}-label`}>{children}</div>
+        <div className={`${prefix}__label`}>
+          {children}
+        </div>
       </div>
     );
   }

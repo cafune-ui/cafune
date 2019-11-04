@@ -1,9 +1,7 @@
+@import '../style/_var.scss';
 @import '../style/mixins/_border.scss';
-@import '../style/variables/color.scss';
-$name: '.caf-checkbox';
-$activeColor: $color_theme;
 
-$size_normal: 30px;
+$name: '.caf-checkbox';
 #{$name} {
   position: relative;
   z-index: 2;
@@ -11,17 +9,18 @@ $size_normal: 30px;
   align-items: center;
   overflow: hidden;
   user-select: none;
-  height: $size_normal;
-  padding: 0 15px;
-  &-groud {
+  height: $checkbox-height;
+  padding: $checkbox-padding;
+  &__group {
     position: relative;
     z-index: 2;
   }
-  &-input {
+  &__input {
     display: flex;
     align-items: center;
-    &, input {
-      height: $size_normal;
+    &,
+    input {
+      height: $checkbox-height;
     }
     input {
       width: 100%;
@@ -32,51 +31,48 @@ $size_normal: 30px;
       right: 0;
       margin: auto 0;
     }
-    &-inner {
+    &__inner {
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 20px;
-      height: 20px;
-      &:not(#{$name}-input-inner__custom) {
-        border-radius: 50%;
-        background-color: #fff;
-        color: transparent;
-        @include pixelBorder(#ccc);
+      width: $checkbox-box-width;
+      height: $checkbox-box-height;
+      transition: all .3s ease-in-out;
+      color: $checkbox-box-color;
+      
+      &:not(#{$name}__input__inner--custom) {
+        border-radius: $checkbox-box-border-radius;
+        background-color: $checkbox-box-background-color;
+        border: 2px solid currentColor;
         text-align: center;
-      }
-    }
-  }
-  &-label {
-    padding-left: 8px;
-  }
-  &__checked {
-    color: $activeColor;
-    #{$name} {
-      &-input {
-        &-inner {
-          &:not(#{$name}-input-inner__custom) {
-            background-color: $activeColor;
-            color: #fff;
-            @include pixelBorder($activeColor);
-          }  
+        .caf-icon {
+          font-size: $checkbox-box-icon-size;
         }
       }
     }
   }
-  &__disabled {
-    color: #bbb;
+  &__label {
+    padding-left: 16px;
+  }
+  &--checked {
     #{$name} {
-      &-input {
-        &-inner {
-          &:not(#{$name}-input-inner__custom) {
-            &::after {
-              border-color: #e6e6e6;
-            }
-          }  
+      &__input {
+        &__inner {
+          color: $checkbox-checked-color;
+          &:not(#{$name}__input__inner--custom) {
+            background-color: currentColor;
+            border: 2px solid currentColor;
+            box-shadow: 0 2px 4px currentColor;
+          }
+          .caf-icon {
+            color: $checkbox-checked-icon-color;
+          }
         }
       }
     }
+  }
+  &--disabled {
+    opacity: $checkbox-disabled-opacity;
   }
 }

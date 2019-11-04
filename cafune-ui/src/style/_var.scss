@@ -74,6 +74,21 @@ $action-tip-color: #96b3a2 !default;
 $action-tip-font-size: 12px !default;
 $action-tip-background-color: $green !default;
 
+//checkbox
+$checkbox-height: 40px !default;
+$checkbox-padding: 0 $horizontal-distance !default;
+$checkbox-checked-color: $blue !default;
+$checkbox-checked-icon-color: $white !default;
+$checkbox-disabled-opacity: .4 !default;
+$checkbox-box-color: #d8d8d8;
+$checkbox-box-size: 18px !default;
+$checkbox-box-width: $checkbox-box-size !default;
+$checkbox-box-height: $checkbox-box-size !default;
+$checkbox-box-border-radius: 6px !default;
+$checkbox-box-background-color: $white !default;
+$checkbox-box-icon-size: 10px !default;
+
+
 // radio
 $radio-icon-size: 18px !default;
 $radio-icon-color: $blue !default;

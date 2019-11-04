@@ -6,12 +6,16 @@ import { Component } from 'preact';
 export default class CheckboxComp extends Component {
   state = {
     check: 'hi',
-    checks: ['hi', 'hello'],
+    checks: ['hey', 'hello'],
     checkList: [
+      {
+        value: 'hey',
+        text: '默认用法'
+      },
       {
         value: 'hi',
         text: '自定义颜色',
-        checkedColor: '#369'
+        checkedColor: '#e27777'
       },
       {
         value: 'holla',
@@ -56,7 +60,7 @@ export default class CheckboxComp extends Component {
         <p class="caf-demo-title">与Cell 组件一起使用</p>
         {checkList.map((item, ind) => (
           <Cell
-            title="test"
+            title={item.text}
             value={
               <Checkbox
                 checked={check === item.value}
@@ -76,7 +80,7 @@ export default class CheckboxComp extends Component {
           <CheckboxGroup model={checks} handleChange={val => console.log(val)}>
             {checkList.map((item, ind) => (
               <Cell
-                title="test"
+                title={item.text}
                 value={<Checkbox {...item}>{item.text}</Checkbox>}
                 key={`g-${ind}-${item.value}`}
               />
@@ -91,7 +95,7 @@ export default class CheckboxComp extends Component {
           >
             {checkList.map((item, ind) => (
               <Cell
-                title="test"
+                title={item.text}
                 value={<Checkbox {...item}>{item.text}</Checkbox>}
                 key={`g-${ind}-${item.value}`}
               />

@@ -245,7 +245,7 @@ class SearchBar extends Component<IProps, IState> {
             ref={this.actionRef}
           >
             <Button
-              type={ action.type === 'cancel' ? 'warning' : 'primary' }
+              type={action.type === 'cancel' ? 'warning' : 'primary'}
               size="small"
               icon={action.icon ? { type: action.icon } : {}}
               onClick={() => {
