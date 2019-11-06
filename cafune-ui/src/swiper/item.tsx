@@ -19,19 +19,33 @@ interface IProps {
    */
   width?: string;
   /**
+   * 是否为当前显示项
+   */
+  current?: boolean;
+  /**
    * 点击回调
    */
-  onItemClick?: (event: TouchEvent) => void
+  onItemClick?: (event: TouchEvent) => void;
 }
 class SwiperItem extends Component<IProps> {
   static displayName = 'swiperItem';
   static defaultProps = {
     prefix: 'caf-swiper__container'
   };
-  render({ prefix, className, children, width, onItemClick, ...restProps }) {
+  render({
+    prefix,
+    className,
+    children,
+    width,
+    current,
+    onItemClick,
+    ...restProps
+  }) {
     return (
       <div
-        className={cx(`${prefix}__item`, className)}
+        className={cx(`${prefix}__item`, className, {
+          [`${prefix}__item--current`]: current
+        })}
         onClick={onItemClick}
         style={{ width }}
         {...restProps}

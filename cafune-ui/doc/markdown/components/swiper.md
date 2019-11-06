@@ -10,9 +10,12 @@ import { Swiper } from 'cafune';
 | --- | --- | --- | --- | --- | --- |
 | prefix | 自定义前缀 | string | `'caf-swiper'` | - | ❌ |
 | className | 自定义类名 | string | - | - | ❌ |
+| type | 走马灯类型 | literal/literal/literal | `'normal'` | - | ❌ |
+| slideWidth | 单元宽度，可为百分比 | number | `0.9` | - | ❌ |
 | autoplay | 是否自动切换 | boolean | `true` | - | ❌ |
 | intervel | 切换间隔事件（毫秒） | number | `3000` | - | ❌ |
 | initialIndex | 初始index | number | `0` | - | ❌ |
+| duration | 过渡时间（毫秒） | number | `500` | - | ❌ |
 | showIndicators | 是否显示指示器 | boolean | `true` | - | ❌ |
 | onChange | 切换时触发事件 | (ind?: number | Event) => void | - | - | ❌ |
 | customIndicator | 自定义指示器 | VNode/HTMLElement | - | - | ❌ |
@@ -24,4 +27,5 @@ import { Swiper } from 'cafune';
 | className | 自定义类名 | string | - | - | ❌ |
 | children | 自定义类名 | any | - | - | ❌ |
 | width | 单元宽度 | string | - | - | ❌ |
+| current | 是否为当前显示项 | boolean | - | - | ❌ |
 | onItemClick | 点击回调 | (event: TouchEvent) => void | - | - | ❌ |

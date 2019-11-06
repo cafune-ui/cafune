@@ -169,7 +169,18 @@ $steps-horizontal-padding: 15px 0 !default;
 $steps-horizontal-content-margin: 8px 0 0!default;
 
 // swiper
+$swiper-indicator-size: 6px !default;
+$swiper-indicator-width: $swiper-indicator-size !default;
+$swiper-indicator-height: $swiper-indicator-size !default;
+$swiper-indicator-border-radius: $swiper-indicator-size;
+$swiper-indicator-opacity: .3 !default;
+$swiper-indicator-scale: .6 !default;
+$swiper-indicator-margin: 0 5px 0 0 !default;
 
+$swiper-indicator-background-color: $blue !default;
+$swiper-normal-item-scale: 0.9  !default;
+$swiper-normal-item-opacity: 0.5 !default;
+$swiper-normal-item-border-radius: 8px !default; $swiper-normal-item-current-box-shadow: 0 4px 8px 4px #e6e6e6 !default;
 
 // tabs
 $tabs-item-min-width: 25%;

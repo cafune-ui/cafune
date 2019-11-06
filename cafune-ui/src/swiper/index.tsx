@@ -20,6 +20,14 @@ interface IProps {
    */
   className?: string;
   /**
+   * 走马灯类型
+   */
+  type?: 'card' | 'shuffle' | 'fade';
+  /**
+   * 单元宽度，可为百分比
+   */
+  slideWidth?: number;
+  /**
    * 是否自动切换
    */
   autoplay?: boolean;
@@ -31,6 +39,10 @@ interface IProps {
    * 初始index
    */
   initialIndex?: number;
+  /**
+   * 过渡时间（毫秒）
+   */
+  duration?: number;
   /**
    * 是否显示指示器
    */
@@ -54,7 +66,10 @@ class Swiper extends Component<IProps> {
     autoplay: true,
     intervel: 3000,
     initialIndex: 0,
-    showIndicators: true
+    showIndicators: true,
+    slideWidth: 0.9,
+    duration: 500,
+    type: 'normal'
   };
   state = {
     current: this.props.initialIndex
@@ -82,15 +97,22 @@ class Swiper extends Component<IProps> {
   size = 0;
   swiperCurrent = 0;
   resize = () => {
+    const { slideWidth } = this.props;
     const container = this.swiperContainer.current;
     if (container) {
       const size = container.getBoundingClientRect();
-      this.size = size.width;
+      if (slideWidth < 1) {
+        this.size = size.width * slideWidth;
+      } else {
+        this.size = slideWidth || size.width;
+      }
+      const rect = this.swiperList.current;
+      if (rect) {
+        // rect.style.width = `${this.size * this.swiperData.length}px`;
+        rect.style.left = `${(size.width - this.size) / 2}px`;
+      }
     }
-    const rect = this.swiperList.current;
-    if (rect) {
-      rect.style.width = `${this.size * this.swiperData.length}px`;
-    }
+    
   };
   componentDidMount() {
     if (isBrowser) {
@@ -143,10 +165,8 @@ class Swiper extends Component<IProps> {
     if (this.swiperList && this.swiperList.current) {
       const $swiper = this.swiperList.current;
       if (ind !== undefined) {
-        $swiper.style.transitionDuration = '500ms';
-        $swiper.style.transform = `translate3d(${ind *
-          (1 / this.total) *
-          -100}%, 0, 0 )`;
+        $swiper.style.transitionDuration = `${this.props.duration}ms`;
+        $swiper.style.transform = `translate3d(${ind * this.size * -1}px, 0, 0 )`;
         this.setState(
           {
             current: ind
@@ -207,7 +227,7 @@ class Swiper extends Component<IProps> {
     } else if (inBound) {
       this.moveTo({ ind: this.state.current + this.direction });
     }
-    setTimeout(() => (this.offsetX = 0), 500);
+    setTimeout(() => (this.offsetX = 0), 200);
   };
   renderIndicators(data) {
     const { prefix } = this.props;
@@ -226,12 +246,14 @@ class Swiper extends Component<IProps> {
   }
   renderItems(data) {
     if (data && data.length) {
-      return data.map(item => {
+      return data.map((item, ind) => {
         return (
           <Item
             key={item.id}
             onItemClick={item.onItemClick}
-            width={`${(1 / data.length) * 100}%`}
+            width={`${this.size}px`}
+            current={ind === this.state.current}
+            // padding={`0 ${(1 - this.props.percent) / 2 * this.size}px`}
           >
             {item.content}
           </Item>
@@ -242,9 +264,10 @@ class Swiper extends Component<IProps> {
   swiperData;
   swiperList = createRef();
   swiperContainer = createRef();
-  renderSwipers() {
+  render() {
     const {
       prefix,
+      type,
       children,
       className,
       showIndicators,
@@ -257,7 +280,10 @@ class Swiper extends Component<IProps> {
       this.total = swiperData.length;
       return (
         <div
-          className={cx(prefix, className)}
+          className={cx(prefix, className, {
+            [`${prefix}--pd`]: showIndicators && !customIndicator,
+            [`${prefix}--${type}`]: !!type
+          })}
           ref={this.swiperContainer}
           {...restProps}
         >
@@ -276,9 +302,6 @@ class Swiper extends Component<IProps> {
     } else {
       return null;
     }
-  }
-  render() {
-    return this.renderSwipers();
   }
 }
 export default Swiper;

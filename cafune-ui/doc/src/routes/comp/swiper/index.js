@@ -1,6 +1,7 @@
 import { Swiper } from 'cafune';
 import { Component } from 'preact';
 const { SwiperItem } = Swiper;
+import './index.scss';
 
 export default class SwiperComp extends Component {
   state = {
@@ -8,11 +9,7 @@ export default class SwiperComp extends Component {
   };
   renderCustom() {
     const { current } = this.state;
-    return (
-      <div style="padding: 4px 10px;position: absolute;right: 10px;bottom:10px;background: rgba(0,0,0, .4);border-radius: 6px;color: #fff;font-size:12px;">
-        {current + 1}/4
-      </div>
-    );
+    return <div class="swiper-indicator">{current + 1} / 4</div>;
   }
   change = ind => {
     this.setState({
@@ -22,29 +19,52 @@ export default class SwiperComp extends Component {
   render() {
     const sliderNum = 4;
     return (
-      <div class="caf-demo-block">
+      <div>
         <p class="caf-demo-title">默认</p>
-        <Swiper
-          initialIndex={0}
-          showIndicators={true}
-          autoplay={true}
-          intervel={3000}
-        >
+        <Swiper initialIndex={0} showIndicators={true} autoplay={true}>
           {Array(...Array(sliderNum)).map((_, ind) => (
             <SwiperItem key={ind}>
-              <div style="height: 150px;text-align:center;line-height: 150px;">
-                {ind + 1}
-              </div>
+              <div class="swiper-block">{ind + 1}</div>
             </SwiperItem>
           ))}
         </Swiper>
-        <p class="caf-demo-title">自定义指示器</p>
-        <Swiper onChange={this.change} customIndicator={this.renderCustom()}>
+        {/* <p class="caf-demo-title">透明度切换</p>
+        <Swiper
+          type="fade"
+          initialIndex={0}
+          showIndicators={true}
+          autoplay={true}
+        >
+          {Array(...Array(sliderNum)).map((_, ind) => (
+            <SwiperItem key={ind}>
+              <div class="swiper-block">{ind + 1}</div>
+            </SwiperItem>
+          ))}
+        </Swiper>
+        <p class="caf-demo-title">洗牌</p>
+        <Swiper
+          type="shuffle"
+          initialIndex={0}
+          showIndicators={true}
+          autoplay={true}
+        >
+          {Array(...Array(sliderNum)).map((_, ind) => (
+            <SwiperItem key={ind}>
+              <div class="swiper-block">{ind + 1}</div>
+            </SwiperItem>
+          ))}
+        </Swiper> */}
+        <p class="caf-demo-title">自定义</p>
+        <Swiper
+          slideWidth={280}
+          onChange={this.change}
+          intervel={2000}
+          duration={200}
+          customIndicator={this.renderCustom()}
+        >
           {Array(...Array(4)).map((_, ind) => (
             <SwiperItem key={ind}>
-              <div style="height: 150px;text-align:center;line-height: 150px;">
-                {ind + 1}
-              </div>
+              <div class="swiper-block">{ind + 1}</div>
             </SwiperItem>
           ))}
         </Swiper>
