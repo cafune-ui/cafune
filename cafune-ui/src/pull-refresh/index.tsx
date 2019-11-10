@@ -28,7 +28,7 @@ function getScrolltop() {
 //   'pulling': '释放可刷新',
 //   'loading': '加载中...',
 // }
-interface IIndicator {
+type IIndicator = {
   /**
    * 下拉中指示器
    */

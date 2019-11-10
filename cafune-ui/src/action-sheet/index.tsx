@@ -3,7 +3,7 @@ import cx from 'classnames';
 import Icon from '../icon';
 import Loading from '../loading';
 import Button from '../button';
-export interface iOption {
+export type iOption = {
   /**
    * 单元项目图标
    */
@@ -42,11 +42,11 @@ export interface iOption {
   action?: string | Function;
 }
 
-export interface IHorizon {
+export type IHorizon = {
   list: iOption[];
   wrap: boolean;
 }
-export interface IActionSheet {
+export type IActionSheet = {
   /**
    * 自定义类名
    */

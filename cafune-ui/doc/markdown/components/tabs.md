@@ -10,12 +10,12 @@ import { Tabs } from 'cafune';
 | --- | --- | --- | --- | --- | --- |
 | prefix | 自定义前缀 | string | `'caf-tabs'` | - | ❌ |
 | className | 自定义类名 | string | - | - | ❌ |
-| activeId | 当前激活id | string/number | - | - | ❌ |
-| type | 组件类型 | literal/literal/literal | `'slider'` | - | ❌ |
+| activeId | 当前激活id | string / number | - | - | ❌ |
+| type | 组件类型 | string | `'slider'` | `'slider'`,`'contrast'`,`'card'` | ❌ |
 | onChange | 切换tab时回调 | (key) => void | - | - | ❌ |
 | navClass | 自定义标签栏类名 | string | - | - | ❌ |
 | maxCount | 最大可容纳标签数 | number | `5` | - | ❌ |
-| tabs | 自定义tab 列表 | Array/any | - | - | ❌ |
+| tabs | 自定义tab 列表 | Array / any | - | - | ❌ |
 
 ### Nav 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
@@ -23,7 +23,7 @@ import { Tabs } from 'cafune';
 | prefix | 自定义前缀 | string | `'caf-tabs__nav'` | - | ❌ |
 | className | 自定义类名 | string | - | - | ❌ |
 | tabsData | 当前激活id | Array | - | - | ❌ |
-| type | 组件类型 | literal/literal/literal | `'slider'` | - | ❌ |
+| type | 组件类型 | string | `'slider'` | `'slider'`,`'contrast'`,`'card'` | ❌ |
 | onChange | 切换tab时回调 | (id) => void | - | - | ❌ |
 | navClass | 自定义标签栏类名 | string | - | - | ❌ |
 | maxCount | 最大可容纳标签数 | number | `5` | - | ❌ |

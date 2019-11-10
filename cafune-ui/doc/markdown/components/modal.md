@@ -11,7 +11,7 @@ import { Modal } from 'cafune';
 | prefix | 自定义前缀 | string | `'caf-modal'` | - | ❌ |
 | title | 标题 | string | - | - | ❌ |
 | message | 消息内容，如有children 优先children | string | - | - | ❌ |
-| align | 文本对齐方式 | literal/literal/literal | `'center'` | - | ❌ |
+| align | 文本对齐方式 | string | `'center'` | `'center'`,`'left'`,`'right'` | ❌ |
 | showCancel | 是否显示取消按钮 | boolean | `false` | - | ❌ |
 | mask | 是否显示蒙层 | boolean | `true` | - | ❌ |
 | confirmContent | 确认按钮内容 | string | `'确定'` | - | ❌ |

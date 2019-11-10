@@ -30,7 +30,7 @@ function clearNextFrameAction(nextFrameId) {
   }
 }
 
-interface IAction {
+type IAction = {
   /**
    * 按钮类型
    */
@@ -48,7 +48,7 @@ interface IAction {
    */
   onClick?: () => void;
 }
-interface IProps {
+type IProps = {
   /**
    * 自定义类名
    */

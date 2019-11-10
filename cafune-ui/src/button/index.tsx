@@ -13,7 +13,7 @@ const defaultLoadingInfo = {
   size: '18px'
 };
 
-interface ILoading {
+type ILoading = {
   /**
    * 加载图标类型
    */
@@ -27,7 +27,7 @@ interface ILoading {
    */
   size?: string;
 }
-interface IButtonIcon {
+type IButtonIcon = {
   /**
    * 按钮图标（加载状态时会被加载图标覆盖）
    */
@@ -37,7 +37,7 @@ interface IButtonIcon {
    */
   positon?: string | object;
 }
-interface IGradient {
+type IGradient = {
   /**
    * 渐变角度，默认为 0
    */

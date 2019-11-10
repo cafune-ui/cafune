@@ -50,7 +50,7 @@ function getBtn(data, side = 'left', isConflict = false) {
   }
   return null;
 }
-interface IBtn {
+type IBtn = {
    /**
    * 按钮图标
    */

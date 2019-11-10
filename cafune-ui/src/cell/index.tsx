@@ -5,7 +5,7 @@ import CellGroup from './group';
 import { touchEventMap, getTouch } from '../util/event';
 import { isBrowser } from '../util/isomorphic';
 
-interface ISwiperList {
+type ISwiperList = {
   clickHandler?: Function;
   name?: boolean;
   backgroundColor?: string;

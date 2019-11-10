@@ -13,9 +13,9 @@ import { ActionSheet } from 'cafune';
 | isShow | 面板开启状态 | boolean | `false` | - | ❌ |
 | showMask | 是否显示遮罩 | boolean | `true` | - | ❌ |
 | closeOnClickMask | 是否在点击遮罩后关闭 | boolean | `true` | - | ❌ |
-| horizon | 横向展示的数据 | IHorizon | - | - | ✅  |
+| horizon | 横向展示的数据 | horizon-options | - | - | ✅  |
 | vertialList | 纵向展示的数据 | Array | - | - | ✅  |
-| title | 标题栏 | string/VNode/Component/HTMLElement | - | - | ❌ |
+| title | 标题栏 | string / VNode / Component / HTMLElement | - | - | ❌ |
 | cancelText | 取消按钮文字 | string | `'取消'` | - | ❌ |
 | confirmText | 确认按钮文字 | string | `'确定'` | - | ❌ |
 | onClose | 关闭时触发事件 | Function | - | - | ❌ |
@@ -23,3 +23,10 @@ import { ActionSheet } from 'cafune';
 | onOpen | 开启时触发事件 | Function | - | - | ❌ |
 | showCancel | 是否显示取消按钮 | boolean | `true` | - | ❌ |
 | showConfirm | 是否显示确认按钮 | boolean | - | - | ❌ |
+
+
+ ### horizon-options 说明
+| 参数 | 类型 | 备选项 | 是否必须 |
+| --- | --- | --- | --- |
+| list | Array | - | ✅  |
+| wrap | boolean | - | ✅  |

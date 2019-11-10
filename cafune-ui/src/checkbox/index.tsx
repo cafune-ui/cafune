@@ -7,7 +7,7 @@ import Icon from '../icon';
 function isImage(icon) {
   return icon && icon.indexOf('/') !== -1;
 }
-interface IIcon {
+type IIcon = {
   /**
    * 激活图标
    */

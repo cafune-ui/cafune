@@ -12,8 +12,17 @@ import { PullRefresh } from 'cafune';
 | className | 自定义类名 | string | - | - | ❌ |
 | children | 自元素 | any | - | - | ❌ |
 | disabled | 是否禁用 | boolean | - | - | ❌ |
-| direction | 拉动方向 | literal/literal | - | - | ❌ |
+| direction | 拉动方向 | string | - | `'up'`,`'down'` | ❌ |
 | distance | 刷新距离 | number | - | - | ❌ |
 | isRefreshing | 是否处于刷新状态 | boolean | - | - | ❌ |
 | onRefresh | 刷新回调 | () => void | - | - | ❌ |
-| indicator | 刷新指示器 | IIndicator | - | - | ❌ |
+| indicator | 刷新指示器 | indicator-options | - | - | ❌ |
+
+
+ ### indicator-options 说明
+| 参数 | 类型 | 备选项 | 是否必须 |
+| --- | --- | --- | --- |
+| pulling | string / VNode | - | ❌ |
+| loosing | string / VNode | - | ❌ |
+| loading | string / VNode | - | ❌ |
+| finish | string / VNode | - | ❌ |

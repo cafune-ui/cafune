@@ -1,7 +1,7 @@
 import { Component, h } from 'preact';
 import cx from 'classnames';
 import Icon from '../icon';
-interface IItemIcon {
+type IItemIcon = {
   actived?: string;
   normal?: string;
 }

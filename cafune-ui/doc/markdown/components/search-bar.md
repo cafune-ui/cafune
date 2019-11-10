@@ -15,4 +15,13 @@ import { SearchBar } from 'cafune';
 | onCancel | 取消操作时回调 | (value?) => void | - | - | ❌ |
 | onChange | 内容变更时回调 | (value?) => void | - | - | ❌ |
 | leftIcon | 左侧按钮图标（参考 `Icon` 组件） | string | `'search'` | - | ❌ |
-| action | 右侧功能按钮 | IAction | - | - | ❌ |
+| action | 右侧功能按钮 | action-options | - | - | ❌ |
+
+
+ ### action-options 说明
+| 参数 | 类型 | 备选项 | 是否必须 |
+| --- | --- | --- | --- |
+| type | string | 'confirm','cancel','custom' | ❌ |
+| text | string | - | ❌ |
+| keepShow | boolean | - | ❌ |
+| onClick | () => void | - | ❌ |
