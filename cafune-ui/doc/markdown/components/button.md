@@ -25,25 +25,25 @@ import { Button } from 'cafune';
 
 
  ### icon-options 说明
-| 参数 | 类型 | 备选项 | 是否必须 |
-| --- | --- | --- | --- |
-| type | string / VNode / HTMLElement | - | ❌ |
-| positon | string / object | - | ❌ |
+| 参数 | 说明 | 类型 | 备选项 | 是否必须 |
+| --- | --- | --- | --- | --- |
+| type | 按钮图标（加载状态时会被加载图标覆盖） | string / VNode / HTMLElement | - | ❌ |
+| positon | - | string / object | - | ❌ |
 
 
  ### loadingInfo-options 说明
-| 参数 | 类型 | 备选项 | 是否必须 |
-| --- | --- | --- | --- |
-| type | string | 'step','spin','ripple' | ❌ |
-| color | string | - | ❌ |
-| size | string | - | ❌ |
+| 参数 | 说明 | 类型 | 备选项 | 是否必须 |
+| --- | --- | --- | --- | --- |
+| type | 加载图标类型 | string | 'step','spin','ripple' | ❌ |
+| color | 自定义颜色 | string | - | ❌ |
+| size | 自定义加载图标尺寸 | string | - | ❌ |
 
 
  ### gradient-options 说明
-| 参数 | 类型 | 备选项 | 是否必须 |
-| --- | --- | --- | --- |
-| angle | number | - | ❌ |
-| from | string | - | ❌ |
-| to | string | - | ❌ |
-| color | string | - | ❌ |
-| shadow | string | - | ❌ |
+| 参数 | 说明 | 类型 | 备选项 | 是否必须 |
+| --- | --- | --- | --- | --- |
+| angle | - | number | - | ❌ |
+| from | 起始颜色 | string | - | ❌ |
+| to | 终止颜色 | string | - | ❌ |
+| color | 文本颜色 | string | - | ❌ |
+| shadow | 投影 | string | - | ❌ |

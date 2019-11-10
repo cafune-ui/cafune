@@ -20,9 +20,9 @@ import { PullRefresh } from 'cafune';
 
 
  ### indicator-options 说明
-| 参数 | 类型 | 备选项 | 是否必须 |
-| --- | --- | --- | --- |
-| pulling | string / VNode | - | ❌ |
-| loosing | string / VNode | - | ❌ |
-| loading | string / VNode | - | ❌ |
-| finish | string / VNode | - | ❌ |
+| 参数 | 说明 | 类型 | 备选项 | 是否必须 |
+| --- | --- | --- | --- | --- |
+| pulling | 下拉中指示器 | string / VNode | - | ❌ |
+| loosing | 释放时指示器 | string / VNode | - | ❌ |
+| loading | 加载中指示器 | string / VNode | - | ❌ |
+| finish | 刷新结束指示器 | string / VNode | - | ❌ |

@@ -17,12 +17,12 @@ import { Steps } from 'cafune';
 
 
  ### icons-options 说明
-| 参数 | 类型 | 备选项 | 是否必须 |
-| --- | --- | --- | --- |
-| pend | string / HTMLElement / VNode | - | ❌ |
-| process | string / HTMLElement / VNode | - | ❌ |
-| finish | string / HTMLElement / VNode | - | ❌ |
-| error | string / HTMLElement / VNode | - | ❌ |
+| 参数 | 说明 | 类型 | 备选项 | 是否必须 |
+| --- | --- | --- | --- | --- |
+| pend | 等待状态图标 | string / HTMLElement / VNode | - | ❌ |
+| process | 进行中状态图标 | string / HTMLElement / VNode | - | ❌ |
+| finish | 结束状态图标 | string / HTMLElement / VNode | - | ❌ |
+| error | 错误状态图标 | string / HTMLElement / VNode | - | ❌ |
 
 ### Step 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
@@ -36,9 +36,9 @@ import { Steps } from 'cafune';
 
 
  ### icons-options 说明
-| 参数 | 类型 | 备选项 | 是否必须 |
-| --- | --- | --- | --- |
-| pend | string / HTMLElement / VNode | - | ❌ |
-| process | string / HTMLElement / VNode | - | ❌ |
-| finish | string / HTMLElement / VNode | - | ❌ |
-| error | string / HTMLElement / VNode | - | ❌ |
+| 参数 | 说明 | 类型 | 备选项 | 是否必须 |
+| --- | --- | --- | --- | --- |
+| pend | 等待状态图标 | string / HTMLElement / VNode | - | ❌ |
+| process | 进行中状态图标 | string / HTMLElement / VNode | - | ❌ |
+| finish | 结束状态图标 | string / HTMLElement / VNode | - | ❌ |
+| error | 错误状态图标 | string / HTMLElement / VNode | - | ❌ |

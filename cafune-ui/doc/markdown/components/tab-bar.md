@@ -32,7 +32,7 @@ import { TabBar } from 'cafune';
 
 
  ### icons-options 说明
-| 参数 | 类型 | 备选项 | 是否必须 |
-| --- | --- | --- | --- |
-| actived | string | - | ❌ |
-| normal | string | - | ❌ |
+| 参数 | 说明 | 类型 | 备选项 | 是否必须 |
+| --- | --- | --- | --- | --- |
+| actived | - | string | - | ❌ |
+| normal | - | string | - | ❌ |

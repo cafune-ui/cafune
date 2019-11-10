@@ -26,7 +26,7 @@ import { ActionSheet } from 'cafune';
 
 
  ### horizon-options 说明
-| 参数 | 类型 | 备选项 | 是否必须 |
-| --- | --- | --- | --- |
-| list | Array | - | ✅  |
-| wrap | boolean | - | ✅  |
+| 参数 | 说明 | 类型 | 备选项 | 是否必须 |
+| --- | --- | --- | --- | --- |
+| list | - | Array | - | ✅  |
+| wrap | - | boolean | - | ✅  |

@@ -5,19 +5,27 @@ const glob = require('glob');
 const docgen = require('react-docgen');
 
 const mdRoot = path.resolve(process.cwd(), './doc/markdown/components');
-if (fs.existsSync(mdRoot)) {
-  del.sync(mdRoot);
-}
-fs.mkdirSync(mdRoot);
 
-function getSignature(props) {
+/**
+ * 获取复杂类型属性
+ * @param {obj} props 属性对象
+ * @param {any} raw 原始数据
+ */
+function getSignature(props, raw = '') {
   if (props) {
     const result = props.map(item => {
       const { key, value } = item;
+      let desc = '-';
+      if (raw) {
+        const pat = new RegExp(`\\* (\\S+)\\n\\s+\\*\\/\\n\\s+${key}`, 'g');
+        let patExec = pat.exec(raw);
+        if (patExec) desc = patExec[1];
+      }
       const { typeName, backupOption } = getTypeName(value, value.required);
       return {
         key,
         name: Array.isArray(typeName) ? typeName.join(' / ') : typeName,
+        desc,
         backupOption,
         required: value.required
       };
@@ -69,7 +77,7 @@ function getTypeName(type, required) {
       typeName = type.raw;
       typeName =
         type.signature && type.signature.properties
-          ? getSignature(type.signature.properties)
+          ? getSignature(type.signature.properties, type.raw)
           : type.raw;
 
       break;
@@ -201,11 +209,11 @@ function generatePropTab(props, showTitle = true) {
   if (typeArr.length) {
     typeArr.forEach(item => {
       const { name, list } = item;
-      md += `\n\n ### ${name} 说明\n| 参数 | 类型 | 备选项 | 是否必须 |\n| --- | --- | --- | --- |\n`;
+      md += `\n\n ### ${name} 说明\n| 参数 | 说明 | 类型 | 备选项 | 是否必须 |\n| --- | --- | --- | --- | --- |\n`;
       list.forEach(prop => {
-        const { key, name, required, backupOption } = prop;
+        const { key, desc, name, required, backupOption } = prop;
         const requireTxt = required ? '✅ ' : '❌';
-        md += `| ${key} | ${name} | ${backupOption} | ${requireTxt} |\n`;
+        md += `| ${key} | ${desc} | ${name} | ${backupOption} | ${requireTxt} |\n`;
       });
     });
   }
@@ -238,7 +246,6 @@ function generateCompMd(compInfo) {
 
 const compRoot = path.resolve(process.cwd(), './src/');
 function generateDoc(comp = '*') {
-  console.log(`${compRoot}/${comp}/*.?(jsx|tsx)`);
   glob(`${compRoot}/${comp}/*.?(jsx|tsx)`, (err, files) => {
     files.forEach(item => {
       const dirName = path.dirname(item);
@@ -268,8 +275,15 @@ function main() {
   const args = process.argv;
   const name = args[2];
   if (name === undefined) {
+    if (fs.existsSync(mdRoot)) {
+      del.sync(mdRoot);
+    }
+    fs.mkdirSync(mdRoot);
     generateDoc();
   } else {
+    if (!fs.existsSync(mdRoot)) {
+      fs.mkdirSync(mdRoot);
+    }
     generateDoc(name);
   }
   // process.exit();
