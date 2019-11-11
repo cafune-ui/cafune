@@ -88,6 +88,22 @@ $checkbox-box-border-radius: 6px !default;
 $checkbox-box-background-color: $white !default;
 $checkbox-box-icon-size: 10px !default;
 
+// page
+$page-margin: 10px 0 !default;
+// $page-button-height: 32px !default;
+// $page-button-width: 86px !default;
+// $page-button-border-radius: 8px !default;
+// $page-button-color: $blue !default;
+// $page-button-background-color: $white !default;
+// $page-button-disabled-color: #969fa9 !default;
+// $page-button-disabled-background-color: #f8f8f8 !default;
+$page-indicator-padding:  0 20px !default;
+$page-dot-height: 36px !default;
+$page-dot-item-height: 6px !default; 
+$page-dot-item-width: 6px !default; 
+$page-dot-item-margin: 0 4px !default;
+$page-dot-item-background-color:  rgba(0, 0, 0, .2) !default;
+$page-dot-item-current-background-color: rgba(0, 0, 0, .6) !default;
 
 // radio
 $radio-icon-size: 18px !default;
@@ -135,7 +151,7 @@ $stepper-btn-plus-size: 10px !default;
 $stepper-icon-thick: 1px !default;
 $stepper-icon-percent: 32% !default;
 
-//notice-bar
+// notice-bar
 $noticebar-height: 40px !default;$noticebar-border-radius: $noticebar-height !default;
 $noticebar-line-height: 24px !default;
 $noticebar-notice-background-color: #ececec !default;

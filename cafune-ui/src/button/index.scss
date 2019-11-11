@@ -9,6 +9,7 @@ $name: '.caf-btn';
   box-sizing: border-box;
   border-radius: 6px;
   text-align: center;
+  user-select: none;
   // @include pixelBorder();
   &__icon {
     padding: 0 5px;
