@@ -88,6 +88,31 @@ $checkbox-box-border-radius: 6px !default;
 $checkbox-box-background-color: $white !default;
 $checkbox-box-icon-size: 10px !default;
 
+// nav-bar
+$navbar-padding: 0 $horizontal-distance !default;
+$navbar-height: 46px !default;
+$navbar-line-height: $navbar-height !default;
+$navbar-background-color: $white !default;
+$navbar-title-color: #323232 !default;
+$navbar-title-font-weight: 500 !default;
+$navbar-title-font-size: 16px !default;
+$navbar-badge-background-color: $red !default;
+$navbar-badge-font-size: 10px !default;
+$navbar-badge-size: 8px !default;
+$navbar-badge-empty-width: $navbar-badge-size !default;
+$navbar-badge-empty-height: $navbar-badge-size !default;
+$navbar-badge-height: 18px !default;
+$navbar-badge-padding: 0 5px !default;
+$navbar-badge-border-radius: $navbar-badge-height !default;
+$navbar-badge-min-width: 25px !default;
+$navbar-badge-top: 4px !default;
+$navbar-badge-right: -4px !default;
+
+$navbar-btn-badged-padding: 0 16px 0 0 !default;
+$navbar-btn-text-color: $blue !default;
+$navbar-btn-left-padding: 0 10px 0 0 !default;
+$navbar-btn-right-padding: 0 0 0 10px !default;
+
 // page
 $page-margin: 10px 0 !default;
 // $page-button-height: 32px !default;

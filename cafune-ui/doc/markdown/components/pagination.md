@@ -16,7 +16,8 @@ import { Pagination } from 'cafune';
 | step | 步进数 | number | `1` | - | ❌ |
 | onChange | 点击切换时回调 | (pageNum: number) => void | - | - | ❌ |
 | className | 自定义类名 | string | - | - | ❌ |
-| btnText | 按钮文字 | btnText-options | - | - | ✅  |
+| btnText | 按钮文字 | btnText-options | - | - | ❌ |
+| btnIcon | 按钮图标 | btnIcon-options | - | - | ❌ |
 
 
  ### btnText-options 说明
@@ -24,3 +25,10 @@ import { Pagination } from 'cafune';
 | --- | --- | --- | --- | --- |
 | prev | - | string | - | ❌ |
 | next | - | string | - | ❌ |
+
+
+ ### btnIcon-options 说明
+| 参数 | 说明 | 类型 | 备选项 | 是否必须 |
+| --- | --- | --- | --- | --- |
+| prev | - | [object Object] / [object Object] | - | ❌ |
+| next | - | [object Object] / [object Object] | - | ❌ |

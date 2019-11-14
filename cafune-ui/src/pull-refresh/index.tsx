@@ -32,19 +32,19 @@ type IIndicator = {
   /**
    * 下拉中指示器
    */
-  pulling?: string | VNode;
+  pulling?: string | VNode | HTMLElement;
   /**
    * 释放时指示器
    */
-  loosing?: string | VNode;
+  loosing?: string | VNode | HTMLElement;
   /**
    * 加载中指示器
    */
-  loading?: string | VNode;
+  loading?: string | VNode | HTMLElement;
   /**
    * 刷新结束指示器
    */
-  finish?: string | VNode;
+  finish?: string | VNode | HTMLElement;
 }
 interface IProps {
   /**

@@ -12,10 +12,27 @@ function changeFn(direction, pn, pages, onChange) {
   return () => {};
 }
 
-type IText = {
+type IButtonIcon = {
+  /**
+   * 按钮图标（加载状态时会被加载图标覆盖）
+   */
+  type?: string | VNode | HTMLElement;
+  /**
+   * 图标位置，当为`left` 或`right` 时，图标将出现在文字旁边。也可传入`{left: 'xx'. right: 'xx' }`来绝对定位图标
+   */
+  positon?: string | object;
+};
+
+type IButtonTexts = {
   prev?: string;
   next?: string;
 };
+
+type IButtonIcons = {
+  prev?: IButtonIcon;
+  next?: IButtonIcon;
+};
+
 interface IProps {
   /**
    * 自定义类名
@@ -52,7 +69,11 @@ interface IProps {
   /**
    * 按钮文字
    */
-  btnText: IText;
+  btnText?: IButtonTexts;
+  /**
+   * 按钮图标
+   */
+  btnIcon?: IButtonIcons;
 }
 /**
  * 分页
@@ -66,6 +87,7 @@ const Pagination = ({
   total,
   onChange,
   btnText,
+  btnIcon,
   step,
   ...restProps
 }: IProps) => {
@@ -97,31 +119,35 @@ const Pagination = ({
   let isShowNumber = mode === 'number' || (mode === 'button' && !simple);
   return (
     <div className={cx(prefix, className)} {...restProps}>
-      {isShowBtn && (
-        <Button
-          // disabled={current <= 1}
-          type={current <= 1 ? 'cancel' : 'primary'}
-          onClick={changeFn(-1 * step, current, total, onChange)}
-          // className={prevCx}
-        >
-          {(btnText && btnText.prev) || '上一页'}
-        </Button>
-      )}
+      {(isShowBtn && (!!(btnText && btnText.prev) ||
+        !!(btnIcon && btnIcon.prev)) && (
+          <Button
+            // disabled={current <= 1}
+            type={current <= 1 ? 'cancel' : 'primary'}
+            onClick={changeFn(-1 * step, current, total, onChange)}
+            icon={(btnIcon && btnIcon.prev) || null}
+            // className={prevCx}
+          >
+            {btnText && btnText.prev}
+          </Button>
+        ))}
       {isShowNumber && (
         <span className={`${prefix}__indicator`}>
           {current} / {total}
         </span>
       )}
-      {isShowBtn && (
-        <Button
-          // disabled={current >= total}
-          type={current >= total ? 'cancel' : 'primary'}
-          onClick={changeFn(1 * step, current, total, onChange)}
-          // className={nextCx}
-        >
-          {(btnText && btnText.next) || '下一页'}
-        </Button>
-      )}
+      {(isShowBtn && (!!(btnText && btnText.next) ||
+        !!(btnIcon && btnIcon.next)) && (
+          <Button
+            // disabled={current >= total}
+            type={current >= total ? 'cancel' : 'primary'}
+            onClick={changeFn(1 * step, current, total, onChange)}
+            icon={(btnIcon && btnIcon.next) || null}
+            // className={nextCx}
+          >
+            {btnText && btnText.next}
+          </Button>
+        ))}
       {mode === 'pointer' && indicator}
     </div>
   );

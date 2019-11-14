@@ -1,72 +1,82 @@
-@import '../style/variables/color.scss';
+@import '../style/_var.scss';
 $name: '.caf-navbar';
 #{$name} {
   display: flex;
   width: 100%;
-  padding: 0 15px;
+  padding: $navbar-padding;
   box-sizing: border-box;
   align-items: center;
-  height: 46px;
-  line-height: 46px;
-  background-color: #fff;
+  height: $navbar-height;
+  line-height: $navbar-line-height;
+  background-color: $navbar-background-color;
   user-select: none;
-  &-title {
+  &__title {
     flex: 1;
-    color: #323232;
-    font-weight: 500;
+    color: $navbar-title-color;
+    font-weight: $navbar-title-font-weight;
     text-align: center;
-    font-size: 16px;
+    font-size: $navbar-title-font-size;
   }
-  &-btn {
+  &__btns {
+    position: absolute;
+    display: flex;
+    &--left {
+      left: $horizontal-distance;
+      #{$name}__btn {
+        padding: $navbar-btn-left-padding;
+      }
+    }
+    &--right {
+      right: $horizontal-distance;
+      #{$name}__btn {
+        padding: $navbar-btn-right-padding;
+      }
+    }
+  }
+  &__btn {
     position: relative;
-    &-badge {
+    &__badge {
       position: absolute;
       display: inline-block;
-      background-color: #ff5b05;
+      background-color: $navbar-badge-background-color;
       min-width: 8px;
-      font-size: 12px;
+      font-size: $navbar-badge-font-size;
       color: #fff;
       white-space: nowrap;
       text-align: center;
-      height: 8px;
-      width: 8px;
+      height: $navbar-badge-empty-height;
+      width: $navbar-badge-empty-width;
       border-radius: 50%;
       &:not(:empty) {
-        line-height: 18px;
-        height: 18px;
+        line-height: $navbar-badge-height;
+        height: $navbar-badge-height;
         width: auto;
-        max-width: 25px;
-        padding: 0 5px;
-        border-radius: 18px;
+        max-width: $navbar-badge-min-width;
+        padding: $navbar-badge-padding;
+        border-radius: $navbar-badge-border-radius;
       }
     }
     .caf-icon {
       margin-right: 5px;
       vertical-align: middle;
       & + #{$name}-btn-badge {
-        right: -3px;
-        top: 3px;
+        right: $navbar-badge-right;
+        top: $navbar-badge-top;
       }
     }
-    &-text {
-      color: $color_theme;
+    &__text {
+      color: $navbar-btn-text-color;
       vertical-align: middle;
-      &[data-badged='1'] {
-        padding-right: 20px;
+      & + #{$name}__btn__badge {
+        right: $navbar-badge-right;
+        top: $navbar-badge-top;
       }
-      & + #{$name}-btn-badge {
-        right: 0;
-        top: 3px;
+      &--badged {
+        padding: $navbar-btn-badged-padding;
       }
-    }
-    &__left {
-      padding: 0 10px 0 0;
-    }
-    &__right {
-      padding: 0 0 0 10px;
     }
   }
-  &__fixed {
+  &--fixed {
     position: fixed;
     top: 0;
     left: 0;

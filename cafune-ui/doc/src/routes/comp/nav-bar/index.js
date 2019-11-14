@@ -42,12 +42,6 @@ export default class Page extends Component {
               }
             },
             {
-              text: '搜索',
-              clickHandler() {
-                console.log('搜索');
-              }
-            },
-            {
               icon: 'img',
               text: '图片',
               badge: true,

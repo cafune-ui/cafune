@@ -40,6 +40,16 @@ export default class Page extends Component {
           onChange={this.onChange}
           btnText={{ prev: 'prev', next: 'next' }}
         />
+        <p class="caf-demo-title">自定义按钮图标</p>
+        <Pagination
+          current={pn}
+          total={pages}
+          onChange={this.onChange}
+          btnIcon={{
+            prev: { type: 'arrow-left' },
+            next: { type: 'arrow-right' }
+          }}
+        />
         <p class="caf-demo-title">自定义步进数</p>
         <Pagination
           current={pn}
