@@ -22,6 +22,10 @@ a {
   --theme: #fff;
   --themebg: #f4f4f4;
   --actived: #f7fcff;
+  --tablecolor: #34495e;
+  --tablebgcolor: #fff;
+  --tablebordercolor: #f5f5f5;
+  --tablethbgcolor: #f8f8f8;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -31,6 +35,10 @@ a {
     --theme: #3b3b3b;
     --themebg: #565656;
     --actived: #272727;
+    --tablecolor: #fff;
+    --tablebgcolor: #585858;
+    --tablebordercolor: #6d6d6d;
+    --tablethbgcolor: #585858;
   } 
 }
 .caf {
@@ -118,17 +126,17 @@ a {
       border-radius: 10px;
       overflow: hidden;
       border-collapse: collapse;
-      color: #34495e;
+      color: var(--tablecolor);
       word-wrap: break-word;
-      background-color: #fff;
+      background-color: var(--tablebgcolor);
       th {
         padding: 12px;
-        background-color: #f8f8f8;
+        background-color: var(--tablethbgcolor);
       }
       td {
         padding: 10px;
         text-align: center;
-        border: 1px solid #f5f5f5; /* no */
+        border: 1px solid var(--tablebordercolor); /* no */
         font-weight: 300;
       }
       th,
@@ -136,9 +144,10 @@ a {
         min-width: 80px;
       }
       code {
-        margin: 2px 3px;
+        display: inline-block;
+        margin: 3px;
         padding: 2px 5px;
-        background-color: #fafafa;
+        background-color: #f3f3f3;
         font-size: 12px;
         word-break: break-all;
         white-space: pre-wrap;

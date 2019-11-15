@@ -88,6 +88,15 @@ $checkbox-box-border-radius: 6px !default;
 $checkbox-box-background-color: $white !default;
 $checkbox-box-icon-size: 10px !default;
 
+// grid
+$grid-item-padding: 15px 10px !default;
+$grid-item-background-color: $white !default;
+
+// loading
+$loading-padding: 10px !default;
+$loading-text-padding: 0 0 0 10px !default;
+$loading-verticle-text-margin: 10px 0 0 0 !default;
+
 // nav-bar
 $navbar-padding: 0 $horizontal-distance !default;
 $navbar-height: 46px !default;

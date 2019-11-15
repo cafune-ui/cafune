@@ -1,25 +1,27 @@
+@import '../style/var.scss';
+@import '../style/mixins/_border.scss';
 $name: '.caf-grid';
 #{$name} {
   display: flex;
   flex-wrap: wrap;
   word-break: break-all;
-  &-item {
+  &__item {
     position: relative;
     box-sizing: border-box;
-    &-inner {
+    &__inner {
       display: flex;
       position: relative;
       flex-direction: column;
       box-sizing: border-box;
       height: 100%;
-      padding: 15px 10px;
-      background-color: #fff;
+      padding: $grid-item-padding;
+      background-color: $grid-item-background-color;
     }
   }
-  &__square {
-    #{$name}-item {
+  &--square {
+    #{$name}__item {
       height: 0;
-      &-inner {
+      &__inner {
         position: absolute;
         top: 0;
         right: 0;
@@ -27,33 +29,20 @@ $name: '.caf-grid';
       }
     }
   }
-  &__border {
-    #{$name}-item-inner {
-      &::after {
-        content: '';
-        position: absolute;
-        box-sizing: border-box;
-        top: -50%;
-        right: -50%;
-        left: -50%;
-        bottom: -50%;
-        border: 0 solid #eee;
-        transform: scale(0.5);
-        z-index: 1;
-        border-width: 0 1px 1px;/* no */
-      }
+  &--border {
+    #{$name}__item__inner {
+      margin: -1px;
+      @include pixelBorder(#eee);
     }
   }
-  &__surround {
-    #{$name}-item-inner {
-      &::after {
-        border-width: 1px;/* no */
-      }
+  &--surround {
+    #{$name}__item__inner {
+      @include pixelBorder(#eee);
     }
   }
-  &__center {
-    #{$name}-item {
-      &-inner {
+  &--center {
+    #{$name}__item {
+      &__inner {
         align-items: center;
         justify-content: center;
         text-align: center;

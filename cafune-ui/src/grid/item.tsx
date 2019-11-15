@@ -21,7 +21,7 @@ interface IProps {
 class GridItem extends Component<IProps> {
   static displayName = 'GridItem';
   static defaultProps = {
-    prefix: 'caf-grid-item'
+    prefix: 'caf-grid__item'
   };
   render(
     { prefix, className, ind, icon, text, children, ...restProps },
@@ -53,7 +53,7 @@ class GridItem extends Component<IProps> {
     }
     return (
       <div className={cx(prefix, className)} style={sty} {...restProps}>
-        <div className={`${prefix}-inner`} style={innerStyle}>
+        <div className={`${prefix}__inner`} style={innerStyle}>
           {children}
         </div>
       </div>

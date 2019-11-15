@@ -1,6 +1,6 @@
 const svgMap = {
   step: {
-    cSize: '60px',
+    cSize: '45px',
     cColor: '#ccc',
     func(color, size) {
       const { cSize, cColor } = this;
@@ -13,7 +13,7 @@ const svgMap = {
           x="0px"
           y="0px"
           viewBox={`0 0 100 ${boxHeight}`}
-          enableBackground="new 0 0 0 0"
+          enable-background="new 0 0 0 0"
           xmlSpace="preserve"
           style={`fill: ${color || cColor};width:${size || cSize};`}
         >
@@ -85,85 +85,75 @@ const svgMap = {
   },
   ripple: {
     cColor: '#ccc',
-    cSize: '60px',
+    cSize: '50px',
     func(color, size) {
       const { cSize, cColor } = this;
       return (
         <svg
-          xmlns="http://www.w3.org/2000/svg"
           style={{ width: size || cSize, height: size || cSize }}
-          viewBox="0 0 45 45"
-          stroke={color || cColor}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="xMidYMid"
+          class="lds-ripple"
         >
-          <g
+          <circle
+            cx="50"
+            cy="50"
+            r="16.2741"
             fill="none"
-            fillRule="evenodd"
-            transform="translate(1 1)"
-            strokeWidth="2"
+            stroke={color || cColor}
+            stroke-width="2"
           >
-            <circle cx="22" cy="22" r="13.2878" strokeOpacity="0">
-              <animate
-                attributeName="r"
-                begin="1.5s"
-                dur="3s"
-                values="6;22"
-                calcMode="linear"
-                repeatCount="indefinite"
-              />
-              <animate
-                attributeName="stroke-opacity"
-                begin="1.5s"
-                dur="3s"
-                values="1;0"
-                calcMode="linear"
-                repeatCount="indefinite"
-              />
-              <animate
-                attributeName="stroke-width"
-                begin="1.5s"
-                dur="3s"
-                values="2;0"
-                calcMode="linear"
-                repeatCount="indefinite"
-              />
-            </circle>
-            <circle cx="22" cy="22" r="21.2878" strokeOpacity="0">
-              <animate
-                attributeName="r"
-                begin="3s"
-                dur="3s"
-                values="6;22"
-                calcMode="linear"
-                repeatCount="indefinite"
-              />
-              <animate
-                attributeName="stroke-opacity"
-                begin="3s"
-                dur="3s"
-                values="1;0"
-                calcMode="linear"
-                repeatCount="indefinite"
-              />
-              <animate
-                attributeName="stroke-width"
-                begin="3s"
-                dur="3s"
-                values="2;0"
-                calcMode="linear"
-                repeatCount="indefinite"
-              />
-            </circle>
-            <circle cx="22" cy="22" r="5.46583">
-              <animate
-                attributeName="r"
-                begin="0s"
-                dur="1.5s"
-                values="6;1;2;3;4;5;6"
-                calcMode="linear"
-                repeatCount="indefinite"
-              />
-            </circle>
-          </g>
+            <animate
+              attributeName="r"
+              calcMode="spline"
+              values="0;40"
+              keyTimes="0;1"
+              dur="3.1"
+              keySplines="0 0.2 0.8 1"
+              begin="-1.55s"
+              repeatCount="indefinite"
+            ></animate>
+            <animate
+              attributeName="opacity"
+              calcMode="spline"
+              values="1;0"
+              keyTimes="0;1"
+              dur="3.1"
+              keySplines="0.2 0 0.8 1"
+              begin="-1.55s"
+              repeatCount="indefinite"
+            ></animate>
+          </circle>
+          <circle
+            cx="50"
+            cy="50"
+            r="35.0733"
+            fill="none"
+            stroke={color || cColor}
+            stroke-width="2"
+          >
+            <animate
+              attributeName="r"
+              calcMode="spline"
+              values="0;40"
+              keyTimes="0;1"
+              dur="3.1"
+              keySplines="0 0.2 0.8 1"
+              begin="0s"
+              repeatCount="indefinite"
+            ></animate>
+            <animate
+              attributeName="opacity"
+              calcMode="spline"
+              values="1;0"
+              keyTimes="0;1"
+              dur="3.1"
+              keySplines="0.2 0 0.8 1"
+              begin="0s"
+              repeatCount="indefinite"
+            ></animate>
+          </circle>
         </svg>
       );
     }

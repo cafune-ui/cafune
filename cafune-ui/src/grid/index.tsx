@@ -72,10 +72,10 @@ class Grid extends Component<IProps> {
     return (
       <div
         className={cx(prefix, className, {
-          [`${prefix}__square`]: square,
-          [`${prefix}__border`]: border,
-          [`${prefix}__center`]: center,
-          [`${prefix}__surround`]: border && gutter
+          [`${prefix}--square`]: square,
+          [`${prefix}--border`]: border,
+          [`${prefix}--center`]: center,
+          [`${prefix}--surround`]: border && gutter
         })}
         {...restProps}
       >
