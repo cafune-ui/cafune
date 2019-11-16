@@ -52,7 +52,7 @@ $button-large-font-size: $font-size-lg !default;
 
 $button-default-background-color: $white !default;
 $button-default-border-color: $border-color !default;
-$button-default-box-shadow: 0 3px 8px #e6e6e6 !default;
+$button-default-box-shadow: 0 3px 8px $box-shadow-default-color !default;
 
 $button-primary-color: $white !default;
 $button-primary-background-color: $blue !default;
@@ -74,19 +74,52 @@ $action-tip-color: #96b3a2 !default;
 $action-tip-font-size: 12px !default;
 $action-tip-background-color: $green !default;
 
+// calendar
+$calendar-margin: $horizontal-distance !default;
+$calendar-border-radius: 16px !default;
+$calendar-box-shadow: 0 4px 12px $box-shadow-default-color !default;
+
+$calendar-main-padding: 10px 20px !default;
+
+$calendar-header-padding: 10px 20px !default;
+$calendar-header-font-size: 16px !default;
+$calendar-header-font-weight: 500 !default;
+$calendar-header-date-margin: 0 6px 0 0 !default;
+$calendar-header-btn-background-color: $grey !default;
+$calendar-header-btn-size: 6px !default;
+$calendar-weekbar-height: 26px !default;
+$calendar-weekbar-font-size: 10px !default;
+$calendar-weekbar-rest-color: #a5a5a5 !default;
+
+$calendar-date-size: 36px !default;
+$calendar-date-margin: 2px 0 !default;
+$calendar-date-font-size: 12px !default;
+
+$calendar-date-side-background-color: $blue !default;
+$calendar-date-side-color: $white !default;
+$calendar-date-side-radius: 12px !default;
+
+$calendar-date-today-indicator-width: 8px !default;
+$calendar-date-today-indicator-height: 4px !default;
+$calendar-date-today-indicator-background-color: $red !default;
+$calendar-date-range-background-color: transparentize($blue, .8) !default;
+$calendar-date-range-color: #717171 !default;
+$calendar-date-other-color: $grey !default;
+
 //checkbox
 $checkbox-height: 40px !default;
 $checkbox-padding: 0 $horizontal-distance !default;
 $checkbox-checked-color: $blue !default;
 $checkbox-checked-icon-color: $white !default;
 $checkbox-disabled-opacity: .4 !default;
-$checkbox-box-color: #d8d8d8;
+$checkbox-box-color: #d8d8d8 !default;
 $checkbox-box-size: 18px !default;
 $checkbox-box-width: $checkbox-box-size !default;
 $checkbox-box-height: $checkbox-box-size !default;
 $checkbox-box-border-radius: 6px !default;
 $checkbox-box-background-color: $white !default;
 $checkbox-box-icon-size: 10px !default;
+
 
 // grid
 $grid-item-padding: 15px 10px !default;
@@ -230,7 +263,7 @@ $swiper-indicator-margin: 0 5px 0 0 !default;
 $swiper-indicator-background-color: $blue !default;
 $swiper-normal-item-scale: 0.9  !default;
 $swiper-normal-item-opacity: 0.5 !default;
-$swiper-normal-item-border-radius: 8px !default; $swiper-normal-item-current-box-shadow: 0 4px 8px 4px #e6e6e6 !default;
+$swiper-normal-item-border-radius: 8px !default; $swiper-normal-item-current-box-shadow: 0 4px 8px 4px $box-shadow-default-color !default;
 
 // tabs
 $tabs-item-min-width: 25%;
