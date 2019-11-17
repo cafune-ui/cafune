@@ -11,7 +11,7 @@ import { Radio } from 'cafune';
 | prefix | 自定义前缀 | string | - | - | ❌ |
 | labelPosition | 单选框文本位置 | string | `'caf-radio'` | `'left'`,`'right'` | ❌ |
 | checkedColor | 选中颜色 | string | - | - | ❌ |
-| onChange | 单选框组变化回调 | (val: string | number) => void | - | - | ❌ |
+| onChange | 单选框组变化回调 | (val: string &#124; number) => void | - | - | ❌ |
 | value | 是否选中状态 | string / number | - | - | ❌ |
 
 ### RadioItem 配置项
@@ -23,4 +23,4 @@ import { Radio } from 'cafune';
 | value | 单选值 | string | - | - | ❌ |
 | checked | 是否选中状态 | boolean | - | - | ❌ |
 | disabled | 是否禁用状态 | boolean | - | - | ❌ |
-| onChange | 单选框组变化回调 | (val: string | number) => void | - | - | ❌ |
+| onChange | 单选框组变化回调 | (val: string &#124; number) => void | - | - | ❌ |

@@ -21,7 +21,7 @@ import { SearchBar } from 'cafune';
  ### action-options 说明
 | 参数 | 说明 | 类型 | 备选项 | 是否必须 |
 | --- | --- | --- | --- | --- |
-| type | 按钮类型 | string | 'confirm','cancel','custom' | ❌ |
-| text | 按钮文字 | string | - | ❌ |
-| keepShow | 是否一直显示 | boolean | - | ❌ |
-| onClick | 功能按钮点击事件，默认情况下，点击时，`actionType`为`confirm`时会额外触发`onConfirm`事件，为`cancel`时会额外触发`onCancel`事件 | () => void | - | ❌ |
+| type | 按钮类型 | string} | 'confirm','cancel','custom' | ❌ |
+| text | 按钮文字 | string} | - | ❌ |
+| keepShow | 是否一直显示 | boolean} | - | ❌ |
+| onClick | 功能按钮点击事件，默认情况下，点击时，`actionType`为`confirm`时会额外触发`onConfirm`事件，为`cancel`时会额外触发`onCancel`事件 | () => void} | - | ❌ |

@@ -58,11 +58,14 @@
     "workbox-webpack-plugin": "^4.3.1"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.7.1",
+    "history": "^4.10.1",
     "preact": "^8.5.2",
     "preact-compat": "^3.17.0",
     "preact-render-to-string": "^4.1.0",
     "react-highlight": "^0.12.0",
     "react-syntax-highlighter": "^11.0.2",
-    "remixicon": "^2.0.0"
+    "remixicon": "^2.0.0",
+    "url-loader": "^2.2.0"
   }
 }

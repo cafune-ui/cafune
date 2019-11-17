@@ -67,9 +67,11 @@ a {
       line-height: 26px;
     }
     code {
+      display: inline-block;
       border-radius: 4px;
       background-color: #f3f3f3;
       margin: 0 4px;
+      padding: 0 6px;
       color: #666;
       // br {
       //   height: 1px;
@@ -85,7 +87,7 @@ a {
       line-height: 24px;
       border-radius: 8px;
       overflow-x: auto;
-      margin: 16px 0;
+      
       text-shadow: none;
     }
     .token.operator,
@@ -103,6 +105,9 @@ a {
     }
     pre {
       margin: 0;
+      &[class*='language-']  {
+        margin: 16px 0;
+      }
     }
     li {
       margin-top: 8px;

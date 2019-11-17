@@ -16,7 +16,7 @@ import { TabBar } from 'cafune';
 | activedId | 当前激活的id | string / number | - | - | ✅  |
 | activedColor | 激活时文字颜色 | string | - | - | ❌ |
 | inactivedColor | 未激活时文字颜色 | string | - | - | ❌ |
-| onChange | 切换时回调 | (activedId: string | number) => void | - | - | ❌ |
+| onChange | 切换时回调 | (activedId: string &#124; number) => void | - | - | ❌ |
 
 ### TabBarItem 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
@@ -34,5 +34,5 @@ import { TabBar } from 'cafune';
  ### icons-options 说明
 | 参数 | 说明 | 类型 | 备选项 | 是否必须 |
 | --- | --- | --- | --- | --- |
-| actived | - | string | - | ❌ |
-| normal | - | string | - | ❌ |
+| actived | - | string} | - | ❌ |
+| normal | - | string} | - | ❌ |

@@ -17,7 +17,7 @@ import { Swiper } from 'cafune';
 | initialIndex | 初始index | number | `0` | - | ❌ |
 | duration | 过渡时间（毫秒） | number | `500` | - | ❌ |
 | showIndicators | 是否显示指示器 | boolean | `true` | - | ❌ |
-| onChange | 切换时触发事件 | (ind?: number | Event) => void | - | - | ❌ |
+| onChange | 切换时触发事件 | (ind?: number &#124; Event) => void | - | - | ❌ |
 | customIndicator | 自定义指示器 | VNode / HTMLElement | - | - | ❌ |
 
 ### swiperItem 配置项

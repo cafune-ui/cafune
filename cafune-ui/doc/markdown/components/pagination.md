@@ -23,12 +23,12 @@ import { Pagination } from 'cafune';
  ### btnText-options 说明
 | 参数 | 说明 | 类型 | 备选项 | 是否必须 |
 | --- | --- | --- | --- | --- |
-| prev | - | string | - | ❌ |
-| next | - | string | - | ❌ |
+| prev | - | string} | - | ❌ |
+| next | - | string} | - | ❌ |
 
 
  ### btnIcon-options 说明
 | 参数 | 说明 | 类型 | 备选项 | 是否必须 |
 | --- | --- | --- | --- | --- |
-| prev | - | [object Object] / [object Object] | - | ❌ |
-| next | - | [object Object] / [object Object] | - | ❌ |
+| prev | - | [object Object] / [object Object]} | - | ❌ |
+| next | - | [object Object] / [object Object]} | - | ❌ |

@@ -91,13 +91,13 @@ $calendar-weekbar-height: 26px !default;
 $calendar-weekbar-font-size: 10px !default;
 $calendar-weekbar-rest-color: #a5a5a5 !default;
 
-$calendar-date-size: 36px !default;
+$calendar-date-size: 42px !default;
 $calendar-date-margin: 2px 0 !default;
 $calendar-date-font-size: 12px !default;
 
 $calendar-date-side-background-color: $blue !default;
 $calendar-date-side-color: $white !default;
-$calendar-date-side-radius: 12px !default;
+$calendar-date-side-radius: $calendar-date-size !default;
 
 $calendar-date-today-indicator-width: 8px !default;
 $calendar-date-today-indicator-height: 4px !default;

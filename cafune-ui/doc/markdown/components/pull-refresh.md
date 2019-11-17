@@ -22,7 +22,7 @@ import { PullRefresh } from 'cafune';
  ### indicator-options 说明
 | 参数 | 说明 | 类型 | 备选项 | 是否必须 |
 | --- | --- | --- | --- | --- |
-| pulling | 下拉中指示器 | string / VNode / HTMLElement | - | ❌ |
-| loosing | 释放时指示器 | string / VNode / HTMLElement | - | ❌ |
-| loading | 加载中指示器 | string / VNode / HTMLElement | - | ❌ |
-| finish | 刷新结束指示器 | string / VNode / HTMLElement | - | ❌ |
+| pulling | 下拉中指示器 | string / VNode / HTMLElement} | - | ❌ |
+| loosing | 释放时指示器 | string / VNode / HTMLElement} | - | ❌ |
+| loading | 加载中指示器 | string / VNode / HTMLElement} | - | ❌ |
+| finish | 刷新结束指示器 | string / VNode / HTMLElement} | - | ❌ |

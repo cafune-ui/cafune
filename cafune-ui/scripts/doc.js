@@ -203,7 +203,10 @@ function generatePropTab(props, showTitle = true) {
           typeName = `\`${JSON.stringify(typeName)}\``;
         }
       }
-      md += `| ${name} | ${description} | ${typeName} | ${defaultValue} | ${backupOption} | ${requireTxt} |\n`;
+      md += `| ${name} | ${description} | ${typeName.replace(
+        /\|/g,
+        '&#124;'
+      )} | ${defaultValue} | ${backupOption} | ${requireTxt} |\n`;
     });
   }
   if (typeArr.length) {
@@ -213,7 +216,10 @@ function generatePropTab(props, showTitle = true) {
       list.forEach(prop => {
         const { key, desc, name, required, backupOption } = prop;
         const requireTxt = required ? '✅ ' : '❌';
-        md += `| ${key} | ${desc} | ${name} | ${backupOption} | ${requireTxt} |\n`;
+        md += `| ${key} | ${desc} | ${name.replace(
+          /\|/g,
+          '&#124;'
+        )}} | ${backupOption} | ${requireTxt} |\n`;
       });
     });
   }

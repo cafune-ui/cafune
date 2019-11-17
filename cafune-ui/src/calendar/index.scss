@@ -43,12 +43,13 @@ $name: '.caf-calendar';
   }
   &__weekbar {
     display: flex;
+    justify-content: center;
     height: $calendar-weekbar-height;
     line-height: $calendar-weekbar-height;
     text-align: center;
     font-size: $calendar-weekbar-font-size;
     &__item {
-      flex: 1;
+      flex-basis: $calendar-date-size;
       &--rest {
         color: $calendar-weekbar-rest-color;
       }
@@ -57,13 +58,14 @@ $name: '.caf-calendar';
   &__calendar {
     &__week {
       display: flex;
+      justify-content: center;
       text-align: center;
       &--cur {
       }
     }
   }
   &__date {
-    flex: 1;
+    flex-basis: $calendar-date-size;
     height: $calendar-date-size;
     line-height: $calendar-date-size;
     margin: $calendar-date-margin;
@@ -96,6 +98,9 @@ $name: '.caf-calendar';
           border-radius: $calendar-date-side-radius;
           background-color: $calendar-date-side-background-color;
           color: $calendar-date-side-color;
+          &__date::after {
+            background-color: $calendar-date-side-color;
+          }
         }
       }
     }
@@ -111,13 +116,25 @@ $name: '.caf-calendar';
     &--range {
       background-color: $calendar-date-range-background-color;
       color: $calendar-date-range-color;
-
     }
-
-    
+    &--selected {
+      #{$name} {
+        &__day {
+          border-radius: $calendar-date-size;
+          background-color: $calendar-date-side-background-color;
+          color: $calendar-date-side-color;
+          &__date::after {
+            background-color: $calendar-date-side-color;
+          }
+        }
+      }
+    }
   }
   &__day {
     position: relative;
+    height: $calendar-date-size;
+    margin: auto;
+    user-select: none;
     &__date {
       position: relative;
     }

@@ -3,11 +3,10 @@ import cx from 'classnames';
 import DayJs, { Dayjs } from 'dayjs';
 
 type IDataRange = {
-  start: string | number | Date;
-  end?: string | number | Date;
+  start: string | number | Date | Dayjs;
+  end?: string | number | Date | Dayjs;
 };
 
-type ICurDate = Dayjs | Dayjs[];
 type formatter = (value: number) => string | number;
 interface IProps {
   /**
@@ -17,7 +16,7 @@ interface IProps {
   /**
    * 初始选中时间。字符串类型时需以'年/月/日'的方式传入，number 类型是为毫秒数，默认为今天
    */
-  defaultSelect?: string | number | Date | IDataRange;
+  defaultSelect?: IDataRange;
   /**
    * 最多可选数目
    */
@@ -29,14 +28,14 @@ interface IProps {
   /**
    * 日期改变回调函数，`maxSelect`大于1时回调为数组
    */
-  onDateSelect?: (curDate: ICurDate) => void;
+  onDateSelect?: (curDate: IDataRange) => void;
   /**
    * 日期格式化函数，`type` 为`year`, `month`, `week`
    */
   formatter?: {
     year?: formatter;
     month?: formatter;
-    title?: (year: number, month: number) => any;
+    title?: (year: number, month: number) => string | VNode | HTMLElement;
     week?: formatter;
   };
 }
@@ -94,7 +93,7 @@ function getCalendar(time) {
   return {
     startDate: startOfMonth,
     year: time.year(),
-    month: time.month(),
+    month: time.month() + 1,
     dateList: calendar
   };
 }
@@ -106,7 +105,7 @@ function isSameDay(day1: Dayjs, day2: Dayjs) {
   );
 }
 interface IState {
-  selection: string | number | Date | IDataRange;
+  selection: IDataRange;
   current: {
     year?: number;
     month?: number;
@@ -118,49 +117,51 @@ interface IState {
 class Calendar extends Component<IProps, IState> {
   static defaultProps = {
     prefix: 'caf-calendar',
-    maxSelect: 1,
+    maxSelect: 0,
     minSelect: 0
   };
   constructor(props) {
     super(props);
-    const { defaultSelect, defaultCurrent } = props;
-    const now = new Date();
+    const { defaultSelect, defaultCurrent, minSelect } = props;
+    const now = DayJs();
     const state = {
-      selection: now,
+      selection: null,
       current: {
-        year: now.getFullYear(),
-        month: now.getMonth() + 1
+        year: now.year(),
+        month: now.month() + 1
       }
     };
     if (defaultSelect) {
-      state.selection = defaultSelect;
+      state.selection = this.getCurrenSelect(defaultSelect);
+    } else if (minSelect) {
+      state.selection = {
+        start: now,
+        end: now.add(minSelect, 'day')
+      };
     }
     if (defaultCurrent) {
       state.current = Object.assign({}, state.current, defaultCurrent);
     }
+
     this.state = state;
   }
-  getCurrenSelect() {
-    const { selection } = this.state;
+  getCurrenSelect(selection) {
+    const { minSelect } = this.props;
     let select;
-    if (
-      'start' in (selection as IDataRange) ||
-      'end' in (selection as IDataRange)
-    ) {
-      //@ts-ignore
+    if (selection) {
       const start = formateDate(selection.start);
       if ('end' in (selection as IDataRange)) {
-        //@ts-ignore
         const end = formateDate(selection.end);
         select = {
           start,
           end
         };
       } else {
-        select = start;
+        select = {
+          start
+        };
+        if (minSelect > 1) select.end = start.add(minSelect, 'day');
       }
-    } else {
-      select = formateDate(selection);
     }
     return select;
   }
@@ -185,10 +186,12 @@ class Calendar extends Component<IProps, IState> {
   renderMonthBar(startOfMonth) {
     const { formatter, prefix } = this.props;
     const year = startOfMonth.year();
-    const month = startOfMonth.month();
+    const month = startOfMonth.month() + 1;
     const sTitle =
       formatter && 'title' in formatter ? (
-        formatter.title(year, month)
+        <h2 className={`${prefix}__header__date `}>
+          {formatter.title(year, month)}
+        </h2>
       ) : (
         <h2 className={`${prefix}__header__date `}>
           <span className={`${prefix}__header__date__month`}>
@@ -237,54 +240,75 @@ class Calendar extends Component<IProps, IState> {
     );
   }
 
-  renderCalendar(calendarInfo, currentSelect) {
-    const { prefix, maxSelect } = this.props;
-    const { dateList, month, year } = calendarInfo;
-    const weekList = [];
-    const current = currentSelect.start || currentSelect;
-    let end;
-    let start;
-    let rangeEnd;
-    let isMulti = maxSelect !== 1;
-    if (
-      Object.prototype.toString.call(currentSelect) === '[object Object]' &&
-      !DayJs.isDayjs(currentSelect)
+  handleDateClick = e => {
+    let $target = e.target;
+    while (
+      !/js-calendar/.test($target.className) &&
+      !/js-date/.test($target.className)
     ) {
-      start = currentSelect.start;
-      end = currentSelect.end;
-      rangeEnd = currentSelect.end;
-      isMulti = true;
-    } else {
-      start = currentSelect;
-      rangeEnd = start.add(maxSelect);
+      $target = $target.parentNode;
     }
-    let curWeek = 0;
-    let tmp = [];
-    for (let i = 0, len = dateList.length; i < len; i++) {
-      const item = dateList[i];
+    if (/js-date/.test($target.className)) {
+      const { weekList } = this;
+      const { selection } = this.state;
+      const { maxSelect, minSelect, onDateSelect } = this.props;
+      let { week, day } = $target.dataset;
+      const item = weekList[Number(week)][Number(day)];
 
-      const dateInfo = {
-        date: item.date(),
-        weekday: item.day(),
-        isToday: isSameDay(item, DayJs()),
-        isCurrentMonth: item.month() === month && item.year() === year,
-        isEnd: end && isSameDay(item, end),
-        isStart: isSameDay(item, start),
-        isInRange: item.isBefore(rangeEnd) && item.isAfter(start),
-        isMulti
-      };
-      if (item.isSame(current) && !curWeek) {
-        curWeek = Math.floor(i / 7);
+      let newSelection: IDataRange;
+      const { dayInfo } = item;
+      if (!maxSelect) {
+        return;
       }
-      tmp.push(dateInfo);
-      if (tmp.length === 7) {
-        weekList.push(tmp);
-        tmp = [];
+      if (selection) {
+        const prevSelect = selection.start;
+        const isLessMin =
+          minSelect > 1
+            ? dayInfo.isBefore(prevSelect.add(minSelect, 'day'))
+            : true;
+        if (
+          dayInfo.isAfter(prevSelect) &&
+          dayInfo.isBefore(prevSelect.add(maxSelect, 'day'))
+        ) {
+          if (isLessMin) {
+            newSelection = {
+              start: dayInfo,
+              end: dayInfo.add(minSelect, 'day')
+            };
+          } else {
+            newSelection = {
+              start: prevSelect,
+              end: dayInfo
+            };
+          }
+        } else {
+          newSelection = {
+            start: dayInfo
+          };
+          if (minSelect > 1) {
+            newSelection.end = dayInfo.add(minSelect, 'day');
+          }
+        }
+      } else {
+        newSelection = {
+          start: dayInfo
+        };
       }
+      this.setState({
+        selection: newSelection
+      }, () => {
+        onDateSelect && onDateSelect(newSelection)
+      });
     }
-    // console.log(weekList);
+  };
+  renderCalendar(info) {
+    const { prefix } = this.props;
+    const { weekList, curWeek, month } = info;
     return (
-      <div className={`${prefix}__calendar`}>
+      <div
+        className={`js-calendar ${prefix}__calendar`}
+        onClick={this.handleDateClick}
+      >
         {weekList.map((list, ind) => (
           <div
             className={cx(`${prefix}__calendar__week`, {
@@ -292,23 +316,22 @@ class Calendar extends Component<IProps, IState> {
             })}
             key={`${month}-${ind}`}
           >
-            {list.map(item => (
+            {list.map((item, weekday) => (
               <div
-                className={cx(`${prefix}__date`, {
+                className={cx(`${prefix}__date`, 'js-date', {
                   [`${prefix}__date--today`]: item.isToday,
                   [`${prefix}__date--other`]: !item.isCurrentMonth,
-                  [`${prefix}__date--selected`]:
-                    item.isStart && !item.isMulti,
-                  [`${prefix}__date--start`]:
-                    item.isStart && item.isMulti,
-                  [`${prefix}__date--end`]:
-                    item.isEnd && item.isMulti,
+                  [`${prefix}__date--selected`]: item.isStart && !item.isMulti,
+                  [`${prefix}__date--start`]: item.isStart && item.isMulti,
+                  [`${prefix}__date--end`]: item.isEnd && item.isMulti,
                   [`${prefix}__date--range`]:
                     item.isInRange &&
                     !item.isStart &&
                     !item.isEnd &&
                     item.isMulti
                 })}
+                data-week={ind}
+                data-day={weekday}
                 key={`${month}-${ind}-${item.date}`}
               >
                 <div className={`${prefix}__day`}>
@@ -321,17 +344,67 @@ class Calendar extends Component<IProps, IState> {
       </div>
     );
   }
+  formateList(calendarInfo) {
+    const { maxSelect } = this.props;
+    const currentSelect = this.getCurrenSelect(this.state.selection);
+    const { dateList, month, year } = calendarInfo;
+    const weekList = [];
+    let current = DayJs();
+    let end;
+    let start;
+    let rangeEnd;
+    let isMulti = maxSelect !== 1;
+    if (currentSelect) {
+      current = currentSelect.start;
+      start = currentSelect.start;
+      end = currentSelect.end;
+      rangeEnd = currentSelect.end;
+      isMulti = true;
+    }
 
+    let curWeek = 0;
+    let tmp = [];
+    for (let i = 0, len = dateList.length; i < len; i++) {
+      const item = dateList[i];
+
+      const dateInfo = {
+        dayInfo: item,
+        date: item.date(),
+        weekday: item.day(),
+        isToday: isSameDay(item, DayJs()),
+        isCurrentMonth: item.month() + 1 === month && item.year() === year,
+        isEnd: end && isSameDay(item, end),
+        isStart: start && isSameDay(item, start),
+        isInRange: rangeEnd && item.isBefore(rangeEnd) && item.isAfter(start),
+        isMulti
+      };
+      if (current && isSameDay(item, current) && !curWeek) {
+        curWeek = Math.floor(i / 7);
+      }
+      tmp.push(dateInfo);
+      if (tmp.length === 7) {
+        weekList.push(tmp);
+        tmp = [];
+      }
+    }
+    return {
+      weekList,
+      curWeek,
+      month
+    };
+  }
+  weekList;
   renderMain() {
     const { prefix } = this.props;
-    const currentSelect = this.getCurrenSelect();
     const { current } = this.state;
     const curMonthStart = formateDate(`${current.year}/${current.month}/1`);
     const calendarInfo = getCalendar(curMonthStart);
+    const foramtedInfo = this.formateList(calendarInfo);
+    this.weekList = foramtedInfo.weekList;
     const { startDate } = calendarInfo;
     const monthBar = this.renderMonthBar(startDate);
     const weekBar = this.renderWeekBar();
-    const calendar = this.renderCalendar(calendarInfo, currentSelect);
+    const calendar = this.renderCalendar(foramtedInfo);
 
     return (
       <div className={`${prefix}__main`}>
