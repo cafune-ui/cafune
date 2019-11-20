@@ -22,5 +22,5 @@ export type ReactElement<P = {}, S = any> = preact.VNode<P>;
 // export import ComponentType = preact.ComponentType;
 // export import Context = preact.Context;
 export type ReactNode = preact.ComponentChildren;
-export type CSSProperties = string | {[key: string]: string | number};
+export type CSSProperties = string | { [key: string]: string | number };
 export type AllHTMLAttributes<T> = JSX.HTMLAttributes;

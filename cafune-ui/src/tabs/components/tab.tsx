@@ -1,12 +1,13 @@
-import { Component } from 'preact';
+import { Component, h } from 'preact';
 import classNames from 'classnames';
 
 interface IProps {
   id?: string | number;
   actived?: boolean;
-  onSelected?: (id?:string|number) => void
+  onSelected?: (id?:string|number) => void;
+  tabStyle?: any;
 }
-export default class Tab extends Component<IProps, {}> {
+export default class TabItem extends Component<IProps> {
   static defaultProps = {
     prefix: 'caf-tabs__nav__item'
   }

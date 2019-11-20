@@ -1,5 +1,5 @@
 import { Component, h } from 'preact';
-import Tab from './components/tab';
+import TabItem from './components/tab';
 import cx from 'classnames';
 import { isBrowser } from '../util/isomorphic';
 
@@ -10,6 +10,13 @@ function setTransform(obj, offsetLeft) {
   obj.style.webkitTransform = `translate3d(${offsetLeft}px, 0, 0)`;
 }
 
+type tabsItem = {
+  id: string | number;
+  label: string;
+  actived: boolean;
+  className?: string;
+  visable?: boolean;
+};
 interface IProps {
   /**
    * 自定义前缀
@@ -22,13 +29,7 @@ interface IProps {
   /**
    * 当前激活id
    */
-  tabsData?: {
-    id: string | number;
-    label: string;
-    actived: boolean;
-    className?: string;
-    visable?: boolean;
-  }[];
+  tabsData?: tabsItem[];
   /**
    * 组件类型
    */
@@ -74,7 +75,7 @@ export default class Nav extends Component<IProps> {
   componentWillUnmount() {
     if (isBrowser) {
       window.removeEventListener('resize', this.resizing);
-    } 
+    }
   }
   inkBar: any;
   activeTab: any;
@@ -89,16 +90,22 @@ export default class Nav extends Component<IProps> {
       const offsetLeft = (itemWidth - inkWidth) / 2 + base.offsetLeft;
       setTransform(inkBar, offsetLeft);
       const navSW = navContainer.scrollLeft - navContainer.offsetWidth;
-      if (navContainer.scrollLeft + navContainer.offsetWidth < base.offsetLeft + base.offsetWidth || base.offsetLeft -  navContainer.scrollLeft < 0) {
+      if (
+        navContainer.scrollLeft + navContainer.offsetWidth <
+          base.offsetLeft + base.offsetWidth ||
+        base.offsetLeft - navContainer.scrollLeft < 0
+      ) {
         // console.log(base.offsetLeft - navContainer.offsetWidth)
-        navContainer.scrollBy(base.offsetLeft + base.offsetWidth - navContainer.offsetWidth, 0)
+        navContainer.scrollBy(
+          base.offsetLeft + base.offsetWidth - navContainer.offsetWidth,
+          0
+        );
       }
     }
   }
   renderTabs() {
     const { tabsData, maxCount } = this.props;
-    const tabs = [];
-    (tabsData as any[]).forEach(item => {
+    const tabs = (tabsData as tabsItem[]).map(item => {
       let ref;
       if (item.actived) {
         ref = c => (this.activeTab = c);
@@ -107,17 +114,16 @@ export default class Nav extends Component<IProps> {
       if (maxCount !== defaultMax) {
         tabStyle.style = `min-width:${(1 / maxCount) * 100}%`;
       }
-      tabs.push(
-        <Tab
+      return (
+        <TabItem
           {...item}
           id={item.id}
           onSelected={this.onTabSelected}
           ref={ref}
           tabStyle={tabStyle}
-          key={item.key}
         >
           {item.label}
-        </Tab>
+        </TabItem>
       );
     });
     return tabs;

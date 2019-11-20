@@ -1,5 +1,6 @@
 import { Toast, Button } from 'cafune';
 import { Component } from 'preact';
+import './indes.scss';
 export default class ToastComp extends Component {
   showToast = ({ kind = 'show', duration, icon, onClose, mutiple } = {}) => {
     return () => {

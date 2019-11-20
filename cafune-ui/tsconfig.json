@@ -2,21 +2,18 @@
   "compilerOptions": {
     "baseUrl": ".",
     "experimentalDecorators": true,
-    "paths": {
-      "cafune": ["src"],
-      "util/*": ["util/*"]
-    },
     "outDir": "./es",
     "allowJs": true,
     "jsx": "react",
     "jsxFactory": "h",
     "target": "es2018",
-    "module": "ESNext",
+    "module": "commonjs",
+    "lib": ["dom", "es6"],
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "esModuleInterop": true
   },
-  "typeRoots": ["./types"],
-  "include": ["components/**/*.ts", "components/**/*.tsx"],
-  "exclude": ["node_modules", "doc", "es", "lib", "components/*/test", "font"]
+  "typeRoots": ["./types", "node_modules/@types"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "doc", "es", "lib", "./src/*/test", "font"]
 }

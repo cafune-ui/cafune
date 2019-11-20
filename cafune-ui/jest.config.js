@@ -1,6 +1,6 @@
 module.exports = {
   // 指定需要进行单元测试的文件匹配规则
-  testMatch: ['<rootDir>/components/**/**.test.js'],
+  testMatch: ['<rootDir>/src/**/**.test.js'],
   setupFiles: ['<rootDir>/__test__/setup.js'],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'scss', 'css'],
   // 需要忽略的文件匹配规则
