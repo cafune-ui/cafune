@@ -1,18 +1,4 @@
-@import '../style/variables/color.scss';
-.caf-notify {
-  z-index: 100;
-  &:not(:empty) {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    top: 50%;
-    left: 50%;
-    max-width: 480px;/* no */
-    min-width: 320px;/* no */
-    transform: translate(-50%, -50%);
-  }
-}
+@import '../style/_var.scss';
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -21,67 +7,39 @@
     opacity: 1;
   }
 }
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-  }
-}
-.caf-toast {
-  position: relative;
-  display: inline-block;
-  max-width: 80%;
-  min-width: 100px;
-  padding: 20px 10px;
-  z-index: 100;
-  border-radius: 3px;
-  background-color: rgba($color: #000000, $alpha: 0.5);
-  background-repeat: no-repeat;
-  background-position: center 10px;
-  word-break: break-all;
-  white-space: normal;
-  transition: all .2s;
-  color: #fff;
-  text-align: center;
-  // &[data-type='error'] {
-  //   padding: 60px 10px 10px;
-  //   background-image: url(/assets/icons/toast-alert.png);
-  //   background-size: 40px;
-  // }
-  // &[data-type='success'] {
-  //   padding: 60px 10px 10px;
-  //   background-image: url(/assets/icons/toast-success.png);
-  //   background-size: 40px;
-  // }
-  .caf-icon + &-content {
-    margin-top: 10px;
-  }
-  
-  &[data-type='loading'] {
-    padding: 60px 10px 10px;
-    &::before {
-      content: '';
-      position: absolute;
-      top: 15px;
-      left: 0;
-      right: 0;
-      margin: auto;
-      height: 28px;
-      width: 28px;
-      border: 2px solid #fff;/* no */
-      border-top: 2px solid transparent;/* no */
-      border-radius: 50%;
-      :global {
-        animation: rotate .6s ease-in-out infinite;
-      }
+$name: '.caf-toast';
+#{$name} {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  &-notice {
+    position: relative;
+    display: inline-block;
+    max-width: $toast-max-width;
+    min-width: $toast-min-width;
+    padding: $toast-padding;
+    z-index: 100;
+    border-radius: $toast-border-radius;
+    background-color: $toast-background-color;
+    background-repeat: no-repeat;
+    background-position: center 10px;
+    word-break: break-all;
+    white-space: normal;
+    transition: all 0.2s;
+    color: $toast-text-color;
+    text-align: center;
+    animation: fadeIn 0.6s forwards;
+
+    .caf-icon + &__content {
+      margin-top: 10px;
     }
-  }
-  &[data-status='1'] {
-    animation: fadeIn .6s forwards;
-  }
-  &[data-status='0'] {
-    animation: fadeOut .6s forwards;
-  }
-  & + & {
-    margin-top: 10px;
+
+    & + #{$name}-notice {
+      margin-top: 10px;
+    }
   }
 }
