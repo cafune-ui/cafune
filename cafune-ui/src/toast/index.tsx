@@ -39,6 +39,10 @@ interface IProps {
         icon?: string;
         size?: string;
       };
+  /**
+   * 是否支持同时多个
+   */
+  multiple?: boolean;
 }
 
 let messageInstance: any;
@@ -71,16 +75,22 @@ function destroy() {
   render('', container, container);
 }
 
-function notice(
-  options: IProps = {
-    content: '',
-    duration: durationDefault,
-    type: 'normal'
-  }
-) {
-  const { content, icon, type, duration, onClose } = options;
+function notice(options: IProps) {
+  options = Object.assign(
+    {},
+    {
+      content: '',
+      duration: durationDefault,
+      type: 'normal',
+      multiple: true
+    },
+    options
+  );
+  const { content, icon, type, duration, multiple, onClose } = options;
   messageNeedHide = false;
- 
+  if (!multiple) {
+    destroy();
+  }
   if (!messageInstance) {
     const notification = newInstance({
       prefix
@@ -125,6 +135,10 @@ function notice(
  * ---
  */
 export default class Toast extends Component<IProps> {
+  static defaultProps = {
+    prefix,
+    multiple: false
+  };
   static show(options: IProps) {
     return notice(options);
   }

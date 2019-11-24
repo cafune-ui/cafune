@@ -107,10 +107,10 @@ $name: '.caf-calendar';
     &--other {
       color: $calendar-date-other-color;
     }
-    &--start {
+    &--start, &:first-child {
       border-radius: #{$calendar-date-side-radius} 0 0 #{$calendar-date-side-radius};
     }
-    &--end {
+    &--end, &:last-child {
       border-radius: 0 #{$calendar-date-side-radius} #{$calendar-date-side-radius} 0;
     }
     &--range {

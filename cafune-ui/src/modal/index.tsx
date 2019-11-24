@@ -138,7 +138,7 @@ class Modal extends Component<IProps, {}> {
       );
       /* istanbul ignore else */
       const Content = (!!(children && children.length) || message) && (
-        <div className={`${prefix}-content ${prefix}-content__${align}`}>
+        <div className={`${prefix}-content-content ${prefix}-content-content__${align}`}>
           {children && children.length > 0 ? (
             children
           ) : (
@@ -182,24 +182,4 @@ class Modal extends Component<IProps, {}> {
     }
   }
 }
-// /**
-//  * 创建弹窗容器
-//  * @returns {HTMLElement} 弹窗容器
-//  */
-// const createContainerNode = () => {
-//   let notifyContainerClass = 'QModal';
-//   let notifyContainerNode = document.querySelector(
-//     `.${notifyContainerClass}`
-//   );
-
-//   if (!notifyContainerNode) {
-//     const bodyNode = document.body;
-//     const div = document.createElement('div');
-//     div.className = notifyContainerClass;
-//     notifyContainerNode = bodyNode.appendChild(div);
-//   }
-
-//   return notifyContainerNode;
-// };
-
 export default Modal;

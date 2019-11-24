@@ -3,14 +3,20 @@ import { Component } from 'preact';
 import './indes.scss';
 
 export default class ToastComp extends Component {
-  showToast = ({ kind = 'show', duration, icon, onClose, mutiple } = {}) => {
+  showToast = ({
+    kind = 'show',
+    duration,
+    icon,
+    onClose,
+    multiple = false
+  } = {}) => {
     return () => {
       const cToast = Toast[kind]({
         content: kind,
         duration,
         icon,
         onClose,
-        mutiple
+        multiple
       });
       let timer;
       if (kind === 'loading') {

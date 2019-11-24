@@ -40,12 +40,12 @@ export type iOption = {
    * 点击时的反馈，如果为`string`时，视为链接，如为
    */
   action?: string | Function;
-}
+};
 
 export type IHorizon = {
   list: iOption[];
   wrap: boolean;
-}
+};
 export type IActionSheet = {
   /**
    * 自定义类名
@@ -91,7 +91,7 @@ export type IActionSheet = {
    * 关闭时触发事件
    */
   onClose?: Function;
-   /**
+  /**
    * 确认时触发事件
    */
   onConfirm?: Function;
@@ -106,7 +106,7 @@ export type IActionSheet = {
    * 是否显示确认按钮
    */
   showConfirm?: boolean;
-}
+};
 
 const availableAlign = ['left', 'center', 'right'];
 const prefix = 'caf-actsheet';
@@ -164,7 +164,7 @@ function renderList(list = [], horizon, wrap = false) {
               )}
               <div className={`${prefix}-item__name`}>
                 <p className={`${prefix}-item__name--main`}>{item.name}</p>
-                {(!!item.subName && !horizon) && (
+                {!!item.subName && !horizon && (
                   <p className={`${prefix}-item__name--sub`}>{item.subName}</p>
                 )}
                 {!horizon && hasBadge && Badge}
@@ -178,13 +178,18 @@ function renderList(list = [], horizon, wrap = false) {
   );
 }
 
+const transitionEnd = window.ontransitionend
+  ? 'transitionend'
+  : 'webkitTransitionEnd';
+
 /**
  * 动作面板
  */
 class ActionSheet extends Component<IActionSheet, {}> {
   state = {
     isShow: this.props.isShow,
-    isFadding: true
+    isFadding: true,
+    type: ''
   };
   static defaultProps = {
     prefix,
@@ -254,40 +259,44 @@ class ActionSheet extends Component<IActionSheet, {}> {
     }
   };
   openAct = () => {
-    setTimeout(() => {
-      this.setState(
-        {
-          isFadding: false
-        },
-        () => {
-          this.props.onOpen && this.props.onOpen();
-        }
-      );
-    }, 100);
+    this.setState({
+      type: 'open',
+      isFadding: false
+    });
   };
   closeAct = () => {
-    this.setState(
-      {
-        isFadding: true
-      },
-      () => {
-        setTimeout(() => {
-          this.props.onClose && this.props.onClose();
-        }, 500);
-      }
-    );
+    this.setState({
+      type: 'close',
+      isFadding: true
+    });
   };
   confirmAct = () => {
-    this.setState(
-      {
-        isFadding: true
-      },
-      () => {
-        setTimeout(() => {
-          this.props.onConfirm && this.props.onConfirm();
-        }, 500);
+    this.setState({
+      type: 'confirm',
+      isFadding: true
+    });
+  };
+  $as: HTMLElement;
+  done = () => {
+    const { type, isFadding } = this.state;
+    if (isFadding) {
+      if (type === 'confirm') {
+        this.props.onConfirm && this.props.onConfirm();
       }
-    );
+      this.props.onClose && this.props.onClose();
+    } else {
+      this.props.onOpen && this.props.onOpen();
+    }
+  };
+  $actionSheet = $as => {
+    if ($as) {
+      this.$as = $as;
+      const _self = this;
+      ($as as HTMLElement).addEventListener(transitionEnd, this.done);
+    } else {
+      this.$as.removeEventListener(transitionEnd, this.done);
+      this.$as = null;
+    }
   };
   render() {
     const {
@@ -314,11 +323,19 @@ class ActionSheet extends Component<IActionSheet, {}> {
     }
     return isShow ? (
       <div className={cx(prefix, className)} {...restProps}>
-        {showMask && <div className={`${prefix}__mask`} />}
+        {showMask && (
+          <div
+            className={cx(`${prefix}__mask`, {
+              [`${prefix}__mask--fadding`]: !isFadding
+            })}
+          />
+        )}
         <div className={`${prefix}__wrapper`} {...maskProp}>
           <div
-            className={`${prefix}__container`}
-            data-status={isFadding ? 0 : 1}
+            className={cx(`${prefix}__container`, {
+              [`${prefix}__container--fadding`]: !isFadding
+            })}
+            ref={this.$actionSheet}
           >
             {!!title && <div className={`${prefix}__title`}>{title}</div>}
             <div className={`${prefix}__main`}>

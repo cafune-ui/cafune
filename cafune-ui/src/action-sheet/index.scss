@@ -17,12 +17,12 @@ $name: '.caf-actsheet';
     transition: transform .3s;
     margin-bottom: $action-sheet-margin-bottom;
     margin-bottom: calc(env(safe-area-inset-bottom) + #{$action-sheet-margin-bottom});
-    &[data-status='1'] {
+
+    transform: translateY(110%);
+    &--fadding {
       transform: translateY(0);
     }
-    &[data-status='0'] {
-      transform: translateY(110%);
-    }
+
     &::before {
       content: '';
       left: 0;
@@ -46,6 +46,11 @@ $name: '.caf-actsheet';
   &__mask {
     background-color: $action-sheet-mask-background-color;
     height: 100%;
+    opacity: 0;
+    transition: opacity .3s;
+    &--fadding {
+      opacity: 1;
+    }
   }
   &__title {
     padding: $action-sheet-title-padding;

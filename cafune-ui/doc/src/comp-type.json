@@ -78,6 +78,9 @@
             "url": "toast"
           },
           {
+            "url": "modal"
+          },
+          {
             "url": "pull-refresh"
           }
         ]

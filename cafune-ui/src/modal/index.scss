@@ -29,6 +29,7 @@
 
   &-btngroup {
     display: flex;
+    text-align: center;
     &__cancel {
       @include btn;
     }
