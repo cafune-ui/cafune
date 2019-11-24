@@ -1,8 +1,18 @@
-# CafToast - 
+# Toast - 轻提示
 
 ## 引入
 ```jsx
-import { CafToast } from 'cafune';
+import { Toast } from 'cafune';
+```
+
+ ## 示例
+```jsx
+Toast.show({ content: 'some msg' });
+Toast.success({ content: 'some msg' });
+Toast.error({ content: 'some msg' });
+const loadingToast = Toast.loading({ content: 'some msg' });
+Toast.setMsg(loadingToast, 'toast msg changed');
+Toast.hide(loadingToast);
 ```
 
 ## 配置项

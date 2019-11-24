@@ -1,14 +1,8 @@
-import { Component, h, render } from 'preact';
-// import Icon from '../../icon';
-// import { isBrowser } from '../../util/isomorphic';
+import { Component, h, render, VNode, createRef } from 'preact';
 import Notice from './notice';
-let seed = 0;
-function getUuid() {
-  const now = Date.now();
-  return `cToast_${now}_${seed++}`;
-}
+
 interface IProps {
-    /**
+  /**
    * 自定义前缀
    */
   prefix?: string;
@@ -16,7 +10,7 @@ interface IProps {
    * 提示内容
    */
   content: string | HTMLElement | VNode;
-    /**
+  /**
    * 提示时长(ms)，默认为2000ms
    */
   duration?: number;
@@ -25,11 +19,11 @@ interface IProps {
    * 消失时回调函数
    */
   onClose?: (() => void) | undefined | null;
-   /**
+  /**
    * toast 类型
    */
   type?: 'normal' | 'success' | 'error' | 'loading';
-   /**
+  /**
    * 自定义图标
    */
   icon?:
@@ -48,44 +42,26 @@ interface IState {
 /**
  * 消息提示
  */
-export default class Toast extends Component<IProps, IState> {
+export default class CafToast extends Component<IProps, IState> {
   state = {
     toasts: []
   };
-  static newInstance(properties, callback) {
-    const { getContainer, ...props } = properties || {};
-    const div = document.createElement('div');
-    if (getContainer) {
-      const root = getContainer();
-      root.appendChild(div);
-    } else {
-      document.body.appendChild(div);
-    }
-    let called = false;
-    function ref(notification) {
-      if (called) {
-        return;
+
+  setMessage = (key, msg) => {
+    this.setState(previousState => {
+      for (let i = 0, len = previousState.toasts.length; i < len; i++) {
+        if (previousState.toasts[i].key == key) {
+          previousState.toasts[i].content = msg;
+        }
       }
-      called = true;
-      callback({
-        notice(noticeProps) {
-          notification.add(noticeProps);
-        },
-        removeNotice(key) {
-          notification.remove(key);
-        },
-        component: notification,
-        destroy() {
-          render('', div, div)
-          //  div.parentNode.removeChild(div);
-        },
-      });
-    }
-    render(<Toast {...props} ref={ref} />, div);
+     
+      return {
+        toasts: previousState.toasts
+      };
+    });
   };
-  
-  add = (notice) => {
-    const key = notice.key = notice.key || getUuid();
+  add = notice => {
+    const key = notice.key;
     this.setState(previousState => {
       const notices = previousState.toasts;
       const noticeIndex = notices.map(v => v.key).indexOf(key);
@@ -96,19 +72,19 @@ export default class Toast extends Component<IProps, IState> {
         updatedNotices.push(notice);
       }
       return {
-        toasts: updatedNotices,
+        toasts: updatedNotices
       };
     });
-  }
+  };
 
-  remove = (key) => {
+  remove = key => {
     this.setState(previousState => {
       return {
-        toasts: previousState.toasts.filter(notice => notice.key !== key),
+        toasts: previousState.toasts.filter(notice => notice.key !== key)
       };
     });
-  }
-  render({ prefix }, { toasts }) {
+  };
+  render({ prefix, content }, { toasts }) {
     const toastList = toasts.map((item, ind) => {
       const onClose = () => {
         this.remove(item.key);

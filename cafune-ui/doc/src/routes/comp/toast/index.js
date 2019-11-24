@@ -5,13 +5,34 @@ import './indes.scss';
 export default class ToastComp extends Component {
   showToast = ({ kind = 'show', duration, icon, onClose, mutiple } = {}) => {
     return () => {
-      Toast[kind]({
+      const cToast = Toast[kind]({
         content: kind,
         duration,
         icon,
         onClose,
         mutiple
       });
+      let timer;
+      if (kind === 'loading') {
+        let time = 5;
+        // eslint-disable-next-line no-inner-declarations
+        function countdown() {
+          timer = setTimeout(() => {
+            Toast.setMsg(cToast, `couting to ${time}`);
+            time -= 1;
+            if (time >= 0) {
+              countdown();
+            } else {
+              clearTimeout(timer);
+              Toast.hide(cToast);
+            }
+          }, 1000);
+        }
+        countdown();
+      } else {
+        timer && clearTimeout(timer);
+        timer = null;
+      }
     };
   };
   render() {

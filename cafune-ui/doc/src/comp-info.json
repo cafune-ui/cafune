@@ -108,7 +108,7 @@
     "displayName": "Tabs"
   },
   "toast": {
-    "desc": "",
-    "displayName": "CafToast"
+    "desc": "轻提示",
+    "displayName": "Toast"
   }
 }

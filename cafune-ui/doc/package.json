@@ -39,6 +39,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "preact-async-route": "^2.2.1",
     "preact-cli": "^2.2.1",
+    "prettier": "^1.19.1",
     "prismjs": "^1.17.1",
     "progress-bar-webpack-plugin": "^1.12.1",
     "pygmentize": "^0.5.3",
