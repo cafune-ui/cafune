@@ -14,16 +14,20 @@ $name: '.caf-swiper';
     &__item {
       // float: left;
       flex-shrink: 0;
-      transform: scale(#{$swiper-normal-item-scale});
-      opacity: $swiper-normal-item-opacity;
-      transition: all .3s ease-in-out;
-      border-radius: $swiper-normal-item-border-radius;
       overflow: hidden;
-      &--current {
-        opacity: 1;
-        transform: scale(1);
-        box-shadow: $swiper-normal-item-current-box-shadow;
+      &__container {
+        transform: scale(#{$swiper-normal-item-scale});
+        opacity: $swiper-normal-item-opacity;
+        transition: all .3s ease-in-out;
+        border-radius: $swiper-normal-item-border-radius;
+        overflow: hidden;
+        &--current {
+          opacity: 1;
+          transform: scale(1);
+          box-shadow: $swiper-normal-item-current-box-shadow;
+        }
       }
+      
     }
   }
   &__indicator {

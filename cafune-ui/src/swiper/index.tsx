@@ -32,6 +32,10 @@ interface IProps {
    */
   autoplay?: boolean;
   /**
+   * 是否无缝轮播
+   */
+  infinite?: boolean;
+  /**
    * 切换间隔事件（毫秒）
    */
   intervel?: number;
@@ -64,6 +68,7 @@ class Swiper extends Component<IProps> {
   static defaultProps = {
     prefix: 'caf-swiper',
     autoplay: true,
+    infinite: true,
     intervel: 3000,
     initialIndex: 0,
     showIndicators: true,
@@ -72,6 +77,7 @@ class Swiper extends Component<IProps> {
     type: 'normal'
   };
   state = {
+    next: -1,
     current: this.props.initialIndex
   };
   total = 0;
@@ -112,7 +118,6 @@ class Swiper extends Component<IProps> {
         rect.style.left = `${(size.width - this.size) / 2}px`;
       }
     }
-    
   };
   componentDidMount() {
     if (isBrowser) {
@@ -134,13 +139,23 @@ class Swiper extends Component<IProps> {
     this.autoPlayTimer && clearTimeout(this.autoPlayTimer);
   }
   autoPlay() {
-    const { autoplay, intervel } = this.props;
+    const { autoplay, intervel, infinite } = this.props;
     if (autoplay && this.swiperData.length > 1) {
       this.clearAutoPlay();
       this.autoPlayTimer = setTimeout(() => {
         this.swiperCurrent = this.state.current + 1;
         let { current } = this.state;
-        current = current === this.swiperData.length - 1 ? 0 : current + 1;
+        if (infinite) {
+          const next =
+            this.state.current === this.swiperData.length - 1 ? 0 : -1;
+          this.setState({
+            next
+          });
+          current = current + 1;
+        } else {
+          current = current === this.swiperData.length - 1 ? 0 : current + 1;
+        }
+
         this.moveTo({ ind: current });
       }, intervel);
     }
@@ -160,18 +175,44 @@ class Swiper extends Component<IProps> {
       window.removeEventListener('resize', this.resize);
     }
   }
-  moveTo({ ind, offset }: { ind?: number; offset?: number | string }) {
+  moveTo({
+    ind,
+    offset,
+    silence = false
+  }: {
+    ind?: number;
+    offset?: number | string;
+    silence?: boolean;
+  }) {
     this.clearAutoPlay();
     if (this.swiperList && this.swiperList.current) {
       const $swiper = this.swiperList.current;
       if (ind !== undefined) {
-        $swiper.style.transitionDuration = `${this.props.duration}ms`;
-        $swiper.style.transform = `translate3d(${ind * this.size * -1}px, 0, 0 )`;
+        $swiper.style.transitionDuration = `${
+          silence ? 0 : this.props.duration
+        }ms`;
+        const realCurrent =
+          ind >= this.swiperData.length
+            ? 0
+            : ind < 0
+            ? this.swiperData.length - 1
+            : ind;
+        $swiper.style.transform = `translate3d(${ind *
+          this.size *
+          -1}px, 0, 0 )`;
         this.setState(
           {
-            current: ind
+            current: realCurrent
           },
           () => {
+            if (realCurrent !== ind) {
+              setTimeout(() => {
+                this.moveTo({ ind: realCurrent, silence: true });
+                this.setState({
+                  next: -1
+                });
+              }, this.props.duration);
+            }
             this.autoPlay();
             this.props.onChange && this.props.onChange(ind);
           }
@@ -206,28 +247,45 @@ class Swiper extends Component<IProps> {
   startMoving = e => {
     if (!this.isSwiping) return;
     const touch = getTouch(e);
-    this.deltaX = touch.clientX - this.startX;
-    this.offsetX = Math.abs(this.deltaX);
-    this.direction = this.deltaX >= 0 ? -1 : 1;
+    const deltaX = touch.clientX - this.startX;
+    this.offsetX = Math.abs(deltaX);
+    this.direction = deltaX >= 0 ? -1 : 1;
     e.preventDefault();
     e.stopPropagation();
     this.moveTo({
-      offset: `${this.state.current * this.size * -1 + this.deltaX}px`
+      offset: `${this.state.current * this.size * -1 + deltaX}px`
     });
+    if (deltaX !== 0 && this.props.infinite) {
+      const next =
+        this.state.current === 0 && deltaX > 0
+          ? this.swiperData.length - 1
+          : this.state.current === this.swiperData.length - 1 && deltaX < 0
+          ? 0
+          : -1;
+      this.state.next !== next &&
+        this.setState({
+          next
+        });
+    }
   };
   endMoving = () => {
     if (!this.isSwiping) return;
     this.isSwiping = false;
-    // 是否已经在第一或最后一张
-    const inBound =
-      this.state.current + this.direction >= 0 &&
-      this.state.current + this.direction < this.swiperData.length;
-    if (this.offsetX < this.size / 4 || !inBound) {
-      this.moveTo({ ind: this.state.current });
-    } else if (inBound) {
+
+    if (this.props.infinite) {
       this.moveTo({ ind: this.state.current + this.direction });
+    } else {
+      // 是否已经在第一或最后一张
+      const inBound =
+        this.state.current + this.direction >= 0 &&
+        this.state.current + this.direction < this.swiperData.length;
+      if (this.offsetX < this.size / 4 || !inBound) {
+        this.moveTo({ ind: this.state.current });
+      } else if (inBound) {
+        this.moveTo({ ind: this.state.current + this.direction });
+      }
     }
-    setTimeout(() => (this.offsetX = 0), 200);
+    this.offsetX = 0;
   };
   renderIndicators(data) {
     const { prefix } = this.props;
@@ -247,12 +305,20 @@ class Swiper extends Component<IProps> {
   renderItems(data) {
     if (data && data.length) {
       return data.map((item, ind) => {
+        let style = {
+          width: `${this.size}px`
+        };
+        if (this.state.next === ind) {
+          style.transform = `translate3d(${(ind === 0 ? 1 : -1) *
+            this.size *
+            this.swiperData.length}px, 0, 0)`;
+        }
         return (
           <Item
             key={item.id}
             onItemClick={item.onItemClick}
-            width={`${this.size}px`}
-            current={ind === this.state.current}
+            current={item.actived}
+            style={style}
             // padding={`0 ${(1 - this.props.percent) / 2 * this.size}px`}
           >
             {item.content}

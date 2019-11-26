@@ -13,6 +13,7 @@ import { Swiper } from 'cafune';
 | type | 走马灯类型 | string | `'normal'` | `'card'`,`'shuffle'`,`'fade'` | ❌ |
 | slideWidth | 单元宽度，可为百分比 | number | `0.9` | - | ❌ |
 | autoplay | 是否自动切换 | boolean | `true` | - | ❌ |
+| infinite | 是否无缝轮播 | boolean | `true` | - | ❌ |
 | intervel | 切换间隔事件（毫秒） | number | `3000` | - | ❌ |
 | initialIndex | 初始index | number | `0` | - | ❌ |
 | duration | 过渡时间（毫秒） | number | `500` | - | ❌ |
@@ -26,6 +27,6 @@ import { Swiper } from 'cafune';
 | prefix | 自定义前缀 | string | `'caf-swiper__container'` | - | ❌ |
 | className | 自定义类名 | string | - | - | ❌ |
 | children | 自定义类名 | any | - | - | ❌ |
-| width | 单元宽度 | string | - | - | ❌ |
+| style | 单元样式 | any | - | - | ❌ |
 | current | 是否为当前显示项 | boolean | - | - | ❌ |
 | onItemClick | 点击回调 | (event: TouchEvent) => void | - | - | ❌ |

@@ -15,9 +15,9 @@ interface IProps {
    */
   children?: any;
   /**
-   * 单元宽度
+   * 单元样式
    */
-  width?: string;
+  style?: any;
   /**
    * 是否为当前显示项
    */
@@ -36,21 +36,23 @@ class SwiperItem extends Component<IProps> {
     prefix,
     className,
     children,
-    width,
     current,
+    style,
     onItemClick,
     ...restProps
   }) {
     return (
       <div
-        className={cx(`${prefix}__item`, className, {
-          [`${prefix}__item--current`]: current
-        })}
+        className={cx(`${prefix}__item`, className)}
         onClick={onItemClick}
-        style={{ width }}
+        style={style}
         {...restProps}
       >
-        {children}
+        <div className={cx(`${prefix}__item__container`, {
+          [`${prefix}__item__container--current`]: current
+        })}>
+          {children}
+        </div>
       </div>
     );
   }
