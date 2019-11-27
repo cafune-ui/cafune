@@ -309,6 +309,7 @@ class Swiper extends Component<IProps> {
           width: `${this.size}px`
         };
         if (this.state.next === ind) {
+          // @ts-ignore
           style.transform = `translate3d(${(ind === 0 ? 1 : -1) *
             this.size *
             this.swiperData.length}px, 0, 0)`;

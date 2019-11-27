@@ -16,6 +16,10 @@
           {
             "name": "自定义主题",
             "url": "customTheme"
+          },
+          {
+            "name": "更新日志",
+            "url": "CHANGELOG"
           }
         ]
       }

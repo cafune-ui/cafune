@@ -1,5 +1,7 @@
 import { render, Component, VNode, h } from 'preact';
 import { isBrowser } from '../util/isomorphic';
+import Button from '../button';
+
 let modalComp;
 let containerNode = isBrowser && document.body;
 const viewWrap = containerNode;
@@ -50,16 +52,16 @@ interface IProps {
   /**
    * 确认事件回调
    */
-  onConfirm: () => void;
+  onConfirm?: () => void;
   /**
    * 取消事件回调
    */
-  onCancel: () => void;
+  onCancel?: () => void;
   /**
    * 是否显示模态框
    */
   visable?: boolean;
-  children: any;
+  children?: any;
 }
 /**
  * 渲染模态框到容器中
@@ -120,57 +122,59 @@ class Modal extends Component<IProps, {}> {
     }
   }
   render({
-    prefix = 'caf-modal',
-    title = '', // 标题
-    message = '', // 消息内容，如有children 优先children
-    align = 'center', // 文本对齐方式
-    children, // 自定义内容
-    showCancel = false, // 是否显示取消按钮
-    confirmContent = '确定',
-    cancelContent = '取消',
-    mask = true,
-    visable = false
+    prefix,
+    title,
+    message,
+    align,
+    children,
+    showCancel,
+    confirmContent,
+    cancelContent,
+    mask,
+    visable
   }) {
     if (visable) {
       /* istanbul ignore if */
       const Title = title && (
-        <div className={`${prefix}-content-header`}>{title}</div>
+        <div className={`${prefix}__box__header`}>{title}</div>
       );
       /* istanbul ignore else */
       const Content = (!!(children && children.length) || message) && (
-        <div className={`${prefix}-content-content ${prefix}-content-content__${align}`}>
+        <div
+          className={`${prefix}__box__main ${prefix}__box__main--${align}`}
+        >
           {children && children.length > 0 ? (
             children
           ) : (
             <div
               dangerouslySetInnerHTML={{ __html: message }}
-              className={`${prefix}-content-content ${prefix}-content__${align}`}
+              className={`${prefix}__box__main ${prefix}__box__main--${align}`}
             />
           )}
         </div>
       );
       const Buttons = (
-        <div className={`${prefix}-btngroup`}>
+        <div className={`${prefix}__btngroup`}>
           {showCancel && (
             <div
-              className={`${prefix}-btngroup__cancel`}
+              className={`${prefix}__btn ${prefix}__btn--cancel`}
               onClick={this.handleClick.bind(this, 'cancel')}
             >
-              {cancelContent}
+              <Button type="cancel" block>{cancelContent}</Button>
             </div>
           )}
           <div
-            className={`${prefix}-btngroup__confirm`}
+            className={`${prefix}__btn ${prefix}__btn--confirm`}
             onClick={this.handleClick.bind(this, 'confirm')}
           >
-            {confirmContent}
+            <Button type="primary" block >{confirmContent}</Button>
           </div>
         </div>
       );
       return (
         <div className={prefix}>
-          {mask && <div className={`${prefix}-bg`} />}
-          <div className={`${prefix}-content`}>
+          {mask && <div className={`${prefix}__mask`} />}
+          <div className={`${prefix}__box`}>
             {Title}
             {Content}
             {Buttons}

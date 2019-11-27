@@ -6,7 +6,8 @@
   "module": "./cafune-ui/src/index.js",
   "scripts": {
     "release-site": "node ./cafune-ui/scripts/release-site",
-    "release": "./cafune-ui/scripts/release.sh"
+    "release": "./cafune-ui/scripts/release.sh",
+    "changelog": "conventional-changelog -p angular -i ./cafune-ui/doc/markdown/doc/CHANGELOG.md -s"
   },
   "husky": {
     "hooks": {

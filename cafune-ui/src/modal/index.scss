@@ -1,10 +1,7 @@
-@import '../style/variables/color.scss';
+@import '../style/_var.scss';
 @mixin btn {
   flex: 1;
-  height: 52px;
-  line-height: 50px;
-  margin: -1px;/* no */
-  border: 1px solid #f3f3f3;/* no */
+  padding: $modal-btn-padding;
 }
 @keyframes modal {
   0% {
@@ -18,65 +15,54 @@
 }
 
 .caf-modal {
-  position: fixed;
-  z-index: 98;
-  top: 0;
-  margin: auto;
-  width: 100%;
-  height: 100%;
-  max-width: 480px; /* no */
-  min-width: 320px; /* no */
-
-  &-btngroup {
+  &__btngroup {
+    width: $modal-btngroup-width;
+    margin: $modal-btngroup-margin;
     display: flex;
-    text-align: center;
-    &__cancel {
-      @include btn;
-    }
-    &__confirm {
-      @include btn;
-      color: $color_theme;
-    }
+    align-items: $modal-btngroup-align-items;
   }
-  &-bg {
-    position: absolute;
-    z-index: 98;
+  &__btn {
+    @include btn();
+  }
+  &__mask {
+    position: fixed;
+    z-index: $modal-box-zIndex - 1;
     top: 0;
     left: 0;
     right: 0;
     margin: auto;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: $modal-mask-background-color;
   }
-  &-content {
-    position: absolute;
-    z-index: 99;
+  &__box {
+    position: fixed;
+    z-index: $modal-box-zIndex;
     top: 50%;
     left: 50%;
-    width: 85%;
+    width: $modal-box-width;
     overflow: hidden;
     transform: translate3d(-50%, -50%, 0);
-    border-radius: 4px;
-    background-color: #fff;
+    border-radius: $modal-box-border-radius;
+    background-color: $modal-box-background-color;
     animation: modal 0.6s;
-    &-header {
-      padding-top: 20px;
-      font-size: 16px;
-      font-weight: 700;
-      text-align: center;
+    &__header {
+      padding: $modal-box-header-padding;
+      font-size: $modal-box-header-font-size;
+      font-weight: $modal-box-header-font-weight;
+      text-align: $modal-box-header-text-align;
     }
-    &-content {
-      padding: 15px 30px;
-      line-height: 1.8em;
+    &__main {
+      padding: $modal-box-main-padding;
+      line-height: $modal-box-main-line-height;
 
-      &__center {
+      &--center {
         text-align: center;
       }
-      &__left {
+      &--left {
         text-align: left;
       }
-      &__right {
+      &--right {
         text-align: right;
       }
     }

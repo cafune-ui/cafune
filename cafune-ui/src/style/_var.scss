@@ -130,6 +130,26 @@ $loading-padding: 10px !default;
 $loading-text-padding: 0 0 0 10px !default;
 $loading-verticle-text-margin: 10px 0 0 0 !default;
 
+// modal
+$modal-mask-background-color: rgba($color: #000000, $alpha: 0.5) !default;
+$modal-box-width: 85% !default;
+$modal-box-zIndex: 20 !default;
+$modal-box-border-radius: 16px !default;
+$modal-box-background-color: $white !default;
+
+$modal-box-header-padding: 20px 0 0 0 !default;
+$modal-box-header-font-size: 16px !default;
+$modal-box-header-font-weight: 800 !default;
+$modal-box-header-text-align: center !default;
+
+$modal-box-main-padding: 15px 30px !default;
+$modal-box-main-line-height: 1.8em;
+
+$modal-btngroup-width: 80% !default;
+$modal-btngroup-margin: auto !default;
+$modal-btngroup-align-items: flex-end !default;
+$modal-btn-padding: 10px 15px 20px !default;
+
 // nav-bar
 $navbar-padding: 0 $horizontal-distance !default;
 $navbar-height: 46px !default;
