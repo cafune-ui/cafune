@@ -96,6 +96,9 @@
             "url": "grid"
           },
           {
+            "url": "transition"
+          },
+          {
             "url": "loading"
           },
           {

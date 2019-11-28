@@ -110,5 +110,9 @@
   "toast": {
     "desc": "轻提示",
     "displayName": "Toast"
+  },
+  "transition": {
+    "desc": "过渡",
+    "displayName": "Transition"
   }
 }

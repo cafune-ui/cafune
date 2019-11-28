@@ -37,13 +37,12 @@ module.exports = function(env, options = {}) {
         {
           libraryName: 'cafune',
           libraryDirectory: 'src',
-          style: true
-          // style: name => {
-          //   if(/cafune\/.+?\/switch/.test(name)) {
-          //     return false;
-          //   }
-          //   return `${name}/style`;
-          // }
+          style: name => {
+            if (/cafune\/.+?\/transition/.test(name)) {
+              return false;
+            }
+            return `${name}/style`;
+          }
         }
       ]
     ].filter(Boolean)

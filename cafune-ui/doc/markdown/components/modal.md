@@ -16,7 +16,7 @@ import { Modal } from 'cafune';
 | mask | 是否显示蒙层 | boolean | `true` | - | ❌ |
 | confirmContent | 确认按钮内容 | string | `'确定'` | - | ❌ |
 | cancelContent | 取消按钮内容 | string | `'取消'` | - | ❌ |
-| onConfirm | 确认事件回调 | () => void | - | - | ✅  |
-| onCancel | 取消事件回调 | () => void | - | - | ✅  |
+| onConfirm | 确认事件回调 | () => void | - | - | ❌ |
+| onCancel | 取消事件回调 | () => void | - | - | ❌ |
 | visable | 是否显示模态框 | boolean | `true` | - | ❌ |
-| children |  | any | - | - | ✅  |
+| children |  | any | - | - | ❌ |

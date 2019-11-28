@@ -26,3 +26,4 @@ export { default as Switch } from './switch';
 export { default as TabBar } from './tab-bar';
 export { default as Tabs } from './tabs';
 export { default as Toast } from './toast';
+export { default as Transition } from './transition';
