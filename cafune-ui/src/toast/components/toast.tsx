@@ -1,11 +1,16 @@
 import { Component, h, render, VNode, createRef } from 'preact';
 import Notice from './notice';
+import Transition from '../../transition';
 
 interface IProps {
   /**
    * 自定义前缀
    */
   prefix?: string;
+  /**
+   * 是否可见
+   */
+  visible?: boolean;
   /**
    * 提示内容
    */
@@ -54,7 +59,7 @@ export default class CafToast extends Component<IProps, IState> {
           previousState.toasts[i].content = msg;
         }
       }
-     
+
       return {
         toasts: previousState.toasts
       };
@@ -76,7 +81,6 @@ export default class CafToast extends Component<IProps, IState> {
       };
     });
   };
-
   remove = key => {
     this.setState(previousState => {
       return {
@@ -84,16 +88,37 @@ export default class CafToast extends Component<IProps, IState> {
       };
     });
   };
+  hide = key => {
+    this.setState(previousState => {
+      for (let i = 0, len = previousState.toasts.length; i < len; i++) {
+        if (previousState.toasts[i].key === key) {
+          previousState.toasts[i].visible = false;
+        }
+      }
+      return {
+        toasts: previousState.toasts
+      };
+    });
+  };
   render({ prefix, content }, { toasts }) {
     const toastList = toasts.map((item, ind) => {
-      const onClose = () => {
+      const afterLeave = () => {
         this.remove(item.key);
         item.onClose && item.onClose();
       };
+      const onClose = () => {
+        this.hide(item.key);
+      };
       return (
-        <Notice prefix={prefix} {...item} onClose={onClose}>
-          {item.content}
-        </Notice>
+        <Transition
+          visible={item.visible}
+          afterLeave={afterLeave}
+          name="caf-toast-fade"
+        >
+          <Notice prefix={prefix} {...item} onClose={onClose}>
+            {item.content}
+          </Notice>
+        </Transition>
       );
     });
     return <div className={prefix}>{toastList}</div>;

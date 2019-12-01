@@ -4,10 +4,10 @@ import './index.scss';
 
 export default class TransitionComp extends Component {
   state = {
-    visiable1: true,
-    visiable2: true
+    visible1: true,
+    visible2: true
   };
-  setVisiable = type => {
+  setvisible = type => {
     return () => {
       this.setState(prevState => {
         return {
@@ -18,25 +18,25 @@ export default class TransitionComp extends Component {
   };
 
   beforeEnter(el) {
-    alert('beforeEnter', el);
+    console.log('beforeEnter', el);
   }
   enter(el, done) {
-    alert('enter', el);
+    console.log('enter', el);
     setTimeout(() => {
-      alert('done');
+      console.log('done');
       done();
     }, 1000);
   }
   afterEnter(el) {
-    alert('afterEnter', el);
+    console.log('afterEnter', el);
   }
   beforeLeave(el) {
-    alert('beforeLeave', el);
+    console.log('beforeLeave', el);
   }
   leave(el, done) {
     alert('leave', el);
     setTimeout(() => {
-      alert('done');
+      console.log('done');
       done();
     }, 1000);
   }
@@ -44,29 +44,32 @@ export default class TransitionComp extends Component {
     alert('afterLeave', el);
   }
 
-  render({}, { visiable1, visiable2 }) {
+  render({}, { visible1, visible2 }) {
     return (
       <div class="caf-demo-block">
         <p class="caf-demo-title">自定义动画名</p>
-        <Button onClick={this.setVisiable('visiable1')}>切换状态</Button>
+        <Button onClick={this.setvisible('visible1')}>切换状态</Button>
 
         <div class="caf-demo-block">
-          <Transition visiable={visiable1} name="fade">
-            <div class="demo">something here</div>
+          <Transition visible={visible1} instant name="fade">
+            <div class="demo">初始可见无过渡</div>
+          </Transition>
+          <Transition visible={visible1} name="fade">
+            <div class="demo">初始不可见，过渡进入</div>
           </Transition>
         </div>
 
         <p class="caf-demo-title">自定义钩子</p>
-        <Button onClick={this.setVisiable('visiable2')}>切换状态</Button>
+        <Button onClick={this.setvisible('visible2')}>切换状态</Button>
         <div class="caf-demo-block">
           <Transition
-            visiable={visiable2}
+            visible={visible2}
             beforeEnter={this.beforeEnter}
             enter={this.enter}
             afterEnter={this.afterEnter}
             beforeLeave={this.beforeLeave}
             leave={this.leave}
-            afterLeavee={this.afterLeave}
+            afterLeave={this.afterLeave}
           >
             <div class="demo">something here</div>
           </Transition>

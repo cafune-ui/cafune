@@ -5,7 +5,11 @@ interface IProps {
   /**
    * 是否可见
    */
-  visiable?: boolean;
+  visible?: boolean;
+  /**
+   * 是否一开始无动画进入
+   */
+  instant?: boolean;
   /**
    * 动画前缀
    */
@@ -36,42 +40,52 @@ interface IProps {
   afterLeave?: (node: HTMLElement) => void;
 }
 
+interface IState {
+  /**
+   * 是否显示
+   */
+  isShow: boolean
+}
 /**
  * 过渡
  */
-class Transition extends Component<IProps> {
+class Transition extends Component<IProps, IState> {
   static defaultProps = {
-    visiable: true
+    visible: false,
+    instant: false
   };
   noop = function() {};
-
-  state = {
-    isShow: this.props.visiable
-  };
+  constructor(props:IProps) {
+    super(props);
+    this.state = {
+      isShow: props.instant
+    }
+  }
   cssAnimation(node) {
-    const { visiable, name } = this.props;
-    if (visiable) {
-      const activeClass = ` ${name}-enter ${name}-enter-active `;
-      node.className += activeClass;
+    const { visible, name } = this.props;
+    if (visible) {
+      const activeClass = [`${name}-enter`, `${name}-enter-active`];
+      node.classList.add(...activeClass)
       setTimeout(() => {
-        this.removeClassName(node, ` ${name}-enter`);
+        this.removeClassName(node, [`${name}-enter`]);
       });
       this.bindAnimationEvent(node, activeClass);
     } else {
-      const activeClass = ` ${name}-leave-active`;
-      node.className += activeClass;
+      const activeClass = [`${name}-leave-active`];
+      node.classList.add(...activeClass);
       setTimeout(() => {
-        node.className += ` ${name}-leave`;
+        activeClass.push(`${name}-leave`)
+        node.classList.add(`${name}-leave`);
       });
       this.bindAnimationEvent(node, activeClass);
     }
   }
   bindAnimationEvent(elem, activeClass) {
-    const { visiable } = this.props;
+    const { visible } = this.props;
     const eventName = this.transitionend();
     elem.addEventListener(eventName, () => {
       this.removeClassName(elem, activeClass);
-      !visiable && this.setState({ isShow: false });
+      !visible && this.setState({ isShow: false });
     });
   }
   transitionend() {
@@ -92,30 +106,30 @@ class Transition extends Component<IProps> {
   }
   removeClassName(elem, className) {
     if (!elem) return;
-    const elClassName = elem.className;
-    if (elClassName.length === 0) return;
-    if (elClassName === className) {
-      elem.className = '';
-      return;
-    }
-    const classes = elClassName.split(' ');
-    const removeClesses = className.split(' ');
-    const newClasses = [];
-    classes.forEach(curr => {
-      if (curr !== '' && removeClesses.indexOf(curr) < 0) {
-        newClasses.push(curr);
-      }
-    });
-    elem.className = newClasses.join(' ');
+    // const elClassName = elem.className;
+    // if (elClassName.length === 0) return;
+    // if (elClassName === className) {
+    //   elem.className = '';
+    //   return;
+    // }
+    // const classes = elClassName.split(' ');
+    // const removeClesses = className.split(' ');
+    // const newClasses = [];
+    // classes.forEach(curr => {
+    //   if (curr !== '' && removeClesses.indexOf(curr) < 0) {
+    //     newClasses.push(curr);
+    //   }
+    // });
+    elem.classList.remove(...className);
   }
   animate(node) {
-    let { visiable, beforeEnter, enter, beforeLeave, leave } = this.props;
+    let { visible, beforeEnter, enter, beforeLeave, leave } = this.props;
     beforeEnter = beforeEnter || this.noop;
     enter = enter || this.noop;
     beforeLeave = beforeLeave || this.noop;
     leave = leave || this.noop;
 
-    if (visiable) {
+    if (visible) {
       beforeEnter(node);
       setTimeout(() => enter(node, this.done.bind(this)));
     } else {
@@ -130,10 +144,10 @@ class Transition extends Component<IProps> {
   }
   done() {
     const node = this.base;
-    let { visiable, afterEnter, afterLeave } = this.props;
+    let { visible, afterEnter, afterLeave } = this.props;
     afterEnter = afterEnter || this.noop;
     afterLeave = afterLeave || this.noop;
-    if (visiable) {
+    if (visible) {
       afterEnter(node);
     } else {
       afterLeave(node);
@@ -141,11 +155,16 @@ class Transition extends Component<IProps> {
     }
   }
   componentWillReceiveProps(nextProps) {
-    nextProps.visiable && this.setState({ isShow: true });
+    nextProps.visible && this.setState({ isShow: true });
   }
   componentDidUpdate(previousProps) {
-    if (previousProps.visiable !== this.props.visiable) {
+    if (previousProps.visible !== this.props.visible) {
       this.animationStart();
+    }
+  }
+  componentDidMount() {
+    if (this.props.visible && !this.state.isShow) {
+      this.setState({ isShow: true }, () => { this.animationStart(); })
     }
   }
   render({ children }, { isShow }) {

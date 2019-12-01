@@ -1,6 +1,7 @@
 import { Component, h } from 'preact';
 import Icon from '../../icon';
 import Loading from '../../loading';
+
 interface IProps {
   prefix?: string;
   duration?: number;

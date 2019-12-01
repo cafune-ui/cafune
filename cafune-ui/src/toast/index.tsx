@@ -109,12 +109,11 @@ function notice(options: IProps) {
     content,
     icon,
     type,
-    closable: true,
+    visible: true,
     onClose() {
       if (onClose) {
         onClose();
       }
-      messageInstance.remove(key);
     }
   });
   return key;

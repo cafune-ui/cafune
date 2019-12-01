@@ -8,7 +8,8 @@ import { Transition } from 'cafune';
 ## 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
-| visiable | 是否可见 | boolean | `true` | - | ❌ |
+| visible | 是否可见 | boolean | `false` | - | ❌ |
+| instant | 是否一开始无动画进入 | boolean | `false` | - | ❌ |
 | name | 动画前缀 | string | - | - | ❌ |
 | beforeEnter | 进入之前钩子 | (node: HTMLElement) => void | - | - | ❌ |
 | enter | 进入钩子 | (node: HTMLElement, done) => void | - | - | ❌ |
