@@ -1,4 +1,5 @@
 module.exports = function(api) {
+  const isTest = api.env('test');
   const { BABEL_MODULE } = process.env;
   const useESModules = BABEL_MODULE !== 'commonjs';
 
@@ -9,22 +10,36 @@ module.exports = function(api) {
         '@babel/preset-env',
         {
           loose: true,
-          modules: useESModules ? false : 'commonjs',
+          modules: useESModules || !isTest ? false : 'commonjs',
           exclude: ['transform-regenerator', 'transform-async-to-generator']
         }
       ],
       '@babel/preset-typescript'
     ],
     plugins: [
-      [
-        '@babel/plugin-transform-runtime',
-        {
-          corejs: false,
-          helpers: true,
-          regenerator: false,
-          useESModules
-        }
-      ],
+      ...(isTest
+        ? [
+            [
+              'babel-plugin-jsx-pragmatic',
+              {
+                module: 'preact',
+                import: 'h',
+                export: 'h'
+              }
+            ],
+            'transform-es2015-modules-commonjs',
+          ]
+        : [
+            [
+              '@babel/plugin-transform-runtime',
+              {
+                corejs: false,
+                helpers: true,
+                regenerator: false,
+                useESModules
+              }
+            ]
+          ]),
       '@babel/plugin-transform-object-assign',
       ['@babel/plugin-proposal-decorators', { legacy: true }],
       '@babel/plugin-proposal-class-properties',

@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import  ActionBar  from '../';
 import { shallow, render } from 'enzyme';
 
@@ -9,26 +8,24 @@ describe('<ActionBar />', () => {
   it('should render porperly', () => {
     const descContent = 'test desc';
     const btnContent = 'btn content';
+    const btns = [
+      {
+        children: 'btn content'
+      },
+    ];
     const additionMsg = 'additionMsg';
     const wrapper = render(
       <ActionBar
-        descContent={descContent}
-        btnContent={btnContent}
+        desc={descContent}
+        btns={btns}
         additionMsg={additionMsg}
         disabled={true}
       />
     );
-    expect(wrapper.find('.caf-actionbar-main-desc').text()).toEqual(descContent);
-    expect(wrapper.find('.caf-actionbar-main-btn').text()).toEqual(btnContent);
-    expect(wrapper.find('.caf-actionbar-main-btn').is('[data-disabled="1"]')).toBe(true);
-    expect(wrapper.find('.caf-actionbar-tip').length).toBe(1);
-    expect(wrapper.find('.caf-actionbar-tip').text()).toEqual(additionMsg);
-  });
-  it('should trigger click on btn click', () => {
-    const onClick = jest.fn();
-    const wrapper = shallow(<ActionBar handleClick={onClick} />);
-    wrapper.find('.caf-actionbar-main-btn').simulate('click');
-    expect(onClick).toHaveBeenCalled();
+    expect(wrapper.find('.caf-actionbar__main__desc').text()).toEqual(descContent);
+    expect(wrapper.find('.caf-btn').text()).toEqual(btnContent);
+    expect(wrapper.find('.caf-actionbar__tip').length).toBe(1);
+    expect(wrapper.find('.caf-actionbar__tip').text()).toEqual(additionMsg);
   });
   it('should set padding', () => {
     const wrapElement = 'body';
@@ -39,6 +36,9 @@ describe('<ActionBar />', () => {
       );
     }, 0);
     wrapper.render(null);
-    expect(document.querySelector(wrapElement).style.paddingBottom).toBe('');
+   
+    setTimeout(() => {
+      expect(document.querySelector(wrapElement).style.paddingBottom).toBe('');
+    }, 500);
   });
 });

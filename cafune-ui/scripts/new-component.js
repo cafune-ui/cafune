@@ -75,7 +75,7 @@ function writeTestSuit(compName, name) {
   fs.writeFileSync(
     `${testCompDir}/index.test.js`,
     `
-import { ${compName} } from 'cafune';
+import ${compName} from '../';
 import { render } from 'enzyme';
 import { shallow, deep } from 'preact-render-spy';
 describe('${compName}', () => {

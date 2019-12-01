@@ -1,4 +1,4 @@
-import { render, Component, VNode, h } from 'preact';
+import { render, Component, h } from 'preact';
 import { isBrowser } from '../util/isomorphic';
 import Button from '../button';
 import Transition from '../transition';

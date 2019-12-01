@@ -76,57 +76,32 @@ initialize {
   "0": Object {
     "attribs": Object {
       "autoplay": "",
-      "class": "",
+      "class": "caf-swiper caf-swiper--pd caf-swiper--normal",
+      "duration": "500",
+      "infinite": "",
       "initialindex": "0",
       "intervel": "3000",
+      "slidewidth": "0.9",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "undefined-container",
+          "class": "caf-swiper__container",
         },
         "children": Array [
           Object {
             "attribs": Object {
-              "actived": "",
-              "class": "caf-swiper-container-item",
-              "style": "width: 25%;",
+              "class": "caf-swiper__container__item",
+              "style": "width: 0px;",
             },
             "children": Array [
               Object {
-                "data": "1",
-                "next": null,
-                "parent": [Circular],
-                "prev": null,
-                "type": "text",
-              },
-            ],
-            "name": "div",
-            "namespace": "http://www.w3.org/1999/xhtml",
-            "next": Object {
-              "attribs": Object {
-                "class": "caf-swiper-container-item",
-                "style": "width: 25%;",
-              },
-              "children": Array [
-                Object {
-                  "data": "2",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "text",
-                },
-              ],
-              "name": "div",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-container-item",
-                  "style": "width: 25%;",
+                  "class": "caf-swiper__container__item__container caf-swiper__container__item__container--current",
                 },
                 "children": Array [
                   Object {
-                    "data": "3",
+                    "data": "1",
                     "next": null,
                     "parent": [Circular],
                     "prev": null,
@@ -135,18 +110,121 @@ initialize {
                 ],
                 "name": "div",
                 "namespace": "http://www.w3.org/1999/xhtml",
-                "next": Object {
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+            ],
+            "name": "div",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": Object {
+              "attribs": Object {
+                "class": "caf-swiper__container__item",
+                "style": "width: 0px;",
+              },
+              "children": Array [
+                Object {
                   "attribs": Object {
-                    "class": "caf-swiper-container-item",
-                    "style": "width: 25%;",
+                    "class": "caf-swiper__container__item__container",
                   },
                   "children": Array [
                     Object {
-                      "data": "4",
+                      "data": "2",
                       "next": null,
                       "parent": [Circular],
                       "prev": null,
                       "type": "text",
+                    },
+                  ],
+                  "name": "div",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+              ],
+              "name": "div",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": Object {
+                "attribs": Object {
+                  "class": "caf-swiper__container__item",
+                  "style": "width: 0px;",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "class": "caf-swiper__container__item__container",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "3",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "div",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
+                  },
+                ],
+                "name": "div",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": Object {
+                  "attribs": Object {
+                    "class": "caf-swiper__container__item",
+                    "style": "width: 0px;",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "class": "caf-swiper__container__item__container",
+                      },
+                      "children": Array [
+                        Object {
+                          "data": "4",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "text",
+                        },
+                      ],
+                      "name": "div",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "class": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "class": undefined,
+                      },
                     },
                   ],
                   "name": "div",
@@ -192,60 +270,115 @@ initialize {
             "prev": null,
             "type": "tag",
             "x-attribsNamespace": Object {
-              "actived": undefined,
               "class": undefined,
               "style": undefined,
             },
             "x-attribsPrefix": Object {
-              "actived": undefined,
               "class": undefined,
               "style": undefined,
             },
           },
           Object {
             "attribs": Object {
-              "class": "caf-swiper-container-item",
-              "style": "width: 25%;",
+              "class": "caf-swiper__container__item",
+              "style": "width: 0px;",
             },
             "children": Array [
               Object {
-                "data": "2",
+                "attribs": Object {
+                  "class": "caf-swiper__container__item__container",
+                },
+                "children": Array [
+                  Object {
+                    "data": "2",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "div",
+                "namespace": "http://www.w3.org/1999/xhtml",
                 "next": null,
                 "parent": [Circular],
                 "prev": null,
-                "type": "text",
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
               },
             ],
             "name": "div",
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
-                "class": "caf-swiper-container-item",
-                "style": "width: 25%;",
+                "class": "caf-swiper__container__item",
+                "style": "width: 0px;",
               },
               "children": Array [
                 Object {
-                  "data": "3",
+                  "attribs": Object {
+                    "class": "caf-swiper__container__item__container",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "3",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "div",
+                  "namespace": "http://www.w3.org/1999/xhtml",
                   "next": null,
                   "parent": [Circular],
                   "prev": null,
-                  "type": "text",
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
                 },
               ],
               "name": "div",
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-container-item",
-                  "style": "width: 25%;",
+                  "class": "caf-swiper__container__item",
+                  "style": "width: 0px;",
                 },
                 "children": Array [
                   Object {
-                    "data": "4",
+                    "attribs": Object {
+                      "class": "caf-swiper__container__item__container",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "4",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "div",
+                    "namespace": "http://www.w3.org/1999/xhtml",
                     "next": null,
                     "parent": [Circular],
                     "prev": null,
-                    "type": "text",
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
                   },
                 ],
                 "name": "div",
@@ -278,17 +411,35 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "actived": "",
-                "class": "caf-swiper-container-item",
-                "style": "width: 25%;",
+                "class": "caf-swiper__container__item",
+                "style": "width: 0px;",
               },
               "children": Array [
                 Object {
-                  "data": "1",
+                  "attribs": Object {
+                    "class": "caf-swiper__container__item__container caf-swiper__container__item__container--current",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "1",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "div",
+                  "namespace": "http://www.w3.org/1999/xhtml",
                   "next": null,
                   "parent": [Circular],
                   "prev": null,
-                  "type": "text",
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
                 },
               ],
               "name": "div",
@@ -298,12 +449,10 @@ initialize {
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
-                "actived": undefined,
                 "class": undefined,
                 "style": undefined,
               },
               "x-attribsPrefix": Object {
-                "actived": undefined,
                 "class": undefined,
                 "style": undefined,
               },
@@ -320,32 +469,70 @@ initialize {
           },
           Object {
             "attribs": Object {
-              "class": "caf-swiper-container-item",
-              "style": "width: 25%;",
+              "class": "caf-swiper__container__item",
+              "style": "width: 0px;",
             },
             "children": Array [
               Object {
-                "data": "3",
+                "attribs": Object {
+                  "class": "caf-swiper__container__item__container",
+                },
+                "children": Array [
+                  Object {
+                    "data": "3",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "div",
+                "namespace": "http://www.w3.org/1999/xhtml",
                 "next": null,
                 "parent": [Circular],
                 "prev": null,
-                "type": "text",
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
               },
             ],
             "name": "div",
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
-                "class": "caf-swiper-container-item",
-                "style": "width: 25%;",
+                "class": "caf-swiper__container__item",
+                "style": "width: 0px;",
               },
               "children": Array [
                 Object {
-                  "data": "4",
+                  "attribs": Object {
+                    "class": "caf-swiper__container__item__container",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "4",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "div",
+                  "namespace": "http://www.w3.org/1999/xhtml",
                   "next": null,
                   "parent": [Circular],
                   "prev": null,
-                  "type": "text",
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
                 },
               ],
               "name": "div",
@@ -366,16 +553,35 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "caf-swiper-container-item",
-                "style": "width: 25%;",
+                "class": "caf-swiper__container__item",
+                "style": "width: 0px;",
               },
               "children": Array [
                 Object {
-                  "data": "2",
+                  "attribs": Object {
+                    "class": "caf-swiper__container__item__container",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "2",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "div",
+                  "namespace": "http://www.w3.org/1999/xhtml",
                   "next": null,
                   "parent": [Circular],
                   "prev": null,
-                  "type": "text",
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
                 },
               ],
               "name": "div",
@@ -384,17 +590,35 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "actived": "",
-                  "class": "caf-swiper-container-item",
-                  "style": "width: 25%;",
+                  "class": "caf-swiper__container__item",
+                  "style": "width: 0px;",
                 },
                 "children": Array [
                   Object {
-                    "data": "1",
+                    "attribs": Object {
+                      "class": "caf-swiper__container__item__container caf-swiper__container__item__container--current",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "1",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "div",
+                    "namespace": "http://www.w3.org/1999/xhtml",
                     "next": null,
                     "parent": [Circular],
                     "prev": null,
-                    "type": "text",
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
                   },
                 ],
                 "name": "div",
@@ -404,12 +628,10 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
-                  "actived": undefined,
                   "class": undefined,
                   "style": undefined,
                 },
                 "x-attribsPrefix": Object {
-                  "actived": undefined,
                   "class": undefined,
                   "style": undefined,
                 },
@@ -436,48 +658,17 @@ initialize {
           },
           Object {
             "attribs": Object {
-              "class": "caf-swiper-container-item",
-              "style": "width: 25%;",
+              "class": "caf-swiper__container__item",
+              "style": "width: 0px;",
             },
             "children": Array [
               Object {
-                "data": "4",
-                "next": null,
-                "parent": [Circular],
-                "prev": null,
-                "type": "text",
-              },
-            ],
-            "name": "div",
-            "namespace": "http://www.w3.org/1999/xhtml",
-            "next": null,
-            "parent": [Circular],
-            "prev": Object {
-              "attribs": Object {
-                "class": "caf-swiper-container-item",
-                "style": "width: 25%;",
-              },
-              "children": Array [
-                Object {
-                  "data": "3",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "text",
-                },
-              ],
-              "name": "div",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": [Circular],
-              "parent": [Circular],
-              "prev": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-container-item",
-                  "style": "width: 25%;",
+                  "class": "caf-swiper__container__item__container",
                 },
                 "children": Array [
                   Object {
-                    "data": "2",
+                    "data": "4",
                     "next": null,
                     "parent": [Circular],
                     "prev": null,
@@ -486,21 +677,127 @@ initialize {
                 ],
                 "name": "div",
                 "namespace": "http://www.w3.org/1999/xhtml",
-                "next": [Circular],
+                "next": null,
                 "parent": [Circular],
-                "prev": Object {
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+            ],
+            "name": "div",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": Object {
+              "attribs": Object {
+                "class": "caf-swiper__container__item",
+                "style": "width: 0px;",
+              },
+              "children": Array [
+                Object {
                   "attribs": Object {
-                    "actived": "",
-                    "class": "caf-swiper-container-item",
-                    "style": "width: 25%;",
+                    "class": "caf-swiper__container__item__container",
                   },
                   "children": Array [
                     Object {
-                      "data": "1",
+                      "data": "3",
                       "next": null,
                       "parent": [Circular],
                       "prev": null,
                       "type": "text",
+                    },
+                  ],
+                  "name": "div",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+              ],
+              "name": "div",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": Object {
+                "attribs": Object {
+                  "class": "caf-swiper__container__item",
+                  "style": "width: 0px;",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "class": "caf-swiper__container__item__container",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "2",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "div",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
+                  },
+                ],
+                "name": "div",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": Object {
+                  "attribs": Object {
+                    "class": "caf-swiper__container__item",
+                    "style": "width: 0px;",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "class": "caf-swiper__container__item__container caf-swiper__container__item__container--current",
+                      },
+                      "children": Array [
+                        Object {
+                          "data": "1",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "text",
+                        },
+                      ],
+                      "name": "div",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "class": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "class": undefined,
+                      },
                     },
                   ],
                   "name": "div",
@@ -510,12 +807,10 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "actived": undefined,
                     "class": undefined,
                     "style": undefined,
                   },
                   "x-attribsPrefix": Object {
-                    "actived": undefined,
                     "class": undefined,
                     "style": undefined,
                   },
@@ -555,37 +850,33 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "undefined-indicator",
+            "class": "caf-swiper__indicator",
           },
           "children": Array [
             Object {
               "attribs": Object {
-                "class": "caf-swiper-indicator-item",
-                "data-status": "1",
+                "class": "caf-swiper__indicator__item caf-swiper__indicator__item--actived",
               },
               "children": Array [],
               "name": "span",
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-indicator-item",
-                  "data-status": "0",
+                  "class": "caf-swiper__indicator__item",
                 },
                 "children": Array [],
                 "name": "span",
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
-                    "class": "caf-swiper-indicator-item",
-                    "data-status": "0",
+                    "class": "caf-swiper__indicator__item",
                   },
                   "children": Array [],
                   "name": "span",
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
-                      "class": "caf-swiper-indicator-item",
-                      "data-status": "0",
+                      "class": "caf-swiper__indicator__item",
                     },
                     "children": Array [],
                     "name": "span",
@@ -596,11 +887,9 @@ initialize {
                     "type": "tag",
                     "x-attribsNamespace": Object {
                       "class": undefined,
-                      "data-status": undefined,
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
-                      "data-status": undefined,
                     },
                   },
                   "parent": [Circular],
@@ -608,11 +897,9 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "data-status": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "data-status": undefined,
                   },
                 },
                 "parent": [Circular],
@@ -620,11 +907,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
               },
               "parent": [Circular],
@@ -632,33 +917,28 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
             },
             Object {
               "attribs": Object {
-                "class": "caf-swiper-indicator-item",
-                "data-status": "0",
+                "class": "caf-swiper__indicator__item",
               },
               "children": Array [],
               "name": "span",
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-indicator-item",
-                  "data-status": "0",
+                  "class": "caf-swiper__indicator__item",
                 },
                 "children": Array [],
                 "name": "span",
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
-                    "class": "caf-swiper-indicator-item",
-                    "data-status": "0",
+                    "class": "caf-swiper__indicator__item",
                   },
                   "children": Array [],
                   "name": "span",
@@ -669,11 +949,9 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "data-status": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "data-status": undefined,
                   },
                 },
                 "parent": [Circular],
@@ -681,18 +959,15 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
               },
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-indicator-item",
-                  "data-status": "1",
+                  "class": "caf-swiper__indicator__item caf-swiper__indicator__item--actived",
                 },
                 "children": Array [],
                 "name": "span",
@@ -703,35 +978,29 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
               },
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
             },
             Object {
               "attribs": Object {
-                "class": "caf-swiper-indicator-item",
-                "data-status": "0",
+                "class": "caf-swiper__indicator__item",
               },
               "children": Array [],
               "name": "span",
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-indicator-item",
-                  "data-status": "0",
+                  "class": "caf-swiper__indicator__item",
                 },
                 "children": Array [],
                 "name": "span",
@@ -742,18 +1011,15 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
               },
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-indicator-item",
-                  "data-status": "0",
+                  "class": "caf-swiper__indicator__item",
                 },
                 "children": Array [],
                 "name": "span",
@@ -762,8 +1028,7 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
-                    "class": "caf-swiper-indicator-item",
-                    "data-status": "1",
+                    "class": "caf-swiper__indicator__item caf-swiper__indicator__item--actived",
                   },
                   "children": Array [],
                   "name": "span",
@@ -774,37 +1039,30 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "data-status": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "data-status": undefined,
                   },
                 },
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
               },
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
             },
             Object {
               "attribs": Object {
-                "class": "caf-swiper-indicator-item",
-                "data-status": "0",
+                "class": "caf-swiper__indicator__item",
               },
               "children": Array [],
               "name": "span",
@@ -813,8 +1071,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-indicator-item",
-                  "data-status": "0",
+                  "class": "caf-swiper__indicator__item",
                 },
                 "children": Array [],
                 "name": "span",
@@ -823,8 +1080,7 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
-                    "class": "caf-swiper-indicator-item",
-                    "data-status": "0",
+                    "class": "caf-swiper__indicator__item",
                   },
                   "children": Array [],
                   "name": "span",
@@ -833,8 +1089,7 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
-                      "class": "caf-swiper-indicator-item",
-                      "data-status": "1",
+                      "class": "caf-swiper__indicator__item caf-swiper__indicator__item--actived",
                     },
                     "children": Array [],
                     "name": "span",
@@ -845,41 +1100,33 @@ initialize {
                     "type": "tag",
                     "x-attribsNamespace": Object {
                       "class": undefined,
-                      "data-status": undefined,
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
-                      "data-status": undefined,
                     },
                   },
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "data-status": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "data-status": undefined,
                   },
                 },
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
               },
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
             },
           ],
@@ -908,37 +1155,33 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "undefined-indicator",
+          "class": "caf-swiper__indicator",
         },
         "children": Array [
           Object {
             "attribs": Object {
-              "class": "caf-swiper-indicator-item",
-              "data-status": "1",
+              "class": "caf-swiper__indicator__item caf-swiper__indicator__item--actived",
             },
             "children": Array [],
             "name": "span",
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
-                "class": "caf-swiper-indicator-item",
-                "data-status": "0",
+                "class": "caf-swiper__indicator__item",
               },
               "children": Array [],
               "name": "span",
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-indicator-item",
-                  "data-status": "0",
+                  "class": "caf-swiper__indicator__item",
                 },
                 "children": Array [],
                 "name": "span",
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
-                    "class": "caf-swiper-indicator-item",
-                    "data-status": "0",
+                    "class": "caf-swiper__indicator__item",
                   },
                   "children": Array [],
                   "name": "span",
@@ -949,11 +1192,9 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "data-status": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "data-status": undefined,
                   },
                 },
                 "parent": [Circular],
@@ -961,11 +1202,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
               },
               "parent": [Circular],
@@ -973,11 +1212,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
             },
             "parent": [Circular],
@@ -985,33 +1222,28 @@ initialize {
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "data-status": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "data-status": undefined,
             },
           },
           Object {
             "attribs": Object {
-              "class": "caf-swiper-indicator-item",
-              "data-status": "0",
+              "class": "caf-swiper__indicator__item",
             },
             "children": Array [],
             "name": "span",
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
-                "class": "caf-swiper-indicator-item",
-                "data-status": "0",
+                "class": "caf-swiper__indicator__item",
               },
               "children": Array [],
               "name": "span",
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-indicator-item",
-                  "data-status": "0",
+                  "class": "caf-swiper__indicator__item",
                 },
                 "children": Array [],
                 "name": "span",
@@ -1022,11 +1254,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
               },
               "parent": [Circular],
@@ -1034,18 +1264,15 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
             },
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "caf-swiper-indicator-item",
-                "data-status": "1",
+                "class": "caf-swiper__indicator__item caf-swiper__indicator__item--actived",
               },
               "children": Array [],
               "name": "span",
@@ -1056,35 +1283,29 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
             },
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "data-status": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "data-status": undefined,
             },
           },
           Object {
             "attribs": Object {
-              "class": "caf-swiper-indicator-item",
-              "data-status": "0",
+              "class": "caf-swiper__indicator__item",
             },
             "children": Array [],
             "name": "span",
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
-                "class": "caf-swiper-indicator-item",
-                "data-status": "0",
+                "class": "caf-swiper__indicator__item",
               },
               "children": Array [],
               "name": "span",
@@ -1095,18 +1316,15 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
             },
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "caf-swiper-indicator-item",
-                "data-status": "0",
+                "class": "caf-swiper__indicator__item",
               },
               "children": Array [],
               "name": "span",
@@ -1115,8 +1333,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-indicator-item",
-                  "data-status": "1",
+                  "class": "caf-swiper__indicator__item caf-swiper__indicator__item--actived",
                 },
                 "children": Array [],
                 "name": "span",
@@ -1127,37 +1344,30 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
               },
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
             },
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "data-status": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "data-status": undefined,
             },
           },
           Object {
             "attribs": Object {
-              "class": "caf-swiper-indicator-item",
-              "data-status": "0",
+              "class": "caf-swiper__indicator__item",
             },
             "children": Array [],
             "name": "span",
@@ -1166,8 +1376,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "caf-swiper-indicator-item",
-                "data-status": "0",
+                "class": "caf-swiper__indicator__item",
               },
               "children": Array [],
               "name": "span",
@@ -1176,8 +1385,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-indicator-item",
-                  "data-status": "0",
+                  "class": "caf-swiper__indicator__item",
                 },
                 "children": Array [],
                 "name": "span",
@@ -1186,8 +1394,7 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
-                    "class": "caf-swiper-indicator-item",
-                    "data-status": "1",
+                    "class": "caf-swiper__indicator__item caf-swiper__indicator__item--actived",
                   },
                   "children": Array [],
                   "name": "span",
@@ -1198,41 +1405,33 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "data-status": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "data-status": undefined,
                   },
                 },
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "data-status": undefined,
                 },
               },
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "data-status": undefined,
               },
             },
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "data-status": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "data-status": undefined,
             },
           },
         ],
@@ -1242,50 +1441,22 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "undefined-container",
+            "class": "caf-swiper__container",
           },
           "children": Array [
             Object {
               "attribs": Object {
-                "actived": "",
-                "class": "caf-swiper-container-item",
-                "style": "width: 25%;",
+                "class": "caf-swiper__container__item",
+                "style": "width: 0px;",
               },
               "children": Array [
                 Object {
-                  "data": "1",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "text",
-                },
-              ],
-              "name": "div",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": Object {
-                "attribs": Object {
-                  "class": "caf-swiper-container-item",
-                  "style": "width: 25%;",
-                },
-                "children": Array [
-                  Object {
-                    "data": "2",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "text",
-                  },
-                ],
-                "name": "div",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": Object {
                   "attribs": Object {
-                    "class": "caf-swiper-container-item",
-                    "style": "width: 25%;",
+                    "class": "caf-swiper__container__item__container caf-swiper__container__item__container--current",
                   },
                   "children": Array [
                     Object {
-                      "data": "3",
+                      "data": "1",
                       "next": null,
                       "parent": [Circular],
                       "prev": null,
@@ -1294,18 +1465,121 @@ initialize {
                   ],
                   "name": "div",
                   "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": Object {
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+              ],
+              "name": "div",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": Object {
+                "attribs": Object {
+                  "class": "caf-swiper__container__item",
+                  "style": "width: 0px;",
+                },
+                "children": Array [
+                  Object {
                     "attribs": Object {
-                      "class": "caf-swiper-container-item",
-                      "style": "width: 25%;",
+                      "class": "caf-swiper__container__item__container",
                     },
                     "children": Array [
                       Object {
-                        "data": "4",
+                        "data": "2",
                         "next": null,
                         "parent": [Circular],
                         "prev": null,
                         "type": "text",
+                      },
+                    ],
+                    "name": "div",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
+                  },
+                ],
+                "name": "div",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": Object {
+                  "attribs": Object {
+                    "class": "caf-swiper__container__item",
+                    "style": "width: 0px;",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "class": "caf-swiper__container__item__container",
+                      },
+                      "children": Array [
+                        Object {
+                          "data": "3",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "text",
+                        },
+                      ],
+                      "name": "div",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "class": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "class": undefined,
+                      },
+                    },
+                  ],
+                  "name": "div",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": Object {
+                    "attribs": Object {
+                      "class": "caf-swiper__container__item",
+                      "style": "width: 0px;",
+                    },
+                    "children": Array [
+                      Object {
+                        "attribs": Object {
+                          "class": "caf-swiper__container__item__container",
+                        },
+                        "children": Array [
+                          Object {
+                            "data": "4",
+                            "next": null,
+                            "parent": [Circular],
+                            "prev": null,
+                            "type": "text",
+                          },
+                        ],
+                        "name": "div",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {
+                          "class": undefined,
+                        },
+                        "x-attribsPrefix": Object {
+                          "class": undefined,
+                        },
                       },
                     ],
                     "name": "div",
@@ -1351,60 +1625,115 @@ initialize {
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
-                "actived": undefined,
                 "class": undefined,
                 "style": undefined,
               },
               "x-attribsPrefix": Object {
-                "actived": undefined,
                 "class": undefined,
                 "style": undefined,
               },
             },
             Object {
               "attribs": Object {
-                "class": "caf-swiper-container-item",
-                "style": "width: 25%;",
+                "class": "caf-swiper__container__item",
+                "style": "width: 0px;",
               },
               "children": Array [
                 Object {
-                  "data": "2",
+                  "attribs": Object {
+                    "class": "caf-swiper__container__item__container",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "2",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "div",
+                  "namespace": "http://www.w3.org/1999/xhtml",
                   "next": null,
                   "parent": [Circular],
                   "prev": null,
-                  "type": "text",
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
                 },
               ],
               "name": "div",
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-container-item",
-                  "style": "width: 25%;",
+                  "class": "caf-swiper__container__item",
+                  "style": "width: 0px;",
                 },
                 "children": Array [
                   Object {
-                    "data": "3",
+                    "attribs": Object {
+                      "class": "caf-swiper__container__item__container",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "3",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "div",
+                    "namespace": "http://www.w3.org/1999/xhtml",
                     "next": null,
                     "parent": [Circular],
                     "prev": null,
-                    "type": "text",
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
                   },
                 ],
                 "name": "div",
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
-                    "class": "caf-swiper-container-item",
-                    "style": "width: 25%;",
+                    "class": "caf-swiper__container__item",
+                    "style": "width: 0px;",
                   },
                   "children": Array [
                     Object {
-                      "data": "4",
+                      "attribs": Object {
+                        "class": "caf-swiper__container__item__container",
+                      },
+                      "children": Array [
+                        Object {
+                          "data": "4",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "text",
+                        },
+                      ],
+                      "name": "div",
+                      "namespace": "http://www.w3.org/1999/xhtml",
                       "next": null,
                       "parent": [Circular],
                       "prev": null,
-                      "type": "text",
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "class": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "class": undefined,
+                      },
                     },
                   ],
                   "name": "div",
@@ -1437,17 +1766,35 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "actived": "",
-                  "class": "caf-swiper-container-item",
-                  "style": "width: 25%;",
+                  "class": "caf-swiper__container__item",
+                  "style": "width: 0px;",
                 },
                 "children": Array [
                   Object {
-                    "data": "1",
+                    "attribs": Object {
+                      "class": "caf-swiper__container__item__container caf-swiper__container__item__container--current",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "1",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "div",
+                    "namespace": "http://www.w3.org/1999/xhtml",
                     "next": null,
                     "parent": [Circular],
                     "prev": null,
-                    "type": "text",
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
                   },
                 ],
                 "name": "div",
@@ -1457,12 +1804,10 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
-                  "actived": undefined,
                   "class": undefined,
                   "style": undefined,
                 },
                 "x-attribsPrefix": Object {
-                  "actived": undefined,
                   "class": undefined,
                   "style": undefined,
                 },
@@ -1479,32 +1824,70 @@ initialize {
             },
             Object {
               "attribs": Object {
-                "class": "caf-swiper-container-item",
-                "style": "width: 25%;",
+                "class": "caf-swiper__container__item",
+                "style": "width: 0px;",
               },
               "children": Array [
                 Object {
-                  "data": "3",
+                  "attribs": Object {
+                    "class": "caf-swiper__container__item__container",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "3",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "div",
+                  "namespace": "http://www.w3.org/1999/xhtml",
                   "next": null,
                   "parent": [Circular],
                   "prev": null,
-                  "type": "text",
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
                 },
               ],
               "name": "div",
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-container-item",
-                  "style": "width: 25%;",
+                  "class": "caf-swiper__container__item",
+                  "style": "width: 0px;",
                 },
                 "children": Array [
                   Object {
-                    "data": "4",
+                    "attribs": Object {
+                      "class": "caf-swiper__container__item__container",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "4",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "div",
+                    "namespace": "http://www.w3.org/1999/xhtml",
                     "next": null,
                     "parent": [Circular],
                     "prev": null,
-                    "type": "text",
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
                   },
                 ],
                 "name": "div",
@@ -1525,16 +1908,35 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "caf-swiper-container-item",
-                  "style": "width: 25%;",
+                  "class": "caf-swiper__container__item",
+                  "style": "width: 0px;",
                 },
                 "children": Array [
                   Object {
-                    "data": "2",
+                    "attribs": Object {
+                      "class": "caf-swiper__container__item__container",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "2",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "div",
+                    "namespace": "http://www.w3.org/1999/xhtml",
                     "next": null,
                     "parent": [Circular],
                     "prev": null,
-                    "type": "text",
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
                   },
                 ],
                 "name": "div",
@@ -1543,17 +1945,35 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
-                    "actived": "",
-                    "class": "caf-swiper-container-item",
-                    "style": "width: 25%;",
+                    "class": "caf-swiper__container__item",
+                    "style": "width: 0px;",
                   },
                   "children": Array [
                     Object {
-                      "data": "1",
+                      "attribs": Object {
+                        "class": "caf-swiper__container__item__container caf-swiper__container__item__container--current",
+                      },
+                      "children": Array [
+                        Object {
+                          "data": "1",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "text",
+                        },
+                      ],
+                      "name": "div",
+                      "namespace": "http://www.w3.org/1999/xhtml",
                       "next": null,
                       "parent": [Circular],
                       "prev": null,
-                      "type": "text",
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "class": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "class": undefined,
+                      },
                     },
                   ],
                   "name": "div",
@@ -1563,12 +1983,10 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "actived": undefined,
                     "class": undefined,
                     "style": undefined,
                   },
                   "x-attribsPrefix": Object {
-                    "actived": undefined,
                     "class": undefined,
                     "style": undefined,
                   },
@@ -1595,48 +2013,17 @@ initialize {
             },
             Object {
               "attribs": Object {
-                "class": "caf-swiper-container-item",
-                "style": "width: 25%;",
+                "class": "caf-swiper__container__item",
+                "style": "width: 0px;",
               },
               "children": Array [
                 Object {
-                  "data": "4",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "text",
-                },
-              ],
-              "name": "div",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": null,
-              "parent": [Circular],
-              "prev": Object {
-                "attribs": Object {
-                  "class": "caf-swiper-container-item",
-                  "style": "width: 25%;",
-                },
-                "children": Array [
-                  Object {
-                    "data": "3",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "text",
-                  },
-                ],
-                "name": "div",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": [Circular],
-                "parent": [Circular],
-                "prev": Object {
                   "attribs": Object {
-                    "class": "caf-swiper-container-item",
-                    "style": "width: 25%;",
+                    "class": "caf-swiper__container__item__container",
                   },
                   "children": Array [
                     Object {
-                      "data": "2",
+                      "data": "4",
                       "next": null,
                       "parent": [Circular],
                       "prev": null,
@@ -1645,21 +2032,127 @@ initialize {
                   ],
                   "name": "div",
                   "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": [Circular],
+                  "next": null,
                   "parent": [Circular],
-                  "prev": Object {
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+              ],
+              "name": "div",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": Object {
+                "attribs": Object {
+                  "class": "caf-swiper__container__item",
+                  "style": "width: 0px;",
+                },
+                "children": Array [
+                  Object {
                     "attribs": Object {
-                      "actived": "",
-                      "class": "caf-swiper-container-item",
-                      "style": "width: 25%;",
+                      "class": "caf-swiper__container__item__container",
                     },
                     "children": Array [
                       Object {
-                        "data": "1",
+                        "data": "3",
                         "next": null,
                         "parent": [Circular],
                         "prev": null,
                         "type": "text",
+                      },
+                    ],
+                    "name": "div",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
+                  },
+                ],
+                "name": "div",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": Object {
+                  "attribs": Object {
+                    "class": "caf-swiper__container__item",
+                    "style": "width: 0px;",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "class": "caf-swiper__container__item__container",
+                      },
+                      "children": Array [
+                        Object {
+                          "data": "2",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "text",
+                        },
+                      ],
+                      "name": "div",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "class": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "class": undefined,
+                      },
+                    },
+                  ],
+                  "name": "div",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": [Circular],
+                  "parent": [Circular],
+                  "prev": Object {
+                    "attribs": Object {
+                      "class": "caf-swiper__container__item",
+                      "style": "width: 0px;",
+                    },
+                    "children": Array [
+                      Object {
+                        "attribs": Object {
+                          "class": "caf-swiper__container__item__container caf-swiper__container__item__container--current",
+                        },
+                        "children": Array [
+                          Object {
+                            "data": "1",
+                            "next": null,
+                            "parent": [Circular],
+                            "prev": null,
+                            "type": "text",
+                          },
+                        ],
+                        "name": "div",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {
+                          "class": undefined,
+                        },
+                        "x-attribsPrefix": Object {
+                          "class": undefined,
+                        },
                       },
                     ],
                     "name": "div",
@@ -1669,12 +2162,10 @@ initialize {
                     "prev": null,
                     "type": "tag",
                     "x-attribsNamespace": Object {
-                      "actived": undefined,
                       "class": undefined,
                       "style": undefined,
                     },
                     "x-attribsPrefix": Object {
-                      "actived": undefined,
                       "class": undefined,
                       "style": undefined,
                     },
@@ -1755,14 +2246,20 @@ initialize {
     "x-attribsNamespace": Object {
       "autoplay": undefined,
       "class": undefined,
+      "duration": undefined,
+      "infinite": undefined,
       "initialindex": undefined,
       "intervel": undefined,
+      "slidewidth": undefined,
     },
     "x-attribsPrefix": Object {
       "autoplay": undefined,
       "class": undefined,
+      "duration": undefined,
+      "infinite": undefined,
       "initialindex": undefined,
       "intervel": undefined,
+      "slidewidth": undefined,
     },
   },
   "_root": [Circular],

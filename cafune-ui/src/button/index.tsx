@@ -61,9 +61,13 @@ type IGradient = {
 }
 export interface IProps {
   /**
-   * 自定义类名
+   * 自定义前缀
    */
   prefix?: string;
+  /**
+   * 自定义类名
+   */
+  className?: string;
   /**
    * 按钮类型
    */

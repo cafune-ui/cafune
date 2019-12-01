@@ -12,9 +12,9 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "clip-path": "url(#w15jaec1w5)",
+          "clip-path": "url(#6eslylxhzz)",
           "height": "9.28rem",
-          "style": "fill: url(#dypyl7vv5f4);",
+          "style": "fill: url(#28f05vknmw8);",
           "width": "100%",
           "x": "0",
           "y": "0",
@@ -27,27 +27,16 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
-                "id": "w15jaec1w5",
+                "id": "6eslylxhzz",
               },
               "children": Array [
                 Object {
-                  "attribs": Object {
-                    "cx": "0",
-                    "cy": "0",
-                    "r": "50",
-                  },
+                  "attribs": Object {},
                   "children": Array [],
                   "name": "circle",
                   "namespace": "http://www.w3.org/2000/svg",
                   "next": Object {
-                    "attribs": Object {
-                      "height": "50",
-                      "rx": "50",
-                      "ry": "50",
-                      "width": "50",
-                      "x": "0",
-                      "y": "0",
-                    },
+                    "attribs": Object {},
                     "children": Array [],
                     "name": "rect",
                     "namespace": "http://www.w3.org/2000/svg",
@@ -55,57 +44,24 @@ initialize {
                     "parent": [Circular],
                     "prev": [Circular],
                     "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "height": undefined,
-                      "rx": undefined,
-                      "ry": undefined,
-                      "width": undefined,
-                      "x": undefined,
-                      "y": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "height": undefined,
-                      "rx": undefined,
-                      "ry": undefined,
-                      "width": undefined,
-                      "x": undefined,
-                      "y": undefined,
-                    },
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
                   },
                   "parent": [Circular],
                   "prev": null,
                   "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "cx": undefined,
-                    "cy": undefined,
-                    "r": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "cx": undefined,
-                    "cy": undefined,
-                    "r": undefined,
-                  },
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
                 },
                 Object {
-                  "attribs": Object {
-                    "height": "50",
-                    "rx": "50",
-                    "ry": "50",
-                    "width": "50",
-                    "x": "0",
-                    "y": "0",
-                  },
+                  "attribs": Object {},
                   "children": Array [],
                   "name": "rect",
                   "namespace": "http://www.w3.org/2000/svg",
                   "next": null,
                   "parent": [Circular],
                   "prev": Object {
-                    "attribs": Object {
-                      "cx": "0",
-                      "cy": "0",
-                      "r": "50",
-                    },
+                    "attribs": Object {},
                     "children": Array [],
                     "name": "circle",
                     "namespace": "http://www.w3.org/2000/svg",
@@ -113,41 +69,19 @@ initialize {
                     "parent": [Circular],
                     "prev": null,
                     "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "cx": undefined,
-                      "cy": undefined,
-                      "r": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "cx": undefined,
-                      "cy": undefined,
-                      "r": undefined,
-                    },
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
                   },
                   "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "height": undefined,
-                    "rx": undefined,
-                    "ry": undefined,
-                    "width": undefined,
-                    "x": undefined,
-                    "y": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "height": undefined,
-                    "rx": undefined,
-                    "ry": undefined,
-                    "width": undefined,
-                    "x": undefined,
-                    "y": undefined,
-                  },
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
                 },
               ],
               "name": "clipPath",
               "namespace": "http://www.w3.org/2000/svg",
               "next": Object {
                 "attribs": Object {
-                  "id": "dypyl7vv5f4",
+                  "id": "28f05vknmw8",
                 },
                 "children": Array [
                   Object {
@@ -611,7 +545,7 @@ initialize {
             },
             Object {
               "attribs": Object {
-                "id": "dypyl7vv5f4",
+                "id": "28f05vknmw8",
               },
               "children": Array [
                 Object {
@@ -1056,27 +990,16 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "id": "w15jaec1w5",
+                  "id": "6eslylxhzz",
                 },
                 "children": Array [
                   Object {
-                    "attribs": Object {
-                      "cx": "0",
-                      "cy": "0",
-                      "r": "50",
-                    },
+                    "attribs": Object {},
                     "children": Array [],
                     "name": "circle",
                     "namespace": "http://www.w3.org/2000/svg",
                     "next": Object {
-                      "attribs": Object {
-                        "height": "50",
-                        "rx": "50",
-                        "ry": "50",
-                        "width": "50",
-                        "x": "0",
-                        "y": "0",
-                      },
+                      "attribs": Object {},
                       "children": Array [],
                       "name": "rect",
                       "namespace": "http://www.w3.org/2000/svg",
@@ -1084,57 +1007,24 @@ initialize {
                       "parent": [Circular],
                       "prev": [Circular],
                       "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "height": undefined,
-                        "rx": undefined,
-                        "ry": undefined,
-                        "width": undefined,
-                        "x": undefined,
-                        "y": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "height": undefined,
-                        "rx": undefined,
-                        "ry": undefined,
-                        "width": undefined,
-                        "x": undefined,
-                        "y": undefined,
-                      },
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
                     },
                     "parent": [Circular],
                     "prev": null,
                     "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "cx": undefined,
-                      "cy": undefined,
-                      "r": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "cx": undefined,
-                      "cy": undefined,
-                      "r": undefined,
-                    },
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
                   },
                   Object {
-                    "attribs": Object {
-                      "height": "50",
-                      "rx": "50",
-                      "ry": "50",
-                      "width": "50",
-                      "x": "0",
-                      "y": "0",
-                    },
+                    "attribs": Object {},
                     "children": Array [],
                     "name": "rect",
                     "namespace": "http://www.w3.org/2000/svg",
                     "next": null,
                     "parent": [Circular],
                     "prev": Object {
-                      "attribs": Object {
-                        "cx": "0",
-                        "cy": "0",
-                        "r": "50",
-                      },
+                      "attribs": Object {},
                       "children": Array [],
                       "name": "circle",
                       "namespace": "http://www.w3.org/2000/svg",
@@ -1142,34 +1032,12 @@ initialize {
                       "parent": [Circular],
                       "prev": null,
                       "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "cx": undefined,
-                        "cy": undefined,
-                        "r": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "cx": undefined,
-                        "cy": undefined,
-                        "r": undefined,
-                      },
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
                     },
                     "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "height": undefined,
-                      "rx": undefined,
-                      "ry": undefined,
-                      "width": undefined,
-                      "x": undefined,
-                      "y": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "height": undefined,
-                      "rx": undefined,
-                      "ry": undefined,
-                      "width": undefined,
-                      "x": undefined,
-                      "y": undefined,
-                    },
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
                   },
                 ],
                 "name": "clipPath",
@@ -1228,27 +1096,16 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
-              "id": "w15jaec1w5",
+              "id": "6eslylxhzz",
             },
             "children": Array [
               Object {
-                "attribs": Object {
-                  "cx": "0",
-                  "cy": "0",
-                  "r": "50",
-                },
+                "attribs": Object {},
                 "children": Array [],
                 "name": "circle",
                 "namespace": "http://www.w3.org/2000/svg",
                 "next": Object {
-                  "attribs": Object {
-                    "height": "50",
-                    "rx": "50",
-                    "ry": "50",
-                    "width": "50",
-                    "x": "0",
-                    "y": "0",
-                  },
+                  "attribs": Object {},
                   "children": Array [],
                   "name": "rect",
                   "namespace": "http://www.w3.org/2000/svg",
@@ -1256,57 +1113,24 @@ initialize {
                   "parent": [Circular],
                   "prev": [Circular],
                   "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "height": undefined,
-                    "rx": undefined,
-                    "ry": undefined,
-                    "width": undefined,
-                    "x": undefined,
-                    "y": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "height": undefined,
-                    "rx": undefined,
-                    "ry": undefined,
-                    "width": undefined,
-                    "x": undefined,
-                    "y": undefined,
-                  },
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
                 },
                 "parent": [Circular],
                 "prev": null,
                 "type": "tag",
-                "x-attribsNamespace": Object {
-                  "cx": undefined,
-                  "cy": undefined,
-                  "r": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "cx": undefined,
-                  "cy": undefined,
-                  "r": undefined,
-                },
+                "x-attribsNamespace": Object {},
+                "x-attribsPrefix": Object {},
               },
               Object {
-                "attribs": Object {
-                  "height": "50",
-                  "rx": "50",
-                  "ry": "50",
-                  "width": "50",
-                  "x": "0",
-                  "y": "0",
-                },
+                "attribs": Object {},
                 "children": Array [],
                 "name": "rect",
                 "namespace": "http://www.w3.org/2000/svg",
                 "next": null,
                 "parent": [Circular],
                 "prev": Object {
-                  "attribs": Object {
-                    "cx": "0",
-                    "cy": "0",
-                    "r": "50",
-                  },
+                  "attribs": Object {},
                   "children": Array [],
                   "name": "circle",
                   "namespace": "http://www.w3.org/2000/svg",
@@ -1314,41 +1138,19 @@ initialize {
                   "parent": [Circular],
                   "prev": null,
                   "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "cx": undefined,
-                    "cy": undefined,
-                    "r": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "cx": undefined,
-                    "cy": undefined,
-                    "r": undefined,
-                  },
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
                 },
                 "type": "tag",
-                "x-attribsNamespace": Object {
-                  "height": undefined,
-                  "rx": undefined,
-                  "ry": undefined,
-                  "width": undefined,
-                  "x": undefined,
-                  "y": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "height": undefined,
-                  "rx": undefined,
-                  "ry": undefined,
-                  "width": undefined,
-                  "x": undefined,
-                  "y": undefined,
-                },
+                "x-attribsNamespace": Object {},
+                "x-attribsPrefix": Object {},
               },
             ],
             "name": "clipPath",
             "namespace": "http://www.w3.org/2000/svg",
             "next": Object {
               "attribs": Object {
-                "id": "dypyl7vv5f4",
+                "id": "28f05vknmw8",
               },
               "children": Array [
                 Object {
@@ -1812,7 +1614,7 @@ initialize {
           },
           Object {
             "attribs": Object {
-              "id": "dypyl7vv5f4",
+              "id": "28f05vknmw8",
             },
             "children": Array [
               Object {
@@ -2257,27 +2059,16 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "id": "w15jaec1w5",
+                "id": "6eslylxhzz",
               },
               "children": Array [
                 Object {
-                  "attribs": Object {
-                    "cx": "0",
-                    "cy": "0",
-                    "r": "50",
-                  },
+                  "attribs": Object {},
                   "children": Array [],
                   "name": "circle",
                   "namespace": "http://www.w3.org/2000/svg",
                   "next": Object {
-                    "attribs": Object {
-                      "height": "50",
-                      "rx": "50",
-                      "ry": "50",
-                      "width": "50",
-                      "x": "0",
-                      "y": "0",
-                    },
+                    "attribs": Object {},
                     "children": Array [],
                     "name": "rect",
                     "namespace": "http://www.w3.org/2000/svg",
@@ -2285,57 +2076,24 @@ initialize {
                     "parent": [Circular],
                     "prev": [Circular],
                     "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "height": undefined,
-                      "rx": undefined,
-                      "ry": undefined,
-                      "width": undefined,
-                      "x": undefined,
-                      "y": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "height": undefined,
-                      "rx": undefined,
-                      "ry": undefined,
-                      "width": undefined,
-                      "x": undefined,
-                      "y": undefined,
-                    },
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
                   },
                   "parent": [Circular],
                   "prev": null,
                   "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "cx": undefined,
-                    "cy": undefined,
-                    "r": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "cx": undefined,
-                    "cy": undefined,
-                    "r": undefined,
-                  },
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
                 },
                 Object {
-                  "attribs": Object {
-                    "height": "50",
-                    "rx": "50",
-                    "ry": "50",
-                    "width": "50",
-                    "x": "0",
-                    "y": "0",
-                  },
+                  "attribs": Object {},
                   "children": Array [],
                   "name": "rect",
                   "namespace": "http://www.w3.org/2000/svg",
                   "next": null,
                   "parent": [Circular],
                   "prev": Object {
-                    "attribs": Object {
-                      "cx": "0",
-                      "cy": "0",
-                      "r": "50",
-                    },
+                    "attribs": Object {},
                     "children": Array [],
                     "name": "circle",
                     "namespace": "http://www.w3.org/2000/svg",
@@ -2343,34 +2101,12 @@ initialize {
                     "parent": [Circular],
                     "prev": null,
                     "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "cx": undefined,
-                      "cy": undefined,
-                      "r": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "cx": undefined,
-                      "cy": undefined,
-                      "r": undefined,
-                    },
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
                   },
                   "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "height": undefined,
-                    "rx": undefined,
-                    "ry": undefined,
-                    "width": undefined,
-                    "x": undefined,
-                    "y": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "height": undefined,
-                    "rx": undefined,
-                    "ry": undefined,
-                    "width": undefined,
-                    "x": undefined,
-                    "y": undefined,
-                  },
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
                 },
               ],
               "name": "clipPath",
@@ -2401,9 +2137,9 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "clip-path": "url(#w15jaec1w5)",
+            "clip-path": "url(#6eslylxhzz)",
             "height": "9.28rem",
-            "style": "fill: url(#dypyl7vv5f4);",
+            "style": "fill: url(#28f05vknmw8);",
             "width": "100%",
             "x": "0",
             "y": "0",
@@ -2485,18 +2221,18 @@ exports[`<Skeleton /> should render porperly 2`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "height": "3.5714285714285716rem",
+      "height": "50px",
       "preserveAspectRatio": "xMidYMid meet",
       "version": "1.1",
-      "width": "3.5714285714285716rem",
+      "width": "50px",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "clip-path": "url(#vw9kxc29q2)",
-          "height": "3.5714285714285716rem",
-          "style": "fill: url(#dbwcnhtwj2);",
-          "width": "3.5714285714285716rem",
+          "clip-path": "url(#cevqbonxgh6)",
+          "height": "50px",
+          "style": "fill: url(#156f8njflay);",
+          "width": "50px",
           "x": "0",
           "y": "0",
         },
@@ -2508,26 +2244,26 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
-                "id": "vw9kxc29q2",
+                "id": "cevqbonxgh6",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "cx": "0.14285714285714285rem",
-                    "cy": "0.14285714285714285rem",
-                    "r": "3.5714285714285716rem",
+                    "cx": "2px",
+                    "cy": "2px",
+                    "r": "50px",
                   },
                   "children": Array [],
                   "name": "circle",
                   "namespace": "http://www.w3.org/2000/svg",
                   "next": Object {
                     "attribs": Object {
-                      "height": "3.5714285714285716rem",
-                      "rx": "3.5714285714285716rem",
-                      "ry": "3.5714285714285716rem",
-                      "width": "3.5714285714285716rem",
-                      "x": "0.14285714285714285rem",
-                      "y": "0.14285714285714285rem",
+                      "height": "50px",
+                      "rx": "50px",
+                      "ry": "50px",
+                      "width": "50px",
+                      "x": "2px",
+                      "y": "2px",
                     },
                     "children": Array [],
                     "name": "rect",
@@ -2569,12 +2305,12 @@ initialize {
                 },
                 Object {
                   "attribs": Object {
-                    "height": "3.5714285714285716rem",
-                    "rx": "3.5714285714285716rem",
-                    "ry": "3.5714285714285716rem",
-                    "width": "3.5714285714285716rem",
-                    "x": "0.14285714285714285rem",
-                    "y": "0.14285714285714285rem",
+                    "height": "50px",
+                    "rx": "50px",
+                    "ry": "50px",
+                    "width": "50px",
+                    "x": "2px",
+                    "y": "2px",
                   },
                   "children": Array [],
                   "name": "rect",
@@ -2583,9 +2319,9 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
-                      "cx": "0.14285714285714285rem",
-                      "cy": "0.14285714285714285rem",
-                      "r": "3.5714285714285716rem",
+                      "cx": "2px",
+                      "cy": "2px",
+                      "r": "50px",
                     },
                     "children": Array [],
                     "name": "circle",
@@ -2628,7 +2364,7 @@ initialize {
               "namespace": "http://www.w3.org/2000/svg",
               "next": Object {
                 "attribs": Object {
-                  "id": "dbwcnhtwj2",
+                  "id": "156f8njflay",
                 },
                 "children": Array [
                   Object {
@@ -3092,7 +2828,7 @@ initialize {
             },
             Object {
               "attribs": Object {
-                "id": "dbwcnhtwj2",
+                "id": "156f8njflay",
               },
               "children": Array [
                 Object {
@@ -3537,26 +3273,26 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "id": "vw9kxc29q2",
+                  "id": "cevqbonxgh6",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "cx": "0.14285714285714285rem",
-                      "cy": "0.14285714285714285rem",
-                      "r": "3.5714285714285716rem",
+                      "cx": "2px",
+                      "cy": "2px",
+                      "r": "50px",
                     },
                     "children": Array [],
                     "name": "circle",
                     "namespace": "http://www.w3.org/2000/svg",
                     "next": Object {
                       "attribs": Object {
-                        "height": "3.5714285714285716rem",
-                        "rx": "3.5714285714285716rem",
-                        "ry": "3.5714285714285716rem",
-                        "width": "3.5714285714285716rem",
-                        "x": "0.14285714285714285rem",
-                        "y": "0.14285714285714285rem",
+                        "height": "50px",
+                        "rx": "50px",
+                        "ry": "50px",
+                        "width": "50px",
+                        "x": "2px",
+                        "y": "2px",
                       },
                       "children": Array [],
                       "name": "rect",
@@ -3598,12 +3334,12 @@ initialize {
                   },
                   Object {
                     "attribs": Object {
-                      "height": "3.5714285714285716rem",
-                      "rx": "3.5714285714285716rem",
-                      "ry": "3.5714285714285716rem",
-                      "width": "3.5714285714285716rem",
-                      "x": "0.14285714285714285rem",
-                      "y": "0.14285714285714285rem",
+                      "height": "50px",
+                      "rx": "50px",
+                      "ry": "50px",
+                      "width": "50px",
+                      "x": "2px",
+                      "y": "2px",
                     },
                     "children": Array [],
                     "name": "rect",
@@ -3612,9 +3348,9 @@ initialize {
                     "parent": [Circular],
                     "prev": Object {
                       "attribs": Object {
-                        "cx": "0.14285714285714285rem",
-                        "cy": "0.14285714285714285rem",
-                        "r": "3.5714285714285716rem",
+                        "cx": "2px",
+                        "cy": "2px",
+                        "r": "50px",
                       },
                       "children": Array [],
                       "name": "circle",
@@ -3709,26 +3445,26 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
-              "id": "vw9kxc29q2",
+              "id": "cevqbonxgh6",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "cx": "0.14285714285714285rem",
-                  "cy": "0.14285714285714285rem",
-                  "r": "3.5714285714285716rem",
+                  "cx": "2px",
+                  "cy": "2px",
+                  "r": "50px",
                 },
                 "children": Array [],
                 "name": "circle",
                 "namespace": "http://www.w3.org/2000/svg",
                 "next": Object {
                   "attribs": Object {
-                    "height": "3.5714285714285716rem",
-                    "rx": "3.5714285714285716rem",
-                    "ry": "3.5714285714285716rem",
-                    "width": "3.5714285714285716rem",
-                    "x": "0.14285714285714285rem",
-                    "y": "0.14285714285714285rem",
+                    "height": "50px",
+                    "rx": "50px",
+                    "ry": "50px",
+                    "width": "50px",
+                    "x": "2px",
+                    "y": "2px",
                   },
                   "children": Array [],
                   "name": "rect",
@@ -3770,12 +3506,12 @@ initialize {
               },
               Object {
                 "attribs": Object {
-                  "height": "3.5714285714285716rem",
-                  "rx": "3.5714285714285716rem",
-                  "ry": "3.5714285714285716rem",
-                  "width": "3.5714285714285716rem",
-                  "x": "0.14285714285714285rem",
-                  "y": "0.14285714285714285rem",
+                  "height": "50px",
+                  "rx": "50px",
+                  "ry": "50px",
+                  "width": "50px",
+                  "x": "2px",
+                  "y": "2px",
                 },
                 "children": Array [],
                 "name": "rect",
@@ -3784,9 +3520,9 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
-                    "cx": "0.14285714285714285rem",
-                    "cy": "0.14285714285714285rem",
-                    "r": "3.5714285714285716rem",
+                    "cx": "2px",
+                    "cy": "2px",
+                    "r": "50px",
                   },
                   "children": Array [],
                   "name": "circle",
@@ -3829,7 +3565,7 @@ initialize {
             "namespace": "http://www.w3.org/2000/svg",
             "next": Object {
               "attribs": Object {
-                "id": "dbwcnhtwj2",
+                "id": "156f8njflay",
               },
               "children": Array [
                 Object {
@@ -4293,7 +4029,7 @@ initialize {
           },
           Object {
             "attribs": Object {
-              "id": "dbwcnhtwj2",
+              "id": "156f8njflay",
             },
             "children": Array [
               Object {
@@ -4738,26 +4474,26 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "id": "vw9kxc29q2",
+                "id": "cevqbonxgh6",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "cx": "0.14285714285714285rem",
-                    "cy": "0.14285714285714285rem",
-                    "r": "3.5714285714285716rem",
+                    "cx": "2px",
+                    "cy": "2px",
+                    "r": "50px",
                   },
                   "children": Array [],
                   "name": "circle",
                   "namespace": "http://www.w3.org/2000/svg",
                   "next": Object {
                     "attribs": Object {
-                      "height": "3.5714285714285716rem",
-                      "rx": "3.5714285714285716rem",
-                      "ry": "3.5714285714285716rem",
-                      "width": "3.5714285714285716rem",
-                      "x": "0.14285714285714285rem",
-                      "y": "0.14285714285714285rem",
+                      "height": "50px",
+                      "rx": "50px",
+                      "ry": "50px",
+                      "width": "50px",
+                      "x": "2px",
+                      "y": "2px",
                     },
                     "children": Array [],
                     "name": "rect",
@@ -4799,12 +4535,12 @@ initialize {
                 },
                 Object {
                   "attribs": Object {
-                    "height": "3.5714285714285716rem",
-                    "rx": "3.5714285714285716rem",
-                    "ry": "3.5714285714285716rem",
-                    "width": "3.5714285714285716rem",
-                    "x": "0.14285714285714285rem",
-                    "y": "0.14285714285714285rem",
+                    "height": "50px",
+                    "rx": "50px",
+                    "ry": "50px",
+                    "width": "50px",
+                    "x": "2px",
+                    "y": "2px",
                   },
                   "children": Array [],
                   "name": "rect",
@@ -4813,9 +4549,9 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
-                      "cx": "0.14285714285714285rem",
-                      "cy": "0.14285714285714285rem",
-                      "r": "3.5714285714285716rem",
+                      "cx": "2px",
+                      "cy": "2px",
+                      "r": "50px",
                     },
                     "children": Array [],
                     "name": "circle",
@@ -4882,10 +4618,10 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "clip-path": "url(#vw9kxc29q2)",
-            "height": "3.5714285714285716rem",
-            "style": "fill: url(#dbwcnhtwj2);",
-            "width": "3.5714285714285716rem",
+            "clip-path": "url(#cevqbonxgh6)",
+            "height": "50px",
+            "style": "fill: url(#156f8njflay);",
+            "width": "50px",
             "x": "0",
             "y": "0",
           },

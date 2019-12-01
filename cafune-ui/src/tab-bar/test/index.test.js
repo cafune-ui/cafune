@@ -37,7 +37,7 @@ describe('<TabBar />', () => {
       </TabBar>
     );
     wrapper.find('.caf-tabbar-item').simulate('click');
-    expect(wrapper.find('.caf-tabbar__fixed').length).toBe(1);
+    expect(wrapper.find('.caf-tabbar--fixed').length).toBe(1);
     expect(wrapper.find('.caf-tabbar-item').length).toBe(3);
     expect(change).toHaveBeenCalled();
 
@@ -70,7 +70,7 @@ describe('<TabBar />', () => {
         />
       </TabBar>
     );
-    expect(wrapper.find('.caf-tabbar__fixed').length).toBe(0);
+    expect(wrapper.find('.caf-tabbar--fixed').length).toBe(0);
     wrapper.render(null)
   });
 });

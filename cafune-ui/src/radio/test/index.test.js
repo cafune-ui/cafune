@@ -1,5 +1,5 @@
 
-import { Radio } from 'cafune';
+import Radio from "../";
 import { render } from 'enzyme';
 import { shallow, deep } from 'preact-render-spy';
 describe('Radio', () => {

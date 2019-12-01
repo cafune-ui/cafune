@@ -5,16 +5,11 @@
   "main": "./lib/index.js",
   "module": "./es/index.js",
   "scripts": {
-    "test": "jest --config ./jest.config.js -u",
+    "test": "jest --config ./.jest.js -u",
     "build": "./scripts/build.sh",
     "new-comp": "node ./scripts/new-component.js",
     "del-comp": "node ./scripts/delete-component.js",
     "doc": "node ./scripts/doc.js"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   },
   "files": [
     "dist",
@@ -58,6 +53,7 @@
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.5",
     "babel-plugin-jsx-pragmatic": "^1.0.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "classnames": "^2.2.6",
     "csso": "^3.5.1",

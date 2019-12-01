@@ -10,7 +10,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "caf-switch-circle",
+          "class": "caf-switch__circle",
         },
         "children": Array [],
         "name": "div",

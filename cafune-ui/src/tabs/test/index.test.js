@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import Tabs from '../';
 const { Nav, Panel } = Tabs;
 import { render } from 'enzyme';
@@ -13,9 +12,9 @@ describe('<Tabs />', () => {
         </Panel>
       </Tabs>
     );
-    expect(wrapper.find('.caf-tabs-nav').length).toBe(1);
-    expect(wrapper.find('.caf-tabs-panel').length).toBe(1);
-    expect(wrapper.find('.caf-tabs-item').length).toBe(1);
+    expect(wrapper.find('.caf-tabs__nav').length).toBe(1);
+    expect(wrapper.find('.caf-tabs__panel').length).toBe(1);
+    expect(wrapper.find('.caf-tabs__nav__item').length).toBe(1);
   });
   it('should render round panel', () => {
     const wrapper = render(
@@ -25,8 +24,8 @@ describe('<Tabs />', () => {
         </Panel>
       </Tabs>
     );
-    expect(wrapper.find('.caf-tabs-nav__slider').length).toBe(0);
-    expect(wrapper.find('.caf-tabs-nav__round').length).toBe(1);
+    expect(wrapper.find('.caf-tabs__nav--slider').length).toBe(0);
+    expect(wrapper.find('.caf-tabs__nav--round').length).toBe(1);
   });
   it('should render card panel', () => {
     const wrapper = render(
@@ -36,14 +35,14 @@ describe('<Tabs />', () => {
         </Panel>
       </Tabs>
     );
-    expect(wrapper.find('.caf-tabs-nav__slider').length).toBe(0);
-    expect(wrapper.find('.caf-tabs-nav__card').length).toBe(1);
+    expect(wrapper.find('.caf-tabs__nav--slider').length).toBe(0);
+    expect(wrapper.find('.caf-tabs__nav--card').length).toBe(1);
   });
   it('should render nothing', () => {
     const wrapper = render(<Tabs activeId="a" />);
-    expect(wrapper.find('.caf-tabs-nav').length).toBe(0);
-    expect(wrapper.find('.caf-tabs-panel').length).toBe(0);
-    expect(wrapper.find('.caf-tabs-item').length).toBe(0);
+    expect(wrapper.find('.caf-tabs__nav').length).toBe(0);
+    expect(wrapper.find('.caf-tabs__panel').length).toBe(0);
+    expect(wrapper.find('.caf-tabs__nav__item').length).toBe(0);
   });
   it('should render nav alone', () => {
     const tabsData = [
@@ -70,8 +69,8 @@ describe('<Tabs />', () => {
         <Nav tabsData={tabsData} type="card" />
       </div>
     );
-    expect(wrapper.find('.caf-tabs-nav').length).toBe(1);
-    expect(wrapper.find('.caf-tabs-item').length).toBe(3);
+    expect(wrapper.find('.caf-tabs__nav').length).toBe(1);
+    expect(wrapper.find('.caf-tabs__nav__item').length).toBe(3);
   });
   it('should trigger change', () => {
     const fn = jest.fn();
@@ -85,7 +84,7 @@ describe('<Tabs />', () => {
         </Panel>
       </Tabs>
     );
-    wrapper.find('.caf-tabs-item').simulate('click');
+    wrapper.find('.caf-tabs__nav__item').simulate('click');
     expect(fn).toHaveBeenCalledWith('a');
     wrapper.render(
       <Tabs activeId="a" onChange={fn}>

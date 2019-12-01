@@ -17,10 +17,6 @@ interface IProps {
    * 附加信息
    */
   additionMsg?: any;
-  /**
-   * action 触发事件
-   */
-  handleClick?: (event: Event) => void;
 }
 
 /**
@@ -28,7 +24,6 @@ interface IProps {
  */
 class ActionBar extends Component<IProps, {}> {
   static defaultProps = {
-    handleClick: evt => {},
     prefix: 'caf-actionbar'
   };
   actionbar;
@@ -38,14 +33,13 @@ class ActionBar extends Component<IProps, {}> {
   componentWillUnmount() {
     setPadding('');
   }
-  public render({
+  render({
     prefix,
     className,
     desc,
     btns,
     capsule,
     additionMsg,
-    handleClick,
     ...restProps
   }) {
     return (
@@ -58,7 +52,7 @@ class ActionBar extends Component<IProps, {}> {
         <div className={`${prefix}__main`}>
           <div className={`${prefix}__main__desc`}>{desc}</div>
           <div className={`${prefix}__main__action`}>
-            {btns.map((item, ind) => (
+            {btns && btns.length && btns.map((item, ind) => (
               <Button {...item} key={ind} />
             ))}
           </div>

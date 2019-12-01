@@ -126,7 +126,7 @@ const Pagination = ({
             type={current <= 1 ? 'cancel' : 'primary'}
             onClick={changeFn(-1 * step, current, total, onChange)}
             icon={(btnIcon && btnIcon.prev) || null}
-            // className={prevCx}
+            className={prevCx}
           >
             {btnText && btnText.prev}
           </Button>
@@ -143,7 +143,7 @@ const Pagination = ({
             type={current >= total ? 'cancel' : 'primary'}
             onClick={changeFn(1 * step, current, total, onChange)}
             icon={(btnIcon && btnIcon.next) || null}
-            // className={nextCx}
+            className={nextCx}
           >
             {btnText && btnText.next}
           </Button>
