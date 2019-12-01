@@ -10,6 +10,10 @@ interface IProps {
    * 是否一开始无动画进入
    */
   instant?: boolean;
+   /**
+   * 是否跳过css检测
+   */
+  css?: boolean;
   /**
    * 动画前缀
    */
@@ -21,7 +25,7 @@ interface IProps {
   /**
    * 进入钩子
    */
-  enter?: (node: HTMLElement, done) => void;
+  enter?: (node: HTMLElement, done?) => void;
   /**
    * 进入之后钩子
    */
@@ -33,7 +37,7 @@ interface IProps {
   /**
    * 离开钩子
    */
-  leave?: (node: HTMLElement, done) => void;
+  leave?: (node: HTMLElement, done?) => void;
   /**
    * 离开之后钩子
    */
@@ -52,19 +56,25 @@ interface IState {
 class Transition extends Component<IProps, IState> {
   static defaultProps = {
     visible: false,
-    instant: false
+    instant: false,
+    css: true
   };
-  noop = function() {};
+  noop = function(_, cb?) {
+    if (cb) {
+      cb.call(this);
+    }
+  };
   constructor(props:IProps) {
     super(props);
     this.state = {
       isShow: props.instant
     }
+    this.noop = this.noop.bind(this)
   }
   cssAnimation(node) {
     const { visible, name } = this.props;
     if (visible) {
-      const activeClass = [`${name}-enter`, `${name}-enter-active`];
+      const activeClass = [name, `${name}-enter`, `${name}-enter-active`];
       node.classList.add(...activeClass)
       setTimeout(() => {
         this.removeClassName(node, [`${name}-enter`]);
@@ -76,16 +86,18 @@ class Transition extends Component<IProps, IState> {
       setTimeout(() => {
         activeClass.push(`${name}-leave`)
         node.classList.add(`${name}-leave`);
+        
       });
       this.bindAnimationEvent(node, activeClass);
     }
   }
-  bindAnimationEvent(elem, activeClass) {
+  bindAnimationEvent(node, activeClass) {
     const { visible } = this.props;
     const eventName = this.transitionend();
-    elem.addEventListener(eventName, () => {
-      this.removeClassName(elem, activeClass);
-      !visible && this.setState({ isShow: false });
+    this.animate(node);
+    node.addEventListener(eventName, () => {
+      this.removeClassName(node, activeClass);
+      this.animate(node, true);
     });
   }
   transitionend() {
@@ -106,43 +118,50 @@ class Transition extends Component<IProps, IState> {
   }
   removeClassName(elem, className) {
     if (!elem) return;
-    // const elClassName = elem.className;
-    // if (elClassName.length === 0) return;
-    // if (elClassName === className) {
-    //   elem.className = '';
-    //   return;
-    // }
-    // const classes = elClassName.split(' ');
-    // const removeClesses = className.split(' ');
-    // const newClasses = [];
-    // classes.forEach(curr => {
-    //   if (curr !== '' && removeClesses.indexOf(curr) < 0) {
-    //     newClasses.push(curr);
-    //   }
-    // });
     elem.classList.remove(...className);
   }
-  animate(node) {
-    let { visible, beforeEnter, enter, beforeLeave, leave } = this.props;
+  animate(node, done = false) {
+    let { visible, beforeEnter, enter, beforeLeave, leave, css, name } = this.props;
     beforeEnter = beforeEnter || this.noop;
     enter = enter || this.noop;
     beforeLeave = beforeLeave || this.noop;
     leave = leave || this.noop;
-
     if (visible) {
       beforeEnter(node);
-      setTimeout(() => enter(node, this.done.bind(this)));
+      if (!(!!name && css)) {
+        setTimeout(() => enter(node, this.done));
+      } else {
+        if (done) {
+          this.done();
+        } else {
+          enter(node);
+        }
+      }
+      
     } else {
       beforeLeave(node);
-      setTimeout(() => leave(node, this.done.bind(this)));
+      if (!(!!name && css)) {
+        setTimeout(() => leave(node, this.done));
+      } else{
+        if (done) {
+          this.done();
+        } else {
+          leave(node);
+        }
+      }
     }
   }
   animationStart() {
     const node = this.base;
-    const { name } = this.props;
-    !!name ? this.cssAnimation(node) : this.animate(node);
+    const { name, css } = this.props;
+    if (!!name && css) {
+      this.cssAnimation(node)
+    } else {
+      this.animate(node);
+    }
+    
   }
-  done() {
+  done = () => {
     const node = this.base;
     let { visible, afterEnter, afterLeave } = this.props;
     afterEnter = afterEnter || this.noop;

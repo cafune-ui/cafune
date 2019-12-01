@@ -3,16 +3,16 @@
   flex: 1;
   padding: $modal-btn-padding;
 }
-@keyframes modal {
-  0% {
-    opacity: 0;
-    transform: translate3d(-50%, -50%, 0) scale(0.4);
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(-50%, -50%, 0) scale(1);
-  }
-}
+// @keyframes modal {
+//   0% {
+//     opacity: 0;
+//     transform: translate3d(-50%, -50%, 0) scale(0.4);
+//   }
+//   100% {
+//     opacity: 1;
+//     transform: translate3d(-50%, -50%, 0) scale(1);
+//   }
+// }
 
 .caf-modal {
   &__btngroup {
@@ -45,7 +45,6 @@
     transform: translate3d(-50%, -50%, 0);
     border-radius: $modal-box-border-radius;
     background-color: $modal-box-background-color;
-    animation: modal 0.6s;
     &__header {
       padding: $modal-box-header-padding;
       font-size: $modal-box-header-font-size;
@@ -65,6 +64,17 @@
       &--right {
         text-align: right;
       }
+    }
+  }
+  &-fade {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+    &-enter-active, &-leave-active {
+      transition: all .5s;
+    }
+    &-enter, &-leave {
+      opacity: 0;
+      transform: translate3d(-50%, -50%, 0) scale(0.4);
     }
   }
 }

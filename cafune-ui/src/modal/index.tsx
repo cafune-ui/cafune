@@ -1,6 +1,7 @@
 import { render, Component, VNode, h } from 'preact';
 import { isBrowser } from '../util/isomorphic';
 import Button from '../button';
+import Transition from '../transition';
 
 let modalComp;
 let containerNode = isBrowser && document.body;
@@ -13,7 +14,7 @@ const defaultOptions = {
   confirmContent: '确定',
   cancelContent: '取消',
   mask: true,
-  visable: true
+  visible: true
 };
 
 interface IProps {
@@ -50,6 +51,10 @@ interface IProps {
    */
   cancelContent?: string;
   /**
+   * 关闭之前的回调
+   */
+  beforeClose?: (action: string, done: (state?: boolean) => void) => void;
+  /**
    * 确认事件回调
    */
   onConfirm?: () => void;
@@ -60,8 +65,7 @@ interface IProps {
   /**
    * 是否显示模态框
    */
-  visable?: boolean;
-  children?: any;
+  visible?: boolean;
 }
 /**
  * 渲染模态框到容器中
@@ -91,10 +95,18 @@ const confirm = options => {
     ...options
   });
 };
+
+interface IState {
+  visible: boolean;
+  loading: {
+    confirm: boolean;
+    cancel: boolean;
+  };
+}
 /**
  * 模态框
  */
-class Modal extends Component<IProps, {}> {
+class Modal extends Component<IProps, IState> {
   static defaultProps = {
     prefix: 'caf-modal',
     align: 'center',
@@ -102,88 +114,136 @@ class Modal extends Component<IProps, {}> {
     confirmContent: '确定',
     cancelContent: '取消',
     mask: true,
-    visable: true
+    visible: true
+  };
+  state: IState = {
+    visible: this.props.visible,
+    loading: {
+      confirm: false,
+      cancel: false
+    }
   };
   static alert = alert;
   static confirm = confirm;
   componentDidUpdate() {
     /* istanbul ignore next  */
-    viewWrap && (viewWrap.style.overflow = this.props.visable ? 'hidden' : '');
+    viewWrap && (viewWrap.style.overflow = this.props.visible ? 'hidden' : '');
   }
-  handleClick(action) {
+  destroy = () => {
     if (modalComp && containerNode) {
       render('', containerNode, modalComp);
       modalComp = null;
     }
+  };
+  handleAction(action) {
+    if (this.state.loading[action]) {
+      return;
+    }
+    const { beforeClose } = this.props;
+    if (beforeClose) {
+      this.setState(previousState => {
+        previousState.loading[action] = true;
+        return {
+          loading: previousState.loading
+        };
+      });
+      beforeClose(action, state => {
+        if (state !== false && this.state.loading[action]) {
+          this.onClose(action);
+          this.setState({
+            loading: {
+              confirm: false,
+              cancel: false
+            }
+          });
+        }
+      });
+    } else {
+      this.onClose(action);
+    }
+  }
+  onClose(action) {
     if (action === 'confirm') {
       this.props.onConfirm && this.props.onConfirm();
     } else {
       this.props.onCancel && this.props.onCancel();
     }
+    setTimeout(() =>
+      this.setState({
+        visible: false
+      })
+    );
   }
-  render({
-    prefix,
-    title,
-    message,
-    align,
-    children,
-    showCancel,
-    confirmContent,
-    cancelContent,
-    mask,
-    visable
-  }) {
-    if (visable) {
-      /* istanbul ignore if */
-      const Title = title && (
-        <div className={`${prefix}__box__header`}>{title}</div>
-      );
-      /* istanbul ignore else */
-      const Content = (!!(children && children.length) || message) && (
-        <div
-          className={`${prefix}__box__main ${prefix}__box__main--${align}`}
-        >
-          {children && children.length > 0 ? (
-            children
-          ) : (
-            <div
-              dangerouslySetInnerHTML={{ __html: message }}
-              className={`${prefix}__box__main ${prefix}__box__main--${align}`}
-            />
-          )}
-        </div>
-      );
-      const Buttons = (
-        <div className={`${prefix}__btngroup`}>
-          {showCancel && (
-            <div
-              className={`${prefix}__btn ${prefix}__btn--cancel`}
-              onClick={this.handleClick.bind(this, 'cancel')}
-            >
-              <Button type="cancel" block>{cancelContent}</Button>
-            </div>
-          )}
+  render(
+    {
+      prefix,
+      title,
+      message,
+      align,
+      children,
+      showCancel,
+      confirmContent,
+      cancelContent,
+      mask
+    },
+    { visible, loading }
+  ) {
+    /* istanbul ignore if */
+    const Title = title && (
+      <div className={`${prefix}__box__header`}>{title}</div>
+    );
+    /* istanbul ignore else */
+    const Content = (!!(children && children.length) || message) && (
+      <div className={`${prefix}__box__main ${prefix}__box__main--${align}`}>
+        {children && children.length > 0 ? (
+          children
+        ) : (
           <div
-            className={`${prefix}__btn ${prefix}__btn--confirm`}
-            onClick={this.handleClick.bind(this, 'confirm')}
+            dangerouslySetInnerHTML={{ __html: message }}
+            className={`${prefix}__box__main ${prefix}__box__main--${align}`}
+          />
+        )}
+      </div>
+    );
+    const { confirm, cancel } = loading;
+    const Buttons = (
+      <div className={`${prefix}__btngroup`}>
+        {showCancel && (
+          <div
+            className={`${prefix}__btn ${prefix}__btn--cancel`}
+            onClick={this.handleAction.bind(this, 'cancel')}
           >
-            <Button type="primary" block >{confirmContent}</Button>
+            <Button type="cancel" block loading={cancel}>
+              {cancelContent}
+            </Button>
           </div>
+        )}
+        <div
+          className={`${prefix}__btn ${prefix}__btn--confirm`}
+          onClick={this.handleAction.bind(this, 'confirm')}
+        >
+          <Button type="primary" block loading={confirm}>
+            {confirmContent}
+          </Button>
         </div>
-      );
-      return (
-        <div className={prefix}>
-          {mask && <div className={`${prefix}__mask`} />}
+      </div>
+    );
+    return (
+      <div className={prefix}>
+        {mask && <div className={`${prefix}__mask`} />}
+        <Transition
+          visible={visible}
+          name="caf-modal-fade"
+          afterLeave={this.destroy}
+        >
           <div className={`${prefix}__box`}>
             {Title}
             {Content}
             {Buttons}
           </div>
-        </div>
-      );
-    } else {
-      return null;
-    }
+        </Transition>
+      </div>
+    );
   }
 }
 export default Modal;

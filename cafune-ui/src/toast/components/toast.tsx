@@ -104,10 +104,10 @@ export default class CafToast extends Component<IProps, IState> {
     const toastList = toasts.map((item, ind) => {
       const afterLeave = () => {
         this.remove(item.key);
-        item.onClose && item.onClose();
       };
       const onClose = () => {
         this.hide(item.key);
+        item.onClose && item.onClose();
       };
       return (
         <Transition

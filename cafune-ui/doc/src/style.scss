@@ -201,5 +201,12 @@ a {
       line-height: 28px;
       padding: 20px 0;
     }
+    &-buttons {
+      .caf-btn {
+        vertical-align: middle;
+        margin-right: 15px;
+        margin-bottom: 15px;
+      }
+    }
   }
 }

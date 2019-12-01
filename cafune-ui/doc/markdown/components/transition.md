@@ -10,10 +10,11 @@ import { Transition } from 'cafune';
 | --- | --- | --- | --- | --- | --- |
 | visible | 是否可见 | boolean | `false` | - | ❌ |
 | instant | 是否一开始无动画进入 | boolean | `false` | - | ❌ |
+| css | 是否跳过css检测 | boolean | `true` | - | ❌ |
 | name | 动画前缀 | string | - | - | ❌ |
 | beforeEnter | 进入之前钩子 | (node: HTMLElement) => void | - | - | ❌ |
-| enter | 进入钩子 | (node: HTMLElement, done) => void | - | - | ❌ |
+| enter | 进入钩子 | (node: HTMLElement, done?) => void | - | - | ❌ |
 | afterEnter | 进入之后钩子 | (node: HTMLElement) => void | - | - | ❌ |
 | beforeLeave | 离开之前钩子 | (node: HTMLElement) => void | - | - | ❌ |
-| leave | 离开钩子 | (node: HTMLElement, done) => void | - | - | ❌ |
+| leave | 离开钩子 | (node: HTMLElement, done?) => void | - | - | ❌ |
 | afterLeave | 离开之后钩子 | (node: HTMLElement) => void | - | - | ❌ |
