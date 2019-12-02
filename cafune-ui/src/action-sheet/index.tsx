@@ -3,6 +3,8 @@ import cx from 'classnames';
 import Icon from '../icon';
 import Loading from '../loading';
 import Button from '../button';
+import Transition from '../transition';
+
 export type iOption = {
   /**
    * 单元项目图标
@@ -52,10 +54,6 @@ export type IActionSheet = {
    */
   prefix?: string;
   /**
-   * 元素类名
-   */
-  className?: string;
-  /**
    * 面板开启状态
    */
   isShow: boolean;
@@ -70,11 +68,11 @@ export type IActionSheet = {
   /**
    * 横向展示的数据
    */
-  horizon: IHorizon;
+  horizon?: IHorizon;
   /**
    * 纵向展示的数据
    */
-  vertialList: iOption[];
+  vertialList?: iOption[];
   /**
    * 标题栏
    */
@@ -186,11 +184,6 @@ const transitionEnd = window.ontransitionend
  * 动作面板
  */
 class ActionSheet extends Component<IActionSheet, {}> {
-  state = {
-    isShow: this.props.isShow,
-    isFadding: true,
-    type: ''
-  };
   static defaultProps = {
     prefix,
     isShow: false,
@@ -200,19 +193,6 @@ class ActionSheet extends Component<IActionSheet, {}> {
     confirmText: '确定',
     showCancel: true
   };
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.isShow !== this.state.isShow) {
-      if (nextProps.isShow === true) {
-        setTimeout(() => {
-          this.setState({
-            isFadding: false
-          });
-        });
-      } else {
-        this.closeAct();
-      }
-    }
-  }
   renderData = (data, horizon, wrap?) => {
     let result;
     const illegalMsg = '列表数据应为全数组或全对象';
@@ -255,65 +235,32 @@ class ActionSheet extends Component<IActionSheet, {}> {
     const $target = e.target;
     const className = $target.className;
     if (className === `${prefix}__wrapper`) {
-      this.closeAct();
+      this.handleAction('close');
     }
   };
-  openAct = () => {
-    this.setState({
-      type: 'open',
-      isFadding: false
-    });
-  };
-  closeAct = () => {
-    this.setState({
-      type: 'close',
-      isFadding: true
-    });
-  };
-  confirmAct = () => {
-    this.setState({
-      type: 'confirm',
-      isFadding: true
-    });
-  };
-  $as: HTMLElement;
-  done = () => {
-    const { type, isFadding } = this.state;
-    if (isFadding) {
-      if (type === 'confirm') {
-        this.props.onConfirm && this.props.onConfirm();
-      }
-      this.props.onClose && this.props.onClose();
-    } else {
-      this.props.onOpen && this.props.onOpen();
+  handleAction(type) {
+    if (type === 'confirm') {
+      this.props.onConfirm && this.props.onConfirm();
     }
+    this.props.onClose && this.props.onClose();
+  }
+  afterEnter = () => {
+    this.props.onOpen && this.props.onOpen();
   };
-  $actionSheet = $as => {
-    if ($as) {
-      this.$as = $as;
-      const _self = this;
-      ($as as HTMLElement).addEventListener(transitionEnd, this.done);
-    } else {
-      this.$as.removeEventListener(transitionEnd, this.done);
-      this.$as = null;
-    }
-  };
-  render() {
-    const {
-      prefix,
-      className,
-      showMask,
-      children,
-      cancelText,
-      confirmText,
-      closeOnClickMask,
-      title,
-      isShow,
-      showCancel,
-      showConfirm,
-      ...restProps
-    } = this.props;
-    const { isFadding } = this.state;
+  render({
+    prefix,
+    className,
+    showMask,
+    children,
+    cancelText,
+    confirmText,
+    closeOnClickMask,
+    title,
+    isShow,
+    showCancel,
+    showConfirm,
+    ...restProps
+  }) {
     const content = this.renderContent();
     let maskProp = {};
     if (closeOnClickMask) {
@@ -321,45 +268,54 @@ class ActionSheet extends Component<IActionSheet, {}> {
         onClick: this.onMaskClick
       };
     }
-    return isShow ? (
+    return (
       <div className={cx(prefix, className)} {...restProps}>
-        {showMask && (
-          <div
-            className={cx(`${prefix}__mask`, {
-              [`${prefix}__mask--fadding`]: !isFadding
-            })}
-          />
-        )}
-        <div className={`${prefix}__wrapper`} {...maskProp}>
-          <div
-            className={cx(`${prefix}__container`, {
-              [`${prefix}__container--fadding`]: !isFadding
-            })}
-            ref={this.$actionSheet}
-          >
-            {!!title && <div className={`${prefix}__title`}>{title}</div>}
-            <div className={`${prefix}__main`}>
-              {children}
-              {content}
-            </div>
-            {(showCancel || showConfirm) && (
-              <div className={`${prefix}__action`}>
-                {showCancel && (
-                  <Button block type="cancel" onClick={this.closeAct}>
-                    {cancelText}
-                  </Button>
-                )}
-                {showConfirm && (
-                  <Button block type="primary" onClick={this.confirmAct}>
-                    {confirmText}
-                  </Button>
-                )}
+        <Transition
+          visible={isShow}
+          name={`${prefix}-fade`}
+          afterEnter={this.afterEnter}
+        >
+          {showMask && <div className={`${prefix}__mask`} />}
+        </Transition>
+        <Transition
+          visible={isShow}
+          name={`${prefix}-slide`}
+          afterEnter={this.afterEnter}
+        >
+          <div className={`${prefix}__wrapper`} {...maskProp}>
+            <div className={`${prefix}__container`}>
+              {!!title && <div className={`${prefix}__title`}>{title}</div>}
+              <div className={`${prefix}__main`}>
+                {children}
+                {content}
               </div>
-            )}
+              {(showCancel || showConfirm) && (
+                <div className={`${prefix}__action`}>
+                  {showCancel && (
+                    <Button
+                      block
+                      type="cancel"
+                      onClick={this.handleAction.bind(this, 'cancel')}
+                    >
+                      {cancelText}
+                    </Button>
+                  )}
+                  {showConfirm && (
+                    <Button
+                      block
+                      type="primary"
+                      onClick={this.handleAction.bind(this, 'confirm')}
+                    >
+                      {confirmText}
+                    </Button>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        </Transition>
       </div>
-    ) : null;
+    );
   }
 }
 export default ActionSheet;

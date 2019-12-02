@@ -14,15 +14,8 @@ $name: '.caf-actsheet';
     background-color: $action-sheet-background-color;
     border-radius: $action-sheet-border-radius;
     overflow: auto;
-    transition: transform .3s;
     margin-bottom: $action-sheet-margin-bottom;
     margin-bottom: calc(env(safe-area-inset-bottom) + #{$action-sheet-margin-bottom});
-
-    transform: translateY(110%);
-    &--fadding {
-      transform: translateY(0);
-    }
-
     &::before {
       content: '';
       left: 0;
@@ -32,6 +25,24 @@ $name: '.caf-actsheet';
       width: 50px;
       border-radius: 4px;
       background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+  &-fade {
+    opacity: 1;
+    &-enter-active, &-leave-active {
+      transition: opacity .3s;
+    }
+    &-enter, &-leave {
+      opacity: 0;
+    }
+  }
+  &-slide {
+    transform: translateY(0);
+    &-enter-active, &-leave-active {
+      transition: transform .3s;
+    }
+    &-enter, &-leave {
+      transform: translateY(110%);
     }
   }
   &__mask,
@@ -46,11 +57,11 @@ $name: '.caf-actsheet';
   &__mask {
     background-color: $action-sheet-mask-background-color;
     height: 100%;
-    opacity: 0;
-    transition: opacity .3s;
-    &--fadding {
-      opacity: 1;
-    }
+    // opacity: 0;
+    // transition: opacity .3s;
+    // &--fadding {
+    //   opacity: 1;
+    // }
   }
   &__title {
     padding: $action-sheet-title-padding;

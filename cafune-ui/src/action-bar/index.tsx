@@ -52,14 +52,14 @@ class ActionBar extends Component<IProps, {}> {
         <div className={`${prefix}__main`}>
           <div className={`${prefix}__main__desc`}>{desc}</div>
           <div className={`${prefix}__main__action`}>
-            {btns && btns.length && btns.map((item, ind) => (
-              <Button {...item} key={ind} />
-            ))}
+            {btns &&
+              btns.length &&
+              btns.map((item, ind) => <Button {...item} key={ind} />)}
           </div>
         </div>
       </div>
     );
   }
 }
-/// export { ActionBar };
+
 export default ActionBar;
