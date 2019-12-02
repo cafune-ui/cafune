@@ -60,8 +60,6 @@ $name: '.caf-calendar';
       display: flex;
       justify-content: center;
       text-align: center;
-      &--cur {
-      }
     }
   }
   &__date {
@@ -107,10 +105,10 @@ $name: '.caf-calendar';
     &--other {
       color: $calendar-date-other-color;
     }
-    &--start, &:first-child {
+    &--start, &:first-child, &:last-child#{$name}__date--start {
       border-radius: #{$calendar-date-side-radius} 0 0 #{$calendar-date-side-radius};
     }
-    &--end, &:last-child {
+    &--end, &:last-child, &:first-child#{$name}__date--end {
       border-radius: 0 #{$calendar-date-side-radius} #{$calendar-date-side-radius} 0;
     }
     &--range {

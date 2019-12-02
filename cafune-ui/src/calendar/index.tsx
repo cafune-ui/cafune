@@ -173,15 +173,27 @@ class Calendar extends Component<IProps, IState> {
   }
   prevMonth = () => {
     const { current } = this.state;
-    this.setCurrent({
-      month: current.month - 1
-    });
+    let prevCurrent = {
+      month: current.month - 1,
+      year: current.year
+    };
+    if (current.month === 1) {
+      prevCurrent.month = 12;
+      prevCurrent.year = current.year - 1;
+    }
+    this.setCurrent(prevCurrent);
   };
   nextMonth = () => {
     const { current } = this.state;
-    this.setCurrent({
-      month: current.month + 1
-    });
+    let nextCurrent = {
+      month: current.month + 1,
+      year: current.year
+    };
+    if (current.month === 12) {
+      nextCurrent.month = 1;
+      nextCurrent.year = current.year + 1;
+    }
+    this.setCurrent(nextCurrent);
   };
   renderMonthBar(startOfMonth) {
     const { formatter, prefix } = this.props;
