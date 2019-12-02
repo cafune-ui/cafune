@@ -8,7 +8,8 @@ import { Button } from 'cafune';
 ## 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
-| prefix | 自定义类名 | string | `'caf-btn'` | - | ❌ |
+| prefix | 自定义前缀 | string | `'caf-btn'` | - | ❌ |
+| className | 自定义类名 | string | - | - | ❌ |
 | type | 按钮类型 | string | `'default'` | `'default'`,`'primary'`,`'warning'`,`'cancel'` | ❌ |
 | ghost | 是否为幽灵按钮 | boolean | `false` | - | ❌ |
 | size | 按钮尺寸 | string | `'normal'` | `'large'`,`'normal'`,`'small'`,`'tiny'` | ❌ |

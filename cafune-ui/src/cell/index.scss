@@ -1,21 +1,23 @@
 @import '../style/mixins/_border.scss';
-
-.caf-cell {
+@import '../style/_var.scss';
+$name: '.caf-cell';
+#{$name} {
   position: relative;
   overflow: hidden;
   text-decoration: none;
   width: 100%;
-  &-wrapper {
+  &__wrapper {
+    position: relative;
+    z-index: 1;
     transition: transform 0.3s;
   }
-  &-main {
+  &__main {
     display: flex;
     width: 100%;
     position: relative;
-    padding: 10px 15px;
-    line-height: 24px;
-    font-size: 14px;
-    background-color: #fff;
+    padding: $cell-padding;
+    line-height: $cell-line-height;
+    background-color: $cell-background-color;
     box-sizing: border-box;
     .caf-checkbox {
       width: 20px;
@@ -33,69 +35,63 @@
       }
     }
   }
-  &-swiper {
+  &__swiper {
     position: absolute;
     left: 100%;
     top: 0;
     display: table;
     table-layout: fixed;
-    height: 44px;
-    &-item {
+    height: $cell-swiper-height;
+    &__item {
       display: table-cell;
       vertical-align: middle;
-      min-width: 50px;
-      padding: 0 10px;
+      min-width: $cell-swiper-min-width;
+      padding: $cell-swiper-padding;
       text-align: center;
-      color: #fff;
+      color: $white;
       line-height: 1;
-      background-color: #969799;
+      background-color: $cell-swiper-background-color;
     }
   }
-  &-title {
+  &__title {
     flex: 1;
   }
-  &-label {
-    margin-top: 3px;
-    font-size: 12px;
-    color: #969799;
-    line-height: 18px;
+  &__label {
+    margin: $cell-label-margin;
+    font-size: $cell-label-font-size;
+    color: $cell-label-color;
+    line-height: $cell-label-line-height;
   }
-  &-value {
+  &__value {
     position: relative;
   }
-  &__border {
-    &::after {
-      content: '';
-      position: absolute;
-      box-sizing: border-box;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-bottom: 1px solid #eee;
-      transform: scaleY(0.5);
+  &--border {
+    @include pixelBorder($cell-border-color);
+    & + #{$name}--border {
+      margin-top: -1px;
     }
   }
-  &__middle {
-    .caf-cell-main {
+  &--middle {
+    #{$name}__main {
       align-items: center;
     }
   }
 }
 
 .caf-cellgroup {
-  &-title {
-    padding: 15px 15px 10px;
-    color: #999;
-    font-size: 14px;
-    line-height: 16px;
+  &__title {
+    padding: $cellgroup-title-padding;
+    color: $cellgroup-title-color;
+    font-size: $cellgroup-title-font-size;
+    line-height: $cellgroup-title-line-height;
   }
-  &-wrapper {
+  &__wrapper {
     position: relative;
-    border-radius: 8px;
+    border-radius: $cellgroup-wrapper-border-radius;
     overflow: hidden;
-    &__border {
+    &--border {
       position: relative;
-      @include pixelBorder( #eee);
+      // @include pixelBorder( #eee);
     }
     @include pixelBorder(transparent);
   }

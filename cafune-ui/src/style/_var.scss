@@ -13,7 +13,7 @@ $color_theme: #3f77f6 !default;
 $horizontal-distance: 15px;
 
 // border
-$border-color: #dedede !default;
+$border-color: #eee !default;
 $border-radius-sm: 2px !default;
 $border-radius-md: 4px !default;
 $border-radius-card: 16px !default;
@@ -105,6 +105,28 @@ $calendar-date-today-indicator-background-color: $red !default;
 $calendar-date-range-background-color: transparentize($blue, .8) !default;
 $calendar-date-range-color: #717171 !default;
 $calendar-date-other-color: $grey !default;
+
+// cell
+$cell-line-height: 24px !default;
+$cell-padding: 10px $horizontal-distance !default;
+$cell-background-color: $white !default;
+$cell-border-color: $border-color !default;
+$cell-label-color: #969799 !default;
+$cell-label-font-size: 10px !default;
+$cell-label-line-height: 16px !default;
+$cell-label-margin: 4px 0 0 0!default;
+
+$cell-swiper-height: 44px !default;
+$cell-swiper-min-width: 50px !default;
+$cell-swiper-padding: 0 10px !default;
+$cell-swiper-color: $white !default;
+$cell-swiper-background-color: $grey !default;
+
+$cellgroup-title-padding: $horizontal-distance $horizontal-distance 10px !default;
+$cellgroup-title-color: #777 !default;
+$cellgroup-title-font-size: 14px !default;
+$cellgroup-title-line-height: 18px !default;
+$cellgroup-wrapper-border-radius: 16px !default;
 
 //checkbox
 $checkbox-height: 40px !default;

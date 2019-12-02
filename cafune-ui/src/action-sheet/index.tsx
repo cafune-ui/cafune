@@ -221,7 +221,7 @@ class ActionSheet extends Component<IActionSheet, {}> {
     let $horizon = this.renderData(
       horizon ? horizon.list || [] : [],
       true,
-      horizon.wrap
+      horizon && horizon.wrap
     );
     let $vertical = this.renderData(vertialList, false);
     return (
@@ -292,22 +292,24 @@ class ActionSheet extends Component<IActionSheet, {}> {
               {(showCancel || showConfirm) && (
                 <div className={`${prefix}__action`}>
                   {showCancel && (
-                    <Button
-                      block
-                      type="cancel"
+                    <div
+                      className={`${prefix}__action__btn ${prefix}__action__btn--cancel`}
                       onClick={this.handleAction.bind(this, 'cancel')}
                     >
-                      {cancelText}
-                    </Button>
+                      <Button block type="cancel">
+                        {cancelText}
+                      </Button>
+                    </div>
                   )}
                   {showConfirm && (
-                    <Button
-                      block
-                      type="primary"
+                    <div
+                      className={`${prefix}__action__btn ${prefix}__action__btn--confirm`}
                       onClick={this.handleAction.bind(this, 'confirm')}
                     >
-                      {confirmText}
-                    </Button>
+                      <Button block type="primary">
+                        {confirmText}
+                      </Button>
+                    </div>
                   )}
                 </div>
               )}

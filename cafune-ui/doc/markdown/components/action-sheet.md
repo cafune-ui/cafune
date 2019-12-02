@@ -9,12 +9,11 @@ import { ActionSheet } from 'cafune';
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
 | prefix | 自定义类名 | string | `'caf-actsheet'` | - | ❌ |
-| className | 元素类名 | string | - | - | ❌ |
 | isShow | 面板开启状态 | boolean | `false` | - | ❌ |
 | showMask | 是否显示遮罩 | boolean | `true` | - | ❌ |
 | closeOnClickMask | 是否在点击遮罩后关闭 | boolean | `true` | - | ❌ |
-| horizon | 横向展示的数据 | horizon-options | - | - | ✅  |
-| vertialList | 纵向展示的数据 | Array | - | - | ✅  |
+| horizon | 横向展示的数据 | horizon-options | - | - | ❌ |
+| vertialList | 纵向展示的数据 | Array | - | - | ❌ |
 | title | 标题栏 | string / VNode / Component / HTMLElement | - | - | ❌ |
 | cancelText | 取消按钮文字 | string | `'取消'` | - | ❌ |
 | confirmText | 确认按钮文字 | string | `'确定'` | - | ❌ |

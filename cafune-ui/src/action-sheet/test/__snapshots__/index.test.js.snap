@@ -4,6 +4,8 @@ exports[`ActionSheet should render properly 1`] = `
 RenderContext {
   "0": VNode {
     "attributes": Object {
+      "cancelText": "cancel",
+      "confirmText": "confirm",
       "horizon": Object {
         "list": Array [
           Object {
@@ -41,7 +43,31 @@ RenderContext {
         ],
         "wrap": false,
       },
+      "isShow": true,
+      "onClose": [MockFunction],
+      "showConfirm": true,
       "title": "test title",
+      "vertialList": Array [
+        Object {
+          "align": "left",
+          "icon": "browser",
+          "name": "browser",
+        },
+        Object {
+          "align": "center",
+          "icon": "error",
+          "isDisabled": true,
+          "name": "error",
+          "subName": "on disabled state",
+        },
+        Object {
+          "align": "right",
+          "icon": "refresh",
+          "isLoading": true,
+          "name": "refresh",
+          "subName": "on loading state",
+        },
+      ],
     },
     "children": Array [],
     "key": undefined,

@@ -11,3 +11,20 @@ RenderContext {
   "length": 1,
 }
 `;
+
+exports[`Calendar should render properly 2`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "defaultSelect": Object {
+        "end": "2019/10/28",
+        "start": "2019/10/1",
+      },
+    },
+    "children": Array [],
+    "key": undefined,
+    "nodeName": [Function],
+  },
+  "length": 1,
+}
+`;

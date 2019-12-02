@@ -139,6 +139,7 @@ class Calendar extends Component<IProps, IState> {
         end: now.add(minSelect, 'day')
       };
     }
+    /* istanbul ignore next */
     if (defaultCurrent) {
       state.current = Object.assign({}, state.current, defaultCurrent);
     }
@@ -148,6 +149,7 @@ class Calendar extends Component<IProps, IState> {
   getCurrenSelect(selection) {
     const { minSelect } = this.props;
     let select;
+    /* istanbul ignore next */
     if (selection) {
       const start = formateDate(selection.start);
       if ('end' in (selection as IDataRange)) {
@@ -177,6 +179,7 @@ class Calendar extends Component<IProps, IState> {
       month: current.month - 1,
       year: current.year
     };
+    /* istanbul ignore next */
     if (current.month === 1) {
       prevCurrent.month = 12;
       prevCurrent.year = current.year - 1;
@@ -189,6 +192,7 @@ class Calendar extends Component<IProps, IState> {
       month: current.month + 1,
       year: current.year
     };
+    /* istanbul ignore next */
     if (current.month === 12) {
       nextCurrent.month = 1;
       nextCurrent.year = current.year + 1;
@@ -260,6 +264,7 @@ class Calendar extends Component<IProps, IState> {
     ) {
       $target = $target.parentNode;
     }
+    /* istanbul ignore next */
     if (/js-date/.test($target.className)) {
       const { weekList } = this;
       const { selection } = this.state;
@@ -269,6 +274,7 @@ class Calendar extends Component<IProps, IState> {
 
       let newSelection: IDataRange;
       const { dayInfo } = item;
+      /* istanbul ignore next */
       if (!maxSelect) {
         return;
       }
@@ -297,6 +303,7 @@ class Calendar extends Component<IProps, IState> {
           newSelection = {
             start: dayInfo
           };
+          /* istanbul ignore next */
           if (minSelect > 1) {
             newSelection.end = dayInfo.add(minSelect, 'day');
           }
@@ -366,6 +373,7 @@ class Calendar extends Component<IProps, IState> {
     let start;
     let rangeEnd;
     let isMulti = maxSelect !== 1;
+    /* istanbul ignore next */
     if (currentSelect) {
       current = currentSelect.start;
       start = currentSelect.start;

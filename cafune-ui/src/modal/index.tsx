@@ -73,6 +73,7 @@ interface IProps {
 const modal = options => {
   /* istanbul ignore next */
   if (!isBrowser) return null;
+  /* istanbul ignore next */
   if (containerNode && modalComp) {
     render('', containerNode, modalComp);
     modalComp = null;

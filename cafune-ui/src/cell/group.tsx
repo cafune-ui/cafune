@@ -25,10 +25,10 @@ class CellGroup extends Component<IProps> {
   render({ prefix, className, border, title, children, ...restProps }) {
     return (
       <div className={cx(prefix, className)} {...restProps}>
-        {!!title && <div className={`${prefix}-title`}>{title}</div>}
+        {!!title && <div className={`${prefix}__title`}>{title}</div>}
         <div
-          className={cx(`${prefix}-wrapper`, {
-            [`${prefix}-wrapper__border`]: border
+          className={cx(`${prefix}__wrapper`, {
+            [`${prefix}__wrapper--border`]: border
           })}
         >
           {children}

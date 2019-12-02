@@ -11,4 +11,3 @@ import { ActionBar } from 'cafune';
 | desc | 左侧描述内容 | any | - | - | ✅  |
 | btns | 按钮内容 | Array | - | - | ✅  |
 | additionMsg | 附加信息 | any | - | - | ❌ |
-| handleClick | action 触发事件 | (event: Event) => void | `evt => {}` | - | ❌ |

@@ -67,7 +67,7 @@ class Stepper extends Component<IProps> {
     onChange && onChange(result);
   }
   minus = () => {
-    const { onChange, step, min, disabled } = this.props;
+    const { step, min, disabled } = this.props;
     const { value } = this.state;
     if (value != min && !disabled) {
       const result = value - step <= min ? min : value - step;
@@ -75,7 +75,7 @@ class Stepper extends Component<IProps> {
     }
   };
   plus = () => {
-    const { onChange, step, max, disabled } = this.props;
+    const { step, max, disabled } = this.props;
     const { value } = this.state;
     if (value != max && !disabled) {
       const result = value + step >= max ? max : value + step;
@@ -91,10 +91,14 @@ class Stepper extends Component<IProps> {
     if (tarVal != +tarVal) {
       final = value;
     } else {
+      /* istanbul ignore next */
       if (+tarVal > max) final = max;
+      /* istanbul ignore next */
       if (+tarVal < min) final = min;
+      /* istanbul ignore next */
       if (integerOnly && +tarVal % 1 !== 0) final = Math.round(tarVal);
     }
+    /* istanbul ignore next */
     if (final && final !== tarVal) {
       $target.value = final;
     }

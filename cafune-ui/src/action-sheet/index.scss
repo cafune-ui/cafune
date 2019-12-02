@@ -202,9 +202,9 @@ $name: '.caf-actsheet';
   }
   &__action {
     display: flex;
-    padding: 15px $horizontal-distance;
-    .caf-btn + .caf-btn {
-      margin-left: 10px;
+    &__btn {
+      flex: 1;
+      padding: $horizontal-distance;
     }
   }
 }

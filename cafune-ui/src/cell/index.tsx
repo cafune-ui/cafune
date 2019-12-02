@@ -170,19 +170,19 @@ class Cell extends Component<IProps> {
   }) {
     const showRightIcon = !!url || !!rightIcon;
     const cls = cx(prefix, className, {
-      [`${prefix}__clickable`]: showRightIcon,
-      [`${prefix}__border`]: border,
-      [`${prefix}__middle`]: middle
+      [`${prefix}--clickable`]: showRightIcon,
+      [`${prefix}--border`]: border,
+      [`${prefix}--middle`]: middle
     });
     icon = icon ? <Icon icon={icon} size={iconSize} /> : null;
     title = (
-      <div className={`${prefix}-title`}>
+      <div className={`${prefix}__title`}>
         <span>{title}</span>
-        {!!label && <div className={`${prefix}-label`}>{label}</div>}
+        {!!label && <div className={`${prefix}__label`}>{label}</div>}
       </div>
     );
     const val = !!value ? (
-      <div className={`${prefix}-value`}>
+      <div className={`${prefix}__value`}>
         <span>{value}</span>
       </div>
     ) : null;
@@ -194,10 +194,10 @@ class Cell extends Component<IProps> {
     let Options = null;
     if (swipeList && swipeList.length) {
       Options = (
-        <div className={`${prefix}-swiper`} ref={this.cellSwiper}>
+        <div className={`${prefix}__swiper`} ref={this.cellSwiper}>
           {swipeList.map(item => (
             <span
-              className={`${prefix}-swiper-item`}
+              className={`${prefix}__swiper__item`}
               onClick={item.clickHandler}
               style={item.style}
             >
@@ -212,8 +212,8 @@ class Cell extends Component<IProps> {
     }
     return (
       <div className={cls} {...restProps}>
-        <div className={`${prefix}-wrapper`} ref={this.cellWrapper}>
-          <Tag {...urlProps} className={`${prefix}-main`} ref={this.cellMain}>
+        <div className={`${prefix}__wrapper`} ref={this.cellWrapper}>
+          <Tag {...urlProps} className={`${prefix}__main`} ref={this.cellMain}>
             {icon}
             {title}
             {val}
