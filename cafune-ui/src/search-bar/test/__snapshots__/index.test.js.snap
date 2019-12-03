@@ -1,9 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchBar should render properly 1`] = `
+exports[`SearchBar should render with placeholder 1`] = `
 RenderContext {
   "0": VNode {
-    "attributes": undefined,
+    "attributes": Object {
+      "action": Object {
+        "onClick": [Function],
+        "type": "cancel",
+      },
+      "placeholder": "请输入关键词",
+    },
     "children": Array [],
     "key": undefined,
     "nodeName": [Function],

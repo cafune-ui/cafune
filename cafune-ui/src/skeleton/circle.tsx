@@ -23,6 +23,7 @@ class  Circle extends Component<ICicle> {
     radius: 50
   };
   render({ x, y, radius }, {}, { remRate }) {
+     /* istanbul ignore next */
     if (remRate && remRate > 0) {
       if (pxReg.test(x as string)) x = getRem(x);
       if (pxReg.test(y as string)) y = getRem(y);

@@ -54,6 +54,10 @@ type IProps = {
    */
   prefix?: string;
   /**
+   * 输入内容
+   */
+  value?: string;
+  /**
    * 占位文字
    */
   placeholder?: string;
@@ -85,6 +89,7 @@ type IProps = {
    * 右侧功能按钮
    */
   action?: IAction;
+  
 }
 interface IState {
   focus: boolean;
@@ -108,6 +113,7 @@ class SearchBar extends Component<IProps, IState> {
     };
   }
   componentWillReceiveProps(nextProps) {
+     /* istanbul ignore next */
     if ('value' in nextProps && nextProps.value !== this.state.value) {
       this.setState({
         value: nextProps.value
@@ -119,6 +125,7 @@ class SearchBar extends Component<IProps, IState> {
     this.componentDidUpdate();
   }
   componentDidUpdate() {
+     /* istanbul ignore next */
     if (this.actionRef && this.actionRef.current && isBrowser) {
       let { action } = this.props;
       action = Object.assign({}, actionDefault[action.type], action);
@@ -135,24 +142,29 @@ class SearchBar extends Component<IProps, IState> {
   }
   onBlurTimeout;
   componentWillUnmount() {
+     /* istanbul ignore next */
     if (this.onBlurTimeout && isBrowser) {
       clearNextFrameAction(this.onBlurTimeout);
       this.onBlurTimeout = null;
     }
   }
   clear = () => {
+     /* istanbul ignore next */
     if (!('value' in this.props)) {
       this.setState({ value: '' });
     }
+     /* istanbul ignore next */
     if (this.props.onChange) {
       this.props.onChange('');
     }
   };
-  onChange = e => {
-    const value = e.target.value;
+  onInputChange = (e?) => {
+    const value = e ? e.target.value : '';
+     /* istanbul ignore next */
     if (!('value' in this.props)) {
       this.setState({ value });
     }
+     /* istanbul ignore next */
     if (this.props.onChange) {
       this.props.onChange(value);
     }
@@ -182,6 +194,7 @@ class SearchBar extends Component<IProps, IState> {
   blurFromOnClear: boolean = true;
   onBlur = () => {
     this.onBlurTimeout = onNextFrame(() => {
+       /* istanbul ignore next */
       if (!this.blurFromOnClear && isBrowser) {
         if (document.activeElement !== this.inputRef) {
           this.setState({
@@ -193,6 +206,7 @@ class SearchBar extends Component<IProps, IState> {
     });
   };
   focus = () => {
+     /* istanbul ignore next */
     if (this.inputRef && this.inputRef.current) {
       this.inputRef.current.focus();
     }
@@ -207,12 +221,12 @@ class SearchBar extends Component<IProps, IState> {
       placeholder,
       maxLength,
       action,
-      leftIcon,
-      ...restProps
+      leftIcon
     },
     { value, focus }
   ) {
     let isBtnHide = false;
+     /* istanbul ignore next */
     if (action) {
       action = Object.assign({}, actionDefault[action.type], action);
       isBtnHide = !action.keepShow && !focus;
@@ -221,7 +235,6 @@ class SearchBar extends Component<IProps, IState> {
       <form
         className={cx(prefix, className)}
         onSubmit={this.onConfirm}
-        {...restProps}
       >
         <div className={`${prefix}__input`}>
           <Icon icon={leftIcon} />
@@ -230,7 +243,7 @@ class SearchBar extends Component<IProps, IState> {
             placeholder={placeholder}
             value={value}
             maxLength={maxLength}
-            onChange={this.onChange}
+            onChange={this.onInputChange}
             onFocus={this.onFocus}
             onBlur={this.onBlur}
             ref={this.inputRef}
@@ -249,12 +262,13 @@ class SearchBar extends Component<IProps, IState> {
               size="small"
               icon={action.icon ? { type: action.icon } : {}}
               onClick={() => {
+                /* istanbul ignore next */
                 if (action.type === 'cancel') {
                   this.onCancel();
                 } else if (action.type === 'confirm') {
                   this.onConfirm();
                 }
-                action.onClick();
+                action.onClick && action.onClick();
               }}
             >
               {action.text || ''}

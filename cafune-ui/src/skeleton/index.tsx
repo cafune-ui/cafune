@@ -66,6 +66,7 @@ class Skeleton extends Component<IProps> {
   }) {
     const idClip = uid();
     const idGradient = uid();
+     /* istanbul ignore next */
     if (remRate && remRate > 0) {
       if (pxReg.test(width)) width = getRem(width);
       if (pxReg.test(height)) height = getRem(height);

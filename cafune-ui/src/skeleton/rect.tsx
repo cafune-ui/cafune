@@ -25,24 +25,6 @@ interface IRect {
    */
   height?: string | number;
 }
-// const Rect = ({ x = 0, y = 0, radius = 0, width = 50, height = 50 }: IRect) => {
-//   // const { remRate } = this.context;
-//   // if (remRate && remRate > 0) {
-//   //   if (pxReg.test(x as string)) x = getRem(x);
-//   //   if (pxReg.test(y as string)) y = getRem(y);
-//   //   if (pxReg.test(radius as string)) radius = getRem(radius);
-//   //   if (pxReg.test(width as string)) width = getRem(width);
-//   //   if (pxReg.test(height as string)) height = getRem(height);
-//   // }
-//   return (
-//     <rect x={x} y={y} rx={radius} ry={radius} width={width} height={height} />
-//   );
-// };
-// Rect.defaultProps = {
-//   x: 0,
-//   y: 0,
-//   radius: 50
-// };
 class Rect extends Component<IRect> {
   defaultProps: {
     x: 0;
@@ -52,6 +34,7 @@ class Rect extends Component<IRect> {
     height: 50;
   };
   render({ x, y, radius, width, height }, {}, { remRate }) {
+     /* istanbul ignore next */
     if (remRate && remRate > 0) {
       if (pxReg.test(x as string)) x = getRem(x);
       if (pxReg.test(y as string)) y = getRem(y);
