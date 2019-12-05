@@ -13,7 +13,7 @@ import { ActionSheet } from 'cafune';
 | showMask | 是否显示遮罩 | boolean | `true` | - | ❌ |
 | closeOnClickMask | 是否在点击遮罩后关闭 | boolean | `true` | - | ❌ |
 | horizon | 横向展示的数据 | horizon-options | - | - | ❌ |
-| vertialList | 纵向展示的数据 | Array | - | - | ❌ |
+| vertialList | 纵向展示的数据 | iOption[] | - | - | ❌ |
 | title | 标题栏 | string / VNode / Component / HTMLElement | - | - | ❌ |
 | cancelText | 取消按钮文字 | string | `'取消'` | - | ❌ |
 | confirmText | 确认按钮文字 | string | `'确定'` | - | ❌ |
@@ -27,5 +27,5 @@ import { ActionSheet } from 'cafune';
  ### horizon-options 说明
 | 参数 | 说明 | 类型 | 备选项 | 是否必须 |
 | --- | --- | --- | --- | --- |
-| list | - | Array} | - | ✅  |
+| list | - | iOption[]} | - | ✅  |
 | wrap | - | boolean} | - | ✅  |

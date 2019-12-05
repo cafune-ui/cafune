@@ -17,7 +17,7 @@ import { Cell } from 'cafune';
 | url | 单元链接，如果有的话将会出现右侧箭头并开启点击 | string | - | - | ❌ |
 | rightIcon | 右侧图标 | string | - | - | ❌ |
 | middle | 是否垂直居中 | boolean | - | - | ❌ |
-| swipeList | 右滑菜单 | Array | `[]` | - | ❌ |
+| swipeList | 右滑菜单 | ISwiperList[] | `[]` | - | ❌ |
 
 ### CellGroup 配置项
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |

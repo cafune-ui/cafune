@@ -9,5 +9,5 @@ import { ActionBar } from 'cafune';
 | 参数 | 说明 | 类型 | 默认值 |备选值 | 是否必须 |
 | --- | --- | --- | --- | --- | --- |
 | desc | 左侧描述内容 | any | - | - | ✅  |
-| btns | 按钮内容 | Array | - | - | ✅  |
+| btns | 按钮内容 | IButtonProps[] | - | - | ✅  |
 | additionMsg | 附加信息 | any | - | - | ❌ |

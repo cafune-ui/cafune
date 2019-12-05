@@ -1,9 +1,7 @@
 import { Component, h } from 'preact';
 import cx from 'classnames';
 import { setPadding } from '../util/isomorphic';
-import Button from '../button';
-import { IProps as CafButtonInt } from '../button';
-
+import Button, { IButtonProps }  from '../button';
 interface IProps {
   /**
    * 左侧描述内容
@@ -12,7 +10,7 @@ interface IProps {
   /**
    * 按钮内容
    */
-  btns: CafButtonInt[];
+  btns: IButtonProps[];
   /**
    * 附加信息
    */

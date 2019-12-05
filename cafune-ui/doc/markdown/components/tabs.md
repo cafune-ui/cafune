@@ -22,7 +22,7 @@ import { Tabs } from 'cafune';
 | --- | --- | --- | --- | --- | --- |
 | prefix | 自定义前缀 | string | `'caf-tabs__nav'` | - | ❌ |
 | className | 自定义类名 | string | - | - | ❌ |
-| tabsData | 当前激活id | Array | - | - | ❌ |
+| tabsData | 当前激活id | tabsItem[] | - | - | ❌ |
 | type | 组件类型 | string | `'slider'` | `'slider'`,`'contrast'`,`'card'` | ❌ |
 | onChange | 切换tab时回调 | (id) => void | - | - | ❌ |
 | navClass | 自定义标签栏类名 | string | - | - | ❌ |

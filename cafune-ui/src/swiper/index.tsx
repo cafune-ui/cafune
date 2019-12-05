@@ -3,9 +3,6 @@ import cx from 'classnames';
 import Item from './item';
 import { touchEventMap, getTouch } from '../util/event';
 import { isBrowser } from '../util/isomorphic';
-// function checkIfIndicaotr(el) {
-//   return el.nodeName.displayName === 'SwiperIndicator';
-// }
 function checkIfItem(el) {
   return el.nodeName.displayName === 'swiperItem';
 }
@@ -84,6 +81,7 @@ class Swiper extends Component<IProps> {
   getSwiperData(children) {
     const data = [];
     children.forEach((item, ind) => {
+      /* istanbul ignore next */
       if (item && checkIfItem(item)) {
         const props = item.attributes;
         const { className, onItemClick } = props;
@@ -105,6 +103,7 @@ class Swiper extends Component<IProps> {
   resize = () => {
     const { slideWidth } = this.props;
     const container = this.swiperContainer.current;
+    /* istanbul ignore next */
     if (container) {
       const size = container.getBoundingClientRect();
       if (slideWidth < 1) {
@@ -120,6 +119,7 @@ class Swiper extends Component<IProps> {
     }
   };
   componentDidMount() {
+    /* istanbul ignore next */
     if (isBrowser) {
       this.resize();
       window.addEventListener('resize', this.resize);
@@ -136,10 +136,12 @@ class Swiper extends Component<IProps> {
     }
   }
   clearAutoPlay() {
+    /* istanbul ignore next */
     this.autoPlayTimer && clearTimeout(this.autoPlayTimer);
   }
   autoPlay() {
     const { autoplay, intervel, infinite } = this.props;
+    /* istanbul ignore next */
     if (autoplay && this.swiperData.length > 1) {
       this.clearAutoPlay();
       this.autoPlayTimer = setTimeout(() => {
@@ -161,6 +163,7 @@ class Swiper extends Component<IProps> {
     }
   }
   componentWillUnmount() {
+    /* istanbul ignore next */
     if (isBrowser) {
       this.clearAutoPlay();
       const rect = this.swiperList.current;
@@ -185,6 +188,7 @@ class Swiper extends Component<IProps> {
     silence?: boolean;
   }) {
     this.clearAutoPlay();
+    /* istanbul ignore next */
     if (this.swiperList && this.swiperList.current) {
       const $swiper = this.swiperList.current;
       if (ind !== undefined) {
@@ -231,6 +235,7 @@ class Swiper extends Component<IProps> {
   direction;
   startTimeStamp: number;
   onSwiperClick = e => {
+    /* istanbul ignore next */
     if (this.offsetX > 0) {
       e.preventDefault();
       e.stopPropagation();
@@ -245,6 +250,7 @@ class Swiper extends Component<IProps> {
     this.startX = touch.clientX;
   };
   startMoving = e => {
+    /* istanbul ignore next */
     if (!this.isSwiping) return;
     const touch = getTouch(e);
     const deltaX = touch.clientX - this.startX;
@@ -255,6 +261,7 @@ class Swiper extends Component<IProps> {
     this.moveTo({
       offset: `${this.state.current * this.size * -1 + deltaX}px`
     });
+    /* istanbul ignore next */
     if (deltaX !== 0 && this.props.infinite) {
       const next =
         this.state.current === 0 && deltaX > 0
@@ -269,6 +276,7 @@ class Swiper extends Component<IProps> {
     }
   };
   endMoving = () => {
+    /* istanbul ignore next */
     if (!this.isSwiping) return;
     this.isSwiping = false;
 
@@ -303,11 +311,13 @@ class Swiper extends Component<IProps> {
       : null;
   }
   renderItems(data) {
+    /* istanbul ignore next */
     if (data && data.length) {
       return data.map((item, ind) => {
         let style = {
           width: `${this.size}px`
         };
+        /* istanbul ignore next */
         if (this.state.next === ind) {
           // @ts-ignore
           style.transform = `translate3d(${(ind === 0 ? 1 : -1) *
@@ -341,6 +351,7 @@ class Swiper extends Component<IProps> {
       customIndicator,
       ...restProps
     } = this.props;
+    /* istanbul ignore next */
     if (children && (children as preact.ComponentChild[]).length) {
       const swiperData = this.getSwiperData(children);
       this.swiperData = swiperData;
@@ -366,9 +377,8 @@ class Swiper extends Component<IProps> {
               )}
         </div>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 }
 export default Swiper;

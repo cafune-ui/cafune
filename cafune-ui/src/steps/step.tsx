@@ -5,6 +5,7 @@ const defaultIconMap = (prefix, status, isDecimal, ind) => {
   if (isDecimal) {
     return <span className={`${prefix}__icon__decimal`}>{ind}</span>;
   } else {
+    /* istanbul ignore next */
     if (status === 'finish') {
       return (
         <span className={`${prefix}__icon__container`}>
@@ -12,6 +13,7 @@ const defaultIconMap = (prefix, status, isDecimal, ind) => {
         </span>
       );
     }
+    /* istanbul ignore next */
     if (status === 'failed') {
       return (
         <span className={`${prefix}__icon__container`}>

@@ -28,32 +28,6 @@ export default class SwiperComp extends Component {
             </SwiperItem>
           ))}
         </Swiper>
-        {/* <p class="caf-demo-title">透明度切换</p>
-        <Swiper
-          type="fade"
-          initialIndex={0}
-          showIndicators={true}
-          autoplay={true}
-        >
-          {Array(...Array(sliderNum)).map((_, ind) => (
-            <SwiperItem key={ind}>
-              <div class="swiper-block">{ind + 1}</div>
-            </SwiperItem>
-          ))}
-        </Swiper>
-        <p class="caf-demo-title">洗牌</p>
-        <Swiper
-          type="shuffle"
-          initialIndex={0}
-          showIndicators={true}
-          autoplay={true}
-        >
-          {Array(...Array(sliderNum)).map((_, ind) => (
-            <SwiperItem key={ind}>
-              <div class="swiper-block">{ind + 1}</div>
-            </SwiperItem>
-          ))}
-        </Swiper> */}
         <p class="caf-demo-title">自定义</p>
         <Swiper
           slideWidth={280}

@@ -46,6 +46,9 @@ function getTypeName(type, required) {
         typeName = 'string';
       backupOption = shape.map(ele => ele.value);
       break;
+    case 'Array':
+      typeName = type.raw;
+      break;
     case 'union':
       typeName = shape.map(item => {
         if (item.name === 'enum') {

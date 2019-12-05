@@ -5,15 +5,29 @@ RenderContext {
   "0": VNode {
     "attributes": Object {
       "customIndicator": VNode {
-        "attributes": Object {
-          "style": "padding: 4px 10px;position: absolute;right: 10px;bottom:10px;background: rgba(0,0,0, .6);color: #fff;font-size:12px;",
-        },
+        "attributes": undefined,
         "children": Array [
           "2/4",
         ],
         "key": undefined,
         "nodeName": "div",
       },
+      "duration": 200,
+      "intervel": 500,
+      "onChange": [MockFunction] {
+        "calls": Array [
+          Array [
+            0,
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
+      "slideWidth": 280,
     },
     "children": Array [
       VNode {
@@ -60,13 +74,6 @@ RenderContext {
     "key": undefined,
     "nodeName": [Function],
   },
-  "length": 1,
-}
-`;
-
-exports[`<Swiper /> should render a customIndicator 2`] = `
-RenderContext {
-  "0": null,
   "length": 1,
 }
 `;

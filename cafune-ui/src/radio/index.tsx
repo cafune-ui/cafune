@@ -69,6 +69,7 @@ class Radio extends Component<IProps, {}> {
     const { children, value } = this.props;
     const data = this.getData(children, value);
     let result = [];
+    /* istanbul ignore next  */
     if (data && data.length) {
       result = data.map(item => <RadioItem key={item.value} {...item} />);
     }

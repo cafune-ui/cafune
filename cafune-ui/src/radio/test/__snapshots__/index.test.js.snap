@@ -3,10 +3,107 @@
 exports[`Radio should render properly 1`] = `
 RenderContext {
   "0": VNode {
-    "attributes": undefined,
-    "children": Array [],
+    "attributes": Object {
+      "checkedColor": "#e27777",
+      "labelPosition": "right",
+      "onChange": [MockFunction],
+      "value": "option1",
+    },
+    "children": Array [
+      VNode {
+        "attributes": Object {
+          "disabled": true,
+          "key": "option2",
+          "value": "option2",
+        },
+        "children": Array [
+          "选项2",
+        ],
+        "key": "option2",
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "disabled": undefined,
+          "key": "option1",
+          "value": "option1",
+        },
+        "children": Array [
+          "选项1",
+        ],
+        "key": "option1",
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "disabled": undefined,
+          "key": "option3",
+          "value": "option3",
+        },
+        "children": Array [
+          "选项3",
+        ],
+        "key": "option3",
+        "nodeName": [Function],
+      },
+    ],
     "key": undefined,
     "nodeName": [Function],
+  },
+  "length": 1,
+}
+`;
+
+exports[`Radio should render single 1`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": undefined,
+    "children": Array [
+      VNode {
+        "attributes": Object {
+          "checked": false,
+          "disabled": true,
+          "key": "option2",
+          "onChange": [MockFunction],
+          "value": "option2",
+        },
+        "children": Array [
+          "选项2",
+        ],
+        "key": "option2",
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "checked": true,
+          "disabled": undefined,
+          "key": "option1",
+          "onChange": [MockFunction],
+          "value": "option1",
+        },
+        "children": Array [
+          "选项1",
+        ],
+        "key": "option1",
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "checked": false,
+          "disabled": undefined,
+          "key": "option3",
+          "onChange": [MockFunction],
+          "value": "option3",
+        },
+        "children": Array [
+          "选项3",
+        ],
+        "key": "option3",
+        "nodeName": [Function],
+      },
+    ],
+    "key": undefined,
+    "nodeName": "div",
   },
   "length": 1,
 }

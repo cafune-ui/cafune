@@ -41,6 +41,7 @@ class RadioItem extends Component<IProps, {}> {
   };
   onItemClick = () => {
     const { value, disabled, checked, onChange } = this.props;
+    /* istanbul ignore next  */
     if (!checked && !disabled && onChange) {
       onChange(value);
     }
@@ -67,7 +68,10 @@ class RadioItem extends Component<IProps, {}> {
         {...restProps}
       >
         <div className={`${prefix}__content`}>{children}</div>
-        <div className={`${prefix}__icon`} style={{ color: checkedColor, backgroundColor: checkedColor }}>
+        <div
+          className={`${prefix}__icon`}
+          style={{ color: checkedColor, backgroundColor: checkedColor }}
+        >
           <div className={`${prefix}__icon__indicator`}></div>
         </div>
       </div>

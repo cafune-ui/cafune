@@ -59,7 +59,7 @@ type IGradient = {
    */
   shadow?: string;
 }
-export interface IProps {
+export interface IButtonProps {
   /**
    * 自定义前缀
    */
@@ -124,7 +124,7 @@ export interface IProps {
 /**
  * 按钮
  */
-class Button extends Component<IProps> {
+class Button extends Component<IButtonProps> {
   static defaultProps = {
     prefix: 'caf-btn',
     size: 'normal',

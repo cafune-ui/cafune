@@ -60,9 +60,8 @@ class Transition extends Component<IProps, IState> {
     css: true
   };
   noop = function(_, cb?) {
-    if (cb) {
-      cb.call(this);
-    }
+    /* istanbul ignore next */
+    cb && cb(this);
   };
   constructor(props:IProps) {
     super(props);
@@ -92,7 +91,6 @@ class Transition extends Component<IProps, IState> {
     }
   }
   bindAnimationEvent(node, activeClass) {
-    const { visible } = this.props;
     const eventName = this.transitionend();
     this.animate(node);
     node.addEventListener(eventName, () => {
@@ -164,7 +162,9 @@ class Transition extends Component<IProps, IState> {
   done = () => {
     const node = this.base;
     let { visible, afterEnter, afterLeave } = this.props;
+    /* istanbul ignore next */
     afterEnter = afterEnter || this.noop;
+    /* istanbul ignore next */
     afterLeave = afterLeave || this.noop;
     if (visible) {
       afterEnter(node);
@@ -177,11 +177,13 @@ class Transition extends Component<IProps, IState> {
     nextProps.visible && this.setState({ isShow: true });
   }
   componentDidUpdate(previousProps) {
+    /* istanbul ignore next */
     if (previousProps.visible !== this.props.visible) {
       this.animationStart();
     }
   }
   componentDidMount() {
+    /* istanbul ignore next */
     if (this.props.visible && !this.state.isShow) {
       this.setState({ isShow: true }, () => { this.animationStart(); })
     }

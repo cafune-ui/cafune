@@ -1,5 +1,6 @@
 import { Component, h } from 'preact';
 import cx from 'classnames';
+
 interface IProps {
   /**
    * 自定义类名
@@ -16,29 +17,34 @@ interface IProps {
   /**
    * 自定义元素标签
    */
-  tag?: string;
+  Tag?: string;
 }
+
 /**
  * 布局
  */
-class Item extends Component {
+class Item extends Component<IProps> {
   static displayName = 'LayoutItem';
   static defaultProps = {
     prefix: 'caf-layout-item',
-    tag: 'div'
+    Tag: 'div'
   };
   render(
-    { className, tag, offset, col, prefix, children, ...restProps },
+    { className, Tag, offset, col, prefix, children, ...restProps },
     {},
     { gutter }
   ) {
-    const Tag = tag;
-    let sty = {};
+    let sty;
+    /* istanbul ignore next */
     if (gutter) {
       let pad;
+      /* istanbul ignore next */
       if (typeof gutter === 'string') {
         const matches = gutter.match(/(\d+)(\w+$)?/);
-        if (matches) pad = `${Number(matches[1]) / 2}${matches[2] || 'px'}`;
+        /* istanbul ignore next */
+        if (matches) {
+          pad = `${Number(matches[1]) / 2}${matches[2] || 'px'}`;
+        }
       } else {
         pad = `${Number(gutter) / 2}px`;
       }
@@ -50,7 +56,7 @@ class Item extends Component {
           [`${prefix}__${col}`]: !!col,
           [`${prefix}__offset_${offset}`]: !!offset
         })}
-        style={sty}
+        style={sty || {}}
         {...restProps}
       >
         {children}

@@ -10,7 +10,9 @@ export default class LayoutComp extends Component {
         <div class="caf-demo-block">
           <p class="caf-demo-title">正常使用</p>
           <Layout>
-            <Item col="3">col: 3</Item>
+            <Item Tag="li" col="3">
+              col: 3
+            </Item>
             <Item col="7" offset="2">
               col: 7, offset: 3
             </Item>

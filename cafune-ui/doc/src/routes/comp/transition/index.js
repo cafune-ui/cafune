@@ -34,14 +34,14 @@ export default class TransitionComp extends Component {
     console.log('beforeLeave', el);
   }
   leave(el, done) {
-    alert('leave', el);
+    console.log('leave', el);
     setTimeout(() => {
       console.log('done');
       done();
     }, 1000);
   }
   afterLeave(el) {
-    alert('afterLeave', el);
+    console.log('afterLeave', el);
   }
 
   render({}, { visible1, visible2 }) {
