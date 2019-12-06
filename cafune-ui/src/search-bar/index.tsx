@@ -160,11 +160,9 @@ class SearchBar extends Component<IProps, IState> {
   };
   onInputChange = (e?) => {
     const value = e ? e.target.value : '';
-     /* istanbul ignore next */
     if (!('value' in this.props)) {
       this.setState({ value });
     }
-     /* istanbul ignore next */
     if (this.props.onChange) {
       this.props.onChange(value);
     }
@@ -172,6 +170,7 @@ class SearchBar extends Component<IProps, IState> {
   onConfirm = (e?) => {
     e && e.preventDefault();
     let val;
+     /* istanbul ignore next */
     if (this.inputRef && this.inputRef.current) {
       val = this.inputRef.current.value;
     } else {

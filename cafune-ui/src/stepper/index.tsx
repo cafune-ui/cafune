@@ -91,11 +91,8 @@ class Stepper extends Component<IProps> {
     if (tarVal != +tarVal) {
       final = value;
     } else {
-      /* istanbul ignore next */
       if (+tarVal > max) final = max;
-      /* istanbul ignore next */
       if (+tarVal < min) final = min;
-      /* istanbul ignore next */
       if (integerOnly && +tarVal % 1 !== 0) final = Math.round(tarVal);
     }
     /* istanbul ignore next */

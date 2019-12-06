@@ -71,6 +71,7 @@ export default class TabBarItem extends Component<IProps> {
       ? { color: activedColor || this.context.activedColor || '' }
       : { color: inactivedColor || this.context.inactivedColor || '' };
     const containerStyle:any = {};
+     /* istanbul ignore next */
     if (type === 'bubble' && isActived && !!activedBgColor) {
       containerStyle.backgroundColor = activedBgColor;
     }

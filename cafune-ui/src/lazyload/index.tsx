@@ -18,6 +18,7 @@ class Lazyload extends Component<IProps> {
   };
   container;
   componentDidMount() {
+    /* istanbul ignore next  */
     if (isBrowser) {
       const container = this.lazyContainer.current;
       this.container = container;
@@ -30,6 +31,7 @@ class Lazyload extends Component<IProps> {
     this.updateImgs();
   }
   updateImgs() {
+    /* istanbul ignore next  */
     if (this.container && isBrowser) {
       const imgsInfo = [];
       // eslint-disable-next-line prettier/prettier
@@ -49,6 +51,7 @@ class Lazyload extends Component<IProps> {
     }
   }
   componentWillUnmount() {
+    /* istanbul ignore next  */
     if (isBrowser) window.removeEventListener('scroll', this.onScroll);
   }
   updateLazy() {

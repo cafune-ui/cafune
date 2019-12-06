@@ -109,6 +109,7 @@ class Transition extends Component<IProps, IState> {
     };
 
     for (t in transitions) {
+      /* istanbul ignore next */
       if (el.style[t] !== undefined) {
         return transitions[t];
       }
@@ -120,10 +121,10 @@ class Transition extends Component<IProps, IState> {
   }
   animate(node, done = false) {
     let { visible, beforeEnter, enter, beforeLeave, leave, css, name } = this.props;
-    beforeEnter = beforeEnter || this.noop;
-    enter = enter || this.noop;
-    beforeLeave = beforeLeave || this.noop;
-    leave = leave || this.noop;
+    beforeEnter = beforeEnter || /* istanbul ignore next */ this.noop;
+    enter = enter /* istanbul ignore next */ || this.noop;
+    beforeLeave = beforeLeave || /* istanbul ignore next */ this.noop;
+    leave = leave /* istanbul ignore next */ || this.noop;
     if (visible) {
       beforeEnter(node);
       if (!(!!name && css)) {
@@ -159,13 +160,12 @@ class Transition extends Component<IProps, IState> {
     }
     
   }
-  done = () => {
+  done() {
     const node = this.base;
     let { visible, afterEnter, afterLeave } = this.props;
-    /* istanbul ignore next */
-    afterEnter = afterEnter || this.noop;
-    /* istanbul ignore next */
-    afterLeave = afterLeave || this.noop;
+    
+    afterEnter = afterEnter || /* istanbul ignore next */ this.noop;
+    afterLeave = afterLeave || /* istanbul ignore next */ this.noop;
     if (visible) {
       afterEnter(node);
     } else {
@@ -174,6 +174,7 @@ class Transition extends Component<IProps, IState> {
     }
   }
   componentWillReceiveProps(nextProps) {
+    /* istanbul ignore next */
     nextProps.visible && this.setState({ isShow: true });
   }
   componentDidUpdate(previousProps) {

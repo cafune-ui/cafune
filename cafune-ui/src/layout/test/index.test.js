@@ -18,18 +18,35 @@ describe('Layout', () => {
   });
 
   it('should render properly', () => {
-    const wrapper = shallow(
-      <Layout gutter="20">
-        <Item tag="li">col: 8, gutter: 20</Item>
-        <Item tag="li">col: 8, gutter: 20</Item>
-        <Item tag="li">col: 8, gutter: 20</Item>
-      </Layout>
+    const wrapper = deep(
+      <div>
+        <Layout gutter="20">
+          <Item tag="li">col: 8, gutter: 20</Item>
+          <Item tag="li">col: 8, gutter: 20</Item>
+          <Item tag="li">col: 8, gutter: 20</Item>
+        </Layout>
+        <Layout gutter="20rem">
+          <Item tag="li">col: 8, gutter: 20</Item>
+          <Item tag="li">col: 8, gutter: 20</Item>
+          <Item tag="li">col: 8, gutter: 20</Item>
+        </Layout>
+        <Layout gutter="rem">
+          <Item tag="li">col: 8, gutter: 20</Item>
+          <Item tag="li">col: 8, gutter: 20</Item>
+          <Item tag="li">col: 8, gutter: 20</Item>
+        </Layout>
+        <Layout gutter={20}>
+          <Item tag="li">col: 8, gutter: 20</Item>
+          <Item tag="li">col: 8, gutter: 20</Item>
+          <Item tag="li">col: 8, gutter: 20</Item>
+        </Layout>
+      </div>
     );
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render properly', () => {
-    const wrapper = shallow(
+    const wrapper = deep(
       <div>
         <Layout direction="row">
           <Item col="3">col: 3</Item>
@@ -57,7 +74,7 @@ describe('Layout', () => {
   });
 
   it('should render properly', () => {
-    const wrapper = shallow(
+    const wrapper = deep(
       <div>
         <Layout wrap="nowrap">
           <Item col="8">col: 8</Item>

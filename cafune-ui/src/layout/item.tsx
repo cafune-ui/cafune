@@ -23,7 +23,7 @@ interface IProps {
 /**
  * 布局
  */
-class Item extends Component<IProps> {
+export default class Item extends Component<IProps> {
   static displayName = 'LayoutItem';
   static defaultProps = {
     prefix: 'caf-layout-item',
@@ -35,13 +35,10 @@ class Item extends Component<IProps> {
     { gutter }
   ) {
     let sty;
-    /* istanbul ignore next */
     if (gutter) {
       let pad;
-      /* istanbul ignore next */
       if (typeof gutter === 'string') {
         const matches = gutter.match(/(\d+)(\w+$)?/);
-        /* istanbul ignore next */
         if (matches) {
           pad = `${Number(matches[1]) / 2}${matches[2] || 'px'}`;
         }
@@ -64,4 +61,3 @@ class Item extends Component<IProps> {
     );
   }
 }
-export default Item;

@@ -5,6 +5,9 @@ RenderContext {
   "0": VNode {
     "attributes": Object {
       "direction": "vertical",
+      "icons": Object {
+        "error": "notice",
+      },
       "step": 2,
     },
     "children": Array [
@@ -20,12 +23,7 @@ RenderContext {
       },
       VNode {
         "attributes": Object {
-          "icons": Object {
-            "finish": "notice",
-            "pend": "search",
-          },
           "key": 1,
-          "status": "error",
           "title": "Step 2",
         },
         "children": Array [],
@@ -34,13 +32,8 @@ RenderContext {
       },
       VNode {
         "attributes": Object {
-          "desc": "now is the step 3",
-          "icon": Object {
-            "error": "search",
-            "process": "notice",
-          },
           "key": 2,
-          "title": "Step 3",
+          "title": "Step 2",
         },
         "children": Array [],
         "key": 2,
@@ -58,12 +51,21 @@ RenderContext {
       },
       VNode {
         "attributes": Object {
+          "icons": Object {},
           "key": 4,
           "title": "Step 5",
         },
         "children": Array [],
         "key": 4,
         "nodeName": [Function],
+      },
+      VNode {
+        "attributes": undefined,
+        "children": Array [
+          "errpr",
+        ],
+        "key": undefined,
+        "nodeName": "div",
       },
     ],
     "key": undefined,
@@ -94,10 +96,17 @@ RenderContext {
         "attributes": Object {
           "icons": Object {
             "finish": "notice",
-            "pend": "search",
+            "pend": VNode {
+              "attributes": undefined,
+              "children": Array [
+                "test",
+              ],
+              "key": undefined,
+              "nodeName": "div",
+            },
           },
           "key": 1,
-          "status": "error",
+          "status": "pend",
           "title": "Step 2",
         },
         "children": Array [],
@@ -107,11 +116,12 @@ RenderContext {
       VNode {
         "attributes": Object {
           "desc": "now is the step 3",
-          "icon": Object {
+          "icons": Object {
             "error": "search",
             "process": "notice",
           },
           "key": 2,
+          "status": "error",
           "title": "Step 3",
         },
         "children": Array [],
@@ -130,6 +140,7 @@ RenderContext {
       },
       VNode {
         "attributes": Object {
+          "icons": Object {},
           "key": 4,
           "title": "Step 5",
         },
@@ -167,10 +178,17 @@ RenderContext {
         "attributes": Object {
           "icons": Object {
             "finish": "notice",
-            "pend": "search",
+            "pend": VNode {
+              "attributes": undefined,
+              "children": Array [
+                "test",
+              ],
+              "key": undefined,
+              "nodeName": "div",
+            },
           },
           "key": 1,
-          "status": "error",
+          "status": "pend",
           "title": "Step 2",
         },
         "children": Array [],
@@ -180,11 +198,12 @@ RenderContext {
       VNode {
         "attributes": Object {
           "desc": "now is the step 3",
-          "icon": Object {
+          "icons": Object {
             "error": "search",
             "process": "notice",
           },
           "key": 2,
+          "status": "error",
           "title": "Step 3",
         },
         "children": Array [],
@@ -203,6 +222,7 @@ RenderContext {
       },
       VNode {
         "attributes": Object {
+          "icons": Object {},
           "key": 4,
           "title": "Step 5",
         },

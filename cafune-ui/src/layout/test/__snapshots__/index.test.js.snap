@@ -47,43 +47,167 @@ RenderContext {
 exports[`Layout should render properly 2`] = `
 RenderContext {
   "0": VNode {
-    "attributes": Object {
-      "gutter": "20",
-    },
+    "attributes": undefined,
     "children": Array [
       VNode {
         "attributes": Object {
-          "tag": "li",
+          "gutter": "20",
         },
         "children": Array [
-          "col: 8, gutter: 20",
+          VNode {
+            "attributes": Object {
+              "tag": "li",
+            },
+            "children": Array [
+              "col: 8, gutter: 20",
+            ],
+            "key": undefined,
+            "nodeName": [Function],
+          },
+          VNode {
+            "attributes": Object {
+              "tag": "li",
+            },
+            "children": Array [
+              "col: 8, gutter: 20",
+            ],
+            "key": undefined,
+            "nodeName": [Function],
+          },
+          VNode {
+            "attributes": Object {
+              "tag": "li",
+            },
+            "children": Array [
+              "col: 8, gutter: 20",
+            ],
+            "key": undefined,
+            "nodeName": [Function],
+          },
         ],
         "key": undefined,
         "nodeName": [Function],
       },
       VNode {
         "attributes": Object {
-          "tag": "li",
+          "gutter": "20rem",
         },
         "children": Array [
-          "col: 8, gutter: 20",
+          VNode {
+            "attributes": Object {
+              "tag": "li",
+            },
+            "children": Array [
+              "col: 8, gutter: 20",
+            ],
+            "key": undefined,
+            "nodeName": [Function],
+          },
+          VNode {
+            "attributes": Object {
+              "tag": "li",
+            },
+            "children": Array [
+              "col: 8, gutter: 20",
+            ],
+            "key": undefined,
+            "nodeName": [Function],
+          },
+          VNode {
+            "attributes": Object {
+              "tag": "li",
+            },
+            "children": Array [
+              "col: 8, gutter: 20",
+            ],
+            "key": undefined,
+            "nodeName": [Function],
+          },
         ],
         "key": undefined,
         "nodeName": [Function],
       },
       VNode {
         "attributes": Object {
-          "tag": "li",
+          "gutter": "rem",
         },
         "children": Array [
-          "col: 8, gutter: 20",
+          VNode {
+            "attributes": Object {
+              "tag": "li",
+            },
+            "children": Array [
+              "col: 8, gutter: 20",
+            ],
+            "key": undefined,
+            "nodeName": [Function],
+          },
+          VNode {
+            "attributes": Object {
+              "tag": "li",
+            },
+            "children": Array [
+              "col: 8, gutter: 20",
+            ],
+            "key": undefined,
+            "nodeName": [Function],
+          },
+          VNode {
+            "attributes": Object {
+              "tag": "li",
+            },
+            "children": Array [
+              "col: 8, gutter: 20",
+            ],
+            "key": undefined,
+            "nodeName": [Function],
+          },
+        ],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "gutter": 20,
+        },
+        "children": Array [
+          VNode {
+            "attributes": Object {
+              "tag": "li",
+            },
+            "children": Array [
+              "col: 8, gutter: 20",
+            ],
+            "key": undefined,
+            "nodeName": [Function],
+          },
+          VNode {
+            "attributes": Object {
+              "tag": "li",
+            },
+            "children": Array [
+              "col: 8, gutter: 20",
+            ],
+            "key": undefined,
+            "nodeName": [Function],
+          },
+          VNode {
+            "attributes": Object {
+              "tag": "li",
+            },
+            "children": Array [
+              "col: 8, gutter: 20",
+            ],
+            "key": undefined,
+            "nodeName": [Function],
+          },
         ],
         "key": undefined,
         "nodeName": [Function],
       },
     ],
     "key": undefined,
-    "nodeName": [Function],
+    "nodeName": "div",
   },
   "length": 1,
 }

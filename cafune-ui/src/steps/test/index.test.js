@@ -7,16 +7,29 @@ const stepsArr = [
   { title: 'Step 1', desc: 'this is the step 1' },
   {
     title: 'Step 2',
-    icons: { pend: 'search', finish: 'notice' },
-    status: 'error'
+    icons: { pend: <div>test</div>, finish: 'notice' },
+    status: 'pend'
   },
   {
     title: 'Step 3',
-    icon: { error: 'search', process: 'notice' },
-    desc: 'now is the step 3'
+    icons: { error: 'search', process: 'notice' },
+    desc: 'now is the step 3',
+    status: 'error'
   },
   { title: 'Step 4', desc: 'this is the step 4' },
-  { title: 'Step 5' }
+  { title: 'Step 5', icons: {} }
+];
+
+const stepsArr2 = [
+  { title: 'Step 1', desc: 'this is the step 1' },
+  {
+    title: 'Step 2'
+  },
+  {
+    title: 'Step 2'
+  },
+  { title: 'Step 4', desc: 'this is the step 4' },
+  { title: 'Step 5', icons: {} }
 ];
 
 describe('Steps', () => {
@@ -42,10 +55,11 @@ describe('Steps', () => {
   });
   it('should render in vertical', () => {
     const wrapper = deep(
-      <Steps step={2} direction="vertical">
-        {stepsArr.map((item, ind) => (
+      <Steps step={2} direction="vertical" icons={{ error: 'notice' }}>
+        {stepsArr2.map((item, ind) => (
           <Step {...item} key={ind} />
         ))}
+        <div>errpr</div>
       </Steps>
     );
     expect(wrapper).toMatchSnapshot();

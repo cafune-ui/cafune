@@ -4,17 +4,22 @@ import { shallow, deep } from 'preact-render-spy';
 
 describe('SearchBar', () => {
   it('should render with placeholder', () => {
-    const wrapper = shallow(
+    const clickFn = jest.fn();
+    const wrapper = deep(
       <SearchBar
         placeholder="请输入关键词"
         action={{
           type: 'cancel',
-          onClick() {
-            console.log('action cancel');
-          }
+          onClick: clickFn
         }}
       />
     );
+    const inputRef = wrapper.component(); 
+    jest.spyOn(inputRef, "focus");
+    expect(wrapper).toMatchSnapshot();
+    
+    wrapper.find('Button').simulate('click');
+    expect(clickFn).toHaveBeenCalled();
     expect(wrapper).toMatchSnapshot();
   });
   it('should render with input event', () => {

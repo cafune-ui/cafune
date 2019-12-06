@@ -6,31 +6,31 @@ interface IProps {
   /**
    * 开关开启状态
    */
-  isActived?: boolean,
+  isActived?: boolean;
   /**
    * 是否处于加载状态
    */
-  isLoading?: boolean,
+  isLoading?: boolean;
   /**
    * 是否处于禁用状态
    */
-  isDisabled?: boolean,
+  isDisabled?: boolean;
   /**
    * 自定义尺寸
    */
-  size?: string,
+  size?: string;
   /**
    * 开启时背景颜色
    */
-  activedColor?: string,
+  activedColor?: string;
   /**
    * 关闭时背景颜色
    */
-  inActivedColor?: string,
+  inActivedColor?: string;
   /**
    * 状态切换时回调
    */
-  onChange?: (isActived:boolean) => void
+  onChange?: (isActived: boolean) => void;
 }
 /**
  * 开关
@@ -59,14 +59,14 @@ class Switch extends Component<IProps> {
     inActivedColor,
     ...restProps
   }) {
-    const switchStyle:any = {};
+    const switchStyle: any = {};
     if (size) switchStyle.fontSize = size;
     let activeColor = isActived ? '#3f77f6' : '#ccc';
+    /* istanbul ignore next */
     if (activedColor || inActivedColor) {
-      activeColor = isActived ? activedColor : inActivedColor;
-      switchStyle.backgroundColor = activeColor;
+      switchStyle.backgroundColor = isActived ? activedColor : inActivedColor;
     }
-      
+
     return (
       <div
         className={cx(prefix, className, {
@@ -78,7 +78,7 @@ class Switch extends Component<IProps> {
         {...restProps}
       >
         <div className={`${prefix}__circle`}>
-          { isLoading && <Loading size="16px" color={activeColor} /> }
+          {isLoading && <Loading size="16px" color={activeColor} />}
         </div>
       </div>
     );

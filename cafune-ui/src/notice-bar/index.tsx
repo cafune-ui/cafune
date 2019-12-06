@@ -90,6 +90,7 @@ class NoticeBar extends Component<IProps> {
     }
   }
   onAnimationEnd = () => {
+    /* istanbul ignore next */
     this.setState(
       {
         isFirst: false
@@ -105,6 +106,7 @@ class NoticeBar extends Component<IProps> {
   calcInfo() {
     let { wrap, content } = this;
     const { scrollable, speed } = this.props;
+    /* istanbul ignore next */
     if (!wrap.current || !content.current || !isBrowser) {
       return;
     }
@@ -112,6 +114,7 @@ class NoticeBar extends Component<IProps> {
     const $content: HTMLElement = content.current;
     const wrapWidth = $wrap.getBoundingClientRect().width;
     const offsetWidth = $content.getBoundingClientRect().width;
+    /* istanbul ignore next */
     if (scrollable && offsetWidth > wrapWidth) {
       this.setState({
         isOverflow: true,
@@ -161,8 +164,8 @@ class NoticeBar extends Component<IProps> {
     let contentStyle = {};
     if (!wrapable && isOverflow) {
       contentStyle = {
-        paddingLeft: isFirst ? 0 : wrapWidth + 'px',
-        animationDelay: (isFirst ? delay : 0) + 's',
+        paddingLeft: /* istanbul ignore next */isFirst ? 0 : wrapWidth + 'px',
+        animationDelay: /* istanbul ignore next */(isFirst ? delay : 0) + 's',
         animationDuration: duration + 's'
       };
     }
@@ -194,7 +197,7 @@ class NoticeBar extends Component<IProps> {
             <p
               className={cx(`${prefix}__content`, {
                 [`${prefix}__content--scroll`]: scrollable && !wrapable && isOverflow,
-                [`${prefix}__content--scroll-infinite`]: !isFirst && !wrapable && isOverflow,
+                [`${prefix}__content--scroll-infinite`]: /* istanbul ignore next */!isFirst && !wrapable && isOverflow,
                 [`${prefix}__content--ellipsis`]: !scrollable && !wrapable
               })}
               {...addPrefix('onAnimationEnd', this.onAnimationEnd)}

@@ -29,14 +29,29 @@ describe('<Switch />', () => {
     ('should render with custom color',
     () => {
       let wrapper = mount(
-        <Switch isActived activedColor="#2e4e7e" inActivedColor="#bbcdc5" />
+        <Switch isActived activedColor="#2e4e7e" />
+      );
+      expect(wrapper).toMatchSnapshot();
+      wrapper = mount(
+        <Switch
+          isActived
+          activedColor="#2e4e7e"
+          inActivedColor="#bbcdc5"
+        />
       );
       expect(wrapper).toMatchSnapshot();
       wrapper = mount(
         <Switch
           isActived={false}
-          activedColor="#2e4e7e"
           inActivedColor="#bbcdc5"
+        />
+      );
+      expect(wrapper).toMatchSnapshot();
+      wrapper = mount(
+        <Switch
+          isActived={false}
+          isLoading
+          activedColor="#2e4e7e"
         />
       );
       expect(wrapper).toMatchSnapshot();
