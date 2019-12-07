@@ -15,6 +15,9 @@ const list = [
   {
     value: 'option3',
     label: '选项3'
+  },
+  {
+    label: '选项4'
   }
 ];
 
@@ -52,9 +55,28 @@ describe('Radio', () => {
       .simulate('click');
     setTimeout(() => expect(onChange).toHaveBeenCalledTimes(1), 0);
   });
+
+  it('should render properly', () => {
+    const wrapper = deep(
+      <Radio labelPosition="right" checkedColor="#e27777">
+        {list.map(item => (
+          <RadioItem
+            key={item.value}
+            value={item.value}
+            disabled={item.disabled}
+          >
+            {item.label}
+          </RadioItem>
+        ))}
+        <div className="test">test</div>
+      </Radio>
+    );
+    expect(wrapper).toMatchSnapshot();
+    // expect(wrapper.exists('.test')).toBe(false);
+  });
   it('should render single', () => {
     const onChange = jest.fn();
-    const wrapper = shallow(
+    const wrapper = deep(
       <div>
         {list.map(item => (
           <RadioItem
@@ -72,14 +94,17 @@ describe('Radio', () => {
     expect(wrapper).toMatchSnapshot();
 
     wrapper
-      .find('RadioItem')
+      .find('.caf-radio-item')
       .first()
       .simulate('click');
     expect(onChange).toHaveBeenCalledTimes(0);
+    expect(wrapper
+      .find('.caf-radio-item')
+      .first())
     wrapper
-      .find('RadioItem')
+      .find('.caf-radio-item')
       .last()
       .simulate('click');
-    setTimeout(() => expect(onChange).toHaveBeenCalledTimes(1), 0);
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 });

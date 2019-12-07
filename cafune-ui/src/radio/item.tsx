@@ -41,7 +41,6 @@ class RadioItem extends Component<IProps, {}> {
   };
   onItemClick = () => {
     const { value, disabled, checked, onChange } = this.props;
-    /* istanbul ignore next  */
     if (!checked && !disabled && onChange) {
       onChange(value);
     }

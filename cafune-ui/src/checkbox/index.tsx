@@ -69,7 +69,7 @@ class Checkbox extends Component<IProps> {
   };
   componentDidMount() {
     const { value, checked = false } = this.props;
-    const { model = [] } = this.context || {};
+    const { model = [] } = this.context || /* istanbul ignore next */{};
     const isChecked = checked || model.indexOf(value) !== -1;
 
     this.setState({
@@ -93,6 +93,7 @@ class Checkbox extends Component<IProps> {
         checked: !this.state.checked
       });
       // 框组优先级高于单个，避免逻辑冲突产生问题
+      /* istanbul ignore next */
       if (groupChange) {
         groupChange(value);
       } else if (handleChange) {

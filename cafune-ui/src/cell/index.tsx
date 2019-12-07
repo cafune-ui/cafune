@@ -78,13 +78,18 @@ class Cell extends Component<IProps> {
     this.startX = touch.clientX;
   };
   startMoving = e => {
+    /* istanbul ignore next */
     if (!this.isSwiping) return;
     const touch = getTouch(e);
     this.deltaX = touch.clientX - this.startX;
     this.offsetX = Math.abs(this.deltaX);
     this.direction = this.deltaX >= 0 ? -1 : 1;
-    e.preventDefault();
-    e.stopPropagation();
+    /* istanbul ignore next */
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    /* istanbul ignore next */
     if (this.direction > 0) {
       if (this.offsetX > 0 && this.offsetX <= this.swiperSize) {
         this.moveTo(this.deltaX, true);
@@ -94,8 +99,10 @@ class Cell extends Component<IProps> {
     }
   };
   endMoving = () => {
+    /* istanbul ignore next */
     if (!this.isSwiping) return;
     this.isSwiping = false;
+    /* istanbul ignore next */
     if (this.offsetX > 0 && this.offsetX <= this.swiperSize) {
       if (this.offsetX < this.swiperSize / 2) {
         this.moveTo(0);
@@ -106,6 +113,7 @@ class Cell extends Component<IProps> {
     setTimeout(() => (this.offsetX = 0), 500);
   };
   moveTo(offset, noDuration = false) {
+    /* istanbul ignore next */
     if (this.cellWrapper && this.cellWrapper.current) {
       const $swiper = this.cellWrapper.current;
       // 在拖动时不要过渡时间，否则卡顿
@@ -119,6 +127,7 @@ class Cell extends Component<IProps> {
     setTimeout(func.bind(this), 0);
   };
   registeSwiperEvent() {
+    /* istanbul ignore next */
     if (isBrowser) {
       if (this.cellSwiper && this.cellSwiper.current) {
         this.swipable = true;
@@ -137,6 +146,7 @@ class Cell extends Component<IProps> {
     
   }
   unRegisteSwiperEvent() {
+    /* istanbul ignore next */
     if (this.cellMain && this.cellMain.current && this.swipable && isBrowser) {
       const rect = this.cellMain.current;
       this.swipable = false;

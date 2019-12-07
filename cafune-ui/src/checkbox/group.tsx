@@ -40,12 +40,13 @@ class CheckboxGroup extends Component<IProps> {
   canCheck = val => {
     const { maxSelect } = this.props;
     const { seletedData } = this;
+    let result = true;
     if (maxSelect > 0) {
       if (seletedData.indexOf(val) === -1 && seletedData.length === maxSelect) {
-        return false;
+        result = false;
       }
     }
-    return true;
+    return result;
   };
   onChange = val => {
     const { seletedData } = this;

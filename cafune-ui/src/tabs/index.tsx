@@ -4,7 +4,7 @@ import Nav from './nav';
 import cx from 'classnames';
 
 function checkIfPanel(el) {
-  return el.nodeName.displayName === 'TabPanel';
+  return el && el.nodeName && el.nodeName.displayName === 'TabPanel';
 }
 interface IProps {
   /**

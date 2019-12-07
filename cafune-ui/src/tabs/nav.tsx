@@ -58,21 +58,25 @@ export default class Nav extends Component<IProps> {
     const { onChange } = this.props;
     onChange(id);
   };
+  /* istanbul ignore next */
   resizing = () => {
     this.positionInkBar();
   };
   componentDidMount() {
+    /* istanbul ignore next */
     if (isBrowser) {
       this.positionInkBar();
       window.addEventListener('resize', this.resizing);
     }
   }
   componentDidUpdate() {
+    /* istanbul ignore next */
     if (isBrowser) {
       this.positionInkBar();
     }
   }
   componentWillUnmount() {
+    /* istanbul ignore next */
     if (isBrowser) {
       window.removeEventListener('resize', this.resizing);
     }
@@ -90,12 +94,12 @@ export default class Nav extends Component<IProps> {
       const offsetLeft = (itemWidth - inkWidth) / 2 + base.offsetLeft;
       setTransform(inkBar, offsetLeft);
       const navSW = navContainer.scrollLeft - navContainer.offsetWidth;
+      /* istanbul ignore next */
       if (
         navContainer.scrollLeft + navContainer.offsetWidth <
           base.offsetLeft + base.offsetWidth ||
         base.offsetLeft - navContainer.scrollLeft < 0
       ) {
-        // console.log(base.offsetLeft - navContainer.offsetWidth)
         navContainer.scrollBy(
           base.offsetLeft + base.offsetWidth - navContainer.offsetWidth,
           0
