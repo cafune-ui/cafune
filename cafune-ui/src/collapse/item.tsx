@@ -53,10 +53,10 @@ class Item extends Component<IProps> {
     }
   };
   updateStyle() {
+    /* istanbul ignore next  */
     if (isBrowser) {
       let style = '';
       const { actived } = this.props;
-      /* istanbul ignore if  */
       if (this.contentWrapRef.current && this.contentRef.current) {
         style = `max-height: ${
           actived ? this.contentWrapRef.current.offsetHeight : 0
@@ -65,6 +65,7 @@ class Item extends Component<IProps> {
       }
     }
   }
+  /* istanbul ignore next  */
   componentDidUpdate() {
     this.updateStyle();
   }
@@ -84,9 +85,9 @@ class Item extends Component<IProps> {
     return (
       <div
         className={cx(`${prefix}-item`, className, {
-          [`${prefix}-item__disabled`]: disabled
+          [`${prefix}-item__disabled`]: disabled,
+          [`${prefix}-item__actived`]: actived
         })}
-        data-status={actived ? 1 : 0}
         {...restProps}
       >
         <div

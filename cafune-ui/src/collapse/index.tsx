@@ -16,6 +16,10 @@ interface IProps {
    */
   prefix?: string;
   /**
+   * 是否开启手风琴效果
+   */
+  onActivesChange?: (actives: string | string[]) => void;
+  /**
    * 激活的列表
    */
   actives?: string | string[];
@@ -29,15 +33,12 @@ interface IProps {
  */
 class Collapse extends Component<IProps> {
   static Item = Item;
-  state = {
-    actives: this.props.actives
-  };
   static defaultProps = {
     accordion: false,
     prefix: 'caf-collapse'
   };
   onToggle = id => {
-    let { actives } = this.state;
+    let { onActivesChange, actives } = this.props;
     if (Array.isArray(actives)) {
       const idInd = actives.indexOf(id);
       if (idInd === -1) {
@@ -48,9 +49,9 @@ class Collapse extends Component<IProps> {
     } else {
       actives = actives === id ? '' : id;
     }
-    this.setState({
-      actives
-    });
+    if (onActivesChange) {
+      onActivesChange(actives);
+    }
   };
   renderContent(data) {
     let panels = [];
@@ -80,11 +81,12 @@ class Collapse extends Component<IProps> {
         const { id } = props;
         const { children } = item;
         let actived = false;
-        if (actives && id)
+        if (actives && id) {
           actived =
             typeof actives === 'string'
               ? actives == id
               : actives.indexOf(id) !== -1;
+        }
         data.push({
           actived,
           content: children,
@@ -95,8 +97,7 @@ class Collapse extends Component<IProps> {
     return data;
   }
   renderList() {
-    const { prefix, children, accordion, className, ...restProps } = this.props;
-    const { actives } = this.state;
+    const { prefix, children, actives, accordion, className, ...restProps } = this.props;
     const listData = this.getListData(children, actives, accordion);
     return (
       <div className={cx(prefix, className)} {...restProps}>

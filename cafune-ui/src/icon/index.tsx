@@ -79,8 +79,8 @@ const Icon = ({
     size = size || '16px';
     prop.style = `width: ${size};height: ${size};line-height: ${size};`;
   } else {
-    if (color) prop.style = (prop.style || '') + `color: ${color};`;
-    if (size) prop.style = (prop.style || '') + `font-size: ${size};`;
+    if (color) prop.style = (prop.style || /* istanbul ignore next  */'') + `color: ${color};`;
+    if (size) prop.style = (prop.style || /* istanbul ignore next  */'') + `font-size: ${size};`;
   }
   const Tag = tag;
   return isImg ? (

@@ -5,7 +5,7 @@ const CollapseItem = Collapse.Item;
 export default class CollapseCom extends Component {
   state = {
     actives: 'basic',
-    activeCol: []
+    activeCol: ['basic']
   };
   onChange = name => {
     return actives => {
@@ -18,7 +18,10 @@ export default class CollapseCom extends Component {
     return (
       <div class="caf-demo">
         <p class="caf-demo-title">默认模式</p>
-        <Collapse actives={activeCol} onChange={this.onChange('activeCol')}>
+        <Collapse
+          actives={activeCol}
+          onActivesChange={this.onChange('activeCol')}
+        >
           <CollapseItem title="基础组件" id="basic">
             <div style="padding: 15px">默认开启</div>
           </CollapseItem>
@@ -27,7 +30,11 @@ export default class CollapseCom extends Component {
           </CollapseItem>
         </Collapse>
         <p class="caf-demo-title">手风车效果（只开一个）</p>
-        <Collapse actives={actives} accordion>
+        <Collapse
+          actives={actives}
+          accordion
+          onActivesChange={this.onChange('actives')}
+        >
           <CollapseItem title="基础组件" id="basic">
             <div style="padding: 15px">默认开启内容</div>
           </CollapseItem>

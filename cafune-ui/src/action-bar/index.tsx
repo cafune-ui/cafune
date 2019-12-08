@@ -28,6 +28,7 @@ class ActionBar extends Component<IProps, {}> {
   componentDidMount() {
     setPadding(`${this.actionbar.getBoundingClientRect().height}px`);
   }
+  /* istanbul ignore next */
   componentWillUnmount() {
     setPadding('');
   }

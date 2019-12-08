@@ -9,7 +9,7 @@ export default class GridComp extends Component {
       <div>
         <div class="caf-demo-block">
           <p class="caf-demo-title">正常使用</p>
-          <Grid>
+          <Grid column={5}>
             {IconList.map(item => (
               <Item key={item}>
                 <Icon icon={item} />
