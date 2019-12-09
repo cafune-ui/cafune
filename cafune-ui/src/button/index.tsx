@@ -119,7 +119,7 @@ export interface IButtonProps {
   /**
    * 点击事件
    */
-  onClick?: (event: Event) => void;
+  handleClick?: (event: Event) => void;
 }
 /**
  * 按钮
@@ -153,7 +153,7 @@ class Button extends Component<IButtonProps> {
     shadow,
     bgColor,
     style,
-    onClick,
+    handleClick,
     ...restProps
   }) {
     let btnStyle: any = {};
@@ -222,7 +222,7 @@ class Button extends Component<IButtonProps> {
           [className]: !!className
         })}
         style={btnStyle}
-        onClick={disabled ? undefined : onClick}
+        onClick={!disabled && handleClick}
         {...restProps}
       >
         {!!btnIcon && (

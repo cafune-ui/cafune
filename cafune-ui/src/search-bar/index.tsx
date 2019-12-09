@@ -17,6 +17,7 @@ const actionDefault = {
   }
 };
 function onNextFrame(cb) {
+  /* istanbul ignore next */
   if (window.requestAnimationFrame) {
     return window.requestAnimationFrame(cb);
   }
@@ -149,11 +150,9 @@ class SearchBar extends Component<IProps, IState> {
     }
   }
   clear = () => {
-     /* istanbul ignore next */
     if (!('value' in this.props)) {
       this.setState({ value: '' });
     }
-     /* istanbul ignore next */
     if (this.props.onChange) {
       this.props.onChange('');
     }

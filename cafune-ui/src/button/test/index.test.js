@@ -1,45 +1,133 @@
-import  Button  from '../';
+import Button from '../';
 import { render } from 'enzyme';
 import { shallow, deep } from 'preact-render-spy';
 
 describe('<Button />', () => {
   it('should render with diffrent type', () => {
-    const defaultBtn = deep(
-      <Button>默认按钮</Button>
+    const wrapper = deep(
+      <div>
+        <Button radius={false} size="large">
+          默认按钮
+        </Button>
+        <Button ghost type="primary" size="normal">
+          主要按钮
+        </Button>
+        <Button type="warning" radius size="small">
+          警告按钮
+        </Button>
+        <Button loading radius={{}} type="cancel" size="tiny">
+          取消按钮
+        </Button>
+        <Button block radius="16px">
+          块状按钮
+        </Button>
+      </div>
     );
-    expect(defaultBtn.find('.caf-btn').length).toBe(1);
-    expect(defaultBtn.find('.caf-btn--t-default').length).toBe(1);
-    const primaryBtn = deep(
-      <Button type="primary">默认按钮</Button>
-    );
-    expect(primaryBtn.find('.caf-btn--t-default').length).toBe(0);
-    expect(primaryBtn.find('.caf-btn--t-primary').length).toBe(1);
-    const warningBtn = deep(
-      <Button type="warning">默认按钮</Button>
-    );
-    expect(warningBtn.find('.caf-btn--t-default').length).toBe(0);
-    expect(warningBtn.find('.caf-btn--t-warning').length).toBe(1);
+    expect(wrapper).toMatchSnapshot();
   });
-  it('should render with diffrent size', () => {
-    const defaultBtn = deep(
-      <Button>默认按钮</Button>
+
+  it('should render with icon', () => {
+    const wrapper = deep(
+      <div>
+        <Button icon={{ type: 'search', positon: { right: '21px' } }}>图标按钮</Button>
+        <Button icon={{ type: <div>fd</div>, position: 'right' }}>
+          图标位置
+        </Button>
+        <Button
+          icon={{
+            type: 'arrow-right',
+            position: { left: '10px', right: '20px' }
+          }}
+          style={{ width: '120px', justifyContent: 'flex-start' }}
+        >
+          图标位置
+        </Button>
+
+        <Button
+          icon={{
+            type: 'arrow-right',
+            position: "left"
+          }}
+          style={{ width: '120px', justifyContent: 'flex-start' }}
+        >
+          图标位置
+        </Button>
+      </div>
     );
-    expect(defaultBtn.find('.caf-btn').length).toBe(1);
-    expect(defaultBtn.find('.caf-btn--s-normal').length).toBe(1);
-    const large = deep(
-      <Button size="large">默认按钮</Button>
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should render with loading', () => {
+    const wrapper = deep(
+      <div>
+        <Button loading>加载按钮</Button>
+        <Button
+          type="primary"
+          loading
+          loadingInfo={{ color: '#369', type: 'ripple', size: '24px' }}
+        >
+          加载按钮
+        </Button>
+        <Button
+          type="warning"
+          loading
+          loadingInfo={{ type: 'step', size: '20px' }}
+        >
+          加载按钮
+        </Button>
+
+        <Button
+          type="warning"
+          loading
+          ghost
+          loadingInfo={{ type: 'step', size: '20px' }}
+        >
+          加载按钮
+        </Button>
+      </div>
     );
-    expect(large.find('.caf-btn--s-normal').length).toBe(0);
-    expect(large.find('.caf-btn--s-large').length).toBe(1);
-    const small = deep(
-      <Button size="small">默认按钮</Button>
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should render with gradient', () => {
+    const wrapper = deep(
+      <div>
+        <Button
+          gradient={{
+            angle: 30,
+            from: '#FC5C7D',
+            to: '#6A82FB',
+            shadow: '0 6px 8px -3px #d9669e'
+          }}
+        >
+          渐变按钮
+        </Button>
+        <Button
+          gradient={{}}
+        >
+          渐变按钮
+        </Button>
+      </div>
     );
-    expect(small.find('.caf-btn--s-normal').length).toBe(0);
-    expect(small.find('.caf-btn--s-small').length).toBe(1);
-    const tiny = deep(
-      <Button size="tiny">默认按钮</Button>
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should trigger event', () => {
+    const clickFn = jest.fn();
+    const wrapper = deep(<Button handleClick={clickFn}>非禁用按钮</Button>);
+    wrapper.simulate('click');
+    expect(clickFn).not.toHaveBeenCalled();
+  });
+
+  it('should not trigger event', () => {
+    const clickFn = jest.fn();
+    const wrapper = shallow(
+      <div>
+        <Button disabled handleClick={clickFn}>
+          禁用按钮
+        </Button>
+      </div>
     );
-    expect(tiny.find('.caf-btn--s-normal').length).toBe(0);
-    expect(tiny.find('.caf-btn--s-tiny').length).toBe(1);
+    wrapper.simulate('click');
+    expect(clickFn).not.toHaveBeenCalled();
   });
 });

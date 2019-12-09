@@ -7,7 +7,7 @@ export default class ButtonComp extends Component {
         <div class="caf-demo-block">
           <p class="caf-demo-title">按钮类型</p>
           <div class="caf-demo-buttons">
-            <Button onClick={() => alert('btn clicked')}>默认按钮</Button>
+            <Button handleClick={() => alert('btn clicked')}>默认按钮</Button>
             <Button type="primary">主要按钮</Button>
             <Button type="warning">警告按钮</Button>
             <Button type="cancel">取消按钮</Button>
@@ -68,7 +68,7 @@ export default class ButtonComp extends Component {
         <div class="caf-demo-block">
           <p class="caf-demo-title">按钮状态</p>
           <div class="caf-demo-buttons">
-            <Button disabled onClick={() => alert('enheng')}>
+            <Button disabled handleClick={() => alert('enheng')}>
               禁用按钮
             </Button>
             <Button type="primary" disabled>
@@ -82,7 +82,14 @@ export default class ButtonComp extends Component {
         <div class="caf-demo-block">
           <p class="caf-demo-title">按钮加载</p>
           <div class="caf-demo-buttons">
-            <Button loading>加载按钮</Button>
+            <Button
+              loading
+              loadingInfo={{
+                color: '#279580'
+              }}
+            >
+              加载按钮
+            </Button>
             <Button
               type="primary"
               loading
