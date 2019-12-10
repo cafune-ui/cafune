@@ -192,7 +192,6 @@ class Calendar extends Component<IProps, IState> {
       month: current.month + 1,
       year: current.year
     };
-    /* istanbul ignore next */
     if (current.month === 12) {
       nextCurrent.month = 1;
       nextCurrent.year = current.year + 1;

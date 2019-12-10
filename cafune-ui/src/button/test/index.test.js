@@ -113,16 +113,16 @@ describe('<Button />', () => {
 
   it('should trigger event', () => {
     const clickFn = jest.fn();
-    const wrapper = deep(<Button handleClick={clickFn}>非禁用按钮</Button>);
-    wrapper.simulate('click');
-    expect(clickFn).not.toHaveBeenCalled();
+    const wrapper = shallow(<div><Button onClick={clickFn}>非禁用按钮</Button></div>);
+    wrapper.find('Button').simulate('click');
+    expect(clickFn).toHaveBeenCalled();
   });
 
   it('should not trigger event', () => {
     const clickFn = jest.fn();
     const wrapper = shallow(
       <div>
-        <Button disabled handleClick={clickFn}>
+        <Button disabled={true} onClick={clickFn}>
           禁用按钮
         </Button>
       </div>

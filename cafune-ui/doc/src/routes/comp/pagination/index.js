@@ -15,12 +15,7 @@ export default class Page extends Component {
     return (
       <div class="caf-demo-block">
         <p class="caf-demo-title">自定义类型</p>
-        <Pagination
-          simple
-          current={pn}
-          total={pages}
-          onChange={this.onChange}
-        />
+        <Pagination current={pn} total={pages} onChange={this.onChange} />
         <Pagination
           mode="number"
           current={pn}

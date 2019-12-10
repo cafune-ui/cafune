@@ -164,8 +164,8 @@ class Transition extends Component<IProps, IState> {
     const node = this.base;
     let { visible, afterEnter, afterLeave } = this.props;
     
-    afterEnter = afterEnter || /* istanbul ignore next */ this.noop;
-    afterLeave = afterLeave || /* istanbul ignore next */ this.noop;
+    afterEnter = afterEnter /* istanbul ignore next */ || this.noop;
+    afterLeave = afterLeave /* istanbul ignore next */ || this.noop;
     if (visible) {
       afterEnter(node);
     } else {
@@ -174,17 +174,14 @@ class Transition extends Component<IProps, IState> {
     }
   }
   componentWillReceiveProps(nextProps) {
-    /* istanbul ignore next */
     nextProps.visible && this.setState({ isShow: true });
   }
   componentDidUpdate(previousProps) {
-    /* istanbul ignore next */
     if (previousProps.visible !== this.props.visible) {
       this.animationStart();
     }
   }
   componentDidMount() {
-    /* istanbul ignore next */
     if (this.props.visible && !this.state.isShow) {
       this.setState({ isShow: true }, () => { this.animationStart(); })
     }
