@@ -82,7 +82,7 @@ function notice(options: IProps) {
       content: '',
       duration: durationDefault,
       type: 'normal',
-      multiple: true
+      multiple: false
     },
     options
   );
@@ -91,13 +91,14 @@ function notice(options: IProps) {
   if (!multiple) {
     destroy();
   }
+  /* istanbul ignore next */
   if (!messageInstance) {
     const notification = newInstance({
       prefix
     });
     messageInstance = notification;
   }
-
+  /* istanbul ignore next */
   if (messageNeedHide) {
     messageNeedHide = false;
     return;
@@ -157,6 +158,7 @@ export default class Toast extends Component<IProps> {
     return notice(options);
   }
   static hide(key) {
+    /* istanbul ignore else */
     if (messageInstance) {
       if (key) {
         messageInstance.remove(key);
@@ -168,10 +170,12 @@ export default class Toast extends Component<IProps> {
     }
   }
   static setMsg(key, msg) {
+    /* istanbul ignore else */
     if (messageInstance) {
       messageInstance.setMessage(key, msg);
     }
   }
+  /* istanbul ignore next */
   render() {
     return null;
   }

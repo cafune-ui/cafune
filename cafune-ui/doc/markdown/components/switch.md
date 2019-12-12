@@ -14,4 +14,4 @@ import { Switch } from 'cafune';
 | size | 自定义尺寸 | string | - | - | ❌ |
 | activedColor | 开启时背景颜色 | string | - | - | ❌ |
 | inActivedColor | 关闭时背景颜色 | string | - | - | ❌ |
-| onChange | 状态切换时回调 | (isActived:boolean) => void | - | - | ❌ |
+| onChange | 状态切换时回调 | (isActived: boolean) => void | - | - | ❌ |

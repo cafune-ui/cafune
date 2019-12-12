@@ -63,10 +63,6 @@
     "desc": "分页",
     "displayName": "Pagination"
   },
-  "pull-refresh": {
-    "desc": "下拉刷新",
-    "displayName": "PullRefresh"
-  },
   "radio": {
     "desc": "单选框组",
     "displayName": "Radio"

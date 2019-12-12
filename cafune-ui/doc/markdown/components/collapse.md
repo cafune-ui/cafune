@@ -10,6 +10,7 @@ import { Collapse } from 'cafune';
 | --- | --- | --- | --- | --- | --- |
 | accordion | 是否开启手风琴效果 | boolean | `false` | - | ❌ |
 | prefix | 自定义前缀 | string | `'caf-collapse'` | - | ❌ |
+| onActivesChange | 是否开启手风琴效果 | (actives: string &#124; string[]) => void | - | - | ❌ |
 | actives | 激活的列表 | string / Array | - | - | ❌ |
 | className | 自定义类名 | string | - | - | ❌ |
 

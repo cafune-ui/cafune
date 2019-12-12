@@ -17,11 +17,11 @@ export default class Notice extends Component<IProps, IState> {
   componentDidMount() {
     this.startTimer();
   }
-  componentDidUpdate(prevProps) {
-    if (this.props.duration !== prevProps.duration) {
-      this.reset();
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.duration !== prevProps.duration) {
+  //     this.reset();
+  //   }
+  // }
   componentWillUnmount() {
     this.clear();
   }
@@ -47,10 +47,10 @@ export default class Notice extends Component<IProps, IState> {
     }
   };
 
-  reset() {
-    this.clear();
-    this.startTimer();
-  }
+  // reset() {
+  //   this.clear();
+  //   this.startTimer();
+  // }
   render({ prefix, icon, type, children }) {
     let toastIcon = null;
     if (icon) {
