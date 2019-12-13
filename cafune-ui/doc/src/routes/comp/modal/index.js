@@ -16,7 +16,6 @@ export default class ScrollerComp extends Component {
     };
   };
   beforeClose = (action, done) => {
-    console.log(action);
     if (action === 'confirm') {
       console.log('confirm close in 2 sec');
       setTimeout(() => done(), 2000);

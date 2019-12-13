@@ -5,12 +5,20 @@ import { shallow, deep } from 'preact-render-spy';
 
 describe('<Swiper />', () => {
   it('should render porperly', () => {
-    const wrapper = render(
+    const wrapper = deep(
       <Swiper initialIndex={0} showIndicators={true} autoplay={true}>
         {Array(...Array(4)).map((_, ind) => (
           <SwiperItem key={ind}>{ind + 1}</SwiperItem>
         ))}
       </Swiper>
+    );
+    wrapper.find('.caf-swiper__indicator__item').simulate('click');
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should render nothing', () => {
+    const wrapper = deep(
+      <Swiper initialIndex={0}></Swiper>
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -21,6 +29,7 @@ describe('<Swiper />', () => {
     const wrapper = deep(
       <Swiper
         slideWidth={280}
+        initialIndex={3}
         onChange={changeFn}
         intervel={interval}
         duration={200}
@@ -32,10 +41,10 @@ describe('<Swiper />', () => {
       </Swiper>
     );
     expect(wrapper).toMatchSnapshot();
-    
+
     setTimeout(() => {
       expect(changeFn).toHaveBeenCalled();
-    }, interval)
+    }, interval);
     // wrapper.render(null);
     // expect(wrapper).toMatchSnapshot();
   });

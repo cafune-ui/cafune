@@ -242,6 +242,7 @@ class Swiper extends Component<IProps> {
       return false;
     }
   };
+  /* istanbul ignore next */
   readyMoving = e => {
     this.startTimeStamp = Date.now();
     this.clearAutoPlay();
@@ -249,8 +250,8 @@ class Swiper extends Component<IProps> {
     const touch = getTouch(e);
     this.startX = touch.clientX;
   };
+  /* istanbul ignore next */
   startMoving = e => {
-    /* istanbul ignore next */
     if (!this.isSwiping) return;
     const touch = getTouch(e);
     const deltaX = touch.clientX - this.startX;
@@ -261,7 +262,6 @@ class Swiper extends Component<IProps> {
     this.moveTo({
       offset: `${this.state.current * this.size * -1 + deltaX}px`
     });
-    /* istanbul ignore next */
     if (deltaX !== 0 && this.props.infinite) {
       const next =
         this.state.current === 0 && deltaX > 0
@@ -275,8 +275,8 @@ class Swiper extends Component<IProps> {
         });
     }
   };
+  /* istanbul ignore next */
   endMoving = () => {
-    /* istanbul ignore next */
     if (!this.isSwiping) return;
     this.isSwiping = false;
 
@@ -338,7 +338,7 @@ class Swiper extends Component<IProps> {
       });
     }
   }
-  swiperData;
+  swiperData = [];
   swiperList = createRef();
   swiperContainer = createRef();
   render() {

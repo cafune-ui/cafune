@@ -37,9 +37,7 @@ describe('<Modal />', () => {
         test
       </Modal>
     );
-    expect(wrapper.find('.caf-modal__btn--cancel').text()).toEqual(
-      testText
-    );
+    expect(wrapper.find('.caf-modal__btn--cancel').text()).toEqual(testText);
     wrapper.find('.caf-modal__btn--cancel').simulate('click');
     expect(onCancel).toHaveBeenCalled();
   });
@@ -51,9 +49,7 @@ describe('<Modal />', () => {
         test
       </Modal>
     );
-    expect(wrapper.find('.caf-modal__btn--confirm').text()).toEqual(
-      testText
-    );
+    expect(wrapper.find('.caf-modal__btn--confirm').text()).toEqual(testText);
     wrapper.find('.caf-modal__btn--confirm').simulate('click');
     expect(onConfirm).toHaveBeenCalled();
   });
@@ -78,7 +74,7 @@ describe('<Modal />', () => {
     const wrapper = shallow(<Modal visable message={testMsg} />);
     setTimeout(() => {
       expect(wrapper.find('.caf-modal__box__main').text()).toBe(testMsg);
-    }, 1000)
+    }, 1000);
   });
   it('should open dialog when alert called', () => {
     Modal.alert({
@@ -87,18 +83,31 @@ describe('<Modal />', () => {
     expect(document.querySelectorAll('.caf-modal').length).toBe(1);
   });
   it('should open dialog when confirm caled', () => {
+    const confirmAction = jest.fn();
+    const cancelAction = jest.fn();
+    function beforeClose(action, done) {
+      if (action === 'confirm') {
+        confirmAction();
+        done();
+      } else {
+        cancelAction();
+        done(false)
+      }
+    }
     Modal.confirm({
-      message: 'message'
+      title: 'test',
+      message: 'message',
+      beforeClose
     });
     expect(document.querySelectorAll('.caf-modal').length).toBe(1);
     setTimeout(() => {
       expect(document.body.style.overflow).toBe('hidden');
-    }, 0);
-    // document
-    //   .querySelector('.caf-modal__btn--cancel')
-    //   .dispatchEvent(new Event('click'));
-    // setTimeout(() => {
-    //   expect(document.body.style.overflow).toBe('');
-    // }, 0);
+
+      document.querySelector('.caf-modal__btn--cancel').simulate('click');
+      expect(cancelAction).toHaveBeenCalled();
+
+      document.querySelector('.caf-modal__btn--confirm').simulate('click');
+      expect(confirmAction).toHaveBeenCalled();
+    }, 400);
   });
 });

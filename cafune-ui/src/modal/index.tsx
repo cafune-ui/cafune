@@ -130,6 +130,7 @@ class Modal extends Component<IProps, IState> {
     /* istanbul ignore next  */
     viewWrap && (viewWrap.style.overflow = this.props.visible ? 'hidden' : '');
   }
+  /* istanbul ignore next */
   destroy = () => {
     if (modalComp && containerNode) {
       render('', containerNode, modalComp);
@@ -137,17 +138,20 @@ class Modal extends Component<IProps, IState> {
     }
   };
   handleAction(action) {
+    /* istanbul ignore next */
     if (this.state.loading[action]) {
       return;
     }
     const { beforeClose } = this.props;
     if (beforeClose) {
+      /* istanbul ignore next */
       this.setState(previousState => {
         previousState.loading[action] = true;
         return {
           loading: previousState.loading
         };
       });
+      /* istanbul ignore next */
       beforeClose(action, state => {
         if (state !== false && this.state.loading[action]) {
           this.onClose(action);
@@ -169,6 +173,7 @@ class Modal extends Component<IProps, IState> {
     } else {
       this.props.onCancel && this.props.onCancel();
     }
+    /* istanbul ignore next */
     setTimeout(() =>
       this.setState({
         visible: false
