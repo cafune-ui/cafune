@@ -36,7 +36,7 @@ module.exports = function(env, options = {}) {
         require.resolve('babel-plugin-import'),
         {
           libraryName: 'cafune',
-          libraryDirectory: 'src',
+          libraryDirectory: 'es',
           style: name => {
             if (/cafune\/.+?\/transition/.test(name)) {
               return false;
