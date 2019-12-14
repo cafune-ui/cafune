@@ -71,25 +71,24 @@ class Cell extends Component<IProps> {
   deltaX: number;
   direction: number;
   offsetX: number;
+  /* istanbul ignore next */
   readyMoving = e => {
     this.startTimeStamp = Date.now();
     this.isSwiping = true;
     const touch = getTouch(e);
     this.startX = touch.clientX;
   };
+  /* istanbul ignore next */
   startMoving = e => {
-    /* istanbul ignore next */
     if (!this.isSwiping) return;
     const touch = getTouch(e);
     this.deltaX = touch.clientX - this.startX;
     this.offsetX = Math.abs(this.deltaX);
     this.direction = this.deltaX >= 0 ? -1 : 1;
-    /* istanbul ignore next */
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
-    /* istanbul ignore next */
     if (this.direction > 0) {
       if (this.offsetX > 0 && this.offsetX <= this.swiperSize) {
         this.moveTo(this.deltaX, true);
@@ -98,11 +97,10 @@ class Cell extends Component<IProps> {
       this.moveTo(0);
     }
   };
+  /* istanbul ignore next */
   endMoving = () => {
-    /* istanbul ignore next */
     if (!this.isSwiping) return;
     this.isSwiping = false;
-    /* istanbul ignore next */
     if (this.offsetX > 0 && this.offsetX <= this.swiperSize) {
       if (this.offsetX < this.swiperSize / 2) {
         this.moveTo(0);
@@ -112,8 +110,8 @@ class Cell extends Component<IProps> {
     }
     setTimeout(() => (this.offsetX = 0), 500);
   };
+  /* istanbul ignore next */
   moveTo(offset, noDuration = false) {
-    /* istanbul ignore next */
     if (this.cellWrapper && this.cellWrapper.current) {
       const $swiper = this.cellWrapper.current;
       // 在拖动时不要过渡时间，否则卡顿

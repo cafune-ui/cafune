@@ -80,4 +80,29 @@ describe('ActionSheet', () => {
       expect(onCancel).toHaveBeenCalled();
     }, 300);
   });
+
+  it('should handle action', () => {
+    const onConfirm = jest.fn();
+    const onClose = jest.fn();
+    const onOpen = jest.fn();
+    const wrapper = deep(
+      <ActionSheet isShow {...mockProps} onOpen={onOpen} onClose={onClose} showConfirm showCancel onConfirm={onConfirm} closeOnClickMask />
+    );
+    expect(wrapper).toMatchSnapshot();
+
+    setTimeout(() => {
+      expect(onOpen).toHaveBeenCalled();
+    }, 300);
+    wrapper.find('.caf-actsheet__action__btn--confirm').simulate('click');
+    expect(onConfirm).toHaveBeenCalled();
+    wrapper.find('.caf-actsheet__action__btn--cancel').simulate('click');
+    expect(onClose).toHaveBeenCalledTimes(2);
+
+    wrapper.find('.caf-actsheet__wrapper').simulate('click', {
+      target: {
+        className: 'caf-actsheet__wrapper'
+      }
+    });
+    expect(onClose).toHaveBeenCalledTimes(3);
+  });
 });

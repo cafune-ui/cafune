@@ -26,8 +26,6 @@ describe('NavBar', () => {
       </NavBar>
     );
     expect(wrapper).toMatchSnapshot();
-      
-    console.log( wrapper.find('.caf-navbar__btns--left .caf-navbar__btn'))
     wrapper.find('.caf-navbar__btns--left .caf-navbar__btn').simulate('click');
     expect(backFn).toHaveBeenCalled();
     wrapper.find('.caf-navbar__btns--right .caf-navbar__btn').simulate('click');

@@ -1,5 +1,86 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ActionSheet should handle action 1`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "cancelText": "cancel",
+      "closeOnClickMask": true,
+      "confirmText": "confirm",
+      "horizon": Object {
+        "list": Array [
+          Object {
+            "action": [Function],
+            "badge": true,
+            "icon": "https://image.uisdc.com/wp-content/uploads/2018/07/uiii-ps-icon.png",
+            "name": "hi",
+            "subName": "hi sub",
+          },
+          Object {
+            "action": "/",
+            "badge": "2",
+            "icon": "search",
+            "name": "hi2",
+            "subName": "hi2 sub",
+          },
+          Object {
+            "badge": "2",
+            "icon": "search",
+            "name": "hi2",
+            "subName": "hi2 sub",
+          },
+          Object {
+            "badge": "2",
+            "icon": "search",
+            "name": "hi2",
+            "subName": "hi2 sub",
+          },
+          Object {
+            "badge": "2",
+            "icon": "search",
+            "name": "hi2",
+            "subName": "hi2 sub",
+          },
+        ],
+        "wrap": false,
+      },
+      "isShow": true,
+      "onClose": [MockFunction],
+      "onConfirm": [MockFunction],
+      "onOpen": [MockFunction],
+      "showCancel": true,
+      "showConfirm": true,
+      "title": "test title",
+      "vertialList": Array [
+        Object {
+          "align": "left",
+          "icon": "browser",
+          "name": "browser",
+        },
+        Object {
+          "align": "center",
+          "icon": "error",
+          "isDisabled": true,
+          "name": "error",
+          "subName": "on disabled state",
+        },
+        Object {
+          "align": "right",
+          "icon": "refresh",
+          "isLoading": true,
+          "name": "refresh",
+          "subName": "on loading state",
+        },
+      ],
+    },
+    "children": Array [],
+    "key": undefined,
+    "nodeName": [Function],
+  },
+  "length": 1,
+}
+`;
+
 exports[`ActionSheet should render properly 1`] = `
 RenderContext {
   "0": VNode {
