@@ -1,0 +1,44 @@
+{
+  "_from": "@preact/async-loader",
+  "_id": "@preact/async-loader@3.0.0-next.10",
+  "_inBundle": false,
+  "_integrity": "sha1-e1Eedo7UTwD3GFj/oHu4/HdjtO4=",
+  "_location": "/@preact/async-loader",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@preact/async-loader",
+    "name": "@preact/async-loader",
+    "escapedName": "@preact%2fasync-loader",
+    "scope": "@preact",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "http://registry.npm.taobao.org/@preact/async-loader/download/@preact/async-loader-3.0.0-next.10.tgz",
+  "_shasum": "7b511e768ed44f00f71858ffa07bb8fc7763b4ee",
+  "_spec": "@preact/async-loader",
+  "_where": "/Users/evont/Vipc/Web/Branches/qiujiang-test",
+  "bundleDependencies": false,
+  "dependencies": {
+    "loader-utils": "^1.1.0"
+  },
+  "deprecated": false,
+  "description": "Preact's async component loader for Webpack",
+  "engines": {
+    "node": ">=6"
+  },
+  "files": [
+    "*.js"
+  ],
+  "name": "@preact/async-loader",
+  "peerDependencies": {
+    "preact": "^8.1.0"
+  },
+  "version": "3.0.0-next.10"
+}

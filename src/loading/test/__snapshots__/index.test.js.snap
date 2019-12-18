@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading should render properly 1`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "class": "demo-loading",
+    },
+    "children": Array [
+      VNode {
+        "attributes": undefined,
+        "children": Array [
+          "加载类型",
+        ],
+        "key": undefined,
+        "nodeName": "p",
+      },
+      VNode {
+        "attributes": undefined,
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "type": "step",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "type": "ripple",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": undefined,
+        "children": Array [
+          "自定义颜色",
+        ],
+        "key": undefined,
+        "nodeName": "p",
+      },
+      VNode {
+        "attributes": Object {
+          "color": "#1989fa",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "color": "#1989fa",
+          "type": "step",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "color": "#1989fa",
+          "type": "ripple",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": undefined,
+        "children": Array [
+          "自定义尺寸",
+        ],
+        "key": undefined,
+        "nodeName": "p",
+      },
+      VNode {
+        "attributes": Object {
+          "size": "40px",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "size": "60px",
+          "type": "step",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "size": "50px",
+          "type": "ripple",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": undefined,
+        "children": Array [
+          "加载文案及自定义文字大小",
+        ],
+        "key": undefined,
+        "nodeName": "p",
+      },
+      VNode {
+        "attributes": Object {
+          "text": "Loading...",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "text": "Loading...",
+          "textSize": "16px",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": undefined,
+        "children": Array [
+          "垂直文案",
+        ],
+        "key": undefined,
+        "nodeName": "p",
+      },
+      VNode {
+        "attributes": Object {
+          "text": "加载",
+          "vertical": true,
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+    ],
+    "key": undefined,
+    "nodeName": "div",
+  },
+  "length": 1,
+}
+`;

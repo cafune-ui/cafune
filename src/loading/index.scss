@@ -1,0 +1,19 @@
+@import '../style/var.scss';
+$name: '.caf-loading';
+#{$name} {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  padding: $loading-padding;
+  &__text {
+    color: #969799;
+    margin: $loading-text-padding;
+  }
+  &--vertical {
+    flex-direction: column;
+    #{$name}__text {
+      margin: $loading-verticle-text-margin;
+    }
+  }
+}

@@ -1,3 +1,11 @@
 /node_modules
-.vscode/
+/cafune-ui
+/dist
+/lib
+/es
+/css
+/coverage
+yarn.lock
+.vscode
 .DS_Store
+.package-lock.json

@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stepper should render properly 1`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "initVal": 2,
+      "integerOnly": true,
+      "max": 4,
+      "min": 1,
+      "onChange": [MockFunction],
+    },
+    "children": Array [],
+    "key": undefined,
+    "nodeName": [Function],
+  },
+  "length": 1,
+}
+`;
+
+exports[`Stepper should render show num 1`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "max": 1,
+      "min": 1,
+      "showNum": true,
+    },
+    "children": Array [],
+    "key": undefined,
+    "nodeName": [Function],
+  },
+  "length": 1,
+}
+`;
+
+exports[`Stepper should render show num 2`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "max": 10,
+      "min": -Infinity,
+      "showNum": true,
+    },
+    "children": Array [],
+    "key": undefined,
+    "nodeName": [Function],
+  },
+  "length": 1,
+}
+`;
+
+exports[`Stepper should render show num 3`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "initVal": 1,
+      "max": 3,
+      "min": 2,
+      "step": 3,
+    },
+    "children": Array [],
+    "key": undefined,
+    "nodeName": [Function],
+  },
+  "length": 1,
+}
+`;
+
+exports[`Stepper should render show num 4`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "disabled": true,
+      "initVal": 2,
+      "max": 2,
+      "min": 2,
+      "step": 3,
+    },
+    "children": Array [],
+    "key": undefined,
+    "nodeName": [Function],
+  },
+  "length": 1,
+}
+`;
+
+exports[`Stepper should render show num 5`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "initVal": 1,
+      "integerOnly": true,
+      "min": -Infinity,
+    },
+    "children": Array [],
+    "key": undefined,
+    "nodeName": [Function],
+  },
+  "length": 1,
+}
+`;
+
+exports[`Stepper should render show num 6`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "initVal": 1,
+      "readOnly": true,
+    },
+    "children": Array [],
+    "key": undefined,
+    "nodeName": [Function],
+  },
+  "length": 1,
+}
+`;

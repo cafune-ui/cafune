@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lazyload should render properly 1`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "imgClass": "lazy",
+    },
+    "children": Array [
+      VNode {
+        "attributes": Object {
+          "class": "lazy",
+          "data-src": "https://via.placeholder.com/200x150.png?text=original",
+          "src": "https://via.placeholder.com/200x150.png?text=playholder",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": "img",
+      },
+    ],
+    "key": undefined,
+    "nodeName": [Function],
+  },
+  "length": 1,
+}
+`;
+
+exports[`lazyload should render properly 2`] = `
+RenderContext {
+  "0": null,
+  "length": 1,
+}
+`;

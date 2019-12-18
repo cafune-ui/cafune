@@ -1,0 +1,204 @@
+@import '../style/_var.scss';
+
+$stepsName: '.caf-steps';
+$stepName: '.caf-step';
+#{$stepsName} {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  * {
+    box-sizing: border-box;
+  }
+  #{$stepName} {
+    position: relative;
+    &__tail {
+      position: absolute;
+      &::before,
+      &::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 0;
+      }
+      &::before {
+        background-color: #e1e1e1;
+      }
+      &::after {
+        background-color: $steps-success-color;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+    &__icon {
+      width: $steps-decimal-size;
+      height: $steps-decimal-size;
+      margin: auto;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+      &__decimal {
+        display: inline-block;
+        height: $steps-decimal-size;
+        line-height: $steps-decimal-size;
+        width: $steps-decimal-size;
+        border-radius: 50%;
+        color: #fff;
+        background-color: $steps-normal-color;
+        font-size: $steps-decimal-font-size;
+      }
+      &__circle {
+        display: inline-block;
+        height: $steps-circle-size;
+        width: $steps-circle-size;
+        margin: auto;
+        border-radius: 50%;
+        background-color: $steps-normal-color;
+      }
+    }
+    &__content {
+      &__desc {
+        padding: $steps-content-desc-padding;
+        font-size: $steps-content-desc-font-size;
+        color: #999;
+      }
+      &__title {
+        line-height: $steps-content-title-line-height;
+        font-size: $steps-content-title-font-size;
+        color: #333;
+        & + #{$stepName}__content__desc {
+          margin: $steps-content-desc-margin;
+        }
+      }
+    }
+    &--process {
+      #{$stepName} {
+        &__icon {
+          &__decimal,
+          &__circle {
+            background-color: $steps-success-color;
+          }
+        }
+      }
+    }
+    &--finish {
+      #{$stepName} {
+        color: $steps-success-color;
+        &__icon {
+          color: $steps-success-color;
+          &__circle {
+            background-color: $steps-success-color;
+          }
+          &__decimal {
+            background-color: $steps-success-color;
+          }
+        }
+      }
+    }
+
+    &--error {
+      #{$stepName} {
+        &__tail::after {
+          background-color: $steps-failed-color;
+        }
+        &__icon {
+          color: $steps-failed-color;
+          &__circle {
+            background-color: $steps-failed-color;
+          }
+          &__decimal {
+            background-color: $steps-failed-color;
+          }
+        }
+        &__content__title {
+          color: $steps-failed-color;
+        }
+      }
+    }
+
+    &:first-child {
+      #{$stepName} {
+        position: relative;
+        &__tail {
+          &::before,
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  &--vertical {
+    display: block;
+    padding: $steps-vertical-padding;
+    #{$stepName} {
+      display: block;
+      height: $steps-vertical-block-size;
+      &__tail {
+        width: 1px;
+        height: 65%;
+        left: calc(#{$steps-decimal-size} / 2);
+        top: -90%;
+        &::before {
+          width: 1px;
+          height: 100%;
+        }
+        &::after {
+          width: 1px;
+          height: 0;
+        }
+      }
+      &__icon {
+        float: left;
+      }
+      &__content {
+        margin-left: $steps-vertical-block-margin-left;
+      }
+      & + #{$stepName} {
+        margin-top: $steps-vertical-block-margin-top;
+      }
+      &--finish, &--error, &--process {
+        #{$stepName} {
+          &__tail {
+            &::after {
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  &--horizontal {
+    padding: $steps-horizontal-padding;
+    text-align: center;
+    #{$stepName} {
+      display: inline-block;
+      flex: 1;
+      &__tail {
+        height: 1px;
+        width: 50%;
+        top: calc(#{$steps-decimal-size} / 2);
+        left: -50%;
+        &::before {
+          height: 1px;
+          width: 100%;
+        }
+        &::after {
+          height: 1px;
+          width: 0;
+        }
+      }
+      &__content {
+        margin: $steps-horizontal-content-margin;
+      }
+      &--finish, &--error, &--process {
+        #{$stepName} {
+          &__tail {
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}

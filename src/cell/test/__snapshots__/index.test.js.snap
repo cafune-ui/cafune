@@ -1,0 +1,218 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox should render properly 1`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "class": "",
+    },
+    "children": Array [
+      VNode {
+        "attributes": Object {
+          "title": "基础用法",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "border": false,
+          "title": "不带边框",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "icon": "check",
+          "title": "带icon",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "swipeList": Array [
+            Object {
+              "clickHandler": [Function],
+              "name": "标为未读",
+              "style": Object {
+                "backgroundColor": "#e9e7ef",
+              },
+            },
+            Object {
+              "clickHandler": [Function],
+              "name": "删除",
+              "style": Object {
+                "backgroundColor": "#c93756",
+              },
+            },
+          ],
+          "title": "带右滑",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "icon": "https://image.uisdc.com/wp-content/uploads/2018/07/uiii-ps-icon.png",
+          "iconSize": "30px",
+          "title": "自定义",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "icon": "img",
+          "title": "带链接",
+          "url": "/",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "icon": "search",
+          "label": "此处为描述信息",
+          "title": "带描述信息",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "icon": "search",
+          "label": "此处为描述信息",
+          "title": "带右侧内容",
+          "value": "右侧内容",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "icon": "search",
+          "label": "此处为描述信息",
+          "rightIcon": "more",
+          "title": "带右侧icon",
+          "value": "右侧内容",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "icon": "search",
+          "label": "此处为描述信息",
+          "middle": true,
+          "rightIcon": "more",
+          "title": "垂直居中",
+          "value": "右侧内容",
+        },
+        "children": Array [],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "className": "clickEle",
+        },
+        "children": Array [
+          VNode {
+            "attributes": Object {
+              "icon": "search",
+              "label": "此处为描述信息",
+              "middle": true,
+              "title": "右侧使用组件",
+              "value": VNode {
+                "attributes": undefined,
+                "children": Array [
+                  "fdsafds",
+                ],
+                "key": undefined,
+                "nodeName": "div",
+              },
+            },
+            "children": Array [],
+            "key": undefined,
+            "nodeName": [Function],
+          },
+        ],
+        "key": undefined,
+        "nodeName": "div",
+      },
+      VNode {
+        "attributes": Object {
+          "title": "单元格分组",
+        },
+        "children": Array [
+          VNode {
+            "attributes": Object {
+              "value": "纯内容",
+            },
+            "children": Array [],
+            "key": undefined,
+            "nodeName": [Function],
+          },
+          VNode {
+            "attributes": Object {
+              "title": "单元格2",
+            },
+            "children": Array [],
+            "key": undefined,
+            "nodeName": [Function],
+          },
+        ],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+      VNode {
+        "attributes": Object {
+          "border": false,
+          "title": "单元格分组(不带边框)",
+        },
+        "children": Array [
+          VNode {
+            "attributes": Object {
+              "title": "单元格",
+            },
+            "children": Array [],
+            "key": undefined,
+            "nodeName": [Function],
+          },
+          VNode {
+            "attributes": Object {
+              "title": "单元格2",
+            },
+            "children": Array [],
+            "key": undefined,
+            "nodeName": [Function],
+          },
+        ],
+        "key": undefined,
+        "nodeName": [Function],
+      },
+    ],
+    "key": undefined,
+    "nodeName": "div",
+  },
+  "length": 1,
+}
+`;
+
+exports[`Checkbox should render properly 2`] = `
+RenderContext {
+  "0": null,
+  "length": 1,
+}
+`;

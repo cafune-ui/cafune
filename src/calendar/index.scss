@@ -1,0 +1,140 @@
+@import '../style/_var.scss';
+
+$name: '.caf-calendar';
+#{$name} {
+  margin: $calendar-margin;
+  border-radius: $calendar-border-radius;
+  background-color: #fff;
+  box-shadow: $calendar-box-shadow;
+  &__main {
+    padding: $calendar-main-padding;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: $calendar-header-padding;
+    &__date {
+      flex: 1;
+      text-align: center;
+      font-size: $calendar-header-font-size;
+      font-weight: $calendar-header-font-weight;
+      &__month {
+        font-weight: 500;
+        margin: $calendar-header-date-margin;
+      }
+      &__year {
+        font-weight: 300;
+      }
+    }
+    &__btn {
+      display: inline-block;
+      height: 0;
+      width: 0;
+      border-width: $calendar-header-btn-size;
+      border-style: solid;
+      &--left {
+        border-color: transparent #{$calendar-header-btn-background-color} transparent
+          transparent;
+      }
+      &--right {
+        border-color: transparent transparent transparent #{$calendar-header-btn-background-color};
+      }
+    }
+  }
+  &__weekbar {
+    display: flex;
+    justify-content: center;
+    height: $calendar-weekbar-height;
+    line-height: $calendar-weekbar-height;
+    text-align: center;
+    font-size: $calendar-weekbar-font-size;
+    &__item {
+      flex-basis: $calendar-date-size;
+      &--rest {
+        color: $calendar-weekbar-rest-color;
+      }
+    }
+  }
+  &__calendar {
+    &__week {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+  &__date {
+    flex-basis: $calendar-date-size;
+    height: $calendar-date-size;
+    line-height: $calendar-date-size;
+    margin: $calendar-date-margin;
+    font-size: $calendar-date-font-size;
+    &--today {
+      #{$name} {
+        &__day {
+          &__date {
+            &::after {
+              content: '';
+              position: absolute;
+              left: 0;
+              right: 0;
+              bottom: -4px;
+              margin: auto;
+              display: inline-block;
+              width: $calendar-date-today-indicator-width;
+              height: $calendar-date-today-indicator-height;
+              border-radius: $calendar-date-today-indicator-height;
+              background-color: $calendar-date-today-indicator-background-color;
+            }
+          }
+        }
+      }
+    }
+    &--start, &--end {
+      background-color: $calendar-date-range-background-color;
+      #{$name} {
+        &__day {
+          border-radius: $calendar-date-side-radius;
+          background-color: $calendar-date-side-background-color;
+          color: $calendar-date-side-color;
+          &__date::after {
+            background-color: $calendar-date-side-color;
+          }
+        }
+      }
+    }
+    &--other {
+      color: $calendar-date-other-color;
+    }
+    &--start, &:first-child, &:last-child#{$name}__date--start {
+      border-radius: #{$calendar-date-side-radius} 0 0 #{$calendar-date-side-radius};
+    }
+    &--end, &:last-child, &:first-child#{$name}__date--end {
+      border-radius: 0 #{$calendar-date-side-radius} #{$calendar-date-side-radius} 0;
+    }
+    &--range {
+      background-color: $calendar-date-range-background-color;
+      color: $calendar-date-range-color;
+    }
+    &--selected {
+      #{$name} {
+        &__day {
+          border-radius: $calendar-date-size;
+          background-color: $calendar-date-side-background-color;
+          color: $calendar-date-side-color;
+          &__date::after {
+            background-color: $calendar-date-side-color;
+          }
+        }
+      }
+    }
+  }
+  &__day {
+    position: relative;
+    height: $calendar-date-size;
+    margin: auto;
+    user-select: none;
+    &__date {
+      position: relative;
+    }
+  }
+}

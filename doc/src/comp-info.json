@@ -1,0 +1,114 @@
+{
+  "action-bar": {
+    "desc": "动作栏",
+    "displayName": "ActionBar"
+  },
+  "action-sheet": {
+    "desc": "动作面板",
+    "displayName": "ActionSheet"
+  },
+  "button": {
+    "desc": "按钮",
+    "displayName": "Button"
+  },
+  "calendar": {
+    "desc": "日历",
+    "displayName": "Calendar"
+  },
+  "cell": {
+    "desc": "单元格",
+    "displayName": "Cell"
+  },
+  "checkbox": {
+    "desc": "复选框",
+    "displayName": "Checkbox"
+  },
+  "collapse": {
+    "desc": "折叠面板",
+    "displayName": "Collapse"
+  },
+  "grid": {
+    "desc": "宫格",
+    "displayName": "Grid"
+  },
+  "icon": {
+    "desc": "图标",
+    "displayName": "Icon"
+  },
+  "layout": {
+    "desc": "布局",
+    "displayName": "Layout"
+  },
+  "lazyload": {
+    "desc": "懒加载包裹组件",
+    "displayName": "Lazyload"
+  },
+  "loading": {
+    "desc": "加载",
+    "displayName": "Loading"
+  },
+  "modal": {
+    "desc": "模态框",
+    "displayName": "Modal"
+  },
+  "nav-bar": {
+    "desc": "导航栏",
+    "displayName": "NavBar"
+  },
+  "notice-bar": {
+    "desc": "通知栏",
+    "displayName": "NoticeBar"
+  },
+  "pagination": {
+    "desc": "分页",
+    "displayName": "Pagination"
+  },
+  "radio": {
+    "desc": "单选框组",
+    "displayName": "Radio"
+  },
+  "scroller": {
+    "desc": "",
+    "displayName": "Scroller"
+  },
+  "search-bar": {
+    "desc": "搜索栏",
+    "displayName": "SearchBar"
+  },
+  "skeleton": {
+    "desc": "骨架屏",
+    "displayName": "Skeleton"
+  },
+  "stepper": {
+    "desc": "步进器",
+    "displayName": "Stepper"
+  },
+  "steps": {
+    "desc": "步骤条",
+    "displayName": "Steps"
+  },
+  "swiper": {
+    "desc": "轮播",
+    "displayName": "Swiper"
+  },
+  "switch": {
+    "desc": "开关",
+    "displayName": "Switch"
+  },
+  "tab-bar": {
+    "desc": "标签栏",
+    "displayName": "TabBar"
+  },
+  "tabs": {
+    "desc": "标签卡",
+    "displayName": "Tabs"
+  },
+  "toast": {
+    "desc": "轻提示",
+    "displayName": "Toast"
+  },
+  "transition": {
+    "desc": "过渡",
+    "displayName": "Transition"
+  }
+}

@@ -1,0 +1,80 @@
+@import '../style/_var.scss';
+@mixin btn {
+  flex: 1;
+  padding: $modal-btn-padding;
+}
+// @keyframes modal {
+//   0% {
+//     opacity: 0;
+//     transform: translate3d(-50%, -50%, 0) scale(0.4);
+//   }
+//   100% {
+//     opacity: 1;
+//     transform: translate3d(-50%, -50%, 0) scale(1);
+//   }
+// }
+
+.caf-modal {
+  &__btngroup {
+    width: $modal-btngroup-width;
+    margin: $modal-btngroup-margin;
+    display: flex;
+    align-items: $modal-btngroup-align-items;
+  }
+  &__btn {
+    @include btn();
+  }
+  &__mask {
+    position: fixed;
+    z-index: $modal-box-zIndex - 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-color: $modal-mask-background-color;
+  }
+  &__box {
+    position: fixed;
+    z-index: $modal-box-zIndex;
+    top: 50%;
+    left: 50%;
+    width: $modal-box-width;
+    overflow: hidden;
+    transform: translate3d(-50%, -50%, 0);
+    border-radius: $modal-box-border-radius;
+    background-color: $modal-box-background-color;
+    &__header {
+      padding: $modal-box-header-padding;
+      font-size: $modal-box-header-font-size;
+      font-weight: $modal-box-header-font-weight;
+      text-align: $modal-box-header-text-align;
+    }
+    &__main {
+      padding: $modal-box-main-padding;
+      line-height: $modal-box-main-line-height;
+
+      &--center {
+        text-align: center;
+      }
+      &--left {
+        text-align: left;
+      }
+      &--right {
+        text-align: right;
+      }
+    }
+  }
+  &-fade {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+    &-enter-active, &-leave-active {
+      transition: all .5s;
+    }
+    &-enter, &-leave {
+      opacity: 0;
+      transform: translate3d(-50%, -50%, 0) scale(0.4);
+    }
+  }
+}

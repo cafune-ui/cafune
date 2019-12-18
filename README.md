@@ -28,3 +28,9 @@
 ## 贡献
 
 如果你在使用 `CAFUNE-UI` 时遇到问题，或者有好的建议，欢迎给我提 `Issue` 或 `Pull Request`。
+
+---
+
+## LICENSE
+
+[MIT](https://en.wikipedia.org/wiki/MIT_License)

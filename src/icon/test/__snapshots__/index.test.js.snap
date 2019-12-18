@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon should render properly 1`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "color": "#549",
+      "icon": "like",
+      "size": "28px",
+    },
+    "children": Array [],
+    "key": undefined,
+    "nodeName": [Function],
+  },
+  "length": 1,
+}
+`;
+
+exports[`Icon should render with custom prefix 1`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "color": "#549",
+      "customPrefix": "ri",
+      "icon": "/someurl/img",
+      "size": "28px",
+      "tag": "li",
+    },
+    "children": Array [],
+    "key": undefined,
+    "nodeName": [Function],
+  },
+  "length": 1,
+}
+`;
+
+exports[`Icon should render with img 1`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "color": "#549",
+      "icon": "/someurl/img",
+      "size": "28px",
+    },
+    "children": Array [],
+    "key": undefined,
+    "nodeName": [Function],
+  },
+  "length": 1,
+}
+`;

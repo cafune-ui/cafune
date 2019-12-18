@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar should render properly 1`] = `ReactWrapper {}`;
+
+exports[`NavBar should render properly 2`] = `
+RenderContext {
+  "0": VNode {
+    "attributes": Object {
+      "isFixed": true,
+      "left": Object {
+        "badge": true,
+        "clickHandler": [MockFunction] {
+          "calls": Array [
+            Array [
+              Event {
+                "isTrusted": false,
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        },
+        "color": "#369",
+        "text": "返回",
+      },
+      "rights": Array [
+        Object {
+          "clickHandler": [MockFunction] {
+            "calls": Array [
+              Array [
+                Event {
+                  "isTrusted": false,
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          },
+          "icon": "search",
+          "text": "搜索",
+        },
+        null,
+      ],
+    },
+    "children": Array [
+      "标题",
+    ],
+    "key": undefined,
+    "nodeName": [Function],
+  },
+  "length": 1,
+}
+`;

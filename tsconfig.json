@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "outDir": "./es",
+    "allowJs": true,
+    "jsx": "react",
+    "jsxFactory": "h",
+    "target": "es2018",
+    "module": "commonjs",
+    "lib": ["dom", "es6"],
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true
+  },
+  "typeRoots": ["./types", "node_modules/@types"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "doc", "es", "lib", "./src/*/test", "font"]
+}

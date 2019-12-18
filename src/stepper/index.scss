@@ -1,0 +1,87 @@
+@import '../style/_var.scss';
+$name: '.caf-stepper';
+
+#{$name} {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: $stepper-height;
+  box-shadow: 0 2px 8px $stepper-background-color; 
+  border-radius: $stepper-height;
+  background-color: $stepper-background-color;
+  &__input {
+    height: $stepper-height;
+    min-width: $stepper-input-min-width;
+    max-width: $stepper-input-max-width;
+    box-sizing: border-box;
+    overflow: hidden;
+    &__content, input {
+      border: none;
+      appearance: none;
+      height: $stepper-height;
+      line-height: $stepper-height;
+      width: 100%;
+      text-align: center;
+      font-size: $stepper-input-font-size;
+      outline: none;
+      box-sizing: border-box;
+      background-color:  $stepper-background-color;
+      color: $stepper-input-color;
+      caret-color: transparent;
+    }
+    &--disabled {
+      input {
+        color: $stepper-disabled-color;
+      }
+    }
+  }
+  
+  &__btn {
+    position: relative;
+    display: inline-block;
+    width: $stepper-btn-width;
+    height: $stepper-height;
+    line-height: $stepper-height;
+    border-radius: $stepper-height;
+    user-select: none;
+    &--disabled {
+      opacity: .3;
+    }
+    &--minus {
+      // border-radius: 32px 0 0 32px;
+      // background-color: $stepper-btn-minus-background-color;
+      color: $stepper-btn-minus-color;
+      font-size: $stepper-btn-minus-size;
+      // box-shadow: 0 2px 4px $stepper-btn-minus-background-color;
+    }
+    &--plus {
+      // border-radius: 0 32px 32px 0;
+      // background-color: $stepper-btn-plus-background-color;
+      color: $stepper-btn-plus-color;
+      font-size: $stepper-btn-plus-size;
+      // box-shadow: 0 2px 4px $stepper-btn-plus-background-color;
+    }
+    &--minus:empty::before, &--plus:empty::before, &--plus:empty::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      background-color: currentColor;
+      border-radius: $stepper-icon-thick;
+    }
+    &--minus::before {
+      width: $stepper-icon-percent;
+      height: $stepper-icon-thick;
+    }
+    &--plus::before, &--plus::after {
+      width: $stepper-icon-percent;
+      height: $stepper-icon-thick;
+    }
+    &--plus::after {
+      transform: rotate(90deg);
+    }
+  }
+}

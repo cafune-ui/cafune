@@ -1,2 +1,2 @@
-cafune-ui/src/**/*.js
-cafune-ui/__test__/*.js
+/src/**/*.js
+/__test__/*.js

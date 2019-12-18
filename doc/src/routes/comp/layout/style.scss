@@ -1,0 +1,23 @@
+.caf-demo {
+  .caf-demo-flexblock {
+    margin-bottom: 10px;
+    background: #eee;
+  }
+  .caf-layout {
+    &-item {
+      margin-bottom: 10px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      background-color: #80929c;
+      background-clip: content-box;
+      color: #fff;
+      font-size: 12px;
+    }
+    &__alignContent {
+      &_start, &_end, &_center, &_between, &_around, &_stretch {
+        height: 120px;
+      }
+    }
+  }
+}

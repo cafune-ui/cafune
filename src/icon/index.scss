@@ -1,0 +1,116 @@
+@import './local.scss';
+.caf-icons {
+  position: relative;
+  display: inline-block;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  &-img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+.caf-icon {
+  font-family: 'caf-icon'!important;
+  font-size: 14px;
+  &-notice::before {
+    content: '\e6ff';
+  }
+  &-arrow {
+    &-right:before {
+      content: '\e713';
+    }
+    &-left:before {
+      content: '\e712';
+    }
+  }
+  &-check::before {
+    content: '\e711';
+  }
+  &-wrong::before {
+    content: '\e710';
+  }
+  &-more {
+    &::before {
+      content: '\e70d';
+    }
+    &-o::before {
+      content: '\e70c';
+    }
+  }
+  &-search::before {
+    content: '\e707';
+  }
+  &-back::before {
+    content: '\e715';
+  }
+  &-next::before {
+    content: '\e716';
+  }
+  &-visible::before {
+    content: '\e71f';
+  }
+  &-invisible::before {
+    content: '\e720';
+  }
+  &-refresh::before {
+    content: '\e71a';
+  }
+  &-home::before {
+    content: '\e6fc';
+  }
+  &-news::before {
+    content: '\e6fb';
+  }
+  &-img::before {
+    content: '\e6f9';
+  }
+  &-menu:before {
+    content: '\e734';
+  }
+  &-choice:before {
+    content: '\e72c';
+  }
+  &-upload:before {
+    content: '\e727';
+  }
+  &-success:before {
+    content: '\e714';
+  }
+  &-warning:before {
+    content: '\e70f';
+  }
+  &-error:before {
+    content: '\e718';
+  }
+  &-like {
+    &:before {
+      content: '\e74b';
+    }
+    &-o:before {
+      content: '\e74c';
+    }
+  }
+  &-browser:before {
+    content: '\e722';
+  }
+  &-location:before {
+    content: '\e725';
+  }
+  &-address:before {
+    content: '\e705';
+  }
+  &-help:before {
+    content: '\e70e';
+  }
+  &-home:before {
+    content: '\e6fc';
+  }
+  &-phone:before {
+    content: '\e6fe';
+  }
+  &-password:before {
+    content: '\e702';
+  }
+}

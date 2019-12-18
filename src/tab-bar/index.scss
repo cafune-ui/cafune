@@ -1,0 +1,130 @@
+@import '../style/_var.scss';
+$name: '.caf-tabbar';
+
+#{$name} {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $tabbar-height;
+  width: 100%;
+  background-color: $tabbar-background-color;
+  text-align: center;
+  font-size: $tabbar-font-size;
+  border-radius: $tabbar-radius;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  &-item {
+    flex: 1;
+    transition: all 0.3s ease-in-out;
+    &__icon,
+    &__title,
+    &__container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &__icon {
+      height: $tabbar-icon-width;
+      width: $tabbar-icon-height;
+      transition: all 0.3s ease-in-out;
+    }
+    &__title {
+      transition: all 0.3s ease-in-out;
+    }
+    &__container {
+      flex-direction: column;
+    }
+    &--disabled {
+      opacity: $tabbar-disabled-opacity;
+    }
+    &--actived {
+      color: $tabbar-actived-color;
+    }
+  }
+  &--fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+  &--bubble {
+    #{$name} {
+      &-item {
+        flex-shrink: 0;
+        flex-grow: 0;
+        flex-basis: $tabbar-bubble-flex-basis;
+        &__container {
+          flex-direction: row;
+          width: $tabbar-bubble-container-width;
+          box-sizing: border-box;
+          padding: $tabbar-bubble-container-padding;
+          height: $tabbar-bubble-container-height;
+          border-radius: $tabbar-bubble-container-height;
+          margin: auto;
+        }
+        &__title {
+          max-width: 0;
+          overflow: hidden;
+        }
+        &--actived {
+          flex-shrink: 1;
+          flex-grow: 1;
+          #{$name}-item {
+            &__title {
+              max-width: 200px;
+            }
+            &__container {
+              background-color: $tabbar-bubble-actived-container-background-color;
+            }
+          }
+        }
+      }
+    }
+  }
+  &--flash {
+    #{$name} {
+      &-item {
+        &__icon,
+        &__title {
+          height: 52px;
+        }
+        &__icon {
+          margin: auto;
+        }
+        &__title {
+          &__text {
+            position: relative;
+            padding-bottom: 10px;
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              margin: auto;
+              display: block;
+              width: $tabbar-flash-item-indicator-width;
+              height: $tabbar-flash-item-indicator-height;
+              border-radius: $tabbar-flash-item-indicator-height;
+              background-color: currentColor;
+            }
+          }
+        }
+        &__container {
+          display: block;
+          overflow: hidden;
+          height: $tabbar-height;
+        }
+        &--actived {
+          #{$name}-item {
+            &__icon {
+              transform: translateY(-#{$tabbar-height});
+            }
+            &__title {
+              transform: translateY(-#{$tabbar-height});
+            }
+          }
+        }
+      }
+    }
+  }
+}
