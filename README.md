@@ -6,7 +6,15 @@
 
 # Cafune UI
 
+<p>
+    <a href="https://www.npmjs.com/package/cafune"><img src="https://img.shields.io/npm/v/cafune.svg" /></a>
+    <img src="https://travis-ci.com/cafune-ui/cafune.svg?branch=master" alt="Build Status" />
+    <img src="https://codecov.io/gh/cafune-ui/cafune/branch/master/graph/badge.svg" alt="Coverage Status">
+</p>
+
 轻盈、优雅的移动端Preact 组件库
+
+
 
 ## 特性
 

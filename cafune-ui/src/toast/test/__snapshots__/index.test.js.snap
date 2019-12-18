@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Toast should show a different toast & close 1`] = `"<div class=\\"caf-toast-notice caf-toast-fade caf-toast-fade-enter-active caf-toast-fade-leave-active caf-toast-fade-leave\\"><i class=\\"caf-icons caf-icon caf-icon-success\\" style=\\"font-size: 42px;\\"></i><p class=\\"caf-toast-notice__content\\">test</p></div>"`;
-
-exports[`Toast should show a different toast & close 2`] = `"<div class=\\"caf-toast-notice caf-toast-fade caf-toast-fade-enter-active caf-toast-fade-leave-active caf-toast-fade-leave\\"><i class=\\"caf-icons caf-icon caf-icon-error\\" style=\\"font-size: 42px;\\"></i><p class=\\"caf-toast-notice__content\\">test</p></div>"`;
-
-exports[`Toast should show different icon 1`] = `"<div class=\\"caf-toast-notice caf-toast-fade caf-toast-fade-enter-active caf-toast-fade-leave-active caf-toast-fade-leave\\"><i class=\\"caf-icons caf-icon caf-icon-home\\" style=\\"font-size: 20;\\"></i><p class=\\"caf-toast-notice__content\\">test</p></div>"`;

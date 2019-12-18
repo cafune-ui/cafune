@@ -1,8 +1,0 @@
-/node_modules
-/dist
-/lib
-/es
-/css
-/coverage
-/package-lock.json
-/yarn.lock
