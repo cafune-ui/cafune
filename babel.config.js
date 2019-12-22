@@ -10,7 +10,7 @@ module.exports = function(api) {
         '@babel/preset-env',
         {
           loose: true,
-          modules: useESModules || !isTest ? false : 'commonjs',
+          modules: useESModules || isTest ? false : 'commonjs',
           exclude: ['transform-regenerator', 'transform-async-to-generator']
         }
       ],
